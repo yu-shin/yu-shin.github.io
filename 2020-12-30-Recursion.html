@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CAmita:300,300italic,400,400italic,700,700italic%7CMontserrat:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="Recursion遞迴的基本概念就是:  To solve a problem, solve a subproblem that is a smaller instance of the same problem, and then use the solution to that smaller instance to solve the original problem.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Recursion">
+<meta property="og:url" content="https://yu-shin.github.io/2020-12-30-Recursion.html">
+<meta property="og:site_name" content="Nicholas Blogger">
+<meta property="og:description" content="Recursion遞迴的基本概念就是:  To solve a problem, solve a subproblem that is a smaller instance of the same problem, and then use the solution to that smaller instance to solve the original problem.">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E9%9A%8E%E4%B9%981.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E9%9A%8E%E4%B9%983.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E8%B2%BB%E6%B0%8F%E6%95%B81.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/gcd.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E7%B5%84%E5%90%88.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E7%9B%92%E5%85%A7%E5%A1%941.png">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E7%9B%92%E5%85%A7%E5%A1%942.png">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/n2_1.png">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/n2_2.png">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/n2_3.png">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/n2_4.png">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/n2_5.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/2020-12-30-Recursion/1609352899044.jpg">
+<meta property="article:published_time" content="2020-12-30T11:42:52.000Z">
+<meta property="article:modified_time" content="2021-01-16T15:28:19.137Z">
+<meta property="article:author" content="Nicholas Tsai">
+<meta property="article:tag" content="資料結構與演算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/2020-12-30-Recursion/%E9%9A%8E%E4%B9%981.jpg">
+
+
+<link rel="canonical" href="https://yu-shin.github.io/2020-12-30-Recursion.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+<title>Recursion | Nicholas Blogger</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q5LBLBPSS8');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Nicholas Blogger</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        
+            
+  <li class="menu-item menu-item-分類"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursion"><span class="nav-number">1.</span> <span class="nav-text">Recursion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AD%B0%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">議題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8E%E4%B9%98-Factorial-n"><span class="nav-number">2.1.</span> <span class="nav-text">階乘(Factorial;n!)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-number">2.1.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B2%BB%E6%B0%8F%E6%95%B8-Fibonacci-Number"><span class="nav-number">2.2.</span> <span class="nav-text">費氏數(Fibonacci Number)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A9%E6%95%B8%E4%B9%8B%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B8-Greatest-common-divisor-G-C-D"><span class="nav-number">2.3.</span> <span class="nav-text">兩數之最大公因數 (Greatest common divisor; G. C. D.)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%A0%85%E5%BC%8F%E4%BF%82%E6%95%B8-Binomial-Coefficient-%E6%88%96%E7%A8%B1%E7%B5%84%E5%90%88%E5%95%8F%E9%A1%8C-%E2%80%9CCombination-of-n-objects%E2%80%9D"><span class="nav-number">2.4.</span> <span class="nav-text">二項式係數 (Binomial Coefficient;或稱組合問題 “Combination of n objects”)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-3"><span class="nav-number">2.4.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ackerman%E2%80%99s-Function"><span class="nav-number">2.5.</span> <span class="nav-text">Ackerman’s Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-4"><span class="nav-number">2.5.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">解法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%B3%E5%85%A7%E5%A1%94%E5%95%8F%E9%A1%8C-Tower-of-Hanoi"><span class="nav-number">2.6.</span> <span class="nav-text">河內塔問題(Tower of Hanoi)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-5"><span class="nav-number">2.6.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95-5"><span class="nav-number">2.6.2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">2.6.3.</span> <span class="nav-text">時間複雜度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Permutation-%E6%8E%92%E5%88%97%E5%95%8F%E9%A1%8C"><span class="nav-number">2.7.</span> <span class="nav-text">Permutation (排列問題)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-6"><span class="nav-number">2.7.1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95-6"><span class="nav-number">2.7.2.</span> <span class="nav-text">解法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursion-%E8%88%87-Non-recursion-%E7%9A%84%E6%AF%94%E8%BC%83"><span class="nav-number">3.</span> <span class="nav-text">Recursion 與 Non-recursion 的比較</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Memoization%E5%84%AA%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">Memoization優化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bottom-up"><span class="nav-number">5.</span> <span class="nav-text">Bottom-up</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E6%8E%A2Dynamic-programming"><span class="nav-number">6.</span> <span class="nav-text">初探Dynamic programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">7.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicholas Tsai"
+      src="/images/bighead.jpg">
+  <p class="site-author-name" itemprop="name">Nicholas Tsai</p>
+  <div class="site-description" itemprop="description">辛苦是值得的</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yu-shin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yu-shin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:g06410092@gmail.com" title="E-Mail → mailto:g06410092@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nichola69108664" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nichola69108664" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/yu-shin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/2020-12-30-Recursion.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="辛苦是值得的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Recursion
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-12-30 19:42:52" itemprop="dateCreated datePublished" datetime="2020-12-30T19:42:52+08:00">2020-12-30</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020-12-30-Recursion.html#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020-12-30-Recursion.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>8k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>15 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h1><p>遞迴的基本概念就是:</p>
+<blockquote>
+<p>To solve a problem, solve a subproblem that is a smaller instance of the same problem, and then use the solution to that smaller instance to solve the original problem.</p>
+</blockquote>
+<a id="more"></a>
+
+<p>最後可以整理出兩個重點:</p>
+<ol>
+<li>Each recursive call should be on <strong>a smaller instance of the same problem</strong>, that is, a smaller subproblem.</li>
+<li>The recursive calls must eventually reach a <strong>base case</strong>, which is solved without further recursion.</li>
+</ol>
+<p>簡單來說：</p>
+<ol>
+<li>決定基本情況 (<strong>Base Case</strong>)<ul>
+<li>此base case即為遞迴的<strong>終止條件</strong></li>
+</ul>
+</li>
+<li>決定一般情況 (<strong>General case</strong>)<ul>
+<li>産生遞迴呼叫的指令碼，即<strong>遞迴關係式</strong></li>
+</ul>
+</li>
+<li>將上述兩種情況寫入演算法<pre class="line-numbers language-none"><code class="language-none">Procedure 遞迴程式名(參數)
+&#123;
+if (Base case)
+  return(結果); ……&#x2F;&#x2F;達到終止條件時結束遞迴，需要時回傳結果
+else
+  General case; ……&#x2F;&#x2F;利用general case執行遞迴呼叫，需要時加上return
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="議題"><a href="#議題" class="headerlink" title="議題"></a>議題</h1></li>
+<li>階乘(Factorial;n!)</li>
+<li>費氏數(Fibonacci Number)</li>
+<li>兩數之最大公因數 (Greatest common divisor; G. C. D.)</li>
+<li>二項式係數 (Binomial Coefficient;或稱組合問題 “Combination of n objects”)</li>
+<li>Ackerman’s Function</li>
+<li>迴文(palindrome)</li>
+<li>河內塔問題(Tower of Hanoi)</li>
+<li>排列問題(Permutation)</li>
+</ol>
+<p>遞迴常見的課題：</p>
+<ul>
+<li>寫一個Algorithm (or Program)</li>
+<li>追蹤一個Recursion Algorithm (找結果、呼叫次數)</li>
+</ul>
+<h2 id="階乘-Factorial-n"><a href="#階乘-Factorial-n" class="headerlink" title="階乘(Factorial;n!)"></a>階乘(Factorial;n!)</h2><h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><p><strong>階乘(n!) = 1 × 2 × 3 × … ×(n-1) × n</strong></p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><ul>
+<li><strong>數學表示式:</strong><img src="/2020-12-30-Recursion/%E9%9A%8E%E4%B9%981.jpg" class=""></li>
+<li><strong>pseudocode:</strong><pre class="line-numbers language-none"><code class="language-none">Input: 所要求算的階乘數値n
+Output: n! 結果回傳
+Procedure Factorial(int n)
+  begin
+  if (n &#x3D; 0)
+    return 1;
+  else
+    return (n× Factorial(n-1));
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><strong>Factorial(3) = ? 呼叫了幾次函數？</strong><img src="/2020-12-30-Recursion/%E9%9A%8E%E4%B9%983.jpg" class="">
+呼叫了4次 (含Factorial(3))，計算結果為6<br>※ Factorial(n)會被呼叫幾次? 呼叫n+1次</li>
+<li><strong>Iterative Factorial Algorithm 的 pseudocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: 所要求算的階乘數値n
+Output: n! 結果回傳
+Procedure Factorial(int n)
+  begin
+  i &#x3D; 1;
+  factN &#x3D; 1;
+  loop (i ≤ n)
+    factN &#x3D; factN * i;
+    i &#x3D; i +1;
+  end loop
+  return factN;
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><strong>python code</strong><pre class="line-numbers language-python" data-language="python"><code class="language-python">def factorial(num: int) -&gt; int:
+    if num &lt; 0:
+        raise ValueError(&quot;Number should not be negative.&quot;)
+
+    return 1 if num in (0, 1) else num * factorial(num - 1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="費氏數-Fibonacci-Number"><a href="#費氏數-Fibonacci-Number" class="headerlink" title="費氏數(Fibonacci Number)"></a>費氏數(Fibonacci Number)</h2></li>
+</ul>
+<h3 id="定義-1"><a href="#定義-1" class="headerlink" title="定義"></a>定義</h3><table>
+<thead>
+<tr>
+<th>n</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.895ex" role="img" focusable="false" viewBox="0 -680 1117.3 837.8" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path id="MJX-6-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D439"></use></g><g data-mml-node="mi" transform="translate(643, -150) scale(0.707)"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g></g></g></g></svg></mjx-container></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td>21</td>
+<td>34</td>
+<td>55</td>
+</tr>
+</tbody></table>
+<p><strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="12.712ex" height="1.895ex" role="img" focusable="false" viewBox="0 -680 5618.6 837.8" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path id="MJX-6-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-6-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-6-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-6-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-6-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D439"></use></g><g data-mml-node="mi" transform="translate(643, -150) scale(0.707)"><use xlink:href="#MJX-6-TEX-I-1D44E"></use></g></g><g data-mml-node="mo" transform="translate(1289.3, 0)"><use xlink:href="#MJX-6-TEX-N-2B"></use></g><g data-mml-node="msub" transform="translate(2289.5, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D439"></use></g><g data-mml-node="mi" transform="translate(643, -150) scale(0.707)"><use xlink:href="#MJX-6-TEX-I-1D44F"></use></g></g><g data-mml-node="mo" transform="translate(3563.6, 0)"><use xlink:href="#MJX-6-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(4619.4, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D439"></use></g><g data-mml-node="mi" transform="translate(643, -150) scale(0.707)"><use xlink:href="#MJX-6-TEX-I-1D450"></use></g></g></g></g></svg></mjx-container></strong></p>
+<h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><ul>
+<li><strong>數學表示式:</strong><img src="/2020-12-30-Recursion/%E8%B2%BB%E6%B0%8F%E6%95%B81.jpg" class=""></li>
+<li><strong>pseodocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: 費氏數値num
+Output: 回傳Fibonacci number結果
+Procedure Fib(int num)
+  begin
+  if (num is 0 OR num is 1) &#x2F;&#x2F;Base Case
+    return num;
+  else
+    return (Fib(num-1) + Fib(num-2));
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><strong>Iterative Fibonacci Number Algorithm pseodocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: 費氏數値num
+Output: 回傳Fibonacci number結果
+Procedure Fib(int n)
+begin
+  if (num is 0 OR num is 1)
+    return num;
+  else begin
+    Fa &#x3D; 0,Fb &#x3D; 1;
+    for(i &#x3D; 2 to n) &#x3D; 2 to n)
+      Fc &#x3D; Fa + Fb;
+      Fa &#x3D; Fb;
+      Fb &#x3D; Fc;
+    end for;
+    return Fc;
+  end if;
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><strong>python code</strong></li>
+</ul>
+<ol>
+<li><pre class="line-numbers language-python" data-language="python"><code class="language-python">&quot;&quot;&quot;
+This program calculates the nth Fibonacci number in O(log(n)).
+It&#39;s possible to calculate F(1_000_000) in less than a second.
+&quot;&quot;&quot;
+import sys
+
+def fibonacci(n: int) -&gt; int:
+    if n &lt; 0:
+        raise ValueError(&quot;Negative arguments are not supported&quot;)
+    return _fib(n)[0]
+
+# returns (F(n), F(n-1))
+def _fib(n: int) -&gt; tuple[int, int]:
+    if n &#x3D;&#x3D; 0:  # (F(0), F(1))
+        return (0, 1)
+
+    # F(2n) &#x3D; F(n)[2F(n+1) − F(n)]
+    # F(2n+1) &#x3D; F(n+1)^2+F(n)^2
+    a, b &#x3D; _fib(n &#x2F;&#x2F; 2)
+    c &#x3D; a * (b * 2 - a)
+    d &#x3D; a * a + b * b
+    return (d, c + d) if n % 2 else (c, d)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Fibonacci:
+    def __init__(self, N&#x3D;None):
+        self.fib_array &#x3D; []
+        if N:
+            N &#x3D; int(N)
+            self.fib_array.append(0)
+            self.fib_array.append(1)
+            for i in range(2, N + 1):
+                self.fib_array.append(self.fib_array[i - 1] + self.fib_array[i - 2])
+        elif N &#x3D;&#x3D; 0:
+            self.fib_array.append(0)
+        print(self.fib_array)
+
+    def get(self, sequence_no&#x3D;None):
+        &quot;&quot;&quot;
+        &gt;&gt;&gt; Fibonacci(5).get(3)
+        [0, 1, 1, 2, 3, 5]
+        [0, 1, 1, 2]
+        &gt;&gt;&gt; Fibonacci(5).get(6)
+        [0, 1, 1, 2, 3, 5]
+        Out of bound.
+        &gt;&gt;&gt; Fibonacci(5).get(-1)
+        [0, 1, 1, 2, 3, 5]
+        []
+        &quot;&quot;&quot;
+        if sequence_no is not None:
+            if sequence_no &lt; len(self.fib_array):
+                return print(self.fib_array[: sequence_no + 1])
+            else:
+                print(&quot;Out of bound.&quot;)
+        else:
+            print(&quot;Please specify a value&quot;)
+
+
+if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
+    print(&quot;\n********* Fibonacci Series Using Dynamic Programming ************\n&quot;)
+    print(&quot;\n Enter the upper limit for the fibonacci sequence: &quot;, end&#x3D;&quot;&quot;)
+    try:
+        N &#x3D; int(input().strip())
+        fib &#x3D; Fibonacci(N)
+        print(
+            &quot;\n********* Enter different values to get the corresponding fibonacci &quot;
+            &quot;sequence, enter any negative number to exit. ************\n&quot;
+        )
+        while True:
+            try:
+                i &#x3D; int(input(&quot;Enter value: &quot;).strip())
+                if i &lt; 0:
+                    print(&quot;\n********* Good Bye!! ************\n&quot;)
+                    break
+                fib.get(i)
+            except NameError:
+                print(&quot;\nInvalid input, please try again.&quot;)
+    except NameError:
+        print(&quot;\n********* Invalid input, good bye!! ************\n&quot;)
+
+    import doctest
+
+    doctest.testmod()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="兩數之最大公因數-Greatest-common-divisor-G-C-D"><a href="#兩數之最大公因數-Greatest-common-divisor-G-C-D" class="headerlink" title="兩數之最大公因數 (Greatest common divisor; G. C. D.)"></a>兩數之最大公因數 (Greatest common divisor; G. C. D.)</h2></li>
+</ol>
+<h3 id="定義-2"><a href="#定義-2" class="headerlink" title="定義"></a>定義</h3><p>省略。</p>
+<h3 id="解法-2"><a href="#解法-2" class="headerlink" title="解法"></a>解法</h3><ul>
+<li>利用<strong>輾轉相除法</strong>，如下圖所示：<img src="/2020-12-30-Recursion/gcd.jpg" class=""></li>
+<li><strong>pseudocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: 輸入二個整數A與B
+Output: 傳回A與B的最大公因數
+Procedure gcd(int A, int B)
+  begin
+  if (A mod B &#x3D; 0)       &#x2F;&#x2F;Base Case
+    return B;
+  else
+    return gcd(B, A mod B);
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>PS. 不用考慮 A &lt; B 的問題。因為假如 A &lt; B ：gcd(A, B) = gcd(B, A)，等於前面多 call 一次遞迴</li>
+</ul>
+<h2 id="二項式係數-Binomial-Coefficient-或稱組合問題-“Combination-of-n-objects”"><a href="#二項式係數-Binomial-Coefficient-或稱組合問題-“Combination-of-n-objects”" class="headerlink" title="二項式係數 (Binomial Coefficient;或稱組合問題 “Combination of n objects”)"></a>二項式係數 (Binomial Coefficient;或稱組合問題 “Combination of n objects”)</h2><h3 id="定義-3"><a href="#定義-3" class="headerlink" title="定義"></a>定義</h3><p>組合問題的公式如下：</p>
+<img src="/2020-12-30-Recursion/%E7%B5%84%E5%90%88.jpg" class="">
+
+<h3 id="解法-3"><a href="#解法-3" class="headerlink" title="解法"></a>解法</h3><p>本題解法思路不需要去管，因為最後遞迴關係式式數學家推導出來的：</p>
+<ul>
+<li>數學表示式：</li>
+<li><strong>pseudocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: 輸入二項式的n與m
+Output: 傳回二項式計算結果
+Procedure Bin(int n, int m)
+  begin
+  if (n&#x3D;m or m&#x3D;0)      &#x2F;&#x2F;Base Case
+    return 1;
+  else
+    return (Bin(n-1, m) + Bin(n-1, m-1));
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Ackerman’s-Function"><a href="#Ackerman’s-Function" class="headerlink" title="Ackerman’s Function"></a>Ackerman’s Function</h2></li>
+</ul>
+<h3 id="定義-4"><a href="#定義-4" class="headerlink" title="定義"></a>定義</h3><p>省略。</p>
+<h3 id="解法-4"><a href="#解法-4" class="headerlink" title="解法"></a>解法</h3><ul>
+<li>數學表示式</li>
+<li><strong>pseudocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: 輸入Ackerman(M, N)
+Output: 傳回Ackerman(M, N)計算結果
+Procedure Ackerman(M, N)
+  begin
+  if (M&#x3D;0)         &#x2F;&#x2F;Base Case
+    return N+1;
+  elif (N&#x3D;0)
+    return Ackerman(M-1, 1)
+  else
+    return Ackerman(M-1, Ackerman(M, N-1))  
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>追蹤遞迴
+
+</li>
+</ul>
+<h2 id="河內塔問題-Tower-of-Hanoi"><a href="#河內塔問題-Tower-of-Hanoi" class="headerlink" title="河內塔問題(Tower of Hanoi)"></a>河內塔問題(Tower of Hanoi)</h2><h3 id="定義-5"><a href="#定義-5" class="headerlink" title="定義"></a>定義</h3><p>河內塔也是個經典的Recursion問題。因為此屬簡單問題所以簡單介紹。<br>河內塔目標是把n個盤子從A柱移動到B柱(如下圖n=5)，且遵循以下兩個規則:</p>
+<ol>
+<li>一次只能移動一個盤子</li>
+<li>較小的盤子必須在較大的盤子上面</li>
+</ol>
+<img src="/2020-12-30-Recursion/%E7%9B%92%E5%85%A7%E5%A1%941.png" class="">
+<img src="/2020-12-30-Recursion/%E7%9B%92%E5%85%A7%E5%A1%942.png" class="">
+
+<blockquote>
+<p>傳說在亞洲某個地方盛傳一個傳說，如果把當地64個盤子成功移動到另一個柱子，世界末日即將到來！</p>
+</blockquote>
+<h3 id="解法-5"><a href="#解法-5" class="headerlink" title="解法"></a>解法</h3><p>因為很簡單所以直接說解法了。<br>觀察:</p>
+<ol>
+<li>n=1，只需要一次(直接把盤子放到B柱)</li>
+<li>n=2，需要三次(如下圖)<img src="/2020-12-30-Recursion/n2_1.png" class="">
+<img src="/2020-12-30-Recursion/n2_2.png" class="">
+<img src="/2020-12-30-Recursion/n2_3.png" class="">
+<img src="/2020-12-30-Recursion/n2_4.png" class=""></li>
+<li>n=3，需要3+1+3次(把2個盤子從A柱放到C柱，移動最大盤從A到B柱，把2個盤子從C放到B柱)<img src="/2020-12-30-Recursion/n2_5.jpg" class=""></li>
+</ol>
+<ul>
+<li><strong>數學表示式:</strong><ol>
+<li><strong>Base Case</strong>: if n = 1, 移動一次</li>
+<li><strong>General Case</strong>: when n &gt;=2, 解問題按照下列三步驟:<ol>
+<li>遞迴解決子問題n-1移動次數</li>
+<li>移動最大盤</li>
+<li>遞迴解決子問題n-1移動次數</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>Recursive Tower of Hanoi Algorithm pseudocode</strong><pre class="line-numbers language-none"><code class="language-none">Input: n個盤子，三根柱子(A, B, C)
+Output: 移動過程
+Procedure Towers(int n, char A, char C, char B)
+begin
+  if (n &gt; 0)
+    Towers(n Towers(n-1, A, B, C); 1, A, B, C);
+    print(“Move disk”, n, “from”, A, “to”, C);
+    Towers(n Towers(n-1, B, C, A);
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><strong>python code</strong><pre class="line-numbers language-python" data-language="python"><code class="language-python">def moveTower(height,fromPole, toPole, withPole):
+    if height &gt;&#x3D; 1:
+        moveTower(height-1,fromPole,withPole,toPole)
+        print(&quot;moving disk from&quot;,fp,&quot;to&quot;,tp)
+        moveTower(height-1,withPole,toPole,fromPole)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<code>moveTower(3,&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)</code></li>
+</ul>
+<h3 id="時間複雜度"><a href="#時間複雜度" class="headerlink" title="時間複雜度"></a>時間複雜度</h3><p>T(n) = T(n-1) + 1 + T(n-1)<br>     = 2T(n-1) + 1<br>     = 2[2T(n-2) + 1] + 1 = 4T(n-2) + 3<br>     = …<br>     = <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="21.404ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 9460.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-6-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-6-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-6-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-6-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-6-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use xlink:href="#MJX-6-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(500, 363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-6-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1378, 0)"><use xlink:href="#MJX-6-TEX-N-31"></use></g></g></g><g data-mml-node="mi" transform="translate(1877.9, 0)"><use xlink:href="#MJX-6-TEX-I-1D447"></use></g><g data-mml-node="mo" transform="translate(2581.9, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(2970.9, 0)"><use xlink:href="#MJX-6-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(3470.9, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(4082.2, 0)"><use xlink:href="#MJX-6-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(5082.4, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(5471.4, 0)"><g data-mml-node="mn"><use xlink:href="#MJX-6-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(500, 363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-6-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1378, 0)"><use xlink:href="#MJX-6-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(7571.6, 0)"><use xlink:href="#MJX-6-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(8571.8, 0)"><use xlink:href="#MJX-6-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(9071.8, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container></strong><br>     = <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="6.101ex" height="1.714ex" role="img" focusable="false" viewBox="0 -675.5 2696.7 757.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-5-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-5-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use xlink:href="#MJX-5-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500, 363) scale(0.707)"><use xlink:href="#MJX-5-TEX-I-1D45B"></use></g></g><g data-mml-node="mo" transform="translate(1196.5, 0)"><use xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(2196.7, 0)"><use xlink:href="#MJX-5-TEX-N-31"></use></g></g></g></svg></mjx-container></strong></p>
+<p><strong>由上可知一個遞迴演算法會包含兩個部份：</strong></p>
+<ol>
+<li><strong>遞迴呼叫的執行次數 : 2T(n-1)</strong></li>
+<li><strong>非遞迴工作的執行次數 : 1</strong></li>
+</ol>
+<blockquote>
+<p>回到剛剛說世界末日的故事，移動64個盤子需要<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="6.741ex" height="2.09ex" role="img" focusable="false" viewBox="0 -841.7 2979.6 923.7" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-5-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-5-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-5-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use xlink:href="#MJX-5-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(500, 363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use xlink:href="#MJX-5-TEX-N-36"></use><use xlink:href="#MJX-5-TEX-N-34" transform="translate(500, 0)"></use></g></g></g><g data-mml-node="mo" transform="translate(1479.3, 0)"><use xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(2479.6, 0)"><use xlink:href="#MJX-5-TEX-N-31"></use></g></g></g></svg></mjx-container>次，假設每秒可以移動一個盤子，則大概需要5845億年來移動，還沒到那時太陽的壽命已經消耗殆盡了！</p>
+</blockquote>
+<h2 id="Permutation-排列問題"><a href="#Permutation-排列問題" class="headerlink" title="Permutation (排列問題)"></a>Permutation (排列問題)</h2><h3 id="定義-6"><a href="#定義-6" class="headerlink" title="定義"></a>定義</h3><p>給予a，b，c三個字元，請印出所有的Permutation。</p>
+<ul>
+<li>共有3! = 6 種排列</li>
+</ul>
+<h3 id="解法-6"><a href="#解法-6" class="headerlink" title="解法"></a>解法</h3><ul>
+<li>數學表示式</li>
+<li><strong>pseudocode</strong><pre class="line-numbers language-C" data-language="C"><code class="language-C">void perm(list[ ], int i, int n)   &#x2F;&#x2F; 此函式可產生從 list[i] 至 list[n] 的元素排列
+&#123;
+  if (i&#x3D;&#x3D;n)                        &#x2F;&#x2F; 當 list[ ] 中的所有元素排列完畢，即：終止條件
+  &#123;
+    for (j&#x3D;1; j&lt;&#x3D;n; j++)
+      print(list[j]);              &#x2F;&#x2F; print list內排列好的結果
+  &#125;
+else                               &#x2F;&#x2F; 當 list[ ] 中的元素尚未排列完畢，即：遞迴關係式
+  &#123;
+    for(j&#x3D;i; j&lt;&#x3D;n; j++)
+      &#123;
+        swap(list[i], list[j]);    &#x2F;&#x2F; 讓某個字元當頭(第j個字元當頭)
+        perm(list[ ], i+1, n);     &#x2F;&#x2F; 從第i字元後的其他字元，自己去做排列
+        swap(list[i], list[j]);    &#x2F;&#x2F; 將list陣列還原
+      &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Recursion-與-Non-recursion-的比較"><a href="#Recursion-與-Non-recursion-的比較" class="headerlink" title="Recursion 與 Non-recursion 的比較"></a>Recursion 與 Non-recursion 的比較</h1>|    | Recursion   | Non-recursion |   |<br>| 優 | 程式碼較精簡 | 冗長          | 缺 |<br>| 優 | 需要宣告的區域變數較少 | 較多          | 缺 |<br>| 優 | 程式碼較節省空間 | 浪費          | 缺 |<br>| 優 | 表達力強，易於理解 | 表達力差，不易理解 | 缺 |</li>
+</ul>
+<h1 id="Memoization優化"><a href="#Memoization優化" class="headerlink" title="Memoization優化"></a>Memoization優化</h1><p>考慮Fibonacci數列:</p>
+<ol>
+<li>If n is 0 or 1, return n</li>
+<li>Otherwise, return fibonacci(n-1) + fibonacci(n-2)</li>
+</ol>
+<p>當n=5時, the computer makes 15 calls:</p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/214lD7tWkz8" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+<p>隨著n越來越大，fibonacci(30)在遞迴時 call 了 fibonacci(2)超過50萬次。</p>
+<blockquote>
+<p>所以我們可以實做一個<strong>lookup table</strong>紀錄算過的fibonacci(input)，當然這個table要有效率像是hash table擁有<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-4-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-4-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-4-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-4-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-4-TEX-N-29"></use></g></g></g></svg></mjx-container>查找時間。當然會犧牲一些space存放result(類似快取)。</p>
+</blockquote>
+<ul>
+<li>if n == 0 or 1, return n</li>
+<li>if n in the table, return the table’s value for n</li>
+<li>Otherwise<ul>
+<li>計算fibonacci(n-1) + fibonacci(n-2)</li>
+<li>儲存result在table</li>
+<li>return result</li>
+</ul>
+</li>
+</ul>
+<img src="/2020-12-30-Recursion/1609352899044.jpg" class="">
+<p>如上表所示，隨著n越來越大function call以指數增加，但是佔用的space卻是線性增加。</p>
+<h1 id="Bottom-up"><a href="#Bottom-up" class="headerlink" title="Bottom-up"></a>Bottom-up</h1><p>有時候改善recursive algorithm最有效的方法就是不使用recursion。<br>在這個Fibonacci numbers例子中，一個 iterative 技巧叫做 <strong>bottom-up approach</strong>可以同時節省time和space。當使用bottom-up approach時，會先解決子問題然後使用部份解去得出最終解。<br>time complexity: <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-4-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-4-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-4-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-4-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-4-TEX-N-29"></use></g></g></g></svg></mjx-container></strong><br>space complexity: <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-2-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-2-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-2-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-2-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-2-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-2-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-2-TEX-N-29"></use></g></g></g></svg></mjx-container></strong> since it only remembers three numbers at a time.<br>以下是pseudocode:</p>
+<ul>
+<li>if n == 0 or 1, return n</li>
+<li>Otherwise<ul>
+<li>Create variable <strong>twoBehind</strong> to remember the result of <strong>(n-2)</strong> and initialize to <strong>0</strong></li>
+<li>Create variable <strong>oneBehind</strong> to remember the result of <strong>(n-1)</strong> and initialize to <strong>1</strong></li>
+<li>Create variable <strong>result</strong> to store the <strong>final result</strong> and initialize to <strong>0</strong></li>
+<li>Repeat (n-1) times:<ul>
+<li>Update <strong>result</strong> to the sum of <strong>twoBehind</strong> plus <strong>oneBehind</strong></li>
+<li>Update <strong>twoBehind</strong> to store the current value of <strong>oneBehind</strong></li>
+<li>Update <strong>oneBehind</strong> to store the current value of <strong>result</strong></li>
+<li>return <strong>result</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="初探Dynamic-programming"><a href="#初探Dynamic-programming" class="headerlink" title="初探Dynamic programming"></a>初探Dynamic programming</h1><p>上述的Memoization和bottom-up都是使用了<strong>dynamic programming</strong>策略。<br>當一個問題具有<strong>optimal substructure</strong>和<strong>overlapping subproblems</strong>特性時，Dynamic programming則可以被使用。</p>
+<ul>
+<li><strong>Optimal substructure</strong>: the optimal solution to the problem can be created from optimal solutions of its subproblems.<ul>
+<li>fib(5) can be solved with fib(4) and fib(3)</li>
+</ul>
+</li>
+<li><strong>Overlapping subproblems</strong>: whenever a subproblem is solved multiple times.<ul>
+<li>fib(5) made multiple calls to the typically recursive fib(3) and fib(2)</li>
+</ul>
+</li>
+</ul>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>當以下的問題有任何一個為 當以下的問題有任何一個為 <strong>no</strong>，則不該使用遞迴來設計演算法 用遞迴來設計演算法:</p>
+<ol>
+<li>問題的演算法或資料結構本身是否就具備 問題的演算法或資料結構本身是否就具備<strong>遞迴的特性</strong>?</li>
+<li>使用遞迴求解問題是否能 使用遞迴求解問題是否能<strong>更簡化</strong>或是<strong>更易了解</strong>?</li>
+<li>使用遞迴求解問題是否能在 使用遞迴求解問題是否能在<strong>可接受的時間</strong>或<strong>記憶體空間限制</strong>下完成?</li>
+</ol>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/recursion">Recursion</a><br><a target="_blank" rel="noopener" href="https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/improving-efficiency-of-recursive-functions">Improving efficiency of recursive functions</a><br><a target="_blank" rel="noopener" href="https://github.com/TheAlgorithms/Python/blob/master/dynamic_programming/factorial.py">factorial</a><br><a target="_blank" rel="noopener" href="https://github.com/TheAlgorithms/Python/blob/master/dynamic_programming/fibonacci.py">fibonacci</a><br><a target="_blank" rel="noopener" href="https://github.com/TheAlgorithms/Python/blob/master/dynamic_programming/fast_fibonacci.py">fast_fibonacci</a><br><a target="_blank" rel="noopener" href="https://www.khanacademy.org/computing/computer-science/algorithms/towers-of-hanoi/a/towers-of-hanoi">Towers of Hanoi</a><br><a target="_blank" rel="noopener" href="http://debussy.im.nuu.edu.tw/sjchen/Datastructure/98/course02.pdf">國立聯合大學陳士杰資料結構</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    捐贈
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/ETH.jpg" alt="Nicholas Tsai ETH">
+        <span>ETH</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>歡迎關注我的其它發布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nichola69108664">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 資料結構與演算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020-12-30-Insertion-Sort.html" rel="prev" title="Insertion Sort">
+                  <i class="fa fa-chevron-left"></i> Insertion Sort
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020-12-31-Divide-and-conquer.html" rel="next" title="Divide and conquer">
+                  Divide and conquer <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fab fa-angellist"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicholas Tsai</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="總字數">49k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">1:29</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="/true"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://nicholas-tsai.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://yu-shin.github.io/2020-12-30-Recursion.html";
+    this.page.identifier = "2020-12-30-Recursion.html";
+    this.page.title = "Recursion";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://nicholas-tsai.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>

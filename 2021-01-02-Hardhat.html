@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CAmita:300,300italic,400,400italic,700,700italic%7CMontserrat:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="OverviewHardhat 是一個有助於在 Ethereum 上進行構建的開發環境(development environment)。它幫助 developers 在構建 smart contracts 和 dApps 時 manage and automate the recurring tasks，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。 Har">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hardhat Tutorial">
+<meta property="og:url" content="https://yu-shin.github.io/2021-01-02-Hardhat.html">
+<meta property="og:site_name" content="Nicholas Blogger">
+<meta property="og:description" content="OverviewHardhat 是一個有助於在 Ethereum 上進行構建的開發環境(development environment)。它幫助 developers 在構建 smart contracts 和 dApps 時 manage and automate the recurring tasks，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。 Har">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/2021-01-02-Hardhat/front-5.png">
+<meta property="og:image" content="https://yu-shin.github.io/2021-01-02-Hardhat/front-2.png">
+<meta property="og:image" content="https://yu-shin.github.io/2021-01-02-Hardhat/front-6.png">
+<meta property="article:published_time" content="2021-01-02T06:05:52.000Z">
+<meta property="article:modified_time" content="2021-01-14T08:01:15.288Z">
+<meta property="article:author" content="Nicholas Tsai">
+<meta property="article:tag" content="blockchain">
+<meta property="article:tag" content="smart contracts">
+<meta property="article:tag" content="metamask">
+<meta property="article:tag" content="HardHat">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/2021-01-02-Hardhat/front-5.png">
+
+
+<link rel="canonical" href="https://yu-shin.github.io/2021-01-02-Hardhat.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+<title>Hardhat Tutorial | Nicholas Blogger</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q5LBLBPSS8');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Nicholas Blogger</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        
+            
+  <li class="menu-item menu-item-分類"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setting-up-the-environment"><span class="nav-number">2.</span> <span class="nav-text">Setting up the environment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Creating-a-new-Hardhat-project"><span class="nav-number">3.</span> <span class="nav-text">Creating a new Hardhat project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hardhat%E2%80%99s-architecture"><span class="nav-number">3.1.</span> <span class="nav-text">Hardhat’s architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tasks"><span class="nav-number">3.1.1.</span> <span class="nav-text">Tasks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugins"><span class="nav-number">3.1.2.</span> <span class="nav-text">Plugins</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Writing-and-compiling-smart-contracts"><span class="nav-number">4.</span> <span class="nav-text">Writing and compiling smart contracts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Writing-smart-contracts"><span class="nav-number">4.0.1.</span> <span class="nav-text">Writing smart contracts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compiling-contracts"><span class="nav-number">4.0.2.</span> <span class="nav-text">Compiling contracts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Testing-contracts"><span class="nav-number">5.</span> <span class="nav-text">Testing contracts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Writing-tests"><span class="nav-number">5.0.1.</span> <span class="nav-text">Writing tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-a-different-account"><span class="nav-number">5.0.2.</span> <span class="nav-text">Using a different account</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Full-coverage"><span class="nav-number">5.0.3.</span> <span class="nav-text">Full coverage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Debugging-with-Hardhat-Network"><span class="nav-number">6.</span> <span class="nav-text">Debugging with Hardhat Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solidity-console-log"><span class="nav-number">6.0.1.</span> <span class="nav-text">Solidity console.log</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deploying-to-a-live-network"><span class="nav-number">7.</span> <span class="nav-text">Deploying to a live network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploying-to-remote-networks"><span class="nav-number">7.0.1.</span> <span class="nav-text">Deploying to remote networks</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hardhat-Hackathon-Boilerplate-Project"><span class="nav-number">8.</span> <span class="nav-text">Hardhat Hackathon Boilerplate Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What%E2%80%99s-included"><span class="nav-number">8.0.1.</span> <span class="nav-text">What’s included</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solidity-contract-amp-tests"><span class="nav-number">8.0.2.</span> <span class="nav-text">Solidity contract &amp; tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frontend-app"><span class="nav-number">8.0.3.</span> <span class="nav-text">Frontend app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frontend-file-architecture"><span class="nav-number">8.0.4.</span> <span class="nav-text">Frontend file architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-use-it"><span class="nav-number">8.0.5.</span> <span class="nav-text">How to use it</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Final-thoughts"><span class="nav-number">9.</span> <span class="nav-text">Final thoughts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nicholas Tsai"
+      src="/images/bighead.jpg">
+  <p class="site-author-name" itemprop="name">Nicholas Tsai</p>
+  <div class="site-description" itemprop="description">辛苦是值得的</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yu-shin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yu-shin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:g06410092@gmail.com" title="E-Mail → mailto:g06410092@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nichola69108664" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nichola69108664" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/yu-shin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/2021-01-02-Hardhat.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="辛苦是值得的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hardhat Tutorial
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-01-02 14:05:52" itemprop="dateCreated datePublished" datetime="2021-01-02T14:05:52+08:00">2021-01-02</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021-01-02-Hardhat.html#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021-01-02-Hardhat.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>18k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>32 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p><strong>Hardhat</strong> 是一個有助於在 Ethereum 上進行構建的開發環境(development environment)。它幫助 developers 在構建 smart contracts 和 dApps 時 manage and automate the recurring tasks，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。</p>
+<p><strong>Hardhat</strong> 還內建了 <strong>Hardhat Network</strong> (一個為開發而設計的 local Ethereum network)，它允許你 deploy contracts, run tests, debug codes.</p>
+<a id="more"></a>
+
+<p>在本教程將會學到：</p>
+<ul>
+<li>為以太坊開發設置 Node.js 環境</li>
+<li>創建和配置 a <strong>Hardhat</strong> project</li>
+<li>implements a token 所需 Solidity 智能合約的基礎 </li>
+<li>使用 <strong>Ethers.js</strong> 和 <strong>Waffle</strong> 為合約編寫自動化測試</li>
+<li>使用 <strong>Hardhat Network</strong> 的 <code>console.log()</code> Debug Solidity</li>
+<li>將合約部署到 <strong>Hardhat Network</strong> and Ethereum testnets</li>
+</ul>
+<p>先備知識：</p>
+<ul>
+<li><strong>JavaScript</strong></li>
+<li>操作 <strong>terminal</strong></li>
+<li><strong>git</strong></li>
+<li>了解 <strong>smart contracts</strong> 的基本運作原理</li>
+<li>創件一個 <strong>Metamask</strong> 錢包</li>
+</ul>
+<h1 id="Setting-up-the-environment"><a href="#Setting-up-the-environment" class="headerlink" title="Setting up the environment"></a>Setting up the environment</h1><p>因為很簡單，所以請參考 <a target="_blank" rel="noopener" href="https://hardhat.org/tutorial/setting-up-the-environment.html">Setting up the environment</a>。</p>
+<h1 id="Creating-a-new-Hardhat-project"><a href="#Creating-a-new-Hardhat-project" class="headerlink" title="Creating a new Hardhat project"></a>Creating a new Hardhat project</h1><p>我們將使用 npm 下載 <strong>Hardhat</strong>。The <strong>N</strong>ode.js <strong>p</strong>ackage <strong>m</strong>anager is a package manager and an online repository for JavaScript code. ( npm 的官方敘述)</p>
+<p>打開 terminal 接著輸入以下 commands :</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">mkdir hardhat-tutorial 
+cd hardhat-tutorial 
+npm init --yes 
+npm install --save-dev hardhat </code></pre>
+<p>當下載好 <strong>Hardhat</strong> 後在同一目錄下執行:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">npx hardhat</code></pre>
+<p>用鍵盤選擇 <code>Create an empty hardhat.config.js</code> 後按下 enter。</p>
+<pre class="language-none"><code class="language-none">$ npx hardhat
+888    888                      888 888               888
+888    888                      888 888               888
+888    888                      888 888               888
+8888888888  8888b.  888d888 .d88888 88888b.   8888b.  888888
+888    888     &quot;88b 888P&quot;  d88&quot; 888 888 &quot;88b     &quot;88b 888
+888    888 .d888888 888    888  888 888  888 .d888888 888
+888    888 888  888 888    Y88b 888 888  888 888  888 Y88b.
+888    888 &quot;Y888888 888     &quot;Y88888 888  888 &quot;Y888888  &quot;Y888
+
+Welcome to Hardhat v2.0.0
+
+? What do you want to do? …
+  Create a sample project
+❯ Create an empty hardhat.config.js
+  Quit</code></pre>
+<p>運行 <strong>Hardhat</strong> 時，它將從 current working directory 開始搜索最近的 <code>hardhat.config.js</code> 文件。 該文件通常位於 project 的 root 中，而一個空白的 <code>hardhat.config.js</code>文件足以使 <strong>Hardhat</strong> 正常工作。整個設定都包含在此文件中。</p>
+<h2 id="Hardhat’s-architecture"><a href="#Hardhat’s-architecture" class="headerlink" title="Hardhat’s architecture"></a>Hardhat’s architecture</h2><p><strong>Hardhat</strong> 是圍繞 <strong>tasks</strong> 和 <strong>plugins</strong> 的概念而設計的。 <strong>Hardhat</strong> 大部分的功能來自於 plugins，做為一個開發者你可以自由選擇你所需要的 <a target="_blank" rel="noopener" href="https://hardhat.org/plugins/">plugin</a> 。</p>
+<h3 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h3><p>其實每次從 CLI 運行 <strong>Hardhat</strong> 時都是在執行一個 task 。例如 <code>npx hardhat compile</code> 是在執行 <code>compile</code> task 。執行 <code>npx hardhat</code> 可以查看 project 中當前可用的 tasks 。 執行 <code>npx hardhat help [task]</code> 可以查看該 task 詳細信息。</p>
+<blockquote>
+<p>TIP<br>你可以創造自己的 tasks 。詳情請看 <a target="_blank" rel="noopener" href="https://hardhat.org/guides/create-task.html">Creating a task</a> guide 。</p>
+</blockquote>
+<h3 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h3><p><strong>Hardhat</strong> 有一些預設值，但全部都可以被 override 。大多數時候使用給定的工具的方式是利用 Plugin 集成到 <strong>Hardhat</strong> 中。</p>
+<p>在此教程我們將會使用 <code>Ethers.js</code> 和 <code>Waffle</code> plugins 。它允許我們和 Ethereum 溝通並且 test 自己的 contracts 。後面會再介紹怎麼使用它們，在此同時我們先在 project 目錄 install ：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">npm install --save-dev @nomiclabs&#x2F;hardhat-ethers ethers @nomiclabs&#x2F;hardhat-waffle ethereum-waffle chai</code></pre>
+<p>將第一行添加到 <code>hardhat.config.js</code> 中，使其如下所示：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><div class="caption"><span>hardhat.config.js</span><a href="/downloads/code/hardhat/hardhat.config_1.js">view raw</a></div><code class="language-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"@nomiclabs/hardhat-waffle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @type import('hardhat/config').HardhatUserConfig
+ */</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  solidity<span class="token operator">:</span> <span class="token string">"0.7.3"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在這裡只需要使用 <code>hardhat-waffle</code> ，因為它 depends on <code>hardhat-ethers</code> ，因此不需要同時添加兩者。</p>
+<h1 id="Writing-and-compiling-smart-contracts"><a href="#Writing-and-compiling-smart-contracts" class="headerlink" title="Writing and compiling smart contracts"></a>Writing and compiling smart contracts</h1><p>我們將創建一個簡單的 smart contract，該 contract 實做能夠 transfer 的 token。 Token contracts 最常用於 exchange or store value. 這邊將不深入討論 contract 的 Solidity code，但是我們實做了一些應該知道的邏輯：</p>
+<ul>
+<li>token 的總供應量是固定的而且無法被更改</li>
+<li>整個供應量都分配給部署 contract 的 address</li>
+<li>任何人都可以收到 tokens</li>
+<li>任何人只要擁有至少一個 token 則可以 transfer</li>
+<li>The token 無法分割。只可以 transfer 1, 2, 3 or 37 tokens but not 2.5</li>
+</ul>
+<blockquote>
+<p>TIP<br>你可能聽說過 ERC20，這是 Ethereum 中的 token 標準。DAI，USDC，MKR和ZRX之類的 tokens 遵循 ERC20 標準，使它們都可以與任何可以處理 ERC20 tokens 的軟件兼容。 <strong>為簡單起見，我們要構建的 token 不是 ERC20 。</strong></p>
+</blockquote>
+<h3 id="Writing-smart-contracts"><a href="#Writing-smart-contracts" class="headerlink" title="Writing smart contracts"></a>Writing smart contracts</h3><p>首先新增一個名為 <code>contracts</code> 的新目錄，然後在該目錄內新增檔案 <code>Token.sol</code>。<br>將下面的代碼複製到檔案中，花一點時間閱讀代碼。它很簡單，並且裡頭充滿了解釋 Solidity 代碼基礎的註釋。</p>
+<blockquote>
+<p>TIP<br>如果要 syntax highlighting 應該在 text editor 中添加 Solidity support。 只需尋找 Solidity 或 Ethereum plugins。 建議使用 Visual Studio Code 或 Sublime Text 3。</p>
+</blockquote>
+<pre class="line-numbers language-solidity" data-language="solidity"><div class="caption"><span>Token.sol</span><a href="/downloads/code/hardhat/Token_1.sol">view raw</a></div><code class="language-solidity">&#x2F;&#x2F; Solidity files have to start with this pragma.
+&#x2F;&#x2F; It will be used by the Solidity compiler to validate its version.
+pragma solidity ^0.7.0;
+
+
+&#x2F;&#x2F; This is the main building block for smart contracts.
+contract Token {
+    &#x2F;&#x2F; Some string type variables to identify the token.
+    &#x2F;&#x2F; The &#96;public&#96; modifier makes a variable readable from outside the contract.
+    string public name &#x3D; &quot;My Hardhat Token&quot;;
+    string public symbol &#x3D; &quot;MBT&quot;;
+
+    &#x2F;&#x2F; The fixed amount of tokens stored in an unsigned integer type variable.
+    uint256 public totalSupply &#x3D; 1000000;
+
+    &#x2F;&#x2F; An address type variable is used to store ethereum accounts.
+    address public owner;
+
+    &#x2F;&#x2F; A mapping is a key&#x2F;value map. Here we store each account balance.
+    mapping(address &#x3D;&gt; uint256) balances;
+
+    &#x2F;**
+     * Contract initialization.
+     *
+     * The &#96;constructor&#96; is executed only once when the contract is created.
+     *&#x2F;
+    constructor() {
+        &#x2F;&#x2F; The totalSupply is assigned to transaction sender, which is the account
+        &#x2F;&#x2F; that is deploying the contract.
+        balances[msg.sender] &#x3D; totalSupply;
+        owner &#x3D; msg.sender;
+    }
+
+    &#x2F;**
+     * A function to transfer tokens.
+     *
+     * The &#96;external&#96; modifier makes a function *only* callable from outside
+     * the contract.
+     *&#x2F;
+    function transfer(address to, uint256 amount) external {
+        &#x2F;&#x2F; Check if the transaction sender has enough tokens.
+        &#x2F;&#x2F; If &#96;require&#96;&#39;s first argument evaluates to &#96;false&#96; then the
+        &#x2F;&#x2F; transaction will revert.
+        require(balances[msg.sender] &gt;&#x3D; amount, &quot;Not enough tokens&quot;);
+
+        &#x2F;&#x2F; Transfer the amount.
+        balances[msg.sender] -&#x3D; amount;
+        balances[to] +&#x3D; amount;
+    }
+
+    &#x2F;**
+     * Read only function to retrieve the token balance of a given account.
+     *
+     * The &#96;view&#96; modifier indicates that it doesn&#39;t modify the contract&#39;s
+     * state, which allows us to call it without executing a transaction.
+     *&#x2F;
+    function balanceOf(address account) external view returns (uint256) {
+        return balances[account];
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>TIP<br><code>*.sol</code> 用於 Solidity 文件。建議將文件名與其包含的 contract 進行匹配，這是一種常見的做法。</p>
+</blockquote>
+<h3 id="Compiling-contracts"><a href="#Compiling-contracts" class="headerlink" title="Compiling contracts"></a>Compiling contracts</h3><p>要編譯 contract，在 terminal 執行 <code>npx hardhat compile</code>。 The <code>compile</code> task 是 hardhat 內建的 tasks 之一。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx hardhat compile
+Compiling 1 file with 0.7.3
+Compilation finished successfully<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>合約已經成功編譯且可以使用了！</p>
+<h1 id="Testing-contracts"><a href="#Testing-contracts" class="headerlink" title="Testing contracts"></a>Testing contracts</h1><p>在建構 smart contracts 時撰寫自動化 tests 至關重要。為此，我們將使用 <strong>Hardhat Network</strong> ，這是一個內置的以太坊網絡，專門為開發而設計，是 <strong>Hardhat</strong> 中的默認網絡。無需進行任何設置即可使用它。在我們的 tests 中，我們將使用 ethers.js 與上一節中構建的 Ethereum contract 進行交互，並使用 <a target="_blank" rel="noopener" href="https://mochajs.org/">Mocha</a> 做為我們的 test runner。</p>
+<h3 id="Writing-tests"><a href="#Writing-tests" class="headerlink" title="Writing tests"></a>Writing tests</h3><p>在 project root directory 創建一個名為<code> test</code> 的新目錄，並在目錄裡創建一個名為 <code>Token.js</code> 的新文件。</p>
+<p>讓我們從下面的代碼開始。接下來，我們將對其進行解釋，但現在將其複製到 <code>Token.js</code> 中：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><div class="caption"><span>Token.js</span><a href="/downloads/code/hardhat/Token_1.js">view raw</a></div><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"chai"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Token contract"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Deployment should assign the total supply of tokens to the owner"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>owner<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getSigners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> Token <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getContractFactory</span><span class="token punctuation">(</span><span class="token string">"Token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> hardhatToken <span class="token operator">=</span> <span class="token keyword">await</span> Token<span class="token punctuation">.</span><span class="token function">deploy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> ownerBalance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">totalSupply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>ownerBalance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接著在 terminal 執行 <code>npx hardhat test</code> 將會看到下面的輸出:</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx hardhat test
+
+  Token contract
+    ✓ Deployment should assign the total supply of tokens to the owner (654ms)
+
+
+  1 passing (663ms)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>這意味著測試通過了。現在讓我們解釋每一行：</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">[</span>owner<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getSigners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>ethers.js</code> 中的 <code>Signer</code> 是一個代表 Ethereum account 的 object。它用於將 transactions 發送到 contracts 和其他 accounts 。在這裡，我們獲得了所連接 node 中的 accounts list，在本例中為 <strong>Hardhat Network</strong>，僅保留第一個 account 。</p>
+<p>The <code>ethers</code> variable is available in the global scope. 如果想要 code always being explicit, 可以在頂部加上這行:</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> ethers <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"hardhat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>TIP<br>要了解有關 Signer 的更多信息，可以查看 <a target="_blank" rel="noopener" href="https://docs.ethers.io/v5/api/signer/">Signers documentation</a>。</p>
+</blockquote>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> Token <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getContractFactory</span><span class="token punctuation">(</span><span class="token string">"Token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>ethers.js 中的 <code>ContractFactory</code> 是用於 deploy new smart contracts 的 abstraction，因此 <code>Token</code> 這裡是 a factory for instances of our token contract.</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> hardhatToken <span class="token operator">=</span> <span class="token keyword">await</span> Token<span class="token punctuation">.</span><span class="token function">deploy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>在 <code>ContractFactory</code> 上調用 <code>deploy()</code> 將啟動 deployment，並返回解析為 <code>Contract</code> 的 <code>Promise</code>。該 object 具有用於每個 smart contract functions 的 method 。</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> ownerBalance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>deploye contract 後，我們可以在 <code>hardhatToken</code> 上調用我們的 contract methods ，並通過調用 <code>balanceOf()</code> 來獲取 owner account 的 balance 。</p>
+<p>請記住，獲得 entire supply token 的 owner 是進行 deploy 的 account ，並且在使用 <code>hardhat-ethers plugin</code> 時，預設情況下，<code>ContractFactory</code> 和 <code>Contract</code> instances 連接到 first signer 。 這意味著 <code>owner</code> variable 中的 account executed the deployment ，而 <code>balanceOf()</code> 應該 return the entire supply amount.</p>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">totalSupply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>ownerBalance<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>在這裡，我們再次使用 <code>Contract</code> instance 在 Solidity 代碼中調用 smart contract function 。<code>totalSupply()</code> 返回 token’s supply amount ，我們正在檢查它是否等於 <code>ownerBalance</code> 。</p>
+<p>為此，我們使用 <a target="_blank" rel="noopener" href="https://www.chaijs.com/">Chai</a> ，這是一個 assertions library。這些 asserting functions 稱為 “matchers” ，而我們在此處使用的實際上來自 <a target="_blank" rel="noopener" href="https://getwaffle.io/">Waffle</a> 。這就是為什麼我們使用 <code>hardhat-waffle</code> plugin 的原因，這使得從 assert values from Ethereum 更加容易。查看 Waffle documentation 中的 <a target="_blank" rel="noopener" href="https://ethereum-waffle.readthedocs.io/en/latest/matchers.html">此部份</a>，以了解 Ethereum-specific matchers 的完整列表.</p>
+<h3 id="Using-a-different-account"><a href="#Using-a-different-account" class="headerlink" title="Using a different account"></a>Using a different account</h3><p>如果需要從 default account 以外的其他 account ( or <code>Signer</code> in ethers.js speak ) 發送 transaction 以 test code ，則可以在 ethers.js <code>Contract</code> 中使用 <code>connect()</code> method 將其連接到其他 account 。像這樣：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><div class="caption"><span>Token.js</span><a href="/downloads/code/hardhat/Token_2.js">view raw</a></div><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"chai"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Transactions"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Should transfer tokens between accounts"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>owner<span class="token punctuation">,</span> addr1<span class="token punctuation">,</span> addr2<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getSigners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> Token <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getContractFactory</span><span class="token punctuation">(</span><span class="token string">"Token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> hardhatToken <span class="token operator">=</span> <span class="token keyword">await</span> Token<span class="token punctuation">.</span><span class="token function">deploy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   
+    <span class="token comment">// Transfer 50 tokens from owner to addr1</span>
+    <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>addr1<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>addr1<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// Transfer 50 tokens from addr1 to addr2</span>
+    <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>addr1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>addr2<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>addr2<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Full-coverage"><a href="#Full-coverage" class="headerlink" title="Full coverage"></a>Full coverage</h3><p>既然已經介紹了 testing contracts 所需的基礎知識，這是 token 的完整測試，其中包含有關 Mocha 以及如何構建測試的許多其他信息。建議完整閱讀。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><div class="caption"><span>Token.js</span><a href="/downloads/code/hardhat/Token_3.js">view raw</a></div><code class="language-javascript"><span class="token comment">// We import Chai to use its asserting functions here.</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"chai"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// `describe` is a Mocha function that allows you to organize your tests. It's</span>
+<span class="token comment">// not actually needed, but having your tests organized makes debugging them</span>
+<span class="token comment">// easier. All Mocha functions are available in the global scope.</span>
+
+<span class="token comment">// `describe` receives the name of a section of your test suite, and a callback.</span>
+<span class="token comment">// The callback must define the tests of that section. This callback can't be</span>
+<span class="token comment">// an async function.</span>
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Token contract"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Mocha has four functions that let you hook into the the test runner's</span>
+  <span class="token comment">// lifecyle. These are: `before`, `beforeEach`, `after`, `afterEach`.</span>
+
+  <span class="token comment">// They're very useful to setup the environment for tests, and to clean it</span>
+  <span class="token comment">// up after they run.</span>
+
+  <span class="token comment">// A common pattern is to declare some variables, and assign them in the</span>
+  <span class="token comment">// `before` and `beforeEach` callbacks.</span>
+
+  <span class="token keyword">let</span> Token<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> hardhatToken<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> owner<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> addr1<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> addr2<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> addrs<span class="token punctuation">;</span>
+
+  <span class="token comment">// `beforeEach` will run before each test, re-deploying the contract every</span>
+  <span class="token comment">// time. It receives a callback, which can be async.</span>
+  <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Get the ContractFactory and Signers here.</span>
+    Token <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getContractFactory</span><span class="token punctuation">(</span><span class="token string">"Token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>owner<span class="token punctuation">,</span> addr1<span class="token punctuation">,</span> addr2<span class="token punctuation">,</span> <span class="token operator">...</span>addrs<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> ethers<span class="token punctuation">.</span><span class="token function">getSigners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// To deploy our contract, we just have to call Token.deploy() and await</span>
+    <span class="token comment">// for it to be deployed(), which happens onces its transaction has been</span>
+    <span class="token comment">// mined.</span>
+    hardhatToken <span class="token operator">=</span> <span class="token keyword">await</span> Token<span class="token punctuation">.</span><span class="token function">deploy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// You can nest describe calls to create subsections.</span>
+  <span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Deployment"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// `it` is another Mocha function. This is the one you use to define your</span>
+    <span class="token comment">// tests. It receives the test name, and a callback function.</span>
+
+    <span class="token comment">// If the callback function is async, Mocha will `await` it.</span>
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Should set the right owner"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Expect receives a value, and wraps it in an Assertion object. These</span>
+      <span class="token comment">// objects have a lot of utility methods to assert values.</span>
+
+      <span class="token comment">// This test expects the owner variable stored in the contract to be equal</span>
+      <span class="token comment">// to our Signer's owner.</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">owner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Should assign the total supply of tokens to the owner"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> ownerBalance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">totalSupply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>ownerBalance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Transactions"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Should transfer tokens between accounts"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Transfer 50 tokens from owner to addr1</span>
+      <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>addr1<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> addr1Balance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>addr1<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span>addr1Balance<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Transfer 50 tokens from addr1 to addr2</span>
+      <span class="token comment">// We use .connect(signer) to send a transaction from another account</span>
+      <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>addr1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>addr2<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> addr2Balance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>addr2<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span>addr2Balance<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Should fail if sender doesn’t have enough tokens"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> initialOwnerBalance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Try to send 1 token from addr1 (0 tokens) to owner (1000 tokens).</span>
+      <span class="token comment">// `require` will evaluate false and revert the transaction.</span>
+      <span class="token keyword">await</span> <span class="token function">expect</span><span class="token punctuation">(</span>
+        hardhatToken<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>addr1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token function">revertedWith</span><span class="token punctuation">(</span><span class="token string">"Not enough tokens"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Owner balance shouldn't have changed.</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+        initialOwnerBalance
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"Should update balances after transfers"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> initialOwnerBalance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Transfer 100 tokens from owner to addr1.</span>
+      <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>addr1<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Transfer another 50 tokens from owner to addr2.</span>
+      <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>addr2<span class="token punctuation">.</span>address<span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Check balances.</span>
+      <span class="token keyword">const</span> finalOwnerBalance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>owner<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span>finalOwnerBalance<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>initialOwnerBalance <span class="token operator">-</span> <span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> addr1Balance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>addr1<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span>addr1Balance<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> addr2Balance <span class="token operator">=</span> <span class="token keyword">await</span> hardhatToken<span class="token punctuation">.</span><span class="token function">balanceOf</span><span class="token punctuation">(</span>addr2<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">expect</span><span class="token punctuation">(</span>addr2Balance<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>對於完整的測試，這是執行 <code>npx hardhat test</code> 後的輸出:</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx hardhat test
+
+  Token contract
+    Deployment
+      ✓ Should set the right owner
+      ✓ Should assign the total supply of tokens to the owner
+    Transactions
+      ✓ Should transfer tokens between accounts (199ms)
+      ✓ Should fail if sender doesn’t have enough tokens
+      ✓ Should update balances after transfers (111ms)
+
+
+  5 passing (1s)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>請記住，當運行 <code>npx hardhat test</code> 時，如果自上次運行測試以來 contract 已更改，則先對它進行 compile 。</p>
+<h1 id="Debugging-with-Hardhat-Network"><a href="#Debugging-with-Hardhat-Network" class="headerlink" title="Debugging with Hardhat Network"></a>Debugging with Hardhat Network</h1><p><strong>Hardhat</strong> 內建 <strong>Hardhat Network</strong>, 該網路是為開發而設計的 local Ethereum network 。它允許 deploy your contracts, run your tests and debug your code. 這是 <strong>Hardhat</strong> 連接的 default network, 因此您無需進行任何設置即可正常工作。 Just run your tests!</p>
+<h3 id="Solidity-console-log"><a href="#Solidity-console-log" class="headerlink" title="Solidity console.log"></a>Solidity console.log</h3><p>在 <strong>Hardhat Network</strong> 上運行 contracts 和 tests 時，可以從 Solidity 代碼中調用 <code>console.log()</code> 來 print logging messages 和 contract variables 。要使用它，必須從 contract 代碼中導入 <strong>Hardhat</strong>‘s <code>console.log</code>。(第三行)<br>像是:</p>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">pragma solidity ^0.6.0;
+
+import &quot;hardhat&#x2F;console.sol&quot;;
+
+contract Token &#123;
+  &#x2F;&#x2F;...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>將一些 <code>console.log</code> 添加到 <code>transfer()</code> 函數中，就像在 JavaScript 中使用它一樣：</p>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">function transfer(address to, uint256 amount) external &#123;
+    console.log(&quot;Sender balance is %s tokens&quot;, balances[msg.sender]);
+    console.log(&quot;Trying to send %s tokens to %s&quot;, amount, to);
+
+    require(balances[msg.sender] &gt;&#x3D; amount, &quot;Not enough tokens&quot;);
+
+    balances[msg.sender] -&#x3D; amount;
+    balances[to] +&#x3D; amount;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>運行 tests 時將顯示 log 輸出：</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx hardhat test
+
+  Token contract
+    Deployment
+      ✓ Should set the right owner
+      ✓ Should assign the total supply of tokens to the owner
+    Transactions
+Sender balance is 1000 tokens
+Trying to send 50 tokens to 0xead9c93b79ae7c1591b1fb5323bd777e86e150d4
+Sender balance is 50 tokens
+Trying to send 50 tokens to 0xe5904695748fe4a84b40b3fc79de2277660bd1d3
+      ✓ Should transfer tokens between accounts (373ms)
+      ✓ Should fail if sender doesn’t have enough tokens
+Sender balance is 1000 tokens
+Trying to send 100 tokens to 0xead9c93b79ae7c1591b1fb5323bd777e86e150d4
+Sender balance is 900 tokens
+Trying to send 100 tokens to 0xe5904695748fe4a84b40b3fc79de2277660bd1d3
+      ✓ Should update balances after transfers (187ms)
+
+
+  5 passing (2s)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Deploying-to-a-live-network"><a href="#Deploying-to-a-live-network" class="headerlink" title="Deploying to a live network"></a>Deploying to a live network</h1><p>準備好與其他人共享 dApp 後，接下來要做的就是將其 deploy to a live network 中。這樣，其他人就可以訪問不在本地系統上運行的 instance 。</p>
+<p>有一個處理真實貨幣的 Ethereum network 被稱為 “mainnet” ，然後還有一些不處理真實貨幣但能夠很好地模仿 mainnet 的 live networks ，並且可以被其他人用作共享階段環境。這些被稱為 “testnets” ，以太坊有多個： Ropsten ， Kovan ， Rinkeby 和 Goerli 。我們建議你將 contracts 部署到 Ropsten 測試網。</p>
+<p>對於軟體來說，部署到測試網與部署到主網相同。唯一的區別是你連接到哪個網絡。讓我們看一下使用 ethers.js 部署合約的代碼是什麼樣的。</p>
+<p>主要概念是 <code>Signer</code> ， <code>ContractFactory</code> 和 <code>Contract</code> ，我們在 testing 部分對此進行了解釋。與 testing 部份相比，沒有什麼新的需要做，因為當測試 contracts 時，實際上是在向開發網絡進行部署。這使代碼非常相似或相同。</p>
+<p>讓我們在 project root’s directory 下創建一個新的 <code>scripts</code> directory，並將以下內容複製到 <code>deploy.js</code> 文件中：</p>
+
+<p>要指示 <strong>Hardhat</strong> 在運行任何 asks 時連接到特定的 Ethereum network ，可以使用 –network 參數。像這樣：</p>
+<pre class="line-numbers language-none"><code class="language-none">npx hardhat run scripts&#x2F;deploy.js --network &lt;network-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在這種情況下，如果不使用 –network 參數運行它，則代碼將針對 <strong>Hardhat Network</strong> 的 embedded instance 運行，因此當 Hardhat 完成運行時，部署實際上會丟失，但是它仍然能測試我們的部署的代碼是否有用：</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx hardhat run scripts&#x2F;deploy.js
+Deploying contracts with the account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Account balance: 10000000000000000000000
+Token address: 0x5FbDB2315678afecb367f032d93F642f64180aa3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Deploying-to-remote-networks"><a href="#Deploying-to-remote-networks" class="headerlink" title="Deploying to remote networks"></a>Deploying to remote networks</h3><p>要部署到諸如主網或任何測試網之類的 remote networks ，您需要在您的 <code>hardhat.config.js</code> 文件中添加一個 network entry 。在此示例中，我們將添加 Ropsten ：</p>
+
+<p>我們正在使用 <a target="_blank" rel="noopener" href="https://infura.io/">Infura</a> ，但是將 <code>url</code> 指向任何 Ethereum node 或 gateway 都可以。快去獲取你的 <code>INFURA_PROJECT_ID</code> ，然後回來。</p>
+<p>要在 Ropsten 上進行部署，需要將 ropsten-ETH 發送到將要進行部署的地址中。可以從水龍頭( faucet )獲得一些用於測試網的 ETH ，該服務免費分發測試 ETH 。 <a target="_blank" rel="noopener" href="https://faucet.metamask.io/">Here’s the one for Ropsten</a> ，必須在交易前將 Metamask 的網絡更改為 Ropsten 。</p>
+<blockquote>
+<p>TIP<br>可以通過以下 links 為其他測試網獲取一些 ETH ：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://faucet.kovan.network/">Kovan faucet</a></li>
+<li><a target="_blank" rel="noopener" href="https://faucet.rinkeby.io/">Rinkeby faucet</a></li>
+<li><a target="_blank" rel="noopener" href="https://goerli-faucet.slock.it/">Goerli faucet</a><br>最後，執行：</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">npx hardhat run scripts&#x2F;deploy.js --network ropsten<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果一切順利，應該看到已部署的 contract address 。</p>
+<h1 id="Hardhat-Hackathon-Boilerplate-Project"><a href="#Hardhat-Hackathon-Boilerplate-Project" class="headerlink" title="Hardhat Hackathon Boilerplate Project"></a>Hardhat Hackathon Boilerplate Project</h1><p>如果想快速開始使用 dApp 或使用前端查看整個項目的外觀，可以使用 Hardhat 的 hackathon <a target="_blank" rel="noopener" href="https://github.com/nomiclabs/hardhat-hackathon-boilerplate">樣板庫</a>。</p>
+<h3 id="What’s-included"><a href="#What’s-included" class="headerlink" title="What’s included"></a>What’s included</h3><ul>
+<li>我們在本教程中使用的 Solidity 合約</li>
+<li>使用 ethers.js 和 Waffle 的測試套件</li>
+<li>使用 ethers.js 與合約進行溝通的 minimal front-end</li>
+</ul>
+<h3 id="Solidity-contract-amp-tests"><a href="#Solidity-contract-amp-tests" class="headerlink" title="Solidity contract &amp; tests"></a>Solidity contract &amp; tests</h3><p>在 repo 的根目錄中，將找到在本教程中使用 Token 合同將其整合在一起的 <strong>Hardhat</strong> 項目。</p>
+<ul>
+<li>token 的總供應量是固定的而且無法被更改</li>
+<li>整個供應量都分配給部署 contract 的 address</li>
+<li>任何人都可以收到 tokens</li>
+<li>任何人只要擁有至少一個 token 則可以 transfer</li>
+<li>The token 無法分割。只可以 transfer 1, 2, 3 or 37 tokens but not 2.5</li>
+</ul>
+<h3 id="Frontend-app"><a href="#Frontend-app" class="headerlink" title="Frontend app"></a>Frontend app</h3><p>在 <code>frontend/</code> 中，將找到一個簡單的應用程序，該應用程序允許用戶執行以下兩項操作：</p>
+<ul>
+<li>查看已連接 wallet’s balance</li>
+<li>發送 tokens to an address</li>
+</ul>
+<p>這是一個單獨的 npm 項目，是使用 <code>create-react-app</code> 創建的，因此這意味著它使用了 webpack 和 babel 。</p>
+<h3 id="Frontend-file-architecture"><a href="#Frontend-file-architecture" class="headerlink" title="Frontend file architecture"></a>Frontend file architecture</h3><ul>
+<li><code>src/</code> 包含所有代碼<ul>
+<li><code>src/components</code> 包含 react components<ul>
+<li><code>Dapp.js</code> is the only file with business logic.如果要將其用作樣板，請在此處用自己的代碼替換代碼。</li>
+<li>所有其他 component just renders HTML, no logic。</li>
+<li><code>src/contracts</code> 具有合約的 ABI 和 address ，這些由部署腳本自動生成。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="How-to-use-it"><a href="#How-to-use-it" class="headerlink" title="How to use it"></a>How to use it</h3><p>首先 clone the repository ，然後部署 contracts ：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd hardhat-hackathon-boilerplate&#x2F;
+npm install
+npx hardhat node<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在這裡，我們僅安裝 npm project’s dependencies ，並通過運行 <code>npx hardhat node</code> 啟動一個 <strong>Hardhat Network</strong> instance ，可以使用 MetaMask 連接到該 instance 。在同一 directory 中的另一個 terminal 運行：</p>
+<pre class="line-numbers language-none"><code class="language-none">npx hardhat --network localhost run scripts&#x2F;deploy.js<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>這會將 contract 部署到 <strong>Hardhat Network</strong> 。完成此操作後執行：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd hardhat-hackathon-boilerplate&#x2F;frontend&#x2F;
+npm install
+npm run start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>啟動 react Web app 。在瀏覽器打開 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a> 將會看到:</p>
+<img src="/2021-01-02-Hardhat/front-5.png" class="">
+<p>在 MetaMask 中將網絡設置為 localhost：8545 ，然後點擊按鈕。然後，將會看到以下內容：</p>
+<img src="/2021-01-02-Hardhat/front-2.png" class="">
+<p>這裡發生的是，用於顯示當前 wallet’s balance 的前端代碼檢測到 balance 為 0 ，因此將無法嘗試 transfer 功能。通過運行：</p>
+<pre class="line-numbers language-none"><code class="language-none">npx hardhat --network localhost faucet &lt;your address&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>將運行一個包含的c ustom <strong>Hardhat</strong> task ，該任務使用 deploying account 的 balance 向你的地址發送 100 MBT 和 1 ETH 。這將允許您將 tokens 發送到另一個 address 。</p>
+<p>可以在 <a target="_blank" rel="noopener" href="https://github.com/nomiclabs/hardhat-hackathon-boilerplate/blob/master/tasks/faucet.js">/tasks/faucet.js</a> 中檢查出該 task 的代碼，這是 <code>hardhat.config.js</code> 所必需的。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx hardhat --network localhost faucet 0x0987a41e73e69f60c5071ce3c8f7e730f9a60f90
+Transferred 1 ETH and 100 tokens to 0x0987a41e73e69f60c5071ce3c8f7e730f9a60f90<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>在運行 npx hardhat node 的 terminal 中，還應該看到：</p>
+<pre class="line-numbers language-none"><code class="language-none">eth_sendTransaction
+  Contract call:       Token#transfer
+  Transaction:         0x460526d98b86f7886cd0f218d6618c96d27de7c745462ff8141973253e89b7d4
+  From:                0xc783df8a850f42e7f7e57013759c285caa701eb6
+  To:                  0x7c2c195cd6d34b8f845992d380aadb2730bb9c6f
+  Value:               0 ETH
+  Gas used:            37098 of 185490
+  Block #8:            0x6b6cd29029b31f30158bfbd12faf2c4ac4263068fd12b6130f5655e70d1bc257
+
+  console.log:
+    Transferring from 0xc783df8a850f42e7f7e57013759c285caa701eb6 to 0x0987a41e73e69f60c5071ce3c8f7e730f9a60f90 100 tokens<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在我們的合約中顯示 <code>transfer()</code> 函數的 <code>console.log</code> 輸出，這是運行水龍頭 task 後 Web 應用程序的外觀：</p>
+<img src="/2021-01-02-Hardhat/front-6.png" class="">
+<p>嘗試使用它並閱讀代碼。它充滿了註釋，解釋了正在發生的事情，並清楚地指示了什麼代碼是 Ethereum boilerplate ，以及實際的 dApp 邏輯。這將使該 repository 易於為自己的 project 重複使用。</p>
+<h1 id="Final-thoughts"><a href="#Final-thoughts" class="headerlink" title="Final thoughts"></a>Final thoughts</h1><p>以下是在整個學習中可能會有用的一些 links ：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/nomiclabs/hardhat-hackathon-boilerplate">Hardhat’s Hackathon Boilerplate</a></li>
+<li><a target="_blank" rel="noopener" href="https://hardhat.org/getting-started/">Hardhat’s documentation site</a></li>
+<li><a target="_blank" rel="noopener" href="https://hardhat.org/discord">Hardhat Support Discord server</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.ethers.io/">Ethers.js Documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://getwaffle.io/">Waffle Documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://mochajs.org/">Mocha Documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.chaijs.com/">Chai Documentation</a></li>
+</ul>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://hardhat.org/tutorial/">hardhat</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    捐贈
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/ETH.jpg" alt="Nicholas Tsai ETH">
+        <span>ETH</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>歡迎關注我的其它發布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nichola69108664">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/blockchain/" rel="tag"># blockchain</a>
+              <a href="/tags/smart-contracts/" rel="tag"># smart contracts</a>
+              <a href="/tags/metamask/" rel="tag"># metamask</a>
+              <a href="/tags/HardHat/" rel="tag"># HardHat</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020-12-31-Merge-sort.html" rel="prev" title="Merge sort">
+                  <i class="fa fa-chevron-left"></i> Merge sort
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-01-09-heapsort.html" rel="next" title="Heap Sort">
+                  Heap Sort <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fab fa-angellist"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nicholas Tsai</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="總字數">49k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">1:29</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="/true"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://nicholas-tsai.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://yu-shin.github.io/2021-01-02-Hardhat.html";
+    this.page.identifier = "2021-01-02-Hardhat.html";
+    this.page.title = "Hardhat Tutorial";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://nicholas-tsai.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
