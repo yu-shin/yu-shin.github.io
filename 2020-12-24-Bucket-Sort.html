@@ -329,7 +329,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.6k</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -352,63 +352,63 @@
 <hr>
 <p>假設我們現在有一筆班上的成績想要排序：<br><code>data = [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]</code></p>
 <h2 id="1-準備桶子"><a href="#1-準備桶子" class="headerlink" title="1.準備桶子"></a>1.準備桶子</h2><p>準備好每個分數的<strong>空桶子(0)</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">max_score <span class="token operator">=</span> <span class="token number">100</span>
-bucket <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>max_score<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    bucket<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">max_score &#x3D; 100
+bucket &#x3D; []
+for i in range(max_score+1):
+    bucket.append(0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="2-分類成績"><a href="#2-分類成績" class="headerlink" title="2.分類成績"></a>2.分類成績</h2><p>接著把未排序的成績們放入相對應分數的桶子<br>每次桶子+1</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> score <span class="token keyword">in</span> data<span class="token punctuation">:</span>
-    bucket<span class="token punctuation">[</span>score<span class="token punctuation">]</span> <span class="token operator">=</span> bucket<span class="token punctuation">[</span>score<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">for score in data:
+    bucket[score] &#x3D; bucket[score] + 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="3-讀取成績"><a href="#3-讀取成績" class="headerlink" title="3.讀取成績"></a>3.讀取成績</h2><p>依序檢查每個桶子是否有東西在裡面(非0)<br>有的話看此桶子有幾個，一個一個拿出來排好<br>最後就得出排序完的分數了</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">index <span class="token operator">=</span> <span class="token number">0</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>bucket<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> bucket<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            data<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> i
-            index <span class="token operator">+=</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">index &#x3D; 0
+for i in range(len(bucket)):
+    if bucket[i] !&#x3D; 0:
+        for j in range(bucket[i]):
+            data[index] &#x3D; i
+            index +&#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="4-完整程式碼"><a href="#4-完整程式碼" class="headerlink" title="4.完整程式碼"></a>4.完整程式碼</h2><p>程式時間複雜度：<strong>O(M+N)</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">67</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">79</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">88</span><span class="token punctuation">,</span> <span class="token number">92</span><span class="token punctuation">,</span> <span class="token number">96</span><span class="token punctuation">,</span> <span class="token number">96</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]
 
-<span class="token keyword">def</span> <span class="token function">bucketsort</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    max_score <span class="token operator">=</span> <span class="token number">100</span>
-    bucket <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+def bucketsort(data):
+    max_score &#x3D; 100
+    bucket &#x3D; []
     
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>max_score<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        bucket<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> score <span class="token keyword">in</span> data<span class="token punctuation">:</span>
-        bucket<span class="token punctuation">[</span>score<span class="token punctuation">]</span> <span class="token operator">=</span> bucket<span class="token punctuation">[</span>score<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+    for i in range(max_score+1):
+        bucket.append(0)
+    for score in data:
+        bucket[score] &#x3D; bucket[score] + 1
 
-    index <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>bucket<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> bucket<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                data<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> i
-                index <span class="token operator">+=</span> <span class="token number">1</span>
+    index &#x3D; 0
+    for i in range(len(bucket)):
+        if bucket[i] !&#x3D; 0:
+            for j in range(bucket[i]):
+                data[index] &#x3D; i
+                index +&#x3D; 1
 
-bucketsort<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+bucketsort(data)
+print(data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>[23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code></p>
 <h1 id="練習"><a href="#練習" class="headerlink" title="練習"></a>練習</h1><p>如果假設我們的資料還包含了姓名在內，那要如何排序呢？</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'Abby'</span><span class="token punctuation">,</span> <span class="token number">58</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Julia'</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Jane'</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Stephen'</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Ryn'</span><span class="token punctuation">,</span> <span class="token number">82</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Justin'</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Caroline'</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'James'</span><span class="token punctuation">,</span> <span class="token number">87</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Damon'</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Elena'</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>我的答案：</p>
-<h2 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'Abby'</span><span class="token punctuation">,</span> <span class="token number">58</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Julia'</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Jane'</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Stephen'</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Ryn'</span><span class="token punctuation">,</span> <span class="token number">82</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Justin'</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Caroline'</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'James'</span><span class="token punctuation">,</span> <span class="token number">87</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Damon'</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'Elena'</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<h2 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]
 
-max_value <span class="token operator">=</span> <span class="token number">100</span>
-bucket <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-data_sorted <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+max_value &#x3D; 100
+bucket &#x3D; []
+data_sorted &#x3D; []
 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>max_value <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    bucket<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+for i in range(max_value + 1):
+    bucket.append([])
 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> data<span class="token punctuation">:</span>
-    bucket<span class="token punctuation">[</span>i<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+for i in data:
+    bucket[i[1]].append(i[0])
 
-<span class="token keyword">for</span> i<span class="token punctuation">,</span> j <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>bucket<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> name <span class="token keyword">in</span> j<span class="token punctuation">:</span>
-	        data_sorted<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>name<span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+for i, j in enumerate(bucket):
+    if len(j) !&#x3D; 0:
+        for name in j:
+	        data_sorted.append([name, i])
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>data_sorted<span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+print(data_sorted) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>[[&#39;Damon&#39;, 25], [&#39;Jane&#39;, 31], [&#39;Julia&#39;, 44], [&#39;Abby&#39;, 58], [&#39;Caroline&#39;, 65], [&#39;Stephen&#39;, 76], [&#39;Elena&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;James&#39;, 87], [&#39;Justin&#39;, 99]]</code><br>以上是利用陣列，但其實也可以用字典</p>
 <h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>簡略</p>
 <h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10201707">桶子排序法</a></p>
@@ -525,13 +525,13 @@ data_sorted <span class="token operator">=</span> <span class="token punctuation
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">46k</span>
+    <span title="總字數">49k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1:24</span>
+    <span title="所需總閱讀時間">1:29</span>
   </span>
 </div>
 
@@ -540,7 +540,7 @@ data_sorted <span class="token operator">=</span> <span class="token punctuation
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-  <script src="/true"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>
 var pjax = new Pjax({
   selectors: [
@@ -626,6 +626,7 @@ document.addEventListener('pjax:success', () => {
 
 <link rel="stylesheet" href="/dist/APlayer.min.css">
 <div id="aplayer"></div>
+<script src="./node_modules/pjax/pjax.js"></script>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>
 <script type="text/javascript" src="/dist/music.js"></script>
 

@@ -333,14 +333,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.3k</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>2 分鐘</span>
+      <span>3 分鐘</span>
     </span>
 </div>
 
@@ -358,31 +358,31 @@
 <img src="/2020-12-30-Insertion-Sort/%E4%BA%94%E5%80%8Bsort.jpg" class="">
 <img src="/2020-12-30-Insertion-Sort/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
 
-<h1 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">insertion_sort</span><span class="token punctuation">(</span>collection<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">list</span><span class="token punctuation">:</span>
-    <span class="token comment"># 依序從collection[1:]開始往前插入</span>
-    <span class="token keyword">for</span> insert_index<span class="token punctuation">,</span> insert_value <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>collection<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        temp_index <span class="token operator">=</span> insert_index
-        <span class="token comment"># 檢查到index=0停止 and 一個一個往前比</span>
-        <span class="token keyword">while</span> insert_index <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> insert_value <span class="token operator">&lt;</span> collection<span class="token punctuation">[</span>insert_index<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token comment"># 往後移一個index</span>
-            collection<span class="token punctuation">[</span>insert_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> collection<span class="token punctuation">[</span>insert_index<span class="token punctuation">]</span>
-            <span class="token comment"># 繼續往前</span>
-            insert_index <span class="token operator">-=</span> <span class="token number">1</span>
-        <span class="token comment"># 有改變index</span>
-        <span class="token keyword">if</span> insert_index <span class="token operator">!=</span> temp_index<span class="token punctuation">:</span>
-            <span class="token comment"># 前面while最後一行insert_index -= 1</span>
-            collection<span class="token punctuation">[</span>insert_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> insert_value
-    <span class="token keyword">return</span> collection
+<h1 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">def insertion_sort(collection: list) -&gt; list:
+    # 依序從collection[1:]開始往前插入
+    for insert_index, insert_value in enumerate(collection[1:]):
+        temp_index &#x3D; insert_index
+        # 檢查到index&#x3D;0停止 and 一個一個往前比
+        while insert_index &gt;&#x3D; 0 and insert_value &lt; collection[insert_index]:
+            # 往後移一個index
+            collection[insert_index + 1] &#x3D; collection[insert_index]
+            # 繼續往前
+            insert_index -&#x3D; 1
+        # 有改變index
+        if insert_index !&#x3D; temp_index:
+            # 前面while最後一行insert_index -&#x3D; 1
+            collection[insert_index + 1] &#x3D; insert_value
+    return collection
 
 
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    <span class="token keyword">from</span> doctest <span class="token keyword">import</span> testmod
+if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
+    from doctest import testmod
 
-    testmod<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    testmod()
 
-    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter numbers separated by a comma:\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    unsorted <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> user_input<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>insertion_sort<span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
+    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
+    print(f&quot;&#123;insertion_sort(unsorted) &#x3D; &#125;&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ul>
 <li>資料量少時較高效，且比其他<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-4-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-4-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-4-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-4-TEX-N-29"></use></g></g></g></svg></mjx-container>的排序法高效（selection sort/bubble sort）。</li>
 <li><strong>自適應排序</strong>：可根據當前資料排序情形加速排序，資料越接近排序完成，效率越高。</li>
@@ -511,13 +511,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">46k</span>
+    <span title="總字數">49k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1:24</span>
+    <span title="所需總閱讀時間">1:29</span>
   </span>
 </div>
 
@@ -526,7 +526,7 @@
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-  <script src="/true"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>
 var pjax = new Pjax({
   selectors: [
@@ -612,6 +612,7 @@ document.addEventListener('pjax:success', () => {
 
 <link rel="stylesheet" href="/dist/APlayer.min.css">
 <div id="aplayer"></div>
+<script src="./node_modules/pjax/pjax.js"></script>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>
 <script type="text/javascript" src="/dist/music.js"></script>
 
