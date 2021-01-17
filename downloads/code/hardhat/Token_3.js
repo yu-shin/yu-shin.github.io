@@ -1,4 +1,4 @@
-// We import Chai to use its asserting functions here.
+<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>// We import Chai to use its asserting functions here.
 const { expect } = require("chai");
 
 // `describe` is a Mocha function that allows you to organize your tests. It's

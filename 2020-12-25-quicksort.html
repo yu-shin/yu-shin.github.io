@@ -250,6 +250,8 @@
 
 
 
+
+
         </div>
       </div>
     </div>
@@ -334,14 +336,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>5k</span>
+      <span>4.5k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>9 分鐘</span>
+      <span>8 分鐘</span>
     </span>
 </div>
 
@@ -359,180 +361,180 @@
 <img src="/2020-12-25-quicksort/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
 <hr>
 <p>假設我們現在有一筆班上的成績想要排序：<br><code>data = [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]</code></p>
-<h2 id="1-先寫出遞迴函數架構"><a href="#1-先寫出遞迴函數架構" class="headerlink" title="1.先寫出遞迴函數架構"></a>1.先寫出遞迴函數架構</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">def quicksort(data, left, right):
-    # 遞迴結束點
-    if left &gt;&#x3D; right :
-        return    
-    # 左右指標指著
-    i &#x3D; left
-    j &#x3D; right
-    # 基準點
-    key &#x3D; data[left]
-    # 迴圈左右夾
-    # code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-由左-右-開始找出大-小-於基準點的值"><a href="#2-由左-右-開始找出大-小-於基準點的值" class="headerlink" title="2.由左(右)開始找出大(小)於基準點的值"></a>2.由左(右)開始找出大(小)於基準點的值</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">while i !&#x3D; j:
-    while data[j] &gt; key and i &lt; j:
-        j -&#x3D; 1
-    # 注意&quot;&lt;&#x3D;&quot;
-    while data[i] &lt;&#x3D; key and i &lt; j:
-        i +&#x3D; 1
-    # 如果兩者還未相遇
-    if i &lt; j:
-        data[i], data[j] &#x3D; data[i], data[j]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="3-相遇點和基準點對調"><a href="#3-相遇點和基準點對調" class="headerlink" title="3.相遇點和基準點對調"></a>3.相遇點和基準點對調</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">data[left], data[i] &#x3D; data[i], data[left]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="4-左右遞迴下去"><a href="#4-左右遞迴下去" class="headerlink" title="4.左右遞迴下去"></a>4.左右遞迴下去</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">quicksort(data, left, i-1)
-quicksort(data, i+1, right)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="1-先寫出遞迴函數架構"><a href="#1-先寫出遞迴函數架構" class="headerlink" title="1.先寫出遞迴函數架構"></a>1.先寫出遞迴函數架構</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">quicksort</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 遞迴結束點</span>
+    <span class="token keyword">if</span> left <span class="token operator">>=</span> right <span class="token punctuation">:</span>
+        <span class="token keyword">return</span>    
+    <span class="token comment"># 左右指標指著</span>
+    i <span class="token operator">=</span> left
+    j <span class="token operator">=</span> right
+    <span class="token comment"># 基準點</span>
+    key <span class="token operator">=</span> data<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+    <span class="token comment"># 迴圈左右夾</span>
+    <span class="token comment"># code</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-由左-右-開始找出大-小-於基準點的值"><a href="#2-由左-右-開始找出大-小-於基準點的值" class="headerlink" title="2.由左(右)開始找出大(小)於基準點的值"></a>2.由左(右)開始找出大(小)於基準點的值</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">while</span> i <span class="token operator">!=</span> j<span class="token punctuation">:</span>
+    <span class="token keyword">while</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> key <span class="token keyword">and</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
+        j <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token comment"># 注意"&lt;="</span>
+    <span class="token keyword">while</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> key <span class="token keyword">and</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token comment"># 如果兩者還未相遇</span>
+    <span class="token keyword">if</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
+        data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-相遇點和基準點對調"><a href="#3-相遇點和基準點對調" class="headerlink" title="3.相遇點和基準點對調"></a>3.相遇點和基準點對調</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">data<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="4-左右遞迴下去"><a href="#4-左右遞迴下去" class="headerlink" title="4.左右遞迴下去"></a>4.左右遞迴下去</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">quicksort<span class="token punctuation">(</span>data<span class="token punctuation">,</span> left<span class="token punctuation">,</span> i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+quicksort<span class="token punctuation">(</span>data<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="5-完整程式碼"><a href="#5-完整程式碼" class="headerlink" title="5.完整程式碼"></a>5.完整程式碼</h2><p><strong>時間複雜度：Ｏ(NlogN)</strong><br>範例一：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">67</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">79</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">88</span><span class="token punctuation">,</span> <span class="token number">92</span><span class="token punctuation">,</span> <span class="token number">96</span><span class="token punctuation">,</span> <span class="token number">96</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>
 
-def quicksort(data, left, right): # 輸入資料，和從兩邊開始的位置
-    if left &gt;&#x3D; right :            # 如果左邊大於右邊，就跳出function
-        return
+<span class="token keyword">def</span> <span class="token function">quicksort</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># 輸入資料，和從兩邊開始的位置</span>
+    <span class="token keyword">if</span> left <span class="token operator">>=</span> right <span class="token punctuation">:</span>            <span class="token comment"># 如果左邊大於右邊，就跳出function</span>
+        <span class="token keyword">return</span>
 
-    i &#x3D; left                      # 左邊的代理人
-    j &#x3D; right                     # 右邊的代理人
-    key &#x3D; data[left]                 # 基準點
+    i <span class="token operator">=</span> left                      <span class="token comment"># 左邊的代理人</span>
+    j <span class="token operator">=</span> right                     <span class="token comment"># 右邊的代理人</span>
+    key <span class="token operator">=</span> data<span class="token punctuation">[</span>left<span class="token punctuation">]</span>                 <span class="token comment"># 基準點</span>
 
-    while i !&#x3D; j:                  
-        while data[j] &gt; key and i &lt; j:   # 從右邊開始找，找比基準點小的值
-            j -&#x3D; 1
-        while data[i] &lt;&#x3D; key and i &lt; j:  # 從左邊開始找，找比基準點大的值
-            i +&#x3D; 1
-        if i &lt; j:                        # 當左右代理人沒有相遇時，互換值
-            data[i], data[j] &#x3D; data[j], data[i] 
+    <span class="token keyword">while</span> i <span class="token operator">!=</span> j<span class="token punctuation">:</span>                  
+        <span class="token keyword">while</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> key <span class="token keyword">and</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>   <span class="token comment"># 從右邊開始找，找比基準點小的值</span>
+            j <span class="token operator">-=</span> <span class="token number">1</span>
+        <span class="token keyword">while</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> key <span class="token keyword">and</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>  <span class="token comment"># 從左邊開始找，找比基準點大的值</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>                        <span class="token comment"># 當左右代理人沒有相遇時，互換值</span>
+            data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> 
 
-    # 將基準點歸換至代理人相遇點
-    data[left] &#x3D; data[i] 
-    data[i] &#x3D; key
+    <span class="token comment"># 將基準點歸換至代理人相遇點</span>
+    data<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> 
+    data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> key
 
-    quicksort(data, left, i-1)   # 繼續處理較小部分的子循環
-    quicksort(data, i+1, right)  # 繼續處理較大部分的子循環
+    quicksort<span class="token punctuation">(</span>data<span class="token punctuation">,</span> left<span class="token punctuation">,</span> i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># 繼續處理較小部分的子循環</span>
+    quicksort<span class="token punctuation">(</span>data<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span>  <span class="token comment"># 繼續處理較大部分的子循環</span>
 
-quicksort(data, 0, len(data)-1)
-print(data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+quicksort<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>範例二：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def quick_sort(collection: list) -&gt; list:
-    &quot;&quot;&quot;A pure Python implementation of quick sort algorithm
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">quick_sort</span><span class="token punctuation">(</span>collection<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""A pure Python implementation of quick sort algorithm
     :param collection: a mutable collection of comparable items
     :return: the same collection ordered by ascending
     Examples:
-    &gt;&gt;&gt; quick_sort([0, 5, 3, 2, 2])
+    >>> quick_sort([0, 5, 3, 2, 2])
     [0, 2, 2, 3, 5]
-    &gt;&gt;&gt; quick_sort([])
+    >>> quick_sort([])
     []
-    &gt;&gt;&gt; quick_sort([-2, 5, 0, -45])
+    >>> quick_sort([-2, 5, 0, -45])
     [-45, -2, 0, 5]
-    &quot;&quot;&quot;
-    if len(collection) &lt; 2:
-        return collection
-    pivot &#x3D; collection.pop()  # Use the last element as the first pivot
-    greater &#x3D; []  # All elements greater than pivot
-    lesser &#x3D; []  # All elements less than or equal to pivot
-    for element in collection:
-        (greater if element &gt; pivot else lesser).append(element)
-    return quick_sort(lesser) + [pivot] + quick_sort(greater)
+    """</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> collection
+    pivot <span class="token operator">=</span> collection<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># Use the last element as the first pivot</span>
+    greater <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># All elements greater than pivot</span>
+    lesser <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># All elements less than or equal to pivot</span>
+    <span class="token keyword">for</span> element <span class="token keyword">in</span> collection<span class="token punctuation">:</span>
+        <span class="token punctuation">(</span>greater <span class="token keyword">if</span> element <span class="token operator">></span> pivot <span class="token keyword">else</span> lesser<span class="token punctuation">)</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>element<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> quick_sort<span class="token punctuation">(</span>lesser<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> quick_sort<span class="token punctuation">(</span>greater<span class="token punctuation">)</span>
 
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    print(quick_sort(unsorted))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter numbers separated by a comma:\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    unsorted <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> user_input<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>quick_sort<span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>範例三：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def quick_sort(data: list) -&gt; list:
-    &quot;&quot;&quot;
-    &gt;&gt;&gt; for data in ([2, 1, 0], [2.2, 1.1, 0], &quot;quick_sort&quot;):
-    ...     quick_sort(data) &#x3D;&#x3D; sorted(data)
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">quick_sort</span><span class="token punctuation">(</span>data<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    >>> for data in ([2, 1, 0], [2.2, 1.1, 0], "quick_sort"):
+    ...     quick_sort(data) == sorted(data)
     True
     True
     True
-    &quot;&quot;&quot;
-    if len(data) &lt;&#x3D; 1:
-        return data
-    else:
-        return (
-            quick_sort([e for e in data[1:] if e &lt;&#x3D; data[0]])
-            + [data[0]]
-            + quick_sort([e for e in data[1:] if e &gt; data[0]])
-        )
+    """</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> data
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            quick_sort<span class="token punctuation">(</span><span class="token punctuation">[</span>e <span class="token keyword">for</span> e <span class="token keyword">in</span> data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">if</span> e <span class="token operator">&lt;=</span> data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">+</span> <span class="token punctuation">[</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+            <span class="token operator">+</span> quick_sort<span class="token punctuation">(</span><span class="token punctuation">[</span>e <span class="token keyword">for</span> e <span class="token keyword">in</span> data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">if</span> e <span class="token operator">></span> data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
 
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    import doctest
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    <span class="token keyword">import</span> doctest
 
-    doctest.testmod()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    doctest<span class="token punctuation">.</span>testmod<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>data = [23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code><br>範例四:<br>random選擇index當成pivot，然後再和最左或最右的數交換後進行normal quick sort。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import random
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 
-def partition(A, left_index, right_index):
-    pivot &#x3D; A[left_index]
-    i &#x3D; left_index + 1
-    for j in range(left_index + 1, right_index):
-        if A[j] &lt; pivot:
-            A[j], A[i] &#x3D; A[i], A[j]
-            i +&#x3D; 1
-    A[left_index], A[i - 1] &#x3D; A[i - 1], A[left_index]
-    return i - 1
+<span class="token keyword">def</span> <span class="token function">partition</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> left_index<span class="token punctuation">,</span> right_index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    pivot <span class="token operator">=</span> A<span class="token punctuation">[</span>left_index<span class="token punctuation">]</span>
+    i <span class="token operator">=</span> left_index <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>left_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right_index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> A<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> pivot<span class="token punctuation">:</span>
+            A<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+    A<span class="token punctuation">[</span>left_index<span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>left_index<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> i <span class="token operator">-</span> <span class="token number">1</span>
 
 
-def quick_sort_random(A, left, right):
-    if left &lt; right:
-        pivot &#x3D; random.randint(left, right - 1)
-        A[pivot], A[left] &#x3D; (
-            A[left],
-            A[pivot],
-        )  # switches the pivot with the left most bound
-        pivot_index &#x3D; partition(A, left, right)
-        quick_sort_random(
-            A, left, pivot_index
-        )  # recursive quicksort to the left of the pivot point
-        quick_sort_random(
-            A, pivot_index + 1, right
-        )  # recursive quicksort to the right of the pivot point
+<span class="token keyword">def</span> <span class="token function">quick_sort_random</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> left <span class="token operator">&lt;</span> right<span class="token punctuation">:</span>
+        pivot <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>left<span class="token punctuation">,</span> right <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        A<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
+            A<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span>
+            A<span class="token punctuation">[</span>pivot<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>  <span class="token comment"># switches the pivot with the left most bound</span>
+        pivot_index <span class="token operator">=</span> partition<span class="token punctuation">(</span>A<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+        quick_sort_random<span class="token punctuation">(</span>
+            A<span class="token punctuation">,</span> left<span class="token punctuation">,</span> pivot_index
+        <span class="token punctuation">)</span>  <span class="token comment"># recursive quicksort to the left of the pivot point</span>
+        quick_sort_random<span class="token punctuation">(</span>
+            A<span class="token punctuation">,</span> pivot_index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right
+        <span class="token punctuation">)</span>  <span class="token comment"># recursive quicksort to the right of the pivot point</span>
 
 
-def main():
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    arr &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter numbers separated by a comma:\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> user_input<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 
-    quick_sort_random(arr, 0, len(arr))
+    quick_sort_random<span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    print(arr)
+    <span class="token keyword">print</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
 
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    main()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>範例五:<br>此方法的圖示可參考下圖(唯一差別是圖中把right當成pivot):</p>
 <img src="/2020-12-25-quicksort/quicksort_3group.png" class="">
 <p>詳細請參考<a target="_blank" rel="noopener" href="https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/linear-time-partitioning">Linear-time partitioning</a></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def quick_sort_3partition(sorting: list, left: int, right: int) -&gt; None:
-    if right &lt;&#x3D; left:
-        return
-    a &#x3D; i &#x3D; left
-    b &#x3D; right
-    pivot &#x3D; sorting[left]
-    while i &lt;&#x3D; b:
-        if sorting[i] &lt; pivot:
-            sorting[a], sorting[i] &#x3D; sorting[i], sorting[a]
-            a +&#x3D; 1
-            i +&#x3D; 1
-        elif sorting[i] &gt; pivot:
-            sorting[b], sorting[i] &#x3D; sorting[i], sorting[b]
-            b -&#x3D; 1
-        else:
-            i +&#x3D; 1
-    quick_sort_3partition(sorting, left, a - 1)
-    quick_sort_3partition(sorting, b + 1, right)
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">quick_sort_3partition</span><span class="token punctuation">(</span>sorting<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">,</span> left<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> right<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> right <span class="token operator">&lt;=</span> left<span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+    a <span class="token operator">=</span> i <span class="token operator">=</span> left
+    b <span class="token operator">=</span> right
+    pivot <span class="token operator">=</span> sorting<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> b<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> sorting<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> pivot<span class="token punctuation">:</span>
+            sorting<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">,</span> sorting<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> sorting<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> sorting<span class="token punctuation">[</span>a<span class="token punctuation">]</span>
+            a <span class="token operator">+=</span> <span class="token number">1</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> sorting<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> pivot<span class="token punctuation">:</span>
+            sorting<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">,</span> sorting<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> sorting<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> sorting<span class="token punctuation">[</span>b<span class="token punctuation">]</span>
+            b <span class="token operator">-=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+    quick_sort_3partition<span class="token punctuation">(</span>sorting<span class="token punctuation">,</span> left<span class="token punctuation">,</span> a <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    quick_sort_3partition<span class="token punctuation">(</span>sorting<span class="token punctuation">,</span> b <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span>
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    import doctest
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    <span class="token keyword">import</span> doctest
 
-    doctest.testmod(verbose&#x3D;True)
+    doctest<span class="token punctuation">.</span>testmod<span class="token punctuation">(</span>verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    quick_sort_3partition(unsorted, 0, len(unsorted) - 1)
-    print(unsorted)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter numbers separated by a comma:\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    unsorted <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> user_input<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    quick_sort_3partition<span class="token punctuation">(</span>unsorted<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="與Merge-sort差別"><a href="#與Merge-sort差別" class="headerlink" title="與Merge sort差別"></a>與Merge sort差別</h1><p>和merge sort一樣，quick sort也是使用divide-and-conquer。但是不一樣的是，merge sort在divide階段幾乎沒做什事情，真正花時間的在combine階段。而quick sort則是相反，divide花最多時間，而combine則沒做什事情。</p>
 <h1 id="時間複雜度分析"><a href="#時間複雜度分析" class="headerlink" title="時間複雜度分析"></a>時間複雜度分析</h1><p>為什麼會有差異？來自於基準點pivot的選擇(partition)</p>
 <h2 id="Worst-case"><a href="#Worst-case" class="headerlink" title="Worst-case"></a>Worst-case</h2><p>當剛好每次pivot都選到該array最大或最小數時，如下圖。</p>
@@ -661,13 +663,13 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">49k</span>
+    <span title="總字數">46k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1:29</span>
+    <span title="所需總閱讀時間">1:24</span>
   </span>
 </div>
 

@@ -1,16 +1,16 @@
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
-    fixed: false  //是否開啟吸底模式，也就是將音樂播放器吸附於畫面底部
-    autoplay: false  //音樂是否自動播放
-    theme: '#b7daff'  //主題色，也就是音樂進度條、無專輯封面時、控制音量等區塊的的顏色
-    loop: 'all'  //預設的音樂循環播放（全部循環、單曲循環、無循環），可選值：'all', 'one', 'none'
-    order: 'list'  //預設的音樂播放順序（順序播放、隨機播放），可選值：'list', 'random'
-    preload: 'auto'  //音樂預先載入，可選值: 'none', 'metadata', 'auto'
-    volume: 0.7  //預設音量
-    mutex: true  //互斥，阻止多個播放器同時播放，也就是若第二個播放器開始播放後，另一個會自動暫停
-    listFolded: false  //音樂列表是否預設為摺疊（隱藏）狀態
-    listMaxHeight: '200px' //音樂列表最大高度
-    lrcType: 3  //動態歌詞類型，'3' 為載入 LRC 檔案
+    fixed: true,  //是否開啟吸底模式，也就是將音樂播放器吸附於畫面底部
+    autoplay: false,  //音樂是否自動播放
+    theme: '#b7daff',  //主題色，也就是音樂進度條、無專輯封面時、控制音量等區塊的的顏色
+    loop: 'all',  //預設的音樂循環播放（全部循環、單曲循環、無循環），可選值：'all', 'one', 'none'
+    order: 'list',  //預設的音樂播放順序（順序播放、隨機播放），可選值：'list', 'random'
+    preload: 'auto',  //音樂預先載入，可選值: 'none', 'metadata', 'auto'
+    volume: 0.7,  //預設音量
+    mutex: true,  //互斥，阻止多個播放器同時播放，也就是若第二個播放器開始播放後，另一個會自動暫停
+    listFolded: false,  //音樂列表是否預設為摺疊（隱藏）狀態
+    listMaxHeight: '200px', //音樂列表最大高度
+    lrcType: 3,  //動態歌詞類型，'3' 為載入 LRC 檔案
     audio: [
       {
         name: "amberstone",

@@ -248,6 +248,8 @@
 
 
 
+
+
         </div>
       </div>
     </div>
@@ -332,7 +334,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>2.8k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -402,37 +404,37 @@
 <li><strong>Heapify</strong>：將陣列轉換為 heap 資料結構（heapify）。</li>
 <li><strong>Sorting</strong>：不斷置換 heap root 與最後一個元素來排序，並修正剩餘未排序資料使其符合 heap order。</li>
 </ol>
-<h1 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h1><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>HeapSort</span><a href="/downloads/code/heapsort/heapsort.py">view raw</a></div><code class="language-python">def heapify(unsorted, index, heap_size):
-    largest &#x3D; index
-    left_index &#x3D; 2 * index + 1
-    right_index &#x3D; 2 * index + 2
-    if left_index &lt; heap_size and unsorted[left_index] &gt; unsorted[largest]:
-        largest &#x3D; left_index
+<h1 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h1><pre class="line-numbers language-python" data-language="python"><div class="caption"><span>HeapSort</span><a href="/downloads/code/heapsort/heapsort.py">view raw</a></div><code class="language-python"><span class="token keyword">def</span> <span class="token function">heapify</span><span class="token punctuation">(</span>unsorted<span class="token punctuation">,</span> index<span class="token punctuation">,</span> heap_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    largest <span class="token operator">=</span> index
+    left_index <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> index <span class="token operator">+</span> <span class="token number">1</span>
+    right_index <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> index <span class="token operator">+</span> <span class="token number">2</span>
+    <span class="token keyword">if</span> left_index <span class="token operator">&lt;</span> heap_size <span class="token keyword">and</span> unsorted<span class="token punctuation">[</span>left_index<span class="token punctuation">]</span> <span class="token operator">></span> unsorted<span class="token punctuation">[</span>largest<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        largest <span class="token operator">=</span> left_index
 
-    if right_index &lt; heap_size and unsorted[right_index] &gt; unsorted[largest]:
-        largest &#x3D; right_index
+    <span class="token keyword">if</span> right_index <span class="token operator">&lt;</span> heap_size <span class="token keyword">and</span> unsorted<span class="token punctuation">[</span>right_index<span class="token punctuation">]</span> <span class="token operator">></span> unsorted<span class="token punctuation">[</span>largest<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        largest <span class="token operator">=</span> right_index
 
-    if largest !&#x3D; index:
-        unsorted[largest], unsorted[index] &#x3D; unsorted[index], unsorted[largest]
-        heapify(unsorted, largest, heap_size)
-
-
-def heap_sort(unsorted):
-    n &#x3D; len(unsorted)
-    # 建立 binary heap(heapify)
-    for i in range(n &#x2F;&#x2F; 2 - 1, -1, -1):
-        heapify(unsorted, i, n)
-    # Sorting(sift down)
-    for i in range(n - 1, 0, -1):
-        unsorted[0], unsorted[i] &#x3D; unsorted[i], unsorted[0]
-        heapify(unsorted, 0, i)
-    return unsorted
+    <span class="token keyword">if</span> largest <span class="token operator">!=</span> index<span class="token punctuation">:</span>
+        unsorted<span class="token punctuation">[</span>largest<span class="token punctuation">]</span><span class="token punctuation">,</span> unsorted<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> unsorted<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">,</span> unsorted<span class="token punctuation">[</span>largest<span class="token punctuation">]</span>
+        heapify<span class="token punctuation">(</span>unsorted<span class="token punctuation">,</span> largest<span class="token punctuation">,</span> heap_size<span class="token punctuation">)</span>
 
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    print(heap_sort(unsorted))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">def</span> <span class="token function">heap_sort</span><span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span>
+    <span class="token comment"># 建立 binary heap(heapify)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        heapify<span class="token punctuation">(</span>unsorted<span class="token punctuation">,</span> i<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token comment"># Sorting(sift down)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        unsorted<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> unsorted<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> unsorted<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> unsorted<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        heapify<span class="token punctuation">(</span>unsorted<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> unsorted
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter numbers separated by a comma:\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    unsorted <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> user_input<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>heap_sort<span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ul>
 <li>使用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Heap_(data_structure)">heap</a> 資料結構輔助，通常使用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Binary_heap">binary heap</a>。</li>
@@ -581,13 +583,13 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">49k</span>
+    <span title="總字數">46k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1:29</span>
+    <span title="所需總閱讀時間">1:24</span>
   </span>
 </div>
 

@@ -247,6 +247,8 @@
 
 
 
+
+
         </div>
       </div>
     </div>
@@ -362,22 +364,22 @@
 <img src="/2020-12-30-Selection-Sort/%E4%BA%94%E5%80%8Bsort.jpg" class="">
 <img src="/2020-12-30-Selection-Sort/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
 
-<h1 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">def selection_sort(collection):
-    length &#x3D; len(collection)
-    for i in range(length - 1):
-        least &#x3D; i
-        for k in range(i + 1, length):
-            if collection[k] &lt; collection[least]:
-                least &#x3D; k
-        if least !&#x3D; i:
-            collection[least], collection[i] &#x3D; (collection[i], collection[least])
-    return collection
+<h1 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selection_sort</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    length <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        least <span class="token operator">=</span> i
+        <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> collection<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">&lt;</span> collection<span class="token punctuation">[</span>least<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                least <span class="token operator">=</span> k
+        <span class="token keyword">if</span> least <span class="token operator">!=</span> i<span class="token punctuation">:</span>
+            collection<span class="token punctuation">[</span>least<span class="token punctuation">]</span><span class="token punctuation">,</span> collection<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>collection<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> collection<span class="token punctuation">[</span>least<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> collection
 
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    print(selection_sort(unsorted))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter numbers separated by a comma:\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    unsorted <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> user_input<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>selection_sort<span class="token punctuation">(</span>unsorted<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ul>
 <li>對小資料序列排序效率較高。</li>
 <li><strong>不穩定排序</strong>：排序後，相同鍵值的元素相對位置可能改變。</li>
@@ -530,13 +532,13 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">49k</span>
+    <span title="總字數">46k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1:29</span>
+    <span title="所需總閱讀時間">1:24</span>
   </span>
 </div>
 
