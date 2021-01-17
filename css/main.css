@@ -392,16 +392,15 @@ td {
   transform: rotate(-45deg);
 }
 /**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
  */
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: black;
+	color: #ccc;
 	background: none;
-	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	font-size: 1em;
 	text-align: left;
@@ -419,25 +418,7 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-}
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
 }
 
 /* Code blocks */
@@ -449,7 +430,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #f5f2f0;
+	background: #2d2d2d;
 }
 
 /* Inline code */
@@ -460,64 +441,61 @@ pre[class*="language-"] {
 }
 
 .token.comment,
+.token.block-comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: slategray;
-}
-
-.token.punctuation {
 	color: #999;
 }
 
-.token.namespace {
-	opacity: .7;
+.token.punctuation {
+	color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+	color: #e2777a;
+}
+
+.token.function-name {
+	color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+	color: #f08d49;
 }
 
 .token.property,
-.token.tag,
-.token.boolean,
-.token.number,
+.token.class-name,
 .token.constant,
-.token.symbol,
-.token.deleted {
-	color: #905;
+.token.symbol {
+	color: #f8c555;
 }
 
 .token.selector,
-.token.attr-name,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+	color: #cc99cd;
+}
+
 .token.string,
 .token.char,
-.token.builtin,
-.token.inserted {
-	color: #690;
+.token.attr-value,
+.token.regex,
+.token.variable {
+	color: #7ec699;
 }
 
 .token.operator,
 .token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	color: #9a6e3a;
-	/* This background color was intended by the author of this theme. */
-	background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #07a;
-}
-
-.token.function,
-.token.class-name {
-	color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-	color: #e90;
+.token.url {
+	color: #67cdcc;
 }
 
 .token.important,
@@ -530,6 +508,10 @@ pre[class*="language-"] {
 
 .token.entity {
 	cursor: help;
+}
+
+.token.inserted {
+	color: green;
 }
 
 pre[class*="language-"].line-numbers {
@@ -573,141 +555,6 @@ pre[class*="language-"].line-numbers > code {
 			text-align: right;
 		}
 
-@media (prefers-color-scheme: dark) {
-@import url(https://fonts.googleapis.com/css?family=Fira+Mono);
-/*
- * Hopscotch
- * by Jan T. Sott
- * https://github.com/idleberg/Hopscotch
- *
- * This work is licensed under the Creative Commons CC0 1.0 Universal License
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	font-family: "Fira Mono", Menlo, Monaco, "Lucida Console", "Courier New", Courier, monospace;
-	font-size: 16px;
-	line-height: 1.375;
-	direction: ltr;
-	text-align: left;
-	word-spacing: normal;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	white-space: pre;
-	white-space: pre-wrap;
-	word-break: break-all;
-	word-wrap: break-word;
-	background: #322931;
-	color: #b9b5b8;
-}
-
-pre > code[class*="language-"] {
-	font-size: 1em;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: #797379;
-}
-
-.token.punctuation {
-	color: #b9b5b8;
-}
-
-.namespace {
-	opacity: .7;
-}
-
-.token.null,
-.token.operator,
-.token.boolean,
-.token.number {
-	color: #fd8b19;
-}
-
-.token.property {
-	color: #fdcc59;
-}
-
-.token.tag {
-	color: #1290bf;
-}
-
-.token.string {
-	color: #149b93;
-}
-
-.token.selector {
-	color: #c85e7c;
-}
-
-.token.attr-name {
-	color: #fd8b19;
-}
-
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	color: #149b93;
-}
-
-.token.attr-value,
-.token.keyword,
-.token.control,
-.token.directive,
-.token.unit {
-	color: #8fc13e;
-}
-
-.token.statement,
-.token.regex,
-.token.atrule {
-	color: #149b93;
-}
-
-.token.placeholder,
-.token.variable {
-	color: #1290bf;
-}
-
-.token.important {
-	color: #dd464c;
-	font-weight: bold;
-}
-
-.token.entity {
-	cursor: help;
-}
-
-pre > code.highlight {
-	outline: .4em solid red;
-	outline-offset: .4em;
-}
-
-}
 .highlight:hover .copy-btn,
 pre:hover .copy-btn {
   opacity: 1;
@@ -3133,6 +2980,9 @@ mark.search-keyword {
     width: auto;
   }
 }
+.sidebar {
+  background-color: transparent;
+}
 .site-brand-container {
   background: #222;
 }
@@ -3388,6 +3238,68 @@ body {
   border-bottom: none;
   border-bottom: 1px solid #04f;
 }
-div {
+.post-block {
+  background: rgba(255,255,255,0.95);
+}
+.sidebar {
   opacity: 0.95;
+}
+.header-inner {
+  background: rgba(255,255,255,0.95);
+}
+.pagination {
+  background: rgba(255,255,255,0.95);
+}
+.popup {
+  opacity: 0.95;
+}
+.comments {
+  opacity: 0.95;
+}
+/*修改h1前面圖標*/
+.posts-expand .post-body h1:before {
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  content: "🌈";
+  font-size: 30px;
+  line-height: 18px;
+  margin-right: 16px;
+}
+/*修改h2前面圖標*/
+.posts-expand .post-body h2:before {
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  content: "📝";
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 26px;
+  line-height: 18px;
+  margin-right: 16px;
+}
+/*修改h3前面圖標*/
+.posts-expand .post-body h3:before {
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  content: "📚";
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 22px;
+  line-height: 18px;
+  margin-right: 16px;
+}
+/* webkit, opera, IE9 */
+::selection {
+  background: #00c4b6;
+  color: #f7f7f7;
+}
+/* firefox */
+::-moz-selection {
+  background: #00c4b6;
+  color: #f7f7f7;
+}
+code {
+  color: #c7254e;
+  background: #f9f2f4;
+  margin: 2px;
 }
