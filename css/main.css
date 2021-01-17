@@ -3371,3 +3371,23 @@ mark.search-keyword {
     padding: 10px 12px;
   }
 }
+body {
+  background: url("/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.post-body p a {
+  color: #000;
+  border-bottom: none;
+  border-bottom: 1px solid #00c3ff;
+}
+.post-body p a:hover {
+  color: #04f;
+  border-bottom: none;
+  border-bottom: 1px solid #04f;
+}
+div {
+  opacity: 0.95;
+}

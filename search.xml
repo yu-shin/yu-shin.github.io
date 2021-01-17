@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>20201223</title>
+    <url>/2020-12-23-20201223.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一個禮拜沒更新Blog了…"><a href="#一個禮拜沒更新Blog了…" class="headerlink" title="一個禮拜沒更新Blog了…"></a>一個禮拜沒更新Blog了…</h3><p>上週比特幣破兩萬新高，所以跑去玩合約去了。<br>結果剛開始收益不錯，後面心態沒控制好賣在低點利潤幾乎都回吐了QQ。</p>
+<a id="more"></a>
+<p>所以開始使用Tradingview看盤和使用<strong>斐波那契數列</strong>和<strong>維加斯通道</strong>搭配k線型態進行盤面分析。（我真的很懶，都玩合約那久了現在才願意開始自己畫圖，之前都看別人畫好的圖）<br>總之希望心態和技術越來越好吧XD</p>
+<h3 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h3><p>我覺得我有資金在裡面時真的無時無刻都會想看盤，根本無心做其他的事。<br>所以可以說是又耍廢了一週，總是要到這種情況自己才會冷靜下來思考自己的初衷。<br>我還記得我研究所畢業時，<strong>給自己的目標是精通javascript和solidity並且一邊複習資料結構和演算法刷leetcode。</strong><br>現在一件事情都沒做到，甚至把我讀研究所時利用虛擬貨幣賺的利潤都回吐了。<br>現在想起來頗為可悲。</p>
+<h3 id="solidity讀書會"><a href="#solidity讀書會" class="headerlink" title="solidity讀書會"></a>solidity讀書會</h3><p>前鎮子有加入一個線上Telegram的solidity讀書會，雖然前三週都有跟上進度，但這週第四週的內容好像有點開始深入了。<br>前三週的練習明天再稍微寫上來（雖然很簡單），也順便更新第四週需要了解的工具和練習。</p>
+<p>好了先這樣，有點晚弄一弄該睡了。</p>
+]]></content>
+      <tags>
+        <tag>日記</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Array</title>
     <url>/2021-01-09-Array.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h1><ul>
@@ -112,20 +126,6 @@ index <span class="token operator">=</span> binary_search<span class="token punc
 ]]></content>
       <tags>
         <tag>資料結構與演算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>20201223</title>
-    <url>/2020-12-23-20201223.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一個禮拜沒更新Blog了…"><a href="#一個禮拜沒更新Blog了…" class="headerlink" title="一個禮拜沒更新Blog了…"></a>一個禮拜沒更新Blog了…</h3><p>上週比特幣破兩萬新高，所以跑去玩合約去了。<br>結果剛開始收益不錯，後面心態沒控制好賣在低點利潤幾乎都回吐了QQ。</p>
-<a id="more"></a>
-<p>所以開始使用Tradingview看盤和使用<strong>斐波那契數列</strong>和<strong>維加斯通道</strong>搭配k線型態進行盤面分析。（我真的很懶，都玩合約那久了現在才願意開始自己畫圖，之前都看別人畫好的圖）<br>總之希望心態和技術越來越好吧XD</p>
-<h3 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h3><p>我覺得我有資金在裡面時真的無時無刻都會想看盤，根本無心做其他的事。<br>所以可以說是又耍廢了一週，總是要到這種情況自己才會冷靜下來思考自己的初衷。<br>我還記得我研究所畢業時，<strong>給自己的目標是精通javascript和solidity並且一邊複習資料結構和演算法刷leetcode。</strong><br>現在一件事情都沒做到，甚至把我讀研究所時利用虛擬貨幣賺的利潤都回吐了。<br>現在想起來頗為可悲。</p>
-<h3 id="solidity讀書會"><a href="#solidity讀書會" class="headerlink" title="solidity讀書會"></a>solidity讀書會</h3><p>前鎮子有加入一個線上Telegram的solidity讀書會，雖然前三週都有跟上進度，但這週第四週的內容好像有點開始深入了。<br>前三週的練習明天再稍微寫上來（雖然很簡單），也順便更新第四週需要了解的工具和練習。</p>
-<p>好了先這樣，有點晚弄一弄該睡了。</p>
-]]></content>
-      <tags>
-        <tag>日記</tag>
       </tags>
   </entry>
   <entry>
@@ -1126,7 +1126,7 @@ else                               &#x2F;&#x2F; 當 list[ ] 中的元素尚未�
 接下來就可以 run the script using npm run:<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p><strong>以上就是使用<code>npm</code> run a package麻煩的地方。</strong><br>所以接下來介紹<code>npx</code>。</p>
-<h1 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h1><p>npm只要更新到<strong><a href="mailto:&#110;&#x70;&#109;&#x40;&#53;&#x2e;&#x32;&#46;&#x30;">&#110;&#x70;&#109;&#x40;&#53;&#x2e;&#x32;&#46;&#x30;</a></strong>後，就會多出一個npx指令。</p>
+<h1 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h1><p>npm只要更新到<strong><a href="mailto:&#x6e;&#112;&#109;&#64;&#53;&#x2e;&#x32;&#x2e;&#48;">&#x6e;&#112;&#109;&#64;&#53;&#x2e;&#x32;&#x2e;&#48;</a></strong>後，就會多出一個npx指令。</p>
 <h2 id="npx使用情況"><a href="#npx使用情況" class="headerlink" title="npx使用情況:"></a>npx使用情況:</h2><h3 id="Run-a-locally-installed-package-easily"><a href="#Run-a-locally-installed-package-easily" class="headerlink" title="*Run a locally installed package easily"></a>*Run a locally installed package easily</h3><p>如果想要執行 locally installed package，只需要type:</p>
 <pre class="line-numbers language-none"><code class="language-none">$ npx your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>npx會檢查local或<code>$PATH</code>裡是否存在<code>&lt;command&gt;</code> or <code>&lt;package&gt;</code>的binaries，有的話便會執行。</p>
