@@ -67,6 +67,34 @@ const ap = new APlayer({
         url: 'https://drive.google.com/uc?export=download&id=1b4jpEYzCxj3ejxULRZHQZqEG5EiJo_Gs',
         cover: '/music/cover/gali.jpg',
         lrc: '/music/lyrics/快一點.lrc',
+      },
+      {
+        name: "Bad City",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=1NBhpsIWI8SpX_HiaMqcIMs8OlUq6pCpD',
+        cover: '/music/cover/gali.jpg',
+        lrc: '/music/lyrics/Bad City.lrc',
+      },
+      {
+        name: "RAMBO",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=1qKuObdFUzpSYp35SG7E4XkyMJZw4EiIt',
+        cover: '/music/cover/gali.jpg',
+        lrc: '/music/lyrics/RAMBO.lrc',
+      },
+      {
+        name: "信任問題",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=1lfims0_K_2eKg7AQDsL9qyJKcwIzBHaY',
+        cover: '/music/cover/gali.jpg',
+        lrc: '/music/lyrics/信任問題.lrc',
+      },
+      {
+        name: "MaMa's Cry",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=15lX2Yq6On3hOuPDcNxFe_bXwfryK__lL',
+        cover: '/music/cover/gali.jpg',
+        lrc: "/music/lyrics/MaMa's Cry.lrc",
       }                   
     ]
 });
