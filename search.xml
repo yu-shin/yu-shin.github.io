@@ -376,6 +376,230 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
       </tags>
   </entry>
   <entry>
+    <title>Link Lists</title>
+    <url>/posts/d37550bb/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h1><p>由一組<code>節點 (Node)</code> 所組成的<code>有序串列</code>，各 Node 除了 <code>Data 欄</code>之外，另外有 <code>≥ 1 個 Link 欄</code> (或稱 Pointer)，用以指向其它 Node 之位址。</p>
+<h1 id="特質"><a href="#特質" class="headerlink" title="特質"></a>特質</h1><ul>
+<li>各Node不一定要佔用連續的Memory空間</li>
+<li>各Node之型態 (Data Type) (Data Type) 不一定要相同</li>
+<li>僅支援Sequential Access</li>
+<li>Insert/Delete Node Insert/Delete Node 容易<a id="more"></a>
+
+</li>
+</ul>
+<h1 id="Link-list的種類"><a href="#Link-list的種類" class="headerlink" title="Link list的種類"></a>Link list的種類</h1><h2 id="Single-Link-List-單向鏈結串列"><a href="#Single-Link-List-單向鏈結串列" class="headerlink" title="Single Link List (單向鏈結串列)"></a>Single Link List (單向鏈結串列)</h2><p>由一組<code>節點 (Node)</code>所組成的<code>有序串列</code>，各 Node 除了 Data 欄之外，另外有 <code>1 個Link欄</code> (或稱 Pointer)，用以指向下一個 Node 之位址。</p>
+<img src="/posts/d37550bb/link1.jpg" class="">
+
+<h3 id="Create-List"><a href="#Create-List" class="headerlink" title="Create List"></a>Create List</h3><img src="/posts/d37550bb/link2.jpg" class="">
+
+<h3 id="Insert-Node"><a href="#Insert-Node" class="headerlink" title="Insert Node"></a>Insert Node</h3><ul>
+<li>
+<pre class="line-numbers language-none"><code class="language-none">begin
+  New(t);             &#x2F;&#x2F;跟系統要求記憶體空間以配置一個新節點，且讓指標 t 指向該節點
+  t → data &#x3D; item;    &#x2F;&#x2F;把item塞到這個新節點t的Data欄位中
+1 t → link &#x3D; x → link;&#x2F;&#x2F;先把新節點t掛到x節點之後!!
+2 x → link &#x3D; t;       &#x2F;&#x2F;再將x節點接到節點t
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><img src="/posts/d37550bb/link4.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">begin
+  New(t);
+  t → data &#x3D; x → data;
+  t → link &#x3D; x → link;
+  x → link &#x3D; t;
+  x → data &#x3D; 20;
+  x &#x3D; t;
+end;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+</ul>
+<h3 id="Delete-Node"><a href="#Delete-Node" class="headerlink" title="Delete Node"></a>Delete Node</h3><p>刪除鏈節串列的節點時，會先:</p>
+<ol>
+<li>改變串列指標，以做到<code>邏輯性移除</code>(Logically Remove)的動作</li>
+<li>再將要被移除的節點做<code>實際刪除</code>(Physically Delete) 的動作，讓節點從記憶體中刪除</li>
+</ol>
+<p>需要準備兩個輔助指標 x 與 pPre：</p>
+<ul>
+<li>x用以指向<code>欲刪除的節點</code></li>
+<li>pPre指向<code>節點x所在之前一個node</code></li>
+</ul>
+<img src="/posts/d37550bb/link5.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">1 if (pPre &#x3D; nil) then     &#x2F;&#x2F;表示 x 為第一個節點
+    list &#x3D; x → link;
+  else                     &#x2F;&#x2F;表示 x 節點是中間節點
+    pPre → link &#x3D; x → link;
+2 Ret(x);                  &#x2F;&#x2F;將 “節點 x” 回收. 有的書是用delete(x), release(x), dispose(x)…etc.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Storage-Pool"><a href="#Storage-Pool" class="headerlink" title="Storage Pool"></a>Storage Pool</h3><p><code>可用節點 (Free Node)</code> 之集合 (集中管理之處)，通常O.S.以 <code>Single link list</code> 來管理 Free Nodes，稱為 <code>AV-list</code>(Available list)</p>
+<img src="/posts/d37550bb/link9.jpg" class="">
+<p>提供兩個動作:</p>
+<ul>
+<li><code>New(t)</code>: 相當於刪除 AV-list 中 Free Node (if AV-list ≠ nil)</li>
+<li><code>Ret(t)</code>: 相當於 Insert 節點到 AV-list 中</li>
+</ul>
+<h4 id="New-t"><a href="#New-t" class="headerlink" title="New(t)"></a>New(t)</h4><img src="/posts/d37550bb/link7.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">if (AV ≠ nil) then
+1 t &#x3D; AV
+2 AV &#x3D; AV → link;
+else
+  print(“No Free Node.”);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Ret-t"><a href="#Ret-t" class="headerlink" title="Ret(t)"></a>Ret(t)</h4><img src="/posts/d37550bb/link8.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">begin
+1 t → link &#x3D; AV;
+2 AV &#x3D; t;
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Circular-Link-List-環状鏈結串列"><a href="#Circular-Link-List-環状鏈結串列" class="headerlink" title="Circular Link List (環状鏈結串列)"></a>Circular Link List (環状鏈結串列)</h2><p>將 Single link list 中，最後一個 node 的指標指回第一個 node</p>
+<img src="/posts/d37550bb/link6.jpg" class="">
+<ul>
+<li>不論從哪個 Node 開始，必定能夠拜訪 (經過) 所有 Node<ul>
+<li>並無明顯的頭尾節點</li>
+<li>Single Link List 必須從頭開始才可以</li>
+</ul>
+</li>
+<li>回收整個串列的時間為 <code>O(1)</code> (即: 與 Link list 長度無關)<ul>
+<li>Single Link List 回收時間為 O(n) 其中, n 為長度或 Node 數目</li>
+</ul>
+</li>
+</ul>
+<h3 id="回收時間的比較-單向-vs-環狀"><a href="#回收時間的比較-單向-vs-環狀" class="headerlink" title="回收時間的比較(單向 vs. 環狀)"></a>回收時間的比較(單向 vs. 環狀)</h3><h4 id="Single-Linked-List"><a href="#Single-Linked-List" class="headerlink" title="Single Linked List"></a>Single Linked List</h4><img src="/posts/d37550bb/link10.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Release list(list: pointer to S.L.)
+  if (list≠nil) then
+    S &#x3D; list;
+1   while (S → link ≠ nil) do &#x2F;&#x2F;while迴圈會讓S一直前進至最後一節點
+      S &#x3D; S → link;
+2     S → link &#x3D; AV;
+3     AV &#x3D; list;              &#x2F;&#x2F;回收節點至AV list AV list 中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(N)</code></p>
+<h4 id="Circular-Linked-List"><a href="#Circular-Linked-List" class="headerlink" title="Circular Linked List"></a>Circular Linked List</h4><img src="/posts/d37550bb/link11.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Release C(C: pointer to S.L.)
+  begin
+    if (C≠nil) then
+1     p &#x3D; C → link;
+2     C → link &#x3D; AV;
+3     AV &#x3D; P
+  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(1)</code></p>
+<h2 id="Double-Link-List-雙向鏈結串列"><a href="#Double-Link-List-雙向鏈結串列" class="headerlink" title="Double Link List (雙向鏈結串列)"></a>Double Link List (雙向鏈結串列)</h2><p>串列中各節點除了 Data 欄之外，另外有 2 個 Link 欄，用以指向前一個與下一個節點之位址</p>
+<img src="/posts/d37550bb/link12.jpg" class="">
+<ul>
+<li>一般使用雙向鏈結串列時，通常會加入串列首 (Head Node)，此 Node 不存資料<img src="/posts/d37550bb/link13.jpg" class=""></li>
+<li>此時，雙向鏈結串列可視為2個 Circular Link List</li>
+</ul>
+<h3 id="Insertion"><a href="#Insertion" class="headerlink" title="Insertion"></a>Insertion</h3><p>插入Node t 在Node x之後:</p>
+<img src="/posts/d37550bb/link14.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">begin
+1 t → RLink &#x3D; x → RLink;
+2 t → LLink &#x3D; x;
+3 (x → RLink) → LLink &#x3D; t;
+4 x → RLink &#x3D; t;
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Deletion"><a href="#Deletion" class="headerlink" title="Deletion"></a>Deletion</h3><p>刪除一個節點 x:</p>
+<img src="/posts/d37550bb/link15.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">begin
+1 (x → LLink) → RLink &#x3D; x → RLink;
+2 (x → RLink) → LLink &#x3D; x → LLink ;
+3 Ret(x);
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Double-linked-list-與-Single-linked-list-的比較"><a href="#Double-linked-list-與-Single-linked-list-的比較" class="headerlink" title="Double linked list 與 Single linked list 的比較"></a>Double linked list 與 Single linked list 的比較</h3><img src="/posts/d37550bb/link16.jpg" class="">
+
+<h1 id="Link-list-三個常見的動作"><a href="#Link-list-三個常見的動作" class="headerlink" title="Link list 三個常見的動作"></a>Link list 三個常見的動作</h1><h2 id="Length"><a href="#Length" class="headerlink" title="Length"></a>Length</h2><h3 id="Single-linked-list"><a href="#Single-linked-list" class="headerlink" title="Single linked list"></a>Single linked list</h3><img src="/posts/d37550bb/link17.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Length list(list: pointer to S.L.)
+  count &#x3D; 0;
+  p &#x3D; list;
+  while (p≠ nil) do
+    count++;
+    p &#x3D; p → link;
+  return count;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(N)</code></p>
+<h3 id="Circular-linked-list"><a href="#Circular-linked-list" class="headerlink" title="Circular linked list"></a>Circular linked list</h3><img src="/posts/d37550bb/link18.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Length C(C: pointer to S.L.)
+  if (C &#x3D; nil) then
+    return 0;
+  else
+    count &#x3D; 0;
+    p &#x3D; C;
+    repeat            &#x2F;&#x2F;不能用while迴圈!!∵一定至少要做一次!!!
+      count++;
+      p &#x3D; p → link;
+    until p &#x3D; C;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(N)</code></p>
+<h2 id="Concatenate"><a href="#Concatenate" class="headerlink" title="Concatenate"></a>Concatenate</h2><h3 id="Single-linked-list-1"><a href="#Single-linked-list-1" class="headerlink" title="Single linked list"></a>Single linked list</h3><p>假設連結A, B串列成為C串列:</p>
+<ul>
+<li>Case 1: A = nil and B ≠ nil, 則 C = B</li>
+<li>Case 2: A ≠ nil and B = nil, 則 C = A</li>
+<li>Case 3: A ≠ nil and B ≠ nil, 則 <code>C = A+B</code></li>
+<li>Case 4: A = nil and B = nil, 則 C = nil</li>
+</ul>
+<img src="/posts/d37550bb/link19.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Con.two.S(A, B, C: pointer to S.L.)
+  C &#x3D; nil;
+  if (A &#x3D; nil and B ≠ nil) then C &#x3D; B;   &#x2F;&#x2F;Case 1 
+  elif (A ≠ nil and B &#x3D; nil) then C &#x3D; A; &#x2F;&#x2F;Case 2 
+  elif (A ≠ nil and B ≠ nil) then        &#x2F;&#x2F;Case 3
+    p &#x3D; A;
+1   while(p → link ≠ nil)  do
+        p &#x3D; p → link;
+2     p → link &#x3D; B;
+3     C &#x3D; A;
+  return C;                       &#x2F;&#x2F;回傳Case 1~4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(N) 或 O(M)</code></p>
+<h3 id="Circular-linked-list-1"><a href="#Circular-linked-list-1" class="headerlink" title="Circular linked list"></a>Circular linked list</h3><p>假設連結A, B串列成為C串列:</p>
+<ul>
+<li>Case 1: A = nil and B ≠ nil, 則 C = B</li>
+<li>Case 2: A ≠ nil and B = nil, 則 C = A</li>
+<li>Case 3: A ≠ nil and B ≠ nil, 則 <code>C = A+B</code></li>
+<li>Case 4: A = nil and B = nil, 則 C = nil</li>
+</ul>
+<img src="/posts/d37550bb/link20.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Con.two.S(A, B, C: pointer to C.L.)
+  C &#x3D; nil;
+  if (A &#x3D; nil and B ≠ nil) then C &#x3D; B;   &#x2F;&#x2F;Case 1 
+  elif (A ≠ nil and B &#x3D; nil) then C &#x3D; A; &#x2F;&#x2F;Case 2 
+  elif (A ≠ nil and B ≠ nil) then        &#x2F;&#x2F;Case 3
+1   C &#x3D; A → link;
+2   A → link &#x3D; B → link;
+3   B → link &#x3D; C;
+  return C;                             &#x2F;&#x2F;回傳 Case 1~ 4 的結果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(1)</code></p>
+<h2 id="Invert"><a href="#Invert" class="headerlink" title="Invert"></a>Invert</h2><h3 id="Single-linked-list-2"><a href="#Single-linked-list-2" class="headerlink" title="Single linked list"></a>Single linked list</h3><p>需要三個指標: r, q, p</p>
+<ul>
+<li>r 跟著 q 走， q 跟著 p 走， p 往前進</li>
+</ul>
+<img src="/posts/d37550bb/link21.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Invert S(S: pointer to S.L.)
+  p &#x3D; S; q &#x3D; nil;
+  while (p ≠ nil) do
+    r &#x3D; q;    &#x2F;&#x2F;r 一開始會在此被設為 nil
+    q &#x3D; p;
+    p &#x3D; p → link;
+    q → link &#x3D; r;
+  S &#x3D; q;       &#x2F;&#x2F;S可能指向反轉後的第一個節點或是null list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(N)</code></p>
+<h3 id="Circular-linked-list-2"><a href="#Circular-linked-list-2" class="headerlink" title="Circular linked list"></a>Circular linked list</h3><p>亦需要三個指標: r, q, p</p>
+<ul>
+<li>r跟著q走，q跟著p走，p往前進</li>
+</ul>
+<img src="/posts/d37550bb/link22.jpg" class="">
+<pre class="line-numbers language-none"><code class="language-none">Procedure Invert C(C: pointer to C.L.)
+  if (C ≠ nil) then
+    p &#x3D; C → link;    &#x2F;&#x2F;p指向C的下一個node
+    q &#x3D; C;          &#x2F;&#x2F;初值
+    while (p ≠ c) do
+      r &#x3D; q;
+      q &#x3D; p;
+      p &#x3D; p → link;
+      q → link &#x3D; r;
+    C → link &#x3D; q;
+    C &#x3D; q;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Time Complexity: O(N)</code></p>
+<h1 id="Array-與-Link-List-的比較"><a href="#Array-與-Link-List-的比較" class="headerlink" title="Array 與 Link List 的比較"></a>Array 與 Link List 的比較</h1><img src="/posts/d37550bb/link23.jpg" class="">
+
+<h2 id="利用-Single-link-list-表示多項式"><a href="#利用-Single-link-list-表示多項式" class="headerlink" title="利用 Single link list 表示多項式"></a>利用 Single link list 表示多項式</h2><img src="/posts/d37550bb/link24.jpg" class="">
+
+]]></content>
+      <tags>
+        <tag>資料結構</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Merge sort</title>
     <url>/posts/d7c658d8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Merge-sort"><a href="#Merge-sort" class="headerlink" title="Merge sort"></a>Merge sort</h1><p>Merge sort利用divide and conquer遵循以下三個步驟:</p>
@@ -1126,7 +1350,7 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 接下來就可以 run the script using npm run:<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p><strong>以上就是使用<code>npm</code> run a package麻煩的地方。</strong><br>所以接下來介紹<code>npx</code>。</p>
-<h1 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h1><p>npm只要更新到<strong><a href="mailto:&#x6e;&#112;&#109;&#x40;&#x35;&#46;&#x32;&#x2e;&#48;">&#x6e;&#112;&#109;&#x40;&#x35;&#46;&#x32;&#x2e;&#48;</a></strong>後，就會多出一個npx指令。</p>
+<h1 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h1><p>npm只要更新到<strong><a href="mailto:&#110;&#112;&#109;&#64;&#x35;&#x2e;&#x32;&#46;&#x30;">&#110;&#112;&#109;&#64;&#x35;&#x2e;&#x32;&#46;&#x30;</a></strong>後，就會多出一個npx指令。</p>
 <h2 id="npx使用情況"><a href="#npx使用情況" class="headerlink" title="npx使用情況:"></a>npx使用情況:</h2><h3 id="Run-a-locally-installed-package-easily"><a href="#Run-a-locally-installed-package-easily" class="headerlink" title="*Run a locally installed package easily"></a>*Run a locally installed package easily</h3><p>如果想要執行 locally installed package，只需要type:</p>
 <pre class="line-numbers language-none"><code class="language-none">$ npx your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>npx會檢查local或<code>$PATH</code>裡是否存在<code>&lt;command&gt;</code> or <code>&lt;package&gt;</code>的binaries，有的話便會執行。</p>
