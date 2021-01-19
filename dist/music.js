@@ -37,7 +37,7 @@ const ap = new APlayer({
         name: "飛簷走壁",
         artist: 'gali',
         url: 'https://drive.google.com/uc?export=download&id=1FuWMPR-ejzRF4ek6uSSe-xt_Qsx3JlFH',
-        cover: '/music/cover/.jpg',
+        cover: '/music/cover/gali.jpg',
         lrc: '飛簷走壁.lrc',
       },
       {
@@ -45,7 +45,7 @@ const ap = new APlayer({
         artist: 'gali',
         url: 'https://drive.google.com/uc?export=download&id=1xlCDEcQCEHacjsGMJhwNrc15XOmUWk_i',
         cover: '/music/cover/gali.jpg',
-        lrc: '/music/lyrics/illusion.lrc',
+        lrc: '/music/lyrics/Illusion.lrc',
       },
       {
         name: "偏執獵豹",
@@ -59,7 +59,7 @@ const ap = new APlayer({
         artist: 'gali',
         url: 'https://drive.google.com/uc?export=download&id=1-8UxfH2P5hI91_TUfVBnusIFkfwMVJSG',
         cover: '/music/cover/gali.jpg',
-        lrc: '/music/lyrics/70%.lrc',
+        lrc: '/music/lyrics/70.lrc',
       },
       {
         name: "快一點",
@@ -90,11 +90,32 @@ const ap = new APlayer({
         lrc: '/music/lyrics/信任問題.lrc',
       },
       {
-        name: "MaMa's Cry",
+        name: "Mama's Cry",
         artist: 'gali',
         url: 'https://drive.google.com/uc?export=download&id=15lX2Yq6On3hOuPDcNxFe_bXwfryK__lL',
         cover: '/music/cover/gali.jpg',
-        lrc: "/music/lyrics/MaMa's Cry.lrc",
-      }                   
+        lrc: "/music/lyrics/Mama.lrc",
+      },
+      {
+        name: "赤兔",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=1jw_qqtgmURArLIiuJ6uvMRq1jfUNSsP6',
+        cover: '/music/cover/gali.jpg',
+        lrc: '/music/lyrics/赤兔.lrc',
+      },
+      {
+        name: "We the best",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=16pkVvnpMxeal7PZ0xiRAx2DjHHkAVnD6',
+        cover: '/music/cover/gali.jpg',
+        lrc: "/music/lyrics/best.lrc",
+      },
+      {
+        name: "Right Now",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=1PP92qo6KABTu7tiDnC1tAbFDHKSxkTQR',
+        cover: '/music/cover/gali.jpg',
+        lrc: "/music/lyrics/cover.lrc",
+      }                 
     ]
 });
