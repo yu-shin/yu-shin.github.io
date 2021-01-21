@@ -116,6 +116,13 @@ const ap = new APlayer({
         url: 'https://drive.google.com/uc?export=download&id=1PP92qo6KABTu7tiDnC1tAbFDHKSxkTQR',
         cover: '/music/cover/gali.jpg',
         lrc: "/music/lyrics/cover.lrc",
-      }                 
+      },
+      {
+        name: "水晶",
+        artist: 'gali',
+        url: 'https://drive.google.com/uc?export=download&id=1BRlJQgVbKhiqsCJwJ0ARbUq41FGlMwHg',
+        cover: '/music/cover/gali.jpg',
+        lrc: "/music/lyrics/cover.lrc",
+      }                  
     ]
 });
