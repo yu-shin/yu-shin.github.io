@@ -24,21 +24,29 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Bucket Sort桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。">
+<meta name="description" content="Tree Tree 是由1個以上的 Nodes 所組成的有限集合，滿足:  至少有一個 Node，稱為 Root (Tree 不可為空) 其餘的 Nodes 分成 T1, T2, …, Tn 個互斥集合，稱為 Subtree (子集合(子樹)間沒有交集)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bucket Sort">
-<meta property="og:url" content="https://yu-shin.github.io/posts/4502df03/index.html">
+<meta property="og:title" content="Tree and Binary Tree">
+<meta property="og:url" content="https://yu-shin.github.io/posts/eaa4738c/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Bucket Sort桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。">
+<meta property="og:description" content="Tree Tree 是由1個以上的 Nodes 所組成的有限集合，滿足:  至少有一個 Node，稱為 Root (Tree 不可為空) 其餘的 Nodes 分成 T1, T2, …, Tn 個互斥集合，稱為 Subtree (子集合(子樹)間沒有交集)">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-12-24T12:01:00.000Z">
-<meta property="article:modified_time" content="2021-01-18T06:00:24.171Z">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree4.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree1.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree1.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree2.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree3.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree5.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/eaa4738c/tree6.jpg">
+<meta property="article:published_time" content="2021-01-24T06:19:38.000Z">
+<meta property="article:modified_time" content="2021-01-24T07:12:44.101Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="資料結構與演算法">
+<meta property="article:tag" content="資料結構">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/eaa4738c/tree4.jpg">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/posts/4502df03/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/eaa4738c/">
 
 
 <script data-pjax class="page-configurations">
@@ -50,7 +58,7 @@
     lang   : 'zh-TW'
   };
 </script>
-<title>Bucket Sort | Nicholas Blogger</title>
+<title>Tree and Binary Tree | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -203,7 +211,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bucket-Sort"><span class="nav-number">1.</span> <span class="nav-text">Bucket Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%BA%96%E5%82%99%E6%A1%B6%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">1.準備桶子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%86%E9%A1%9E%E6%88%90%E7%B8%BE"><span class="nav-number">1.2.</span> <span class="nav-text">2.分類成績</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AE%80%E5%8F%96%E6%88%90%E7%B8%BE"><span class="nav-number">1.3.</span> <span class="nav-text">3.讀取成績</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">1.4.</span> <span class="nav-text">4.完整程式碼</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B7%B4%E7%BF%92"><span class="nav-number">2.</span> <span class="nav-text">練習</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97"><span class="nav-number">2.1.</span> <span class="nav-text">陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%85%B8"><span class="nav-number">2.2.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tree"><span class="nav-number">1.</span> <span class="nav-text">Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Degree-of-a-node-%E7%AF%80%E9%BB%9E%E5%88%86%E6%94%AF%E5%BA%A6"><span class="nav-number">1.1.</span> <span class="nav-text">Degree of a node (節點分支度)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Degree-of-a-tree-%E6%A8%B9%E5%88%86%E6%94%AF%E5%BA%A6"><span class="nav-number">1.2.</span> <span class="nav-text">Degree of a tree (樹分支度)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leaf-%E8%91%89%E5%AD%90"><span class="nav-number">1.3.</span> <span class="nav-text">Leaf (葉子)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-leaf-Node-Non-terminal-Node-%E6%88%96-Internal-Node"><span class="nav-number">1.4.</span> <span class="nav-text">Non-leaf Node (Non-terminal Node 或 Internal Node)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parent-Node-%E7%88%B6%E7%AF%80%E9%BB%9E-and-Child-Node-%E5%AD%90%E7%AF%80%E9%BB%9E"><span class="nav-number">1.5.</span> <span class="nav-text">Parent Node (父節點) and Child Node (子節點)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sibling-%E5%85%84%E5%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">Sibling (兄弟)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ancestor-%E8%A2%93%E5%85%88"><span class="nav-number">1.7.</span> <span class="nav-text">Ancestor (袓先)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-%E9%9A%8E%E5%BA%A6"><span class="nav-number">1.8.</span> <span class="nav-text">Level (階度)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Height-%E9%AB%98%E5%BA%A6%EF%BC%9B%E6%88%96%E7%A8%B1-Depth"><span class="nav-number">1.9.</span> <span class="nav-text">Height (高度；或稱 Depth)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forest-%E6%A3%AE%E6%9E%97"><span class="nav-number">1.10.</span> <span class="nav-text">Forest (森林)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tree-Representation-%E6%A8%B9%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">Tree Representation (樹的表示方式)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A%E6%B3%951-%E7%9B%B4%E6%8E%A5%E7%94%A8-Link-list-%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.1.</span> <span class="nav-text">做法1: 直接用 Link list 表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A%E6%B3%952-%E5%B0%87-Tree-%E5%8C%96%E6%88%90-Binary-Tree-%E5%BE%8C%E5%86%8D%E5%AD%98"><span class="nav-number">2.2.</span> <span class="nav-text">做法2: 將 Tree 化成 Binary Tree 後再存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binary-Tree-%E4%BA%8C%E5%85%83%E6%A8%B9"><span class="nav-number">3.</span> <span class="nav-text">Binary Tree (二元樹)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,7 +288,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/4502df03/">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/eaa4738c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bighead.jpg">
@@ -293,7 +301,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Bucket Sort
+          Tree and Binary Tree
         </h1>
 
         <div class="post-meta-container">
@@ -304,7 +312,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2020-12-24 20:01:00" itemprop="dateCreated datePublished" datetime="2020-12-24T20:01:00+08:00">2020-12-24</time>
+      <time title="創建時間：2021-01-24 14:19:38" itemprop="dateCreated datePublished" datetime="2021-01-24T14:19:38+08:00">2021-01-24</time>
     </span>
 
   
@@ -316,8 +324,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/posts/4502df03/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/4502df03/" itemprop="commentCount"></span>
+    <a title="disqus" href="/posts/eaa4738c/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/eaa4738c/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -329,7 +337,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.9k</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -347,71 +355,91 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Bucket-Sort"><a href="#Bucket-Sort" class="headerlink" title="Bucket Sort"></a>Bucket Sort</h1><p>桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。</p>
+        <h1 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h1><p> Tree 是由1個以上的 Nodes 所組成的有限集合，滿足:</p>
+<ul>
+<li>至少有一個 Node，稱為 Root (Tree 不可為空)</li>
+<li>其餘的 Nodes 分成 T1, T2, …, Tn 個互斥集合，稱為 Subtree (子集合(子樹)間沒有交集)</li>
+</ul>
+<img src="/posts/eaa4738c/tree4.jpg" class="">
 <a id="more"></a>
-<hr>
-<p>假設我們現在有一筆班上的成績想要排序：<br><code>data = [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]</code></p>
-<h2 id="1-準備桶子"><a href="#1-準備桶子" class="headerlink" title="1.準備桶子"></a>1.準備桶子</h2><p>準備好每個分數的<strong>空桶子(0)</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">max_score &#x3D; 100
-bucket &#x3D; []
-for i in range(max_score+1):
-    bucket.append(0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-分類成績"><a href="#2-分類成績" class="headerlink" title="2.分類成績"></a>2.分類成績</h2><p>接著把未排序的成績們放入相對應分數的桶子<br>每次桶子+1</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">for score in data:
-    bucket[score] &#x3D; bucket[score] + 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="3-讀取成績"><a href="#3-讀取成績" class="headerlink" title="3.讀取成績"></a>3.讀取成績</h2><p>依序檢查每個桶子是否有東西在裡面(非0)<br>有的話看此桶子有幾個，一個一個拿出來排好<br>最後就得出排序完的分數了</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">index &#x3D; 0
-for i in range(len(bucket)):
-    if bucket[i] !&#x3D; 0:
-        for j in range(bucket[i]):
-            data[index] &#x3D; i
-            index +&#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="4-完整程式碼"><a href="#4-完整程式碼" class="headerlink" title="4.完整程式碼"></a>4.完整程式碼</h2><p>程式時間複雜度：<strong>O(M+N)</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]
 
-def bucketsort(data):
-    max_score &#x3D; 100
-    bucket &#x3D; []
-    
-    for i in range(max_score+1):
-        bucket.append(0)
-    for score in data:
-        bucket[score] &#x3D; bucket[score] + 1
+<h2 id="Degree-of-a-node-節點分支度"><a href="#Degree-of-a-node-節點分支度" class="headerlink" title="Degree of a node (節點分支度)"></a>Degree of a node (節點分支度)</h2><ul>
+<li><code>節點的子樹個數</code><ul>
+<li>Degree of A = 3</li>
+<li>Degree of B = 2</li>
+<li>Degree of E = 0</li>
+<li>Degree of F = 3</li>
+<li>Degrees of C, D, G, H, I are all 0</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/eaa4738c/tree1.jpg" class="">
 
-    index &#x3D; 0
-    for i in range(len(bucket)):
-        if bucket[i] !&#x3D; 0:
-            for j in range(bucket[i]):
-                data[index] &#x3D; i
-                index +&#x3D; 1
+<h2 id="Degree-of-a-tree-樹分支度"><a href="#Degree-of-a-tree-樹分支度" class="headerlink" title="Degree of a tree (樹分支度)"></a>Degree of a tree (樹分支度)</h2><p>樹中所有節點分支度最大者。即：Max {各 Node 之 degree}</p>
+<h2 id="Leaf-葉子"><a href="#Leaf-葉子" class="headerlink" title="Leaf (葉子)"></a>Leaf (葉子)</h2><p><code>分枝度為 0</code> 之節點</p>
+<h2 id="Non-leaf-Node-Non-terminal-Node-或-Internal-Node"><a href="#Non-leaf-Node-Non-terminal-Node-或-Internal-Node" class="headerlink" title="Non-leaf Node (Non-terminal Node 或 Internal Node)"></a>Non-leaf Node (Non-terminal Node 或 Internal Node)</h2><p>樹中所有非葉子的 Node，或是 Degree ≥ 1 的節點稱之</p>
+<h2 id="Parent-Node-父節點-and-Child-Node-子節點"><a href="#Parent-Node-父節點-and-Child-Node-子節點" class="headerlink" title="Parent Node (父節點) and Child Node (子節點)"></a>Parent Node (父節點) and Child Node (子節點)</h2><ul>
+<li>若一個節點 x 有後繼節點 (Successor Nodes) ，則此節點 x 即為父節點 (Parent)；反之，若一個節點 y 有前輩節點 (Predecessor)，則此節點 y 即為子節點 (Child)</li>
+<li>某節點所有子樹的樹根皆為該節點的 Child; 而該節點為這些樹根的 Parent</li>
+</ul>
+<h2 id="Sibling-兄弟"><a href="#Sibling-兄弟" class="headerlink" title="Sibling (兄弟)"></a>Sibling (兄弟)</h2><p>同一個父節點的所有子節點互稱為 Sibling</p>
+<h2 id="Ancestor-袓先"><a href="#Ancestor-袓先" class="headerlink" title="Ancestor (袓先)"></a>Ancestor (袓先)</h2><ul>
+<li>某一個節點的祖先，乃是從樹根到該節點路徑中，所經過的所有節點</li>
+<li>通常為一<code>集合</code></li>
+<li>Ancestors of C: {A, B}</li>
+</ul>
+<img src="/posts/eaa4738c/tree1.jpg" class="">
 
-bucketsort(data)
-print(data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>[23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code></p>
-<h1 id="練習"><a href="#練習" class="headerlink" title="練習"></a>練習</h1><p>如果假設我們的資料還包含了姓名在內，那要如何排序呢？</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>我的答案：</p>
-<h2 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]
+<h2 id="Level-階度"><a href="#Level-階度" class="headerlink" title="Level (階度)"></a>Level (階度)</h2><ul>
+<li>某一個節點的階度，是指<code>自樹根至該節點的距離</code></li>
+<li>Root 所在的 level 値為 <code>1</code>，若父點的 level 値為 i，則子點的 level 値為 i+1</li>
+<li>下圖：<ul>
+<li>E 的 level = 4</li>
+<li>C 的 level = 3</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/eaa4738c/tree2.jpg" class="">
 
-max_value &#x3D; 100
-bucket &#x3D; []
-data_sorted &#x3D; []
+<h2 id="Height-高度；或稱-Depth"><a href="#Height-高度；或稱-Depth" class="headerlink" title="Height (高度；或稱 Depth)"></a>Height (高度；或稱 Depth)</h2><ul>
+<li>一顆樹的各 level 値當中之<code>最大値</code>，即為該樹的高度</li>
+<li>上圖：<ul>
+<li>此樹的高度 = 4</li>
+</ul>
+</li>
+</ul>
+<h2 id="Forest-森林"><a href="#Forest-森林" class="headerlink" title="Forest (森林)"></a>Forest (森林)</h2><ul>
+<li>森林及是 <code>n 個互斥樹</code>所形成的集合 (n ≥ 0)</li>
+<li>可以為空</li>
+</ul>
+<img src="/posts/eaa4738c/tree3.jpg" class="">
 
-for i in range(max_value + 1):
-    bucket.append([])
-
-for i in data:
-    bucket[i[1]].append(i[0])
-
-for i, j in enumerate(bucket):
-    if len(j) !&#x3D; 0:
-        for name in j:
-	        data_sorted.append([name, i])
-
-print(data_sorted) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>[[&#39;Damon&#39;, 25], [&#39;Jane&#39;, 31], [&#39;Julia&#39;, 44], [&#39;Abby&#39;, 58], [&#39;Caroline&#39;, 65], [&#39;Stephen&#39;, 76], [&#39;Elena&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;James&#39;, 87], [&#39;Justin&#39;, 99]]</code><br>以上是利用陣列，但其實也可以用字典</p>
-<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>簡略</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://ithelp.ithome.com.tw/articles/10201707">桶子排序法</a></p>
+<h1 id="Tree-Representation-樹的表示方式"><a href="#Tree-Representation-樹的表示方式" class="headerlink" title="Tree Representation (樹的表示方式)"></a>Tree Representation (樹的表示方式)</h1><p>一顆樹要實作於電腦系統中，通常會採用<code>指標 (Pointer)</code> 來設計</p>
+<h2 id="做法1-直接用-Link-list-表示"><a href="#做法1-直接用-Link-list-表示" class="headerlink" title="做法1: 直接用 Link list 表示"></a>做法1: 直接用 Link list 表示</h2><ul>
+<li>假設 Tree 有 n 個 node，degree 為 k</li>
+<li>Node structure 設計如下:<img src="/posts/eaa4738c/tree5.jpg" class=""></li>
+<li>其中<ul>
+<li>k: 表示 Tree degree</li>
+<li>Data: 存 node 的資料値</li>
+<li>Link i: 指標指向 ith 子樹之 Root Node (1 ≤ i ≤ k)</li>
+</ul>
+</li>
+<li>例如：<img src="/posts/eaa4738c/tree6.jpg" class=""></li>
+<li><code>問題</code>：<ul>
+<li>Link 空間浪費甚巨 (∵空 Link 數目太多)</li>
+</ul>
+</li>
+<li>分析：<ul>
+<li>假設 tree 有 <mark class="label info">n</mark> 個 nodes，tree degree 為 <mark class="label info">k</mark></li>
+<li>總共的 link 空間為: <code>n &#123;% mathjax %&#125;\times&#123;% endmathjax %&#125; k</code></li>
+<li>有用的 link 數目為: <code>n - 1</code> (即 link ≠ nil)</li>
+<li>浪費數目(即: 空 link): <code>nk - (n-1)</code></li>
+<li>浪費比例: <code>&#123;% mathjax %&#125;\frac&#123;nk - (n-1)&#125;&#123;nk&#125;=\frac&#123;n(k-1)+1&#125;&#123;nk&#125;\approx\frac&#123;k-1&#125;&#123;k&#125;&#123;% endmathjax %&#125;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="做法2-將-Tree-化成-Binary-Tree-後再存"><a href="#做法2-將-Tree-化成-Binary-Tree-後再存" class="headerlink" title="做法2: 將 Tree 化成 Binary Tree 後再存"></a>做法2: 將 Tree 化成 Binary Tree 後再存</h2><p><code>∴Tree 化成 Binary Tree 是資料結構中的一個很重要的議題</code></p>
+<h1 id="Binary-Tree-二元樹"><a href="#Binary-Tree-二元樹" class="headerlink" title="Binary Tree (二元樹)"></a>Binary Tree (二元樹)</h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://debussy.im.nuu.edu.tw/sjchen/Datastructure/98/course06.pdf">國立聯合大學陳士杰資料結構</a></p>
 
     </div>
 
@@ -452,21 +480,18 @@ print(data_sorted) <span aria-hidden="true" class="line-numbers-rows"><span></sp
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 資料結構與演算法</a>
+              <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag"># 資料結構</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/17b8c54b/" rel="prev" title="Complexity">
-                  <i class="fa fa-chevron-left"></i> Complexity
+                <a href="/posts/be3c5067/" rel="prev" title="Queue">
+                  <i class="fa fa-chevron-left"></i> Queue
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/10244486/" rel="next" title="Bubble Sort">
-                  Bubble Sort <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -604,9 +629,9 @@ document.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yu-shin.github.io/posts/4502df03/";
-    this.page.identifier = "posts/4502df03/";
-    this.page.title = "Bucket Sort";
+    this.page.url = "https://yu-shin.github.io/posts/eaa4738c/";
+    this.page.identifier = "posts/eaa4738c/";
+    this.page.title = "Tree and Binary Tree";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

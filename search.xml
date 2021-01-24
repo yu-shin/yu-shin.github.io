@@ -1769,6 +1769,99 @@ pop stack; &#x2F;&#x2F;即為結果<span aria-hidden="true" class="line-numbers-
       </tags>
   </entry>
   <entry>
+    <title>Tree and Binary Tree</title>
+    <url>/posts/eaa4738c/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h1><p> Tree 是由1個以上的 Nodes 所組成的有限集合，滿足:</p>
+<ul>
+<li>至少有一個 Node，稱為 Root (Tree 不可為空)</li>
+<li>其餘的 Nodes 分成 T1, T2, …, Tn 個互斥集合，稱為 Subtree (子集合(子樹)間沒有交集)</li>
+</ul>
+<img src="/posts/eaa4738c/tree4.jpg" class="">
+<a id="more"></a>
+
+<h2 id="Degree-of-a-node-節點分支度"><a href="#Degree-of-a-node-節點分支度" class="headerlink" title="Degree of a node (節點分支度)"></a>Degree of a node (節點分支度)</h2><ul>
+<li><code>節點的子樹個數</code><ul>
+<li>Degree of A = 3</li>
+<li>Degree of B = 2</li>
+<li>Degree of E = 0</li>
+<li>Degree of F = 3</li>
+<li>Degrees of C, D, G, H, I are all 0</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/eaa4738c/tree1.jpg" class="">
+
+<h2 id="Degree-of-a-tree-樹分支度"><a href="#Degree-of-a-tree-樹分支度" class="headerlink" title="Degree of a tree (樹分支度)"></a>Degree of a tree (樹分支度)</h2><p>樹中所有節點分支度最大者。即：Max {各 Node 之 degree}</p>
+<h2 id="Leaf-葉子"><a href="#Leaf-葉子" class="headerlink" title="Leaf (葉子)"></a>Leaf (葉子)</h2><p><code>分枝度為 0</code> 之節點</p>
+<h2 id="Non-leaf-Node-Non-terminal-Node-或-Internal-Node"><a href="#Non-leaf-Node-Non-terminal-Node-或-Internal-Node" class="headerlink" title="Non-leaf Node (Non-terminal Node 或 Internal Node)"></a>Non-leaf Node (Non-terminal Node 或 Internal Node)</h2><p>樹中所有非葉子的 Node，或是 Degree ≥ 1 的節點稱之</p>
+<h2 id="Parent-Node-父節點-and-Child-Node-子節點"><a href="#Parent-Node-父節點-and-Child-Node-子節點" class="headerlink" title="Parent Node (父節點) and Child Node (子節點)"></a>Parent Node (父節點) and Child Node (子節點)</h2><ul>
+<li>若一個節點 x 有後繼節點 (Successor Nodes) ，則此節點 x 即為父節點 (Parent)；反之，若一個節點 y 有前輩節點 (Predecessor)，則此節點 y 即為子節點 (Child)</li>
+<li>某節點所有子樹的樹根皆為該節點的 Child; 而該節點為這些樹根的 Parent</li>
+</ul>
+<h2 id="Sibling-兄弟"><a href="#Sibling-兄弟" class="headerlink" title="Sibling (兄弟)"></a>Sibling (兄弟)</h2><p>同一個父節點的所有子節點互稱為 Sibling</p>
+<h2 id="Ancestor-袓先"><a href="#Ancestor-袓先" class="headerlink" title="Ancestor (袓先)"></a>Ancestor (袓先)</h2><ul>
+<li>某一個節點的祖先，乃是從樹根到該節點路徑中，所經過的所有節點</li>
+<li>通常為一<code>集合</code></li>
+<li>Ancestors of C: {A, B}</li>
+</ul>
+<img src="/posts/eaa4738c/tree1.jpg" class="">
+
+<h2 id="Level-階度"><a href="#Level-階度" class="headerlink" title="Level (階度)"></a>Level (階度)</h2><ul>
+<li>某一個節點的階度，是指<code>自樹根至該節點的距離</code></li>
+<li>Root 所在的 level 値為 <code>1</code>，若父點的 level 値為 i，則子點的 level 値為 i+1</li>
+<li>下圖：<ul>
+<li>E 的 level = 4</li>
+<li>C 的 level = 3</li>
+</ul>
+</li>
+</ul>
+<img src="/posts/eaa4738c/tree2.jpg" class="">
+
+<h2 id="Height-高度；或稱-Depth"><a href="#Height-高度；或稱-Depth" class="headerlink" title="Height (高度；或稱 Depth)"></a>Height (高度；或稱 Depth)</h2><ul>
+<li>一顆樹的各 level 値當中之<code>最大値</code>，即為該樹的高度</li>
+<li>上圖：<ul>
+<li>此樹的高度 = 4</li>
+</ul>
+</li>
+</ul>
+<h2 id="Forest-森林"><a href="#Forest-森林" class="headerlink" title="Forest (森林)"></a>Forest (森林)</h2><ul>
+<li>森林及是 <code>n 個互斥樹</code>所形成的集合 (n ≥ 0)</li>
+<li>可以為空</li>
+</ul>
+<img src="/posts/eaa4738c/tree3.jpg" class="">
+
+<h1 id="Tree-Representation-樹的表示方式"><a href="#Tree-Representation-樹的表示方式" class="headerlink" title="Tree Representation (樹的表示方式)"></a>Tree Representation (樹的表示方式)</h1><p>一顆樹要實作於電腦系統中，通常會採用<code>指標 (Pointer)</code> 來設計</p>
+<h2 id="做法1-直接用-Link-list-表示"><a href="#做法1-直接用-Link-list-表示" class="headerlink" title="做法1: 直接用 Link list 表示"></a>做法1: 直接用 Link list 表示</h2><ul>
+<li>假設 Tree 有 n 個 node，degree 為 k</li>
+<li>Node structure 設計如下:<img src="/posts/eaa4738c/tree5.jpg" class=""></li>
+<li>其中<ul>
+<li>k: 表示 Tree degree</li>
+<li>Data: 存 node 的資料値</li>
+<li>Link i: 指標指向 ith 子樹之 Root Node (1 ≤ i ≤ k)</li>
+</ul>
+</li>
+<li>例如：<img src="/posts/eaa4738c/tree6.jpg" class=""></li>
+<li><code>問題</code>：<ul>
+<li>Link 空間浪費甚巨 (∵空 Link 數目太多)</li>
+</ul>
+</li>
+<li>分析：<ul>
+<li>假設 tree 有 <mark class="label info">n</mark> 個 nodes，tree degree 為 <mark class="label info">k</mark></li>
+<li>總共的 link 空間為: <code>n &#123;% mathjax %&#125;\times&#123;% endmathjax %&#125; k</code></li>
+<li>有用的 link 數目為: <code>n - 1</code> (即 link ≠ nil)</li>
+<li>浪費數目(即: 空 link): <code>nk - (n-1)</code></li>
+<li>浪費比例: <code>&#123;% mathjax %&#125;\frac&#123;nk - (n-1)&#125;&#123;nk&#125;=\frac&#123;n(k-1)+1&#125;&#123;nk&#125;\approx\frac&#123;k-1&#125;&#123;k&#125;&#123;% endmathjax %&#125;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="做法2-將-Tree-化成-Binary-Tree-後再存"><a href="#做法2-將-Tree-化成-Binary-Tree-後再存" class="headerlink" title="做法2: 將 Tree 化成 Binary Tree 後再存"></a>做法2: 將 Tree 化成 Binary Tree 後再存</h2><p><code>∴Tree 化成 Binary Tree 是資料結構中的一個很重要的議題</code></p>
+<h1 id="Binary-Tree-二元樹"><a href="#Binary-Tree-二元樹" class="headerlink" title="Binary Tree (二元樹)"></a>Binary Tree (二元樹)</h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a href="http://debussy.im.nuu.edu.tw/sjchen/Datastructure/98/course06.pdf">國立聯合大學陳士杰資料結構</a></p>
+]]></content>
+      <tags>
+        <tag>資料結構</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Heap Sort</title>
     <url>/posts/2c38fcfa/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap Sort"></a>Heap Sort</h1><p>Heapsort 的演算法分為兩大步驟：</p>
@@ -1922,7 +2015,7 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 接下來就可以 run the script using npm run:<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p><strong>以上就是使用<code>npm</code> run a package麻煩的地方。</strong><br>所以接下來介紹<code>npx</code>。</p>
-<h1 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h1><p>npm只要更新到<strong><a href="mailto:&#x6e;&#112;&#x6d;&#64;&#53;&#46;&#50;&#x2e;&#x30;">&#x6e;&#112;&#x6d;&#64;&#53;&#46;&#50;&#x2e;&#x30;</a></strong>後，就會多出一個npx指令。</p>
+<h1 id="npx"><a href="#npx" class="headerlink" title="npx"></a>npx</h1><p>npm只要更新到<strong><a href="mailto:&#110;&#112;&#109;&#x40;&#x35;&#x2e;&#x32;&#46;&#48;">&#110;&#112;&#109;&#x40;&#x35;&#x2e;&#x32;&#46;&#48;</a></strong>後，就會多出一個npx指令。</p>
 <h2 id="npx使用情況"><a href="#npx使用情況" class="headerlink" title="npx使用情況:"></a>npx使用情況:</h2><h3 id="Run-a-locally-installed-package-easily"><a href="#Run-a-locally-installed-package-easily" class="headerlink" title="*Run a locally installed package easily"></a>*Run a locally installed package easily</h3><p>如果想要執行 locally installed package，只需要type:</p>
 <pre class="line-numbers language-none"><code class="language-none">$ npx your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>npx會檢查local或<code>$PATH</code>裡是否存在<code>&lt;command&gt;</code> or <code>&lt;package&gt;</code>的binaries，有的話便會執行。</p>
