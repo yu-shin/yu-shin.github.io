@@ -24,12 +24,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Queue (佇列) 具有 FIFO (First-in, First-out) 性質的有序串列 插入與刪除元素的動作發生在佇列的不同端 插入動作發生在尾端 (Rear) 刪除動作發生在前端 (Front)">
+<meta name="description" content="Queue (佇列)  具有 FIFO (First-in, First-out) 性質的有序串列 插入與刪除元素的動作發生在佇列的不同端  插入動作發生在尾端 (Rear) 刪除動作發生在前端 (Front)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Queue">
 <meta property="og:url" content="https://yu-shin.github.io/posts/be3c5067/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Queue (佇列) 具有 FIFO (First-in, First-out) 性質的有序串列 插入與刪除元素的動作發生在佇列的不同端 插入動作發生在尾端 (Rear) 刪除動作發生在前端 (Front)">
+<meta property="og:description" content="Queue (佇列)  具有 FIFO (First-in, First-out) 性質的有序串列 插入與刪除元素的動作發生在佇列的不同端  插入動作發生在尾端 (Rear) 刪除動作發生在前端 (Front)">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://yu-shin.github.io/posts/be3c5067/queue1.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/be3c5067/queue2.jpg">
@@ -212,7 +212,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Queue-%E4%BD%87%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">Queue (佇列)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Queue-%E7%9A%84%E6%87%89%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">Queue 的應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Queue-%E7%9A%84-ADT"><span class="nav-number">3.</span> <span class="nav-text">Queue 的 ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Objects"><span class="nav-number">3.1.</span> <span class="nav-text">Data Objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations"><span class="nav-number">3.2.</span> <span class="nav-text">Operations</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Queue%E7%9A%84%E8%A3%BD%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">Queue的製作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-Linked-list-%E8%A3%BD%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">用 Linked list 製作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Q"><span class="nav-number">4.1.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADDQ-Q-item"><span class="nav-number">4.1.2.</span> <span class="nav-text">ADDQ(Q, item)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Q"><span class="nav-number">4.1.3.</span> <span class="nav-text">Delete(Q)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-Array-%E8%A3%BD%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">用 Array 製作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-Linear-Array"><span class="nav-number">4.2.1.</span> <span class="nav-text">利用 Linear Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Q-1"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AddQ-Q-item-%E2%86%92-Queue"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">AddQ(Q, item) → Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DeleteQ-Q-%E2%86%92-item-Queue"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">DeleteQ(Q) → item, Queue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-Circular-Array-with-n-1-space-used"><span class="nav-number">4.2.2.</span> <span class="nav-text">利用 Circular Array with (n-1) space used</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Q-2"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AddQ-Q-item-%E2%86%92-Queue-1"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">AddQ(Q, item) → Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DeleteQ-Q-%E2%86%92-item-Queue-1"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">DeleteQ(Q) → item, Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E9%BB%9E"><span class="nav-number">4.2.2.4.</span> <span class="nav-text">特點</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-Circular-Array-with-n-space-used"><span class="nav-number">4.2.3.</span> <span class="nav-text">利用 Circular Array with n space used</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-Q-3"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AddQ-Q-item-%E2%86%92-Queue-2"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">AddQ(Q, item) → Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DeleteQ-Q-%E2%86%92-item-Queue-2"><span class="nav-number">4.2.3.3.</span> <span class="nav-text">DeleteQ(Q) → item, Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E9%BB%9E-1"><span class="nav-number">4.2.3.4.</span> <span class="nav-text">特點</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Queue%E7%9A%84%E7%A8%AE%E9%A1%9E"><span class="nav-number">5.</span> <span class="nav-text">Queue的種類</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FIFO-Queue-%E5%85%88%E9%80%B2%E5%85%88%E5%87%BA%E4%BD%87%E5%88%97"><span class="nav-number">5.1.</span> <span class="nav-text">FIFO Queue (先進先出佇列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Priority-Queue-%E5%84%AA%E5%85%88%E6%AC%8A%E4%BD%87%E5%88%97"><span class="nav-number">5.2.</span> <span class="nav-text">Priority Queue (優先權佇列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Double-Ended-Queue-%E9%9B%99%E9%82%8A%E4%BD%87%E5%88%97"><span class="nav-number">5.3.</span> <span class="nav-text">Double Ended Queue (雙邊佇列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Double-Ended-Priority-Queue-%E9%9B%99%E9%82%8A%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97"><span class="nav-number">5.4.</span> <span class="nav-text">Double Ended Priority Queue (雙邊優先佇列)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#queue-%E4%BD%87%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">Queue (佇列)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#queue-%E7%9A%84%E6%87%89%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">Queue 的應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#queue-%E7%9A%84-adt"><span class="nav-number">3.</span> <span class="nav-text">Queue 的 ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-objects"><span class="nav-number">3.1.</span> <span class="nav-text">Data Objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operations"><span class="nav-number">3.2.</span> <span class="nav-text">Operations</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#queue%E7%9A%84%E8%A3%BD%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">Queue的製作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-linked-list-%E8%A3%BD%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">用 Linked list 製作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createq"><span class="nav-number">4.1.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addqq-item"><span class="nav-number">4.1.2.</span> <span class="nav-text">ADDQ(Q, item)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deleteq"><span class="nav-number">4.1.3.</span> <span class="nav-text">Delete(Q)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-array-%E8%A3%BD%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">用 Array 製作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-linear-array"><span class="nav-number">4.2.1.</span> <span class="nav-text">利用 Linear Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#createq-1"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addqq-item-queue"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">AddQ(Q, item) → Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deleteqq-item-queue"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">DeleteQ(Q) → item, Queue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-circular-array-with-n-1-space-used"><span class="nav-number">4.2.2.</span> <span class="nav-text">利用 Circular Array with (n-1) space used</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#createq-2"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addqq-item-queue-1"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">AddQ(Q, item) → Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deleteqq-item-queue-1"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">DeleteQ(Q) → item, Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E9%BB%9E"><span class="nav-number">4.2.2.4.</span> <span class="nav-text">特點</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-circular-array-with-n-space-used"><span class="nav-number">4.2.3.</span> <span class="nav-text">利用 Circular Array with n space used</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#createq-3"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">Create(Q)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addqq-item-queue-2"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">AddQ(Q, item) → Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deleteqq-item-queue-2"><span class="nav-number">4.2.3.3.</span> <span class="nav-text">DeleteQ(Q) → item, Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E9%BB%9E-1"><span class="nav-number">4.2.3.4.</span> <span class="nav-text">特點</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#queue%E7%9A%84%E7%A8%AE%E9%A1%9E"><span class="nav-number">5.</span> <span class="nav-text">Queue的種類</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fifo-queue-%E5%85%88%E9%80%B2%E5%85%88%E5%87%BA%E4%BD%87%E5%88%97"><span class="nav-number">5.1.</span> <span class="nav-text">FIFO Queue (先進先出佇列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#priority-queue-%E5%84%AA%E5%85%88%E6%AC%8A%E4%BD%87%E5%88%97"><span class="nav-number">5.2.</span> <span class="nav-text">Priority Queue (優先權佇列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-ended-queue-%E9%9B%99%E9%82%8A%E4%BD%87%E5%88%97"><span class="nav-number">5.3.</span> <span class="nav-text">Double Ended Queue (雙邊佇列)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-ended-priority-queue-%E9%9B%99%E9%82%8A%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97"><span class="nav-number">5.4.</span> <span class="nav-text">Double Ended Priority Queue (雙邊優先佇列)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +228,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -356,29 +356,33 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Queue-佇列"><a href="#Queue-佇列" class="headerlink" title="Queue (佇列)"></a>Queue (佇列)</h1><ul>
+        <h1 id="queue-佇列">Queue (佇列)</h1>
+<ul>
 <li>具有 FIFO (First-in, First-out) 性質的有序串列</li>
-<li>插入與刪除元素的動作發生在佇列的不同端<ul>
+<li>插入與刪除元素的動作發生在佇列的不同端
+<ul>
 <li>插入動作發生在尾端 (Rear)</li>
 <li>刪除動作發生在前端 (Front)</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <img src="/posts/be3c5067/queue1.jpg" class="">
 <a id="more"></a>
-
-<h1 id="Queue-的應用"><a href="#Queue-的應用" class="headerlink" title="Queue 的應用"></a>Queue 的應用</h1><ul>
+<h1 id="queue-的應用">Queue 的應用</h1>
+<ul>
 <li>日常生活的排隊行為</li>
 <li>在作業系統中的 job scheduling，在相同的 priority 下，利用 queue 來完成先到先做的策略</li>
 <li>有許多的 I/O 工作同時要處理。將所有的 I/O 要求，利用 queue 來達成先到先做的策略</li>
 <li>用於模擬 (Simulation) 方面，如佇列理論 (Queuing Theory)</li>
 </ul>
-<h1 id="Queue-的-ADT"><a href="#Queue-的-ADT" class="headerlink" title="Queue 的 ADT"></a>Queue 的 ADT</h1><h2 id="Data-Objects"><a href="#Data-Objects" class="headerlink" title="Data Objects"></a>Data Objects</h2><ul>
+<h1 id="queue-的-adt">Queue 的 ADT</h1>
+<h2 id="data-objects">Data Objects</h2>
+<ul>
 <li>Queue: a set of data items</li>
 <li>Front: 指示Queue之前端元素所在</li>
 <li>Rear: 指示Queue之尾端元素所在</li>
 </ul>
-<h2 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h2><ul>
+<h2 id="operations">Operations</h2>
+<ul>
 <li>Create(Q): 建立空佇列Q</li>
 <li>ADDQ(Q, item) → Q: 將 item 插入到 Queue Q 中，成為新的尾端元素(if Queue is full, then 無法執行)</li>
 <li>DeleteQ(Q, item) → item, Q: 刪除 Queue 中的前端元素 (if Queue is empty, then empty, then 無法執行)</li>
@@ -386,28 +390,26 @@
 <li>IsFull(Q) → Boolean</li>
 <li>Front(Q) → item: 傳回 Queue 之 Front 端元素 (但不刪除)</li>
 </ul>
-<h1 id="Queue的製作"><a href="#Queue的製作" class="headerlink" title="Queue的製作"></a>Queue的製作</h1><ol>
-<li>用 Link list 製作<ul>
+<h1 id="queue的製作">Queue的製作</h1>
+<ol type="1">
+<li>用 Link list 製作
+<ul>
 <li>Single link list</li>
-</ul>
-</li>
-<li>用Array製作<ul>
+</ul></li>
+<li>用Array製作
+<ul>
 <li>利用 Linear Array</li>
 <li>利用 Circular Array with (n-1) space used</li>
 <li>利用 Circular Array with n space used</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h2 id="用-Linked-list-製作"><a href="#用-Linked-list-製作" class="headerlink" title="用 Linked list 製作"></a>用 Linked list 製作</h2><h3 id="Create-Q"><a href="#Create-Q" class="headerlink" title="Create(Q)"></a>Create(Q)</h3><p>宣告:</p>
+<h2 id="用-linked-list-製作">用 Linked list 製作</h2>
+<h3 id="createq">Create(Q)</h3>
+<p>宣告: - rear: pointer = nil - front: pointer = nil</p>
+<h3 id="addqq-item">ADDQ(Q, item)</h3>
 <ul>
-<li>rear: pointer = nil</li>
-<li>front: pointer = nil</li>
-</ul>
-<h3 id="ADDQ-Q-item"><a href="#ADDQ-Q-item" class="headerlink" title="ADDQ(Q, item)"></a>ADDQ(Q, item)</h3><ul>
-<li>Case 1: (當Queue為空佇列)<img src="/posts/be3c5067/queue2.jpg" class=""></li>
-<li>Case 2: (當Queue不為空佇列)<img src="/posts/be3c5067/queue3.jpg" class="">
-
-</li>
+<li>Case 1: (當Queue為空佇列) <img src="/posts/be3c5067/queue2.jpg" class=""></li>
+<li>Case 2: (當Queue不為空佇列) <img src="/posts/be3c5067/queue3.jpg" class=""></li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;F &#x3D; front, R &#x3D; rear
 begin
@@ -420,7 +422,8 @@ begin
     rear → link &#x3D; newPtr;
   rear &#x3D; newPtr;
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Delete-Q"><a href="#Delete-Q" class="headerlink" title="Delete(Q)"></a>Delete(Q)</h3><pre class="line-numbers language-none"><code class="language-none">begin
+<h3 id="deleteq">Delete(Q)</h3>
+<pre class="line-numbers language-none"><code class="language-none">begin
   if (front &#x3D; nil):
     Queue Empty;
   else:
@@ -434,17 +437,15 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <img src="/posts/be3c5067/queue4.jpg" class="">
 <div class="note info no-icon"><ul>
 <li>假設 Queue 中只有一個 node，回收後把 Rear 指向 nil</li>
-<li>主要是擔心系統不會自動將 Rear 設成 nil，使得 Rear 指標無效<img src="/posts/be3c5067/queue5.jpg" class=""></li>
+<li>主要是擔心系統不會自動將 Rear 設成 nil，使得 Rear 指標無效 <img src="/posts/be3c5067/queue5.jpg" class=""></li>
 </ul>
 </div>
-
-<h2 id="用-Array-製作"><a href="#用-Array-製作" class="headerlink" title="用 Array 製作"></a>用 Array 製作</h2><h3 id="利用-Linear-Array"><a href="#利用-Linear-Array" class="headerlink" title="利用 Linear Array"></a>利用 Linear Array</h3><h4 id="Create-Q-1"><a href="#Create-Q-1" class="headerlink" title="Create(Q)"></a>Create(Q)</h4><p>宣告:</p>
-<ul>
-<li>Q: array[0…n-1] of items //宣告 Q 是一個大小為n的一維 Array</li>
-<li>Front: integer = -1 //初値</li>
-<li>Rear: integer = -1 //初値</li>
-</ul>
-<h4 id="AddQ-Q-item-→-Queue"><a href="#AddQ-Q-item-→-Queue" class="headerlink" title="AddQ(Q, item) → Queue"></a>AddQ(Q, item) → Queue</h4><pre class="line-numbers language-none"><code class="language-none">begin
+<h2 id="用-array-製作">用 Array 製作</h2>
+<h3 id="利用-linear-array">利用 Linear Array</h3>
+<h4 id="createq-1">Create(Q)</h4>
+<p>宣告: - Q: array[0…n-1] of items //宣告 Q 是一個大小為n的一維 Array - Front: integer = -1 //初値 - Rear: integer = -1 //初値</p>
+<h4 id="addqq-item-queue">AddQ(Q, item) → Queue</h4>
+<pre class="line-numbers language-none"><code class="language-none">begin
   if (rear &#x3D; n):
     QueueFull;
   else:
@@ -452,34 +453,22 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     Q[rear] &#x3D; item
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <img src="/posts/be3c5067/queue6.jpg" class="">
-
-<h4 id="DeleteQ-Q-→-item-Queue"><a href="#DeleteQ-Q-→-item-Queue" class="headerlink" title="DeleteQ(Q) → item, Queue"></a>DeleteQ(Q) → item, Queue</h4><pre class="line-numbers language-none"><code class="language-none">begin
+<h4 id="deleteqq-item-queue">DeleteQ(Q) → item, Queue</h4>
+<pre class="line-numbers language-none"><code class="language-none">begin
   if (rear &#x3D; front):
     QueueEmpty;
   else:
     front &#x3D; front +1
     item &#x3D; Q[front]
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<div class="note danger"><p>問題: <code>當 rear = n 時，Queue 並不代表真正為滿的情況</code><br><img src="/posts/be3c5067/queue7.jpg" class=""></p>
-<ul>
-<li>為解決上述問題，我們或許可以設計一個副程式，當資料已成長到 Arrar 的最末端時，作一次 “<code>是否真的為滿</code>” 的判斷 (即：<strong><mark class="label info">Rear = n</mark></strong> 且 <strong><mark class="label info">Front = 0</mark></strong>)。若不為真滿，則需將 <strong><mark class="label danger">(Front+1)</strong> 到 Rear 端的所有元素往左移 Front 格，並重設 Rear 與 Front 的指標値</mark></li>
-<li>然而，此種作法會導致 Queue 之 Add 動作時間為 <code>O(n)</code><ul>
-<li>∵是用<code>廻圈</code>來實作資料的搬移，花費時間太大。同時，此搬移工作是額外的處理項目，與 Add 動作本身是無關的</li>
-<li>∴當 Add 的工作很頻繁時，整體執行效益差</li>
-</ul>
-</li>
-</ul>
+<div class="note danger"><p>問題: <code>當 rear = n 時，Queue 並不代表真正為滿的情況</code> <img src="/posts/be3c5067/queue7.jpg" class=""> - 為解決上述問題，我們或許可以設計一個副程式，當資料已成長到 Arrar 的最末端時，作一次 “<code>是否真的為滿</code>” 的判斷 (即：<strong><mark class="label info">Rear = n</mark></strong> 且 <strong><mark class="label info">Front = 0</mark></strong>)。若不為真滿，則需將 <strong><mark class="label danger">(Front+1)</strong> 到 Rear 端的所有元素往左移 Front 格，並重設 Rear 與 Front 的指標値</mark> - 然而，此種作法會導致 Queue 之 Add 動作時間為 <code>O(n)</code> - ∵是用<code>廻圈</code>來實作資料的搬移，花費時間太大。同時，此搬移工作是額外的處理項目，與 Add 動作本身是無關的 - ∴當 Add 的工作很頻繁時，整體執行效益差</p>
 </div>
-
-<h3 id="利用-Circular-Array-with-n-1-space-used"><a href="#利用-Circular-Array-with-n-1-space-used" class="headerlink" title="利用 Circular Array with (n-1) space used"></a>利用 Circular Array with (n-1) space used</h3><img src="/posts/be3c5067/queue8.jpg" class="">
-
-<h4 id="Create-Q-2"><a href="#Create-Q-2" class="headerlink" title="Create(Q)"></a>Create(Q)</h4><p>宣告:</p>
-<ul>
-<li>Q: Array[0…n-1]</li>
-<li>front = rear = 0 //初値</li>
-</ul>
-<h4 id="AddQ-Q-item-→-Queue-1"><a href="#AddQ-Q-item-→-Queue-1" class="headerlink" title="AddQ(Q, item) → Queue"></a>AddQ(Q, item) → Queue</h4><pre class="line-numbers language-none"><code class="language-none">begin
+<h3 id="利用-circular-array-with-n-1-space-used">利用 Circular Array with (n-1) space used</h3>
+<img src="/posts/be3c5067/queue8.jpg" class="">
+<h4 id="createq-2">Create(Q)</h4>
+<p>宣告: - Q: Array[0…n-1] - front = rear = 0 //初値</p>
+<h4 id="addqq-item-queue-1">AddQ(Q, item) → Queue</h4>
+<pre class="line-numbers language-none"><code class="language-none">begin
   rear &#x3D; (rear+1) mod n ; &#x2F;&#x2F;rear指標先前進
   if (rear &#x3D; front):
     QueueFull;            &#x2F;&#x2F;表示Queue滿了
@@ -487,38 +476,32 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else
     Q[rear]&#x3D;item;
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="DeleteQ-Q-→-item-Queue-1"><a href="#DeleteQ-Q-→-item-Queue-1" class="headerlink" title="DeleteQ(Q) → item, Queue"></a>DeleteQ(Q) → item, Queue</h4><pre class="line-numbers language-none"><code class="language-none">begin
+<h4 id="deleteqq-item-queue-1">DeleteQ(Q) → item, Queue</h4>
+<pre class="line-numbers language-none"><code class="language-none">begin
   if (front&#x3D;rear): &#x2F;&#x2F;先檢查
     QueueEmpty;
   else:
     front &#x3D; (front+1) mod n;
     item &#x3D; Q[front];
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="特點"><a href="#特點" class="headerlink" title="特點"></a>特點</h4><ul>
+<h4 id="特點">特點</h4>
+<ul>
 <li>最多只利用到 <code>n-1 格空間</code></li>
-<li>若硬要使用到 n 格空間，則 rear = front 條件成立時，<strong><mark class="label success">無法真正區分出 Queue 為 Full 或 Empty</mark></strong><ul>
+<li>若硬要使用到 n 格空間，則 rear = front 條件成立時，<strong><mark class="label success">無法真正區分出 Queue 為 Full 或 Empty</mark></strong>
+<ul>
 <li>∵ 判斷 Full 與 Empty 的條件式相同 (皆為 <strong><mark class="label info">rear = Full</mark></strong>)</li>
-</ul>
-</li>
-<li>Add 與 Delete 之動作時間皆為<code>O(1)</code><ul>
+</ul></li>
+<li>Add 與 Delete 之動作時間皆為<code>O(1)</code>
+<ul>
 <li>∵ <mark class="label info">沒有資料挪移</mark>的動作</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="利用-Circular-Array-with-n-space-used"><a href="#利用-Circular-Array-with-n-space-used" class="headerlink" title="利用 Circular Array with n space used"></a>利用 Circular Array with n space used</h3><p>引進一個<mark class="label info">Tag 變數</mark>，用以<mark class="label danger">協助判斷</mark>Queue 為 Empty 或 Full:</p>
-<ul>
-<li>該變數為 Boolean 型態</li>
-<li>若 Tag = True: 則可協助判斷是否為 Full</li>
-<li>若 Tag = False: 則可協助判斷是否為 Null</li>
-<li><strong><mark class="label danger">不是光靠 Tag 就能做正確判斷</mark></strong></li>
-</ul>
-<h4 id="Create-Q-3"><a href="#Create-Q-3" class="headerlink" title="Create(Q)"></a>Create(Q)</h4><p>宣告：</p>
-<ul>
-<li>Q: Array[0…n-1]</li>
-<li>front = rear: int = 0 //初値</li>
-<li><code>Tag</code>: Boolean = 0 //初値</li>
-</ul>
-<h4 id="AddQ-Q-item-→-Queue-2"><a href="#AddQ-Q-item-→-Queue-2" class="headerlink" title="AddQ(Q, item) → Queue"></a>AddQ(Q, item) → Queue</h4><pre class="line-numbers language-none"><code class="language-none">begin
+<h3 id="利用-circular-array-with-n-space-used">利用 Circular Array with n space used</h3>
+<p>引進一個<mark class="label info">Tag 變數</mark>，用以<mark class="label danger">協助判斷</mark>Queue 為 Empty 或 Full: - 該變數為 Boolean 型態 - 若 Tag = True: 則可協助判斷是否為 Full - 若 Tag = False: 則可協助判斷是否為 Null - <strong><mark class="label danger">不是光靠 Tag 就能做正確判斷</mark></strong></p>
+<h4 id="createq-3">Create(Q)</h4>
+<p>宣告： - Q: Array[0…n-1] - front = rear: int = 0 //初値 - <code>Tag</code>: Boolean = 0 //初値</p>
+<h4 id="addqq-item-queue-2">AddQ(Q, item) → Queue</h4>
+<pre class="line-numbers language-none"><code class="language-none">begin
   if (rear &#x3D; front and Tag &#x3D; 1):
     QueueFull;
   else:
@@ -527,7 +510,8 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     if (rear&#x3D;front):
       Tag&#x3D;1;
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="DeleteQ-Q-→-item-Queue-2"><a href="#DeleteQ-Q-→-item-Queue-2" class="headerlink" title="DeleteQ(Q) → item, Queue"></a>DeleteQ(Q) → item, Queue</h4><pre class="line-numbers language-none"><code class="language-none">begin
+<h4 id="deleteqq-item-queue-2">DeleteQ(Q) → item, Queue</h4>
+<pre class="line-numbers language-none"><code class="language-none">begin
   if (Front&#x3D;Rear and Tag&#x3D;0):
     QueueEmpty;
   else:
@@ -536,37 +520,44 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     if (Front&#x3D;Rear):
       Tag&#x3D;0;
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="特點-1"><a href="#特點-1" class="headerlink" title="特點"></a>特點</h4><ul>
+<h4 id="特點-1">特點</h4>
+<ul>
 <li>最多可利用到 <code>n 格空間</code></li>
-<li>Add 與 Delete 之運作時間稍長<ul>
+<li>Add 與 Delete 之運作時間稍長
+<ul>
 <li>∵多了一條 <mark class="label success">if 測試</mark>，來測試 Tag 値設定，且此兩個運作使用上極頻繁</li>
 <li>∴<strong><mark class="label info">整體時間效益稍嫌 Poor</mark></strong></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h1 id="Queue的種類"><a href="#Queue的種類" class="headerlink" title="Queue的種類"></a>Queue的種類</h1><h2 id="FIFO-Queue-先進先出佇列"><a href="#FIFO-Queue-先進先出佇列" class="headerlink" title="FIFO Queue (先進先出佇列)"></a>FIFO Queue (先進先出佇列)</h2><p>即一般的佇列，具有 FIFO 特性，前端刪除元素，尾端加入元素</p>
-<h2 id="Priority-Queue-優先權佇列"><a href="#Priority-Queue-優先權佇列" class="headerlink" title="Priority Queue (優先權佇列)"></a>Priority Queue (優先權佇列)</h2><ul>
+<h1 id="queue的種類">Queue的種類</h1>
+<h2 id="fifo-queue-先進先出佇列">FIFO Queue (先進先出佇列)</h2>
+<p>即一般的佇列，具有 FIFO 特性，前端刪除元素，尾端加入元素</p>
+<h2 id="priority-queue-優先權佇列">Priority Queue (優先權佇列)</h2>
+<ul>
 <li>不一定遵守FIFO特性</li>
-<li>運作：<ul>
+<li>運作：
+<ul>
 <li>插入任意優先權値之元素</li>
 <li>刪除時，是刪除具最大/最小優先權値之元素</li>
-</ul>
-</li>
+</ul></li>
 <li>可利用 Heap (堆積) 來製作</li>
 </ul>
-<h2 id="Double-Ended-Queue-雙邊佇列"><a href="#Double-Ended-Queue-雙邊佇列" class="headerlink" title="Double Ended Queue (雙邊佇列)"></a>Double Ended Queue (雙邊佇列)</h2><ul>
+<h2 id="double-ended-queue-雙邊佇列">Double Ended Queue (雙邊佇列)</h2>
+<ul>
 <li>可於任何一端執行插入/刪除元素的動作</li>
-<li>亦可實作成：<ul>
+<li>亦可實作成：
+<ul>
 <li>Input-restricted：插入動作在固定端，刪除動作在任意端</li>
 <li>Output-restricted：插入動作在任意端，刪除動作在固定端</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Double-Ended-Priority-Queue-雙邊優先佇列"><a href="#Double-Ended-Priority-Queue-雙邊優先佇列" class="headerlink" title="Double Ended Priority Queue (雙邊優先佇列)"></a>Double Ended Priority Queue (雙邊優先佇列)</h2><ul>
+<h2 id="double-ended-priority-queue-雙邊優先佇列">Double Ended Priority Queue (雙邊優先佇列)</h2>
+<ul>
 <li>可於任何一端執行插入元素的動作。但刪除時，有一端是做 Delete Max 元素的動作，另一端則作 Delete Min 元素的動作</li>
 <li>可利用 Min-Max Heap (堆積) 來製作</li>
 </ul>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://debussy.im.nuu.edu.tw/sjchen/Datastructure/98/course05.pdf">國立聯合大學陳士杰資料結構</a></p>
+<h1 id="參考資料">參考資料</h1>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://debussy.im.nuu.edu.tw/sjchen/Datastructure/98/course05.pdf">國立聯合大學陳士杰資料結構</a></p>
 
     </div>
 
@@ -680,13 +671,13 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">68k</span>
+    <span title="總字數">72k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:03</span>
+    <span title="所需總閱讀時間">2:10</span>
   </span>
 </div>
 
@@ -745,6 +736,8 @@ document.addEventListener('pjax:success', () => {
 
 
     <div class="pjax">
+
+  
 
 
 <script>
