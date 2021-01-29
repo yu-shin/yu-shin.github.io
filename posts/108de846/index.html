@@ -24,21 +24,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="前言 一開始接觸加密貨幣大概是2019年初(比大家晚很多)，那時去網路上收了10幾張RX570和RX470回來組了兩台礦機。 我還記得當時硬體配備：">
+<meta name="description" content="圖形追蹤 (Traverse Graph)  目的：  圖形中的所有頂點都被拜訪到，且僅被拜訪到一次  拜訪方式有兩種：  Depth First Search (DFS；深先搜尋，需利用Stack) Breadth First Search (BFS；廣先搜尋，需利用Queue)  應用：  檢査 Graph 是否連通？ 找出此圖的連通單元 ...  不論是採用何種圖形追蹤方法，在實作上皆可引入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="區塊鏈之始">
-<meta property="og:url" content="https://yu-shin.github.io/posts/54c45e77/index.html">
+<meta property="og:title" content="Graph Traversal">
+<meta property="og:url" content="https://yu-shin.github.io/posts/108de846/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="前言 一開始接觸加密貨幣大概是2019年初(比大家晚很多)，那時去網路上收了10幾張RX570和RX470回來組了兩台礦機。 我還記得當時硬體配備：">
+<meta property="og:description" content="圖形追蹤 (Traverse Graph)  目的：  圖形中的所有頂點都被拜訪到，且僅被拜訪到一次  拜訪方式有兩種：  Depth First Search (DFS；深先搜尋，需利用Stack) Breadth First Search (BFS；廣先搜尋，需利用Queue)  應用：  檢査 Graph 是否連通？ 找出此圖的連通單元 ...  不論是採用何種圖形追蹤方法，在實作上皆可引入">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-12-16T12:27:27.000Z">
-<meta property="article:modified_time" content="2021-01-18T06:00:24.227Z">
+<meta property="article:published_time" content="2021-01-29T13:32:56.000Z">
+<meta property="article:modified_time" content="2021-01-29T14:29:47.329Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="日記">
+<meta property="article:tag" content="資料結構">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/posts/54c45e77/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/108de846/">
 
 
 <script data-pjax class="page-configurations">
@@ -50,7 +50,7 @@
     lang   : 'zh-TW'
   };
 </script>
-<title>區塊鏈之始 | Nicholas Blogger</title>
+<title>Graph Traversal | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -203,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%B2%E5%85%A5%E5%B9%A3%E5%9C%88"><span class="nav-number">2.</span> <span class="nav-text">進入幣圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defi"><span class="nav-number">3.</span> <span class="nav-text">Defi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solidity"><span class="nav-number">4.</span> <span class="nav-text">solidity</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%96%E5%BD%A2%E8%BF%BD%E8%B9%A4-traverse-graph"><span class="nav-number">1.</span> <span class="nav-text">圖形追蹤 (Traverse Graph)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#depth-first-traversal"><span class="nav-number">2.</span> <span class="nav-text">Depth-First Traversal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#breadth-first-traversal"><span class="nav-number">3.</span> <span class="nav-text">Breadth-First Traversal</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,7 +280,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/54c45e77/">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/108de846/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bighead.jpg">
@@ -293,7 +293,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          區塊鏈之始
+          Graph Traversal
         </h1>
 
         <div class="post-meta-container">
@@ -304,7 +304,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2020-12-16 20:27:27" itemprop="dateCreated datePublished" datetime="2020-12-16T20:27:27+08:00">2020-12-16</time>
+      <time title="創建時間：2021-01-29 21:32:56" itemprop="dateCreated datePublished" datetime="2021-01-29T21:32:56+08:00">2021-01-29</time>
     </span>
 
   
@@ -316,8 +316,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/posts/54c45e77/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/54c45e77/" itemprop="commentCount"></span>
+    <a title="disqus" href="/posts/108de846/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/108de846/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -329,7 +329,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.1k</span>
+      <span>975</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -347,14 +347,73 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="前言">前言</h3>
-<p>一開始接觸加密貨幣大概是2019年初(比大家晚很多)，那時去網路上收了10幾張RX570和RX470回來組了兩台礦機。 我還記得當時硬體配備：<a id="more"></a> * CPU: intel G4600 * 主機板: ASUS B250礦板（可以插18張顯示卡），當時看網友魔改到能插21張XD * GPU: AMD RX470 RX570 * RAM: DDR4 美光 3000Hz 16G (這個有點奢侈，8G就夠) * SSD: 金士頓128G * POWER: 海盜船RM1000X 振華850W(說真的振華真的超耐操，前輩們統計操壞的電源發現振華故障率最低） * OS: Hive OS(linux) WIN10(剛開使用Hive，後面因為懶得設定就用WIN10)</p>
-<h3 id="進入幣圈">進入幣圈</h3>
-<p>2020四月是我人生第一次用法幣（台幣）買BTC Maicoin入金然後再轉到深度較佳的幣安 開始了我的炒幣之旅</p>
-<h3 id="defi">Defi</h3>
-<p>其實我也忘記我為什麼會接觸到Defi的，但當時看了一些文章（剛開始是動區，後面主要都是鏈聞），和<strong>區塊先生</strong>(受益良多) 還好四月進入Defi還不算晚，當時很多幣種都還在萌芽，幣價被炒高好幾倍，雖然我只是在二級市場（交易所）撿別人剩下的韭菜不過還好也是撈了一些 這時期最嘔的就是在<strong>uniswap</strong>空投（9月初）很早之前我就知道這個最大的去中心化交易所了（因為區塊先生一直推XD) 但是我當時是用安卓<em>Argent</em>錢包，當時我在使用<strong>snx</strong>和<strong>curve</strong>的時候想說兌換的量不大，使用argent裡面的交易對和uniswap匯差沒差很多（我算過）所以就沒領到空頭了QQ，當時UNI我還記得一路從3美被炒到一顆9美還12美，等於空頭<strong>400UNI = 台幣3萬~10萬</strong>，而且我還要自己買來炒QQ 題外話相同性質的代幣<strong>SUSHI</strong>我也玩過，後面主廚那場鬧劇真的是...害我賠了一堆錢，不過最近SUSHI有慾火重生的感覺了 當時主要就是寫小程式串接幣安的API然後進行比較像是剝頭皮式策略賺錢，後面雖然也有用技術性指標MACD RSI EMA去做即時交易，但是久了發現虛擬貨幣人為炒作真的太大了，指標都不太準 其實炒幣很吃消息面，常常項目方Twitter和Medium發個合作文或是進展文（反正就是利好消息），在那短短幾分內幣價會被炒高很多，所以我其實一直想寫爬蟲抓消息面（寫過爬蟲都知道不難），但我恨我自己真的就是懶... 現在都玩幣安合約居多，之前想過跳去FTX（一部分因為SBF信仰），但是老話一句，懶= =</p>
-<h3 id="solidity">solidity</h3>
-<p>其實一開始挖礦我就稍微有去研究ETH和ETH2.0想解決的問題，當時就知道智慧合約，我覺得這是一個很大的市場和創新所以對ETH有信仰 前陣子想學solidity,但是相關的書籍並不多 我想可能是因為這領域還太新的關係 之後再更新吧，未完待續...</p>
+        <h1 id="圖形追蹤-traverse-graph">圖形追蹤 (Traverse Graph)</h1>
+<ul>
+<li><strong>目的：</strong>
+<ul>
+<li>圖形中的所有頂點都被拜訪到，且僅被拜訪到一次</li>
+</ul></li>
+<li><strong>拜訪方式有兩種：</strong>
+<ul>
+<li><code>Depth First Search</code> (DFS；深先搜尋，需利用Stack)</li>
+<li><code>Breadth First Search</code> (BFS；廣先搜尋，需利用Queue)</li>
+</ul></li>
+<li><strong>應用：</strong>
+<ul>
+<li>檢査 Graph 是否連通？</li>
+<li>找出此圖的連通單元</li>
+<li>...</li>
+</ul></li>
+<li>不論是採用何種圖形追蹤方法，在實作上皆可引入一個 <code>visited flag</code> (拜訪旗標)，<strong>以指出頂點的目前状況</strong>
+<ul>
+<li>Flag = 0：尚未拜訪 (not processed)</li>
+<li>Flag = 1：拜訪中 (in queue or stack)</li>
+<li>Flag = 2：已拜訪 (processed)</li>
+</ul></li>
+</ul>
+<h1 id="depth-first-traversal">Depth-First Traversal</h1>
+<p>走訪起始頂點 v，然後選擇一個相鄰至 v 且尚未被拜訪過的頂點 w；以w為起始點再做 Depth-First 追蹤。如果從任何已拜訪過的頂點，都無法再拜訪到一個尚未被走過的頂點時，則結束拜訪 <div class="note success"><p>包含<code>遞迴</code>應用的概念，因此可利用 <code>Stack</code> 保存走訪過程中間所走過的點</p>
+</div></p>
+<ul>
+<li>Steps:
+<ol type="1">
+<li>選擇一起始拜訪頂點 (可任選) ，將它 Push 到 stack 中</li>
+<li><ul>
+<li>若 Stack 不為空，則
+<ul>
+<li>從 Stack 中 Pop 一個頂點 (視為已拜訪頂點)，並將<code>此頂點所有相鄰之其它未拜訪頂點</code> Push 到 Stack 中。 (重覆執行)</li>
+<li>若所有頂點皆已被拜訪過，而Stack仍不為空時，則將Stack清空</li>
+</ul></li>
+<li>若 Stack 為空，則追蹤程序完成</li>
+</ul></li>
+</ol></li>
+</ul>
+<p><strong>例:</strong>             <strong>Ans:</strong> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex" xmlns="http://www.w3.org/2000/svg" width="21.66ex" height="1.984ex" role="img" focusable="false" viewBox="0 -683 9573.9 877" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-4-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-4-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-4-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-4-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-4-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-4-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-4-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-31"></use></g></g><g data-mml-node="mo" transform="translate(986.6, 0)"><use xlink:href="#MJX-4-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(1431.2, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2417.8, 0)"><use xlink:href="#MJX-4-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(2862.4, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-34"></use></g></g><g data-mml-node="mo" transform="translate(3849, 0)"><use xlink:href="#MJX-4-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(4293.7, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-35"></use></g></g><g data-mml-node="mo" transform="translate(5280.2, 0)"><use xlink:href="#MJX-4-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(5724.9, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-36"></use></g></g><g data-mml-node="mo" transform="translate(6711.4, 0)"><use xlink:href="#MJX-4-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(7156.1, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-33"></use></g></g><g data-mml-node="mo" transform="translate(8142.7, 0)"><use xlink:href="#MJX-4-TEX-N-2C"></use></g><g data-mml-node="msub" transform="translate(8587.3, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-I-1D449"></use></g><g data-mml-node="mn" transform="translate(583, -150) scale(0.707)"><use xlink:href="#MJX-4-TEX-N-37"></use></g></g></g></g></svg></mjx-container> <div class="note danger"><ul>
+<li>DFS 之順序<code>並不唯一</code>
+<ul>
+<li>起始頂點可任選</li>
+<li>每個頂點的分枝路徑可任選</li>
+</ul></li>
+<li>除非規定 “拜訪時，依 Node 編號<code>由小到大</code>拜訪” 才會唯一 (上面答案就是)</li>
+</ul>
+</div></p>
+<p><strong>例:</strong> 承上圖，下列何者不為 DFS 之 Order? a. 1, 2, 5, 8, 6, 3, 7, 4 b. 1, 3, 6, 8, 5, 2, 4, 7 c. 1, 3, 7, 8, 6, 5, 2, 4 d. 1, 2, 4, 8, 6, 3, 7, 5 e. 1, 3, 7, 8, 5, 4, 2, 6</p>
+<p><strong>Ans:</strong> e</p>
+<h1 id="breadth-first-traversal">Breadth-First Traversal</h1>
+<p>由起始頂點 v 開始走訪。所有相鄰至 v 且尚未被拜訪過的頂點，都會在下個步驟裡一一被走訪。而相鄰至這些被走訪頂點且尚未走過的頂點，又將被一一走訪；重複上述，直到無頂點可被拜訪為止</p>
+<ul>
+<li>Steps:
+<ol type="1">
+<li>選擇一起始拜訪頂點 (可任選) ，將它放入 Queue 中</li>
+<li><ul>
+<li>若 Queue 不為空，則
+<ul>
+<li>從 Queue 的前端移出一個頂點 (視為已拜訪頂點)，並將此頂點<code>所有相鄰之其它未拜訪頂點放入 Queue 中</code>。 (重覆執行)</li>
+</ul></li>
+<li>若 Queue 為空，則追蹤程序完成</li>
+</ul></li>
+</ol></li>
+</ul>
 
     </div>
 
@@ -395,18 +454,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E8%A8%98/" rel="tag"># 日記</a>
+              <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag"># 資料結構</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/posts/c8842ad8/" rel="prev" title="Graph">
+                  <i class="fa fa-chevron-left"></i> Graph
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/4df1633d/" rel="next" title="npm和npx">
-                  npm和npx <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -531,7 +590,38 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 <script>
@@ -546,9 +636,9 @@ document.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yu-shin.github.io/posts/54c45e77/";
-    this.page.identifier = "posts/54c45e77/";
-    this.page.title = "區塊鏈之始";
+    this.page.url = "https://yu-shin.github.io/posts/108de846/";
+    this.page.identifier = "posts/108de846/";
+    this.page.title = "Graph Traversal";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
