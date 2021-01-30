@@ -2194,19 +2194,58 @@ pop stack; &#x2F;&#x2F;即為結果<span aria-hidden="true" class="line-numbers-
     <title>Heap Sort</title>
     <url>/posts/2c38fcfa/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="heap-sort">Heap Sort</h1>
-<p>Heapsort 的演算法分為兩大步驟： 1. 將資料轉換為 heap 資料結構（遞增排序用 max-heap, 遞減排序選擇 min-heap）。 2. 逐步取出最大／最小值，並與最後一個元素置換。具體步驟如下： 1. 交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。 2. 更新剩下的資料，使其滿足 heap 的特性，稱為 heap ordering property。 3. 重複前兩個步驟，直到 heap 中剩最後一個未排序的資料。</p>
+<p>Heapsort 的演算法分為兩大步驟：</p>
+<ol type="1">
+<li>將資料轉換為 heap 資料結構（遞增排序用 max-heap, 遞減排序選擇 min-heap）。</li>
+<li>逐步取出最大／最小值，並與最後一個元素置換。具體步驟如下：
+<ol type="1">
+<li>交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。</li>
+<li>更新剩下的資料，使其滿足 heap 的特性，稱為 heap ordering property。</li>
+<li>重複前兩個步驟，直到 heap 中剩最後一個未排序的資料。</li>
+</ol></li>
+</ol>
 <a id="more"></a>
 <p>Heapsort（堆積排序）可以看作是 <a href="https://yu-shin.github.io/2020-12-30-Selection-Sort.html#more">selection sort</a> 的變形，同樣會將資料分為 sorted pile 與 unsorted pile，並在 unsorted pile 中尋找最大值（或最小值），加入 sorted pile 中。 <img src="/posts/2c38fcfa/%E4%BA%94%E5%80%8Bsort.jpg" class=""> <img src="/posts/2c38fcfa/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class=""></p>
 <h1 id="說明">說明</h1>
 <h3 id="binary-heap">Binary Heap</h3>
-<p><strong>Binary Heap</strong> 有兩項基本特徵： <strong>特徵一</strong>： Binary Heap 之結構可以視作 <strong>Complete Binary Tree</strong> 。 - 如圖一(a)，數值1～9，一共有9個元素，按照 <strong>Complete Binary Tree</strong> 之順序規則，填滿位置1～9，以 index(1)～index(9) 表示。</p>
-<p>這樣的優點是方便尋找「parent-child」之關係，以 index(i) 的 node 為例： - 其 <strong>left child</strong> 必定位在 <strong>index(2i)</strong> - 其 <strong>right child</strong> 必定位在 <strong>index(2i+1)</strong> - 其 <strong>parent</strong> 必定位在 <strong>index(⌊i/2⌋)</strong></p>
-<p>以圖一(a)中位於 index(3) 之 node(8) 為例： - 其 <strong>left child</strong> 為 index(6) 之 node(2)； - 其 <strong>right child</strong> 為 index(7) 之 node(3)； - 其 <strong>parent</strong> 為 index(1) 之 node(9)。</p>
+<p><strong>Binary Heap</strong> 有兩項基本特徵：</p>
+<p><strong>特徵一</strong>： Binary Heap 之結構可以視作 <strong>Complete Binary Tree</strong> 。</p>
+<ul>
+<li>如圖一(a)，數值1～9，一共有9個元素，按照 <strong>Complete Binary Tree</strong> 之順序規則，填滿位置1～9，以 index(1)～index(9) 表示。</li>
+</ul>
+<p>這樣的優點是方便尋找「parent-child」之關係，以 index(i) 的 node 為例：</p>
+<ul>
+<li>其 <strong>left child</strong> 必定位在 <strong>index(2i)</strong></li>
+<li>其 <strong>right child</strong> 必定位在 <strong>index(2i+1)</strong></li>
+<li>其 <strong>parent</strong> 必定位在 <strong>index(⌊i/2⌋)</strong></li>
+</ul>
+<p>以圖一(a)中位於 index(3) 之 node(8) 為例：</p>
+<ul>
+<li>其 <strong>left child</strong> 為 index(6) 之 node(2)；</li>
+<li>其 <strong>right child</strong> 為 index(7) 之 node(3)；</li>
+<li>其 <strong>parent</strong> 為 index(1) 之 node(9)。</li>
+</ul>
 <img src="/posts/2c38fcfa/1610176202580.jpg" class="">
-<p><strong>特徵二</strong>：若將位於 index(i) 之 node 視為 subtree 之 root ，那麼，可將此 Binary Heap 分為兩類： - <strong>Max Heap</strong>：在每一個 subtree 中， <strong>root</strong> 之「數值」要比兩個 <strong>child</strong> 之「數值」還要大，見圖一(a)： - value(i) &gt; value(2i) - value(i) &gt; value(2i+1) - <strong>Min Heap</strong>：在每一個 subtree 中， <strong>root</strong> 之「數值」要比兩個 <strong>child</strong> 之「數值」還要小，見圖一(b)： - value(i) &lt; value(2i) - value(i) &lt; value(2i+1)</p>
+<p><strong>特徵二</strong>：若將位於 index(i) 之 node 視為 subtree 之 root ，那麼，可將此 Binary Heap 分為兩類：</p>
+<ul>
+<li><strong>Max Heap</strong>：在每一個 subtree 中， <strong>root</strong> 之「數值」要比兩個 <strong>child</strong> 之「數值」還要大，見圖一(a)：
+<ul>
+<li>value(i) &gt; value(2i)</li>
+<li>value(i) &gt; value(2i+1)</li>
+</ul></li>
+<li><strong>Min Heap</strong>：在每一個 subtree 中， <strong>root</strong> 之「數值」要比兩個 <strong>child</strong> 之「數值」還要小，見圖一(b)：
+<ul>
+<li>value(i) &lt; value(2i)</li>
+<li>value(i) &lt; value(2i+1)</li>
+</ul></li>
+</ul>
 <img src="/posts/2c38fcfa/1610176456485.jpg" class="">
 <h3 id="heapsort-步驟說明">heapsort 步驟說明</h3>
-<p>而 heapsort 主要分為兩個部分： 1. <strong>Heapify</strong>：將陣列轉換為 heap 資料結構（heapify）。 2. <strong>Sorting</strong>：不斷置換 heap root 與最後一個元素來排序，並修正剩餘未排序資料使其符合 heap order。</p>
+<p>而 heapsort 主要分為兩個部分：</p>
+<ol type="1">
+<li><strong>Heapify</strong>：將陣列轉換為 heap 資料結構（heapify）。</li>
+<li><strong>Sorting</strong>：不斷置換 heap root 與最後一個元素來排序，並修正剩餘未排序資料使其符合 heap order。</li>
+</ol>
 <h1 id="程式碼">程式碼</h1>
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>HeapSort</span><a href="/downloads/code/heapsort/heapsort.py">view raw</a></div><code class="language-python">def heapify(unsorted, index, heap_size):
     largest &#x3D; index
@@ -3009,7 +3048,9 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>TIP 你可能聽說過 ERC20，這是 Ethereum 中的 token 標準。DAI，USDC，MKR和ZRX之類的 tokens 遵循 ERC20 標準，使它們都可以與任何可以處理 ERC20 tokens 的軟件兼容。 <strong>為簡單起見，我們要構建的 token 不是 ERC20 。</strong></p>
 </blockquote>
 <h3 id="writing-smart-contracts">Writing smart contracts</h3>
-<p>首先新增一個名為 <code>contracts</code> 的新目錄，然後在該目錄內新增檔案 <code>Token.sol</code>。 將下面的代碼複製到檔案中，花一點時間閱讀代碼。它很簡單，並且裡頭充滿了解釋 Solidity 代碼基礎的註釋。 &gt; TIP &gt; 如果要 syntax highlighting 應該在 text editor 中添加 Solidity support。 只需尋找 Solidity 或 Ethereum plugins。 建議使用 Visual Studio Code 或 Sublime Text 3。 <pre class="line-numbers language-solidity" data-language="solidity"><div class="caption"><span>Token.sol</span><a href="/downloads/code/hardhat/Token_1.sol">view raw</a></div><code class="language-solidity">&#x2F;&#x2F; Solidity files have to start with this pragma.
+<p>首先新增一個名為 <code>contracts</code> 的新目錄，然後在該目錄內新增檔案 <code>Token.sol</code>。 將下面的代碼複製到檔案中，花一點時間閱讀代碼。它很簡單，並且裡頭充滿了解釋 Solidity 代碼基礎的註釋。</p>
+<blockquote>
+<p>TIP 如果要 syntax highlighting 應該在 text editor 中添加 Solidity support。 只需尋找 Solidity 或 Ethereum plugins。 建議使用 Visual Studio Code 或 Sublime Text 3。 <pre class="line-numbers language-solidity" data-language="solidity"><div class="caption"><span>Token.sol</span><a href="/downloads/code/hardhat/Token_1.sol">view raw</a></div><code class="language-solidity">&#x2F;&#x2F; Solidity files have to start with this pragma.
 &#x2F;&#x2F; It will be used by the Solidity compiler to validate its version.
 pragma solidity ^0.7.0;
 
@@ -3068,7 +3109,11 @@ contract Token {
     function balanceOf(address account) external view returns (uint256) {
         return balances[account];
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> &gt; TIP &gt; <code>*.sol</code> 用於 Solidity 文件。建議將文件名與其包含的 contract 進行匹配，這是一種常見的做法。</p>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+</blockquote>
+<blockquote>
+<p>TIP <code>*.sol</code> 用於 Solidity 文件。建議將文件名與其包含的 contract 進行匹配，這是一種常見的做法。</p>
+</blockquote>
 <h3 id="compiling-contracts">Compiling contracts</h3>
 <p>要編譯 contract，在 terminal 執行 <code>npx hardhat compile</code>。 The <code>compile</code> task 是 hardhat 內建的 tasks 之一。 <pre class="line-numbers language-none"><code class="language-none">$ npx hardhat compile
 Compiling 1 file with 0.7.3
@@ -3282,15 +3327,23 @@ Trying to send 100 tokens to 0xe5904695748fe4a84b40b3fc79de2277660bd1d3
       ✓ Should update balances after transfers (187ms)
 
 
-  5 passing (2s)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> # Deploying to a live network 準備好與其他人共享 dApp 後，接下來要做的就是將其 deploy to a live network 中。這樣，其他人就可以訪問不在本地系統上運行的 instance 。</p>
+  5 passing (2s)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h1 id="deploying-to-a-live-network">Deploying to a live network</h1>
+<p>準備好與其他人共享 dApp 後，接下來要做的就是將其 deploy to a live network 中。這樣，其他人就可以訪問不在本地系統上運行的 instance 。</p>
 <p>有一個處理真實貨幣的 Ethereum network 被稱為 “mainnet” ，然後還有一些不處理真實貨幣但能夠很好地模仿 mainnet 的 live networks ，並且可以被其他人用作共享階段環境。這些被稱為 “testnets” ，以太坊有多個： Ropsten ， Kovan ， Rinkeby 和 Goerli 。我們建議你將 contracts 部署到 Ropsten 測試網。</p>
 <p>對於軟體來說，部署到測試網與部署到主網相同。唯一的區別是你連接到哪個網絡。讓我們看一下使用 ethers.js 部署合約的代碼是什麼樣的。</p>
 <p>主要概念是 <code>Signer</code> ， <code>ContractFactory</code> 和 <code>Contract</code> ，我們在 testing 部分對此進行了解釋。與 testing 部份相比，沒有什麼新的需要做，因為當測試 contracts 時，實際上是在向開發網絡進行部署。這使代碼非常相似或相同。</p>
 <p>讓我們在 project root's directory 下創建一個新的 <code>scripts</code> directory，並將以下內容複製到 <code>deploy.js</code> 文件中：  要指示 <strong>Hardhat</strong> 在運行任何 asks 時連接到特定的 Ethereum network ，可以使用 --network 參數。像這樣： <pre class="line-numbers language-none"><code class="language-none">npx hardhat run scripts&#x2F;deploy.js --network &lt;network-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 在這種情況下，如果不使用 --network 參數運行它，則代碼將針對 <strong>Hardhat Network</strong> 的 embedded instance 運行，因此當 Hardhat 完成運行時，部署實際上會丟失，但是它仍然能測試我們的部署的代碼是否有用： <pre class="line-numbers language-none"><code class="language-none">$ npx hardhat run scripts&#x2F;deploy.js
 Deploying contracts with the account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
 Account balance: 10000000000000000000000
-Token address: 0x5FbDB2315678afecb367f032d93F642f64180aa3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre> ### Deploying to remote networks 要部署到諸如主網或任何測試網之類的 remote networks ，您需要在您的 <code>hardhat.config.js</code> 文件中添加一個 network entry 。在此示例中，我們將添加 Ropsten ：  我們正在使用 <a href="https://infura.io/">Infura</a> ，但是將 <code>url</code> 指向任何 Ethereum node 或 gateway 都可以。快去獲取你的 <code>INFURA_PROJECT_ID</code> ，然後回來。</p>
-<p>要在 Ropsten 上進行部署，需要將 ropsten-ETH 發送到將要進行部署的地址中。可以從水龍頭( faucet )獲得一些用於測試網的 ETH ，該服務免費分發測試 ETH 。 <a href="https://faucet.metamask.io/">Here's the one for Ropsten</a> ，必須在交易前將 Metamask 的網絡更改為 Ropsten 。 &gt; TIP &gt; 可以通過以下 links 為其他測試網獲取一些 ETH ： &gt; - <a href="https://faucet.kovan.network/">Kovan faucet</a> &gt; - <a href="https://faucet.rinkeby.io/">Rinkeby faucet</a> &gt; - <a href="https://goerli-faucet.slock.it/">Goerli faucet</a> 最後，執行： <pre class="line-numbers language-none"><code class="language-none">npx hardhat run scripts&#x2F;deploy.js --network ropsten<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 如果一切順利，應該看到已部署的 contract address 。</p>
+Token address: 0x5FbDB2315678afecb367f032d93F642f64180aa3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h3 id="deploying-to-remote-networks">Deploying to remote networks</h3>
+<p>要部署到諸如主網或任何測試網之類的 remote networks ，您需要在您的 <code>hardhat.config.js</code> 文件中添加一個 network entry 。在此示例中，我們將添加 Ropsten ：  我們正在使用 <a href="https://infura.io/">Infura</a> ，但是將 <code>url</code> 指向任何 Ethereum node 或 gateway 都可以。快去獲取你的 <code>INFURA_PROJECT_ID</code> ，然後回來。</p>
+<p>要在 Ropsten 上進行部署，需要將 ropsten-ETH 發送到將要進行部署的地址中。可以從水龍頭( faucet )獲得一些用於測試網的 ETH ，該服務免費分發測試 ETH 。 <a href="https://faucet.metamask.io/">Here's the one for Ropsten</a> ，必須在交易前將 Metamask 的網絡更改為 Ropsten 。</p>
+<blockquote>
+<p>TIP 可以通過以下 links 為其他測試網獲取一些 ETH ： - <a href="https://faucet.kovan.network/">Kovan faucet</a> - <a href="https://faucet.rinkeby.io/">Rinkeby faucet</a> - <a href="https://goerli-faucet.slock.it/">Goerli faucet</a></p>
+</blockquote>
+<p>最後，執行： <pre class="line-numbers language-none"><code class="language-none">npx hardhat run scripts&#x2F;deploy.js --network ropsten<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 如果一切順利，應該看到已部署的 contract address 。</p>
 <h1 id="hardhat-hackathon-boilerplate-project">Hardhat Hackathon Boilerplate Project</h1>
 <p>如果想快速開始使用 dApp 或使用前端查看整個項目的外觀，可以使用 Hardhat 的 hackathon <a href="https://github.com/nomiclabs/hardhat-hackathon-boilerplate">樣板庫</a>。</p>
 <h3 id="whats-included">What's included</h3>
@@ -3342,7 +3395,16 @@ Transferred 1 ETH and 100 tokens to 0x0987a41e73e69f60c5071ce3c8f7e730f9a60f90<s
   console.log:
     Transferring from 0xc783df8a850f42e7f7e57013759c285caa701eb6 to 0x0987a41e73e69f60c5071ce3c8f7e730f9a60f90 100 tokens<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> 在我們的合約中顯示 <code>transfer()</code> 函數的 <code>console.log</code> 輸出，這是運行水龍頭 task 後 Web 應用程序的外觀： <img src="/posts/1730cd52/front-6.png" class=""> 嘗試使用它並閱讀代碼。它充滿了註釋，解釋了正在發生的事情，並清楚地指示了什麼代碼是 Ethereum boilerplate ，以及實際的 dApp 邏輯。這將使該 repository 易於為自己的 project 重複使用。</p>
 <h1 id="final-thoughts">Final thoughts</h1>
-<p>以下是在整個學習中可能會有用的一些 links ： - <a href="https://github.com/nomiclabs/hardhat-hackathon-boilerplate">Hardhat's Hackathon Boilerplate</a> - <a href="https://hardhat.org/getting-started/">Hardhat's documentation site</a> - <a href="https://hardhat.org/discord">Hardhat Support Discord server</a> - <a href="https://docs.ethers.io/">Ethers.js Documentation</a> - <a href="https://getwaffle.io/">Waffle Documentation</a> - <a href="https://mochajs.org/">Mocha Documentation</a> - <a href="https://www.chaijs.com/">Chai Documentation</a></p>
+<p>以下是在整個學習中可能會有用的一些 links ：</p>
+<ul>
+<li><a href="https://github.com/nomiclabs/hardhat-hackathon-boilerplate">Hardhat's Hackathon Boilerplate</a></li>
+<li><a href="https://hardhat.org/getting-started/">Hardhat's documentation site</a></li>
+<li><a href="https://hardhat.org/discord">Hardhat Support Discord server</a></li>
+<li><a href="https://docs.ethers.io/">Ethers.js Documentation</a></li>
+<li><a href="https://getwaffle.io/">Waffle Documentation</a></li>
+<li><a href="https://mochajs.org/">Mocha Documentation</a></li>
+<li><a href="https://www.chaijs.com/">Chai Documentation</a></li>
+</ul>
 <h1 id="參考資料">參考資料</h1>
 <p><a href="https://hardhat.org/tutorial/">hardhat</a></p>
 ]]></content>

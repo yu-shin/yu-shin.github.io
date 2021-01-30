@@ -1186,7 +1186,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>2.9k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -1205,7 +1205,16 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="heap-sort">Heap Sort</h1>
-<p>Heapsort 的演算法分為兩大步驟： 1. 將資料轉換為 heap 資料結構（遞增排序用 max-heap, 遞減排序選擇 min-heap）。 2. 逐步取出最大／最小值，並與最後一個元素置換。具體步驟如下： 1. 交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。 2. 更新剩下的資料，使其滿足 heap 的特性，稱為 heap ordering property。 3. 重複前兩個步驟，直到 heap 中剩最後一個未排序的資料。</p>
+<p>Heapsort 的演算法分為兩大步驟：</p>
+<ol type="1">
+<li>將資料轉換為 heap 資料結構（遞增排序用 max-heap, 遞減排序選擇 min-heap）。</li>
+<li>逐步取出最大／最小值，並與最後一個元素置換。具體步驟如下：
+<ol type="1">
+<li>交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。</li>
+<li>更新剩下的資料，使其滿足 heap 的特性，稱為 heap ordering property。</li>
+<li>重複前兩個步驟，直到 heap 中剩最後一個未排序的資料。</li>
+</ol></li>
+</ol>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/2c38fcfa/#more" rel="contents">
