@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://yu-shin.github.io/posts/fc4bcf8f/b27.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/fc4bcf8f/bb1.jpg">
 <meta property="article:published_time" content="2021-01-31T09:55:36.000Z">
-<meta property="article:modified_time" content="2021-01-31T15:38:02.412Z">
+<meta property="article:modified_time" content="2021-01-31T15:57:24.202Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="資料結構">
 <meta name="twitter:card" content="summary">
@@ -248,7 +248,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -377,7 +377,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="前言">前言</h1>
-<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來降低 Search Tree 的高度，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
+<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來<strong>降低 Search Tree 的高度</strong>，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
 <ul>
 <li><strong>因此發展出 <code>B-tree</code> of order m</strong></li>
 </ul>
@@ -391,47 +391,49 @@
 <h1 id="範例">範例</h1>
 <p><strong>有一 B-tree of order m 如下：</strong> <img src="/posts/fc4bcf8f/b1.jpg" class=""></p>
 <ul>
-<li>若 m = 3 (即：B-tree of order 3)
+<li><strong>若 m = 3</strong> (即：B-tree of order 3)
 <ul>
 <li><strong>Root</strong>：2 ≤ degree ≤ 3</li>
 <li><strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 2 ≤ degree ≤ 3</li>
 <li>B-tree of order 3 又稱 <code>2-3 tree</code></li>
 </ul></li>
-<li>若 m = 4 (即：B-tree of order 4)
+<li><strong>若 m = 4</strong> (即：B-tree of order 4)
 <ul>
 <li><strong>Root</strong>：2 ≤ degree ≤ 4</li>
 <li><strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 2 ≤ degree ≤ 4</li>
 <li>B-tree of order 4 又稱 <code>2-3-4 tree</code></li>
 </ul></li>
-<li>若 m = 5 (即：B-tree of order 5)
+<li><strong>若 m = 5</strong> (即：B-tree of order 5)
 <ul>
 <li><strong>Root</strong>：2 ≤ degree ≤ 5</li>
 <li><strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 3 ≤ degree ≤ 5</li>
 </ul></li>
 </ul>
 <h1 id="定理">定理</h1>
-<p>高度為 h 的 B-Tree：</p>
+<p>高度為 <strong>h</strong> 的 B-Tree：</p>
 <ul>
-<li>最多的 Node 個數 = ?</li>
-<li>最多的 Key (Data) 個數 = ? <div class="note danger"><p>由於 B-Tree 中，毎一個節點的 Degree 最大皆可到 m ( m 可自定 )所以其結果等同於 m-way Search Tree 的分析結果</p>
+<li><strong>最多的 Node 個數 = ?</strong></li>
+<li><strong>最多的 Key (Data) 個數 = ?</strong> <div class="note danger"><p>由於 B-Tree 中，毎一個節點的 Degree 最大皆可到 m ( m 可自定 )所以其結果等同於 m-way Search Tree 的分析結果</p>
 </div></li>
 </ul>
 <h1 id="insert">Insert</h1>
 <p><strong>Step:</strong></p>
 <ol type="1">
 <li>先做 Search，以找到適當的插入節點，將 x 放入該節點中</li>
-<li>檢査該節點有無 Overflow
+<li>檢査該節點有無 <code>Overflow</code>
 <ul>
-<li>無 Overflow ( key 數 ≤ m-1 )，則 OK 並跳出</li>
-<li>有 Overflow (key 數 ≥ m)則：
+<li><code>無</code> Overflow ( key 數 ≤ m-1 )，則 OK 並跳出</li>
+<li><code>有</code> Overflow (key 數 ≥ m)則：
 <ul>
-<li>作 “Split” 處理</li>
-<li>針對父點，goto 2 ( 即：作完 Split 後，針對父點檢査是否有 Overflow )</li>
+<li>作 “<code>Split</code>” 處理</li>
+<li><strong>針對父點，goto 2</strong> ( 即：作完 Split 後，針對父點檢査是否有 Overflow )</li>
 </ul></li>
 </ul></li>
 </ol>
 <div class="note success"><h2 id="split">Split</h2>
-<p>將第 ⎡m/2⎤ 個鍵値上拉到父點，其餘鍵値分成左、右兩個子點 <img src="/posts/fc4bcf8f/b2.jpg" class=""></p>
+<ul>
+<li><strong>將第 ⎡m/2⎤ 個鍵値上拉到父點，其餘鍵値分成左、右兩個子點</strong> <img src="/posts/fc4bcf8f/b2.jpg" class=""></li>
+</ul>
 </div>
 <h2 id="範例-1">範例</h2>
 <ol type="1">
@@ -457,58 +459,58 @@
 </ol>
 <p><strong>Ans:</strong> <img src="/posts/fc4bcf8f/b9.jpg" class=""></p>
 <h1 id="delete">Delete</h1>
-<p>Step:</p>
+<p><strong>Step:</strong></p>
 <ol type="1">
 <li>先做 Search，以找到 x 所在之節點</li>
 <li>分成下列兩個 Case 來處理:
 <ul>
-<li>Case 1: x 位於 Leaf Node</li>
-<li>Case 2: x 位於 Non-leaf Node</li>
+<li><code>Case 1</code>: x 位於 Leaf Node</li>
+<li><code>Case 2</code>: x 位於 Non-leaf Node</li>
 </ul></li>
 </ol>
 <h2 id="case-1-x-位於-leaf-node">Case 1: x 位於 Leaf Node</h2>
 <p><strong>Step:</strong></p>
 <ol type="1">
 <li>Delete x</li>
-<li>檢査該 Node 有無 Underflow
+<li>檢査該 Node 有無 <code>Underflow</code>
 <ul>
-<li>沒有 Underflow (即：鍵値數目 ≥ ⎡m/2⎤ -1) 則 OK，結束工作</li>
-<li>有 Underflow (即：鍵値數目 &lt; ⎡m/2⎤ -1)，則：
+<li><code>沒有</code> Underflow (即：鍵値數目 ≥ ⎡m/2⎤ -1) 則 OK，結束工作</li>
+<li><code>有</code> Underflow (即：鍵値數目 &lt; ⎡m/2⎤ -1)，則：
 <ul>
 <li>先嘗試作 “<code>Rotation</code>”，若完成工作則結束</li>
-<li>若無法做 “Rotation”，則作 “<code>Combination</code>”。Combination 做完，針對父點，goto 2</li>
+<li><strong>若無法做 “Rotation”</strong>，則作 “<code>Combination</code>”。Combination 做完，<strong>針對父點，goto 2</strong></li>
 </ul></li>
 </ul></li>
 </ol>
-<div class="note danger"><p>B-tree of order m 中，<strong>除了樹根與失敗節點之外</strong>，<code>其它的 Internal Node 的 degree 是介於 ⎡m/2⎤ ~ m 之間</code>，∴ 毎個 Internal Node 內的鍵值<code>最多有 m- 1 個鍵値</code>，<code>最少有 ⎡m/2⎤ - 1 個鍵値</code></p>
+<div class="note danger"><p>B-tree of order m 中，<strong>除了樹根與失敗節點之外，其它的 Internal Node 的 degree 是介於 ⎡m/2⎤ ~ m 之間</strong>，∴ 毎個 Internal Node 內的鍵值<code>最多有 m- 1 個鍵値</code>，<code>最少有 ⎡m/2⎤ - 1 個鍵値</code></p>
 </div>
 <h3 id="rotation">Rotation</h3>
-<p>Rotation 的處理，可分成：</p>
+<p><strong>Rotation 的處理，可分成：</strong></p>
 <ul>
 <li><strong>右旋：</strong>
 <ol type="1">
-<li>將右兄弟的最小鍵値傳至父點</li>
-<li>將原父點的最大鍵値傳給 Underflow 的節點做為其最大鍵値</li>
+<li>將<code>右</code>兄弟的<code>最小</code>鍵値傳至父點</li>
+<li>將原<code>父</code>點的<code>最大</code>鍵値傳給 Underflow 的節點做為其最大鍵値</li>
 </ol></li>
 <li><strong>左旋：</strong>
 <ol type="1">
-<li>將左兄弟的最大鍵値傳至父點</li>
-<li>將原父點的最小鍵値傳給 Underflow 的節點做為其最小鍵値</li>
+<li>將<code>左</code>兄弟的<code>最大</code>鍵値傳至父點</li>
+<li>將原<code>父</code>點的<code>最小</code>鍵値傳給 Underflow 的節點做為其最小鍵値</li>
 </ol></li>
 <li>這些 Rotation 的結果可保有 Binary Search Tree 的鍵値順序，即：左子樹(小) - 樹根(中) - 右子樹(大)</li>
 </ul>
 <img src="/posts/fc4bcf8f/b10.jpg" class="">
 <h3 id="combination">Combination</h3>
-<p>Combination 的處理，可分成：</p>
+<p><strong>Combination 的處理，可分成：</strong></p>
 <ul>
 <li><strong>右合併：</strong>
 <ol type="1">
-<li>將父點右邊的最大鍵値傳給 Underflow 的節點做為其最大鍵値</li>
+<li>將<code>父</code>點右邊的<code>最大</code>鍵値傳給 Underflow 的節點做為其最大鍵値</li>
 <li>將 Underflow 的節點與其<code>有相同鍵値來源之兄弟</code>合併成一個節點</li>
 </ol></li>
 <li><strong>左合併：</strong>
 <ol type="1">
-<li>將父點左邊的最小鍵値傳給 Underflow 的節點做為其最小鍵値</li>
+<li>將<code>父</code>點左邊的<code>最小</code>鍵値傳給 Underflow 的節點做為其最小鍵値</li>
 <li>將 Underflow 的節點與其<code>有相同鍵値來源之兄弟</code>合併成一個節點</li>
 </ol></li>
 <li>這些 Combination 的結果可保有 Binary Search Tree 的鍵値順序，即：左子樹(小) - 樹根(中) - 右子樹(大)</li>
@@ -581,22 +583,21 @@
 <h1 id="b-tree">B+ Tree</h1>
 <h2 id="定義-1">定義</h2>
 <ul>
-<li><code>是 B Tree 之變形</code>，也是用於 External Search / Sort 上</li>
+<li><code>是 B Tree 之變形</code>，也是用於 <strong>External Search / Sort</strong> 上</li>
 <li>可以支援 <strong>ISAM</strong> (Index Sequential Access Method)之實施，常用於 <strong>DBMS</strong> 內層製作</li>
 </ul>
 <img src="/posts/fc4bcf8f/bb1.jpg" class="">
 <h2 id="layer">Layer</h2>
-<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.075ex" height="1.754ex" role="img" focusable="false" viewBox="0 -775.2 1359.1 775.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-3-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D435"></use></g><g data-mml-node="mo" transform="translate(759, 363) scale(0.707)"><use xlink:href="#MJX-3-TEX-N-2B"></use></g></g></g></g></svg></mjx-container>
-<p>tree 分為兩個 <strong>Layer</strong>:</p>
+<p><strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex" xmlns="http://www.w3.org/2000/svg" width="20.886ex" height="2.218ex" role="img" focusable="false" viewBox="0 -775.2 9231.5 980.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-3-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-3-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-3-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-3-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-3-TEX-I-1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path id="MJX-3-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-3-TEX-I-1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-3-TEX-N-3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D435"></use></g><g data-mml-node="mo" transform="translate(759, 363) scale(0.707)"><use xlink:href="#MJX-3-TEX-N-2B"></use></g></g><g data-mml-node="mi" transform="translate(1359.1, 0)"><use xlink:href="#MJX-3-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(1720.1, 0)"><use xlink:href="#MJX-3-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(2171.1, 0)"><use xlink:href="#MJX-3-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(2637.1, 0)"><use xlink:href="#MJX-3-TEX-I-1D452"></use></g><g data-mml-node="mo" transform="translate(3380.9, 0)"><text data-variant="normal" transform="matrix(1 0 0 -1 0 0)" font-size="884px" font-family="serif">分</text><text data-variant="normal" transform="translate(600, 0) matrix(1 0 0 -1 0 0)" font-size="884px" font-family="serif">為</text><text data-variant="normal" transform="translate(1200, 0) matrix(1 0 0 -1 0 0)" font-size="884px" font-family="serif">兩</text><text data-variant="normal" transform="translate(1800, 0) matrix(1 0 0 -1 0 0)" font-size="884px" font-family="serif">個</text></g><g data-mml-node="mi" transform="translate(6058.7, 0)"><use xlink:href="#MJX-3-TEX-I-1D43F"></use></g><g data-mml-node="mi" transform="translate(6739.7, 0)"><use xlink:href="#MJX-3-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(7268.7, 0)"><use xlink:href="#MJX-3-TEX-I-1D466"></use></g><g data-mml-node="mi" transform="translate(7758.7, 0)"><use xlink:href="#MJX-3-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(8224.7, 0)"><use xlink:href="#MJX-3-TEX-I-1D45F"></use></g><g data-mml-node="mo" transform="translate(8953.5, 0)"><use xlink:href="#MJX-3-TEX-N-3A"></use></g></g></g></svg></mjx-container></strong></p>
 <ul>
 <li><code>Index Layer:</code>
 <ul>
-<li>採 B tree 結構。僅用來存放<code>索引</code>，以幫助 User 正確地找到所需之 Data Block</li>
+<li>採 B tree 結構。僅用來存放<code>索引</code>，<strong>以幫助 User 正確地找到所需之 Data Block</strong></li>
 </ul></li>
 <li><code>Data Blocks Layer:</code>
 <ul>
 <li>用以存放 <code>Data</code> ，且 Blocks 之間以 <code>Link List</code> 串連</li>
-<li>Data Block 存放資料時，通常<code>不會受到 B tree 的 Order 限制</code>。因此，每個 Data Block 最多要塞多少筆 Data 可自訂。當然也可以和 Index Layer 內的節點一致</li>
+<li>Data Block 存放資料時，通常<code>不會受到 B tree 的 Order 限制</code>。<strong>因此，每個 Data Block 最多要塞多少筆 Data 可自訂</strong>。當然也可以和 Index Layer 內的節點一致</li>
 </ul></li>
 </ul>
 <h2 id="index-sequential-access">Index Sequential Access</h2>
@@ -658,6 +659,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/posts/6592a919/" rel="next" title="Graph Storage Structures">
+                  Graph Storage Structures <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -722,7 +726,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:27</span>
+    <span title="所需總閱讀時間">2:28</span>
   </span>
 </div>
 

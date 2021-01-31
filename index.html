@@ -216,7 +216,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -267,6 +267,119 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/6592a919/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="辛苦是值得的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/6592a919/" class="post-title-link" itemprop="url">Graph Storage Structures</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-01-31 23:59:03" itemprop="dateCreated datePublished" datetime="2021-01-31T23:59:03+08:00">2021-01-31</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/6592a919/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/6592a919/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>4 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="圖形的儲存結構-graph-storage-structures">圖形的儲存結構 (Graph Storage Structures)</h1>
+<ul>
+<li>若要在系統中表示一個圖形，需要儲存兩個集合：
+<ul>
+<li>圖形的頂點 ( <code>Vertices</code> )</li>
+<li>圖形的邊 （ <code>Edges</code> or arcs )</li>
+</ul></li>
+<li>常用的表示方式：
+<ul>
+<li>Adjacency Matrix ( 相鄰矩陣 )</li>
+<li>Adjacency List ( 相鄰串列 )</li>
+<li>Multiple Adjacency List ( 相鄰多元串列 )</li>
+<li>Index Array ( 索引陣列 )
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/6592a919/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -344,7 +457,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="前言">前言</h1>
-<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來降低 Search Tree 的高度，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
+<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來<strong>降低 Search Tree 的高度</strong>，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
 <ul>
 <li><strong>因此發展出 <code>B-tree</code> of order m</strong></li>
 </ul>
@@ -896,14 +1009,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>3.9k</span>
+      <span>1.7k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>7 分鐘</span>
+      <span>3 分鐘</span>
     </span>
 </div>
 
@@ -1264,113 +1377,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/8069546e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="辛苦是值得的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/8069546e/" class="post-title-link" itemprop="url">Stack</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2021-01-20 21:29:41" itemprop="dateCreated datePublished" datetime="2021-01-20T21:29:41+08:00">2021-01-20</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/8069546e/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/8069546e/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>4.7k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>9 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="stack-堆疊">Stack (堆疊)</h1>
-<p>具有 LIFO (last in-first out)或 FILO (first in-last out)性質的有序串列</p>
-<ul>
-<li>插入元素的動作稱為 <code>Push</code>, 刪除元素的動作稱為 <code>Pop</code></li>
-<li>Push/Pop 的動作皆發生在同一端，此端稱為 <code>Top</code></li>
-</ul>
-<img src="/posts/8069546e/stack1.jpg" class="">
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/8069546e/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
@@ -1423,7 +1429,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:27</span>
+    <span title="所需總閱讀時間">2:28</span>
   </span>
 </div>
 

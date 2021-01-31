@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yu-shin.github.io/categories/datastructure.html</loc>
+    
+    <lastmod>2021-01-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yu-shin.github.io/posts/c8842ad8/</loc>
+    
+    <lastmod>2021-01-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yu-shin.github.io/posts/6592a919/</loc>
+    
+    <lastmod>2021-01-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yu-shin.github.io/posts/fc4bcf8f/</loc>
     
     <lastmod>2021-01-31</lastmod>
@@ -89,13 +110,6 @@
     <loc>https://yu-shin.github.io/posts/108de846/</loc>
     
     <lastmod>2021-01-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yu-shin.github.io/posts/c8842ad8/</loc>
-    
-    <lastmod>2021-01-29</lastmod>
     
   </url>
   
@@ -213,13 +227,6 @@
   
   <url>
     <loc>https://yu-shin.github.io/categories/blockchain.html</loc>
-    
-    <lastmod>2021-01-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yu-shin.github.io/categories/datastructure.html</loc>
     
     <lastmod>2021-01-14</lastmod>
     
