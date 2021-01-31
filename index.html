@@ -216,7 +216,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -267,6 +267,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/fc4bcf8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="辛苦是值得的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/fc4bcf8f/" class="post-title-link" itemprop="url">B-Tree</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-01-31 17:55:36" itemprop="dateCreated datePublished" datetime="2021-01-31T17:55:36+08:00">2021-01-31</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/fc4bcf8f/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/fc4bcf8f/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>5 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言">前言</h1>
+<p>m-way Search Tree 雖利用增大 Tree 的 Degree 來降低 Search Tree 的高度，以減少 Disk I/O 的次數，但若此 Tree 不平衡，也可能會變相地增加 Disk I/O 的次數 - <strong>因此發展出 <code>B-tree</code> of order m</strong></p>
+<h1 id="定義">定義</h1>
+<p>是一個 Balanced m-way search tree。可以為空，若不為空，則滿足： - Root 至少有 2 個 Childs ( <code>Root: 2 ≤ degree ≤ m</code>) - 除了 Root 及 Failure Node 之外，其餘 Node 的分支度介於 ⎡m/2⎤ 及 m 之間 (<code>⎡m/2⎤  ≤ degree ≤ m</code>) - 所有的 Failure Node 皆位於同一 Level。(即：所有葉子節點位於同一 Level)
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/fc4bcf8f/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -344,7 +448,20 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="前言-外部搜尋-external-search">前言： 外部搜尋 (External Search)</h1>
-<p><strong>m-way Search Tree</strong> 主要用於<code>外部搜尋 (External Search)</code> - 先前的樹状搜尋方法皆為<strong>內部搜尋 (Internal Search)</strong>( B.S.T.和 AVL ) - <strong>Internal Search:</strong> - <mark class="label info">資料量少</mark>，可以一次全部置於 <code>Memory</code> 中進行 search 之工作 - <strong>External Search:</strong> - <mark class="label info">資料量大</mark>，無法一次全置於 Memory 中，須藉助輔助儲存體( E.g. Disk )，進行分段 search 之工作</p>
+<p><strong>m-way Search Tree</strong> 主要用於<code>外部搜尋 (External Search)</code></p>
+<ul>
+<li>先前的樹状搜尋方法皆為<strong>內部搜尋 (Internal Search)</strong>( B.S.T.和 AVL )</li>
+<li><strong>Internal Search:</strong>
+<ul>
+<li><mark class="label info">資料量少</mark>
+，可以一次全部置於 <code>Memory</code> 中進行 search 之工作</li>
+</ul></li>
+<li><strong>External Search:</strong>
+<ul>
+<li><mark class="label info">資料量大</mark>
+，無法一次全置於 Memory 中，須藉助輔助儲存體( E.g. Disk )，進行分段 search 之工作</li>
+</ul></li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/eb32b5ac/#more" rel="contents">
@@ -1247,114 +1364,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/d37550bb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="辛苦是值得的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d37550bb/" class="post-title-link" itemprop="url">Link Lists</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2021-01-19 20:58:55" itemprop="dateCreated datePublished" datetime="2021-01-19T20:58:55+08:00">2021-01-19</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/d37550bb/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/d37550bb/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>4k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>7 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="定義">定義</h1>
-<p>由一組<code>節點 (Node)</code> 所組成的<code>有序串列</code>，各 Node 除了 <code>Data 欄</code>之外，另外有 <code>≥ 1 個 Link 欄</code> (或稱 Pointer)，用以指向其它 Node 之位址。</p>
-<h1 id="特質">特質</h1>
-<ul>
-<li>各Node不一定要佔用連續的Memory空間</li>
-<li>各Node之型態 (Data Type) (Data Type) 不一定要相同</li>
-<li>僅支援Sequential Access</li>
-<li>Insert/Delete Node Insert/Delete Node 容易
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/d37550bb/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
@@ -1401,13 +1410,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">78k</span>
+    <span title="總字數">81k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:22</span>
+    <span title="所需總閱讀時間">2:27</span>
   </span>
 </div>
 
