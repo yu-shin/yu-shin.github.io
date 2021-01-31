@@ -325,7 +325,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>2.9k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -344,9 +344,16 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="前言">前言</h1>
-<p>m-way Search Tree 雖利用增大 Tree 的 Degree 來降低 Search Tree 的高度，以減少 Disk I/O 的次數，但若此 Tree 不平衡，也可能會變相地增加 Disk I/O 的次數 - <strong>因此發展出 <code>B-tree</code> of order m</strong></p>
+<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來降低 Search Tree 的高度，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
+<ul>
+<li><strong>因此發展出 <code>B-tree</code> of order m</strong></li>
+</ul>
 <h1 id="定義">定義</h1>
-<p>是一個 Balanced m-way search tree。可以為空，若不為空，則滿足： - Root 至少有 2 個 Childs ( <code>Root: 2 ≤ degree ≤ m</code>) - 除了 Root 及 Failure Node 之外，其餘 Node 的分支度介於 ⎡m/2⎤ 及 m 之間 (<code>⎡m/2⎤  ≤ degree ≤ m</code>) - 所有的 Failure Node 皆位於同一 Level。(即：所有葉子節點位於同一 Level)
+<p><strong>是一個 Balanced m-way search tree。可以為空，若不為空，則滿足：</strong></p>
+<ul>
+<li><strong>Root 至少有 2 個 Childs ( <code>Root: 2 ≤ degree ≤ m</code>)</strong></li>
+<li><strong>除了 Root 及 Failure Node 之外，其餘 Node 的分支度介於 ⎡m/2⎤ 及 m 之間 (<code>⎡m/2⎤  ≤ degree ≤ m</code>)</strong></li>
+<li><strong>所有的 Failure Node 皆位於同一 Level。(即：所有葉子節點位於同一 Level)</strong>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/fc4bcf8f/#more" rel="contents">

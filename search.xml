@@ -167,35 +167,79 @@
     <title>B-Tree</title>
     <url>/posts/fc4bcf8f/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言">前言</h1>
-<p>m-way Search Tree 雖利用增大 Tree 的 Degree 來降低 Search Tree 的高度，以減少 Disk I/O 的次數，但若此 Tree 不平衡，也可能會變相地增加 Disk I/O 的次數 - <strong>因此發展出 <code>B-tree</code> of order m</strong></p>
+<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來降低 Search Tree 的高度，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
+<ul>
+<li><strong>因此發展出 <code>B-tree</code> of order m</strong></li>
+</ul>
 <h1 id="定義">定義</h1>
-<p>是一個 Balanced m-way search tree。可以為空，若不為空，則滿足： - Root 至少有 2 個 Childs ( <code>Root: 2 ≤ degree ≤ m</code>) - 除了 Root 及 Failure Node 之外，其餘 Node 的分支度介於 ⎡m/2⎤ 及 m 之間 (<code>⎡m/2⎤  ≤ degree ≤ m</code>) - 所有的 Failure Node 皆位於同一 Level。(即：所有葉子節點位於同一 Level) <a id="more"></a></p>
+<p><strong>是一個 Balanced m-way search tree。可以為空，若不為空，則滿足：</strong></p>
+<ul>
+<li><strong>Root 至少有 2 個 Childs ( <code>Root: 2 ≤ degree ≤ m</code>)</strong></li>
+<li><strong>除了 Root 及 Failure Node 之外，其餘 Node 的分支度介於 ⎡m/2⎤ 及 m 之間 (<code>⎡m/2⎤  ≤ degree ≤ m</code>)</strong></li>
+<li><strong>所有的 Failure Node 皆位於同一 Level。(即：所有葉子節點位於同一 Level)</strong> <a id="more"></a></li>
+</ul>
 <h1 id="範例">範例</h1>
-<p>有一 B-tree of order m 如下： <img src="/posts/fc4bcf8f/b1.jpg" class=""> - 若 m = 3 (即：B-tree of order 3) - <strong>Root</strong>：2 ≤ degree ≤ 3 - <strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 2 ≤ degree ≤ 3 - B-tree of order 3 又稱 <code>2-3 tree</code> - 若 m = 4 (即：B-tree of order 4) - <strong>Root</strong>：2 ≤ degree ≤ 4 - <strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 2 ≤ degree ≤ 4 - B-tree of order 4 又稱 <code>2-3-4 tree</code> - 若 m = 5 (即：B-tree of order 5) - <strong>Root</strong>：2 ≤ degree ≤ 5 - <strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 3 ≤ degree ≤ 5</p>
+<p><strong>有一 B-tree of order m 如下：</strong> <img src="/posts/fc4bcf8f/b1.jpg" class=""></p>
+<ul>
+<li>若 m = 3 (即：B-tree of order 3)
+<ul>
+<li><strong>Root</strong>：2 ≤ degree ≤ 3</li>
+<li><strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 2 ≤ degree ≤ 3</li>
+<li>B-tree of order 3 又稱 <code>2-3 tree</code></li>
+</ul></li>
+<li>若 m = 4 (即：B-tree of order 4)
+<ul>
+<li><strong>Root</strong>：2 ≤ degree ≤ 4</li>
+<li><strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 2 ≤ degree ≤ 4</li>
+<li>B-tree of order 4 又稱 <code>2-3-4 tree</code></li>
+</ul></li>
+<li>若 m = 5 (即：B-tree of order 5)
+<ul>
+<li><strong>Root</strong>：2 ≤ degree ≤ 5</li>
+<li><strong>非 Root 與非外部的節點</strong>： ⎡m/2⎤ ≤ degree ≤ m ⇒ 3 ≤ degree ≤ 5</li>
+</ul></li>
+</ul>
 <h1 id="定理">定理</h1>
-<p>高度為 h 的 B-Tree： - 最多的 Node 個數 = ? - 最多的 Key (Data) 個數 = ? <div class="note danger"><p>由於 B-Tree 中，毎一個節點的 Degree 最大皆可到 m ( m可自定 )所以其結果等同於 m-way Search Tree 的分析結果</p>
-</div></p>
+<p>高度為 h 的 B-Tree：</p>
+<ul>
+<li>最多的 Node 個數 = ?</li>
+<li>最多的 Key (Data) 個數 = ? <div class="note danger"><p>由於 B-Tree 中，毎一個節點的 Degree 最大皆可到 m ( m 可自定 )所以其結果等同於 m-way Search Tree 的分析結果</p>
+</div></li>
+</ul>
 <h1 id="insert">Insert</h1>
-<p>Step: 1. 先做 Search，以找到適當的插入節點，將 x 放入該節點中 2. 檢査該節點有無 Overflow - 無 Overflow ( key 數 ≤ m-1 )，則 OK 並跳出 - 有 Overflow (key數 ≥ m)則： - 作 “Split” 處理 - 針對父點，goto 2 ( 即：作完 Split 後，針對父點檢査是否有 Overflow )</p>
+<p><strong>Step:</strong></p>
+<ol type="1">
+<li>先做 Search，以找到適當的插入節點，將 x 放入該節點中</li>
+<li>檢査該節點有無 Overflow
+<ul>
+<li>無 Overflow ( key 數 ≤ m-1 )，則 OK 並跳出</li>
+<li>有 Overflow (key 數 ≥ m)則：
+<ul>
+<li>作 “Split” 處理</li>
+<li>針對父點，goto 2 ( 即：作完 Split 後，針對父點檢査是否有 Overflow )</li>
+</ul></li>
+</ul></li>
+</ol>
 <div class="note success"><h2 id="split">Split</h2>
 <p>將第 ⎡m/2⎤ 個鍵値上拉到父點，其餘鍵値分成左、右兩個子點 <img src="/posts/fc4bcf8f/b2.jpg" class=""></p>
 </div>
 <h2 id="範例-1">範例</h2>
 <ol type="1">
-<li><strong>有一 B-tree of order 3 如下，若連續 Insert “2”， “130”， “8” 會得到什麼結果?</strong> <img src="/posts/fc4bcf8f/b3.jpg" class=""> <strong>Ans:</strong></li>
+<li><strong>有一 B-tree of order 3 如下，若連續 Insert “2”， “130”， “8” 會得到什麼結果?</strong> <img src="/posts/fc4bcf8f/b3.jpg" class=""></li>
 </ol>
+<p><strong>Ans:</strong></p>
 <ul>
-<li>Insert “2”
+<li><strong>Insert “2”</strong>
 <ul>
-<li>無 Overflow，∴ OK. <img src="/posts/fc4bcf8f/b4.jpg" class=""></li>
+<li><strong>無 Overflow，∴ OK.</strong> <img src="/posts/fc4bcf8f/b4.jpg" class=""></li>
 </ul></li>
-<li>Insert “130”
+<li><strong>Insert “130”</strong>
 <ul>
-<li>有 Overflow <img src="/posts/fc4bcf8f/b5.jpg" class=""></li>
+<li><strong>有 Overflow</strong> <img src="/posts/fc4bcf8f/b5.jpg" class=""></li>
 </ul></li>
-<li>Insert “8”
+<li><strong>Insert “8”</strong>
 <ul>
-<li>有 Overflow <img src="/posts/fc4bcf8f/b6.jpg" class=""> <img src="/posts/fc4bcf8f/b7.jpg" class=""> <img src="/posts/fc4bcf8f/b8.jpg" class=""></li>
+<li><strong>有 Overflow</strong> <img src="/posts/fc4bcf8f/b6.jpg" class=""> <img src="/posts/fc4bcf8f/b7.jpg" class=""> <img src="/posts/fc4bcf8f/b8.jpg" class=""></li>
 </ul></li>
 </ul>
 <ol start="2" type="1">
@@ -203,34 +247,81 @@
 </ol>
 <p><strong>Ans:</strong> <img src="/posts/fc4bcf8f/b9.jpg" class=""></p>
 <h1 id="delete">Delete</h1>
-<p>Step: 1. 先做 Search，以找到 x 所在之節點 2. 分成下列兩個 Case 來處理: - Case 1: x 位於 Leaf Node - Case 2: x 位於 Non-leaf Node</p>
+<p>Step:</p>
+<ol type="1">
+<li>先做 Search，以找到 x 所在之節點</li>
+<li>分成下列兩個 Case 來處理:
+<ul>
+<li>Case 1: x 位於 Leaf Node</li>
+<li>Case 2: x 位於 Non-leaf Node</li>
+</ul></li>
+</ol>
 <h2 id="case-1-x-位於-leaf-node">Case 1: x 位於 Leaf Node</h2>
-<p>Step: 1. Delete x 2. 檢査該 Node 有無 Underflow - 沒有 Underflow (即：鍵値數目 ≥ ⎡m/2⎤ -1) 則 OK，結束工作 - 有 Underflow (即：鍵値數目 &lt; ⎡m/2⎤ -1)，則： - 先嘗試作 “<code>Rotation</code>”，若完成工作則結束 - 若無法做 “Rotation”，則作 “<code>Combination</code>”。Combination 做完，針對父點，goto 2</p>
-<div class="note danger"><p>B-tree of order m 中，除了樹根與失敗節點之外，其它的 Internal Node 的 degree 是介於 ⎡m/2⎤ ~ m 之間，∴ 毎個 Internal Node 內的鍵值最多有 m- 1 個鍵値，最少有 ⎡m/2⎤ - 1 個鍵値</p>
+<p><strong>Step:</strong></p>
+<ol type="1">
+<li>Delete x</li>
+<li>檢査該 Node 有無 Underflow
+<ul>
+<li>沒有 Underflow (即：鍵値數目 ≥ ⎡m/2⎤ -1) 則 OK，結束工作</li>
+<li>有 Underflow (即：鍵値數目 &lt; ⎡m/2⎤ -1)，則：
+<ul>
+<li>先嘗試作 “<code>Rotation</code>”，若完成工作則結束</li>
+<li>若無法做 “Rotation”，則作 “<code>Combination</code>”。Combination 做完，針對父點，goto 2</li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="note danger"><p>B-tree of order m 中，<strong>除了樹根與失敗節點之外</strong>，<code>其它的 Internal Node 的 degree 是介於 ⎡m/2⎤ ~ m 之間</code>，∴ 毎個 Internal Node 內的鍵值<code>最多有 m- 1 個鍵値</code>，<code>最少有 ⎡m/2⎤ - 1 個鍵値</code></p>
 </div>
 <h3 id="rotation">Rotation</h3>
-<p>Rotation 的處理，可分成： - 右旋： 1. 將右兄弟的最小鍵値傳至父點 2. 將原父點的最大鍵値傳給 Underflow 的節點做為其最大鍵値 - 左旋： 1. 將左兄弟的最大鍵値傳至父點 2. 將原父點的最小鍵値傳給 Underflow 的節點做為其最小鍵値 - 這些 Rotation 的結果可保有 Binary Search Tree 的鍵値順序，即：左子樹(小) - 樹根(中) - 右子樹(大)</p>
+<p>Rotation 的處理，可分成：</p>
+<ul>
+<li><strong>右旋：</strong>
+<ol type="1">
+<li>將右兄弟的最小鍵値傳至父點</li>
+<li>將原父點的最大鍵値傳給 Underflow 的節點做為其最大鍵値</li>
+</ol></li>
+<li><strong>左旋：</strong>
+<ol type="1">
+<li>將左兄弟的最大鍵値傳至父點</li>
+<li>將原父點的最小鍵値傳給 Underflow 的節點做為其最小鍵値</li>
+</ol></li>
+<li>這些 Rotation 的結果可保有 Binary Search Tree 的鍵値順序，即：左子樹(小) - 樹根(中) - 右子樹(大)</li>
+</ul>
 <img src="/posts/fc4bcf8f/b10.jpg" class="">
 <h3 id="combination">Combination</h3>
-<p>Combination 的處理，可分成： - 右合併： 1. 將父點右邊的最大鍵値傳給 Underflow 的節點做為其最大鍵値 2. 將 Underflow 的節點與其<code>有相同鍵値來源之兄弟</code>合併成一個節點 - 左合併： 1. 將父點左邊的最小鍵値傳給 Underflow 的節點做為其最小鍵値 2. 將 Underflow 的節點與其<code>有相同鍵値來源之兄弟</code>合併成一個節點 - 這些 Combination 的結果可保有 Binary Search Tree 的鍵値順序，即：左子樹(小) - 樹根(中) - 右子樹(大)</p>
+<p>Combination 的處理，可分成：</p>
+<ul>
+<li><strong>右合併：</strong>
+<ol type="1">
+<li>將父點右邊的最大鍵値傳給 Underflow 的節點做為其最大鍵値</li>
+<li>將 Underflow 的節點與其<code>有相同鍵値來源之兄弟</code>合併成一個節點</li>
+</ol></li>
+<li><strong>左合併：</strong>
+<ol type="1">
+<li>將父點左邊的最小鍵値傳給 Underflow 的節點做為其最小鍵値</li>
+<li>將 Underflow 的節點與其<code>有相同鍵値來源之兄弟</code>合併成一個節點</li>
+</ol></li>
+<li>這些 Combination 的結果可保有 Binary Search Tree 的鍵値順序，即：左子樹(小) - 樹根(中) - 右子樹(大)</li>
+</ul>
 <img src="/posts/fc4bcf8f/b11.jpg" class="">
 <h3 id="範例-2">範例</h3>
 <ol type="1">
-<li><strong>有一 B-tree of order 3 如下，若連續 Delete “5”， “65”， “50” 會得到什麼結果?</strong> <img src="/posts/fc4bcf8f/b12.jpg" class=""> <strong>Ans:</strong></li>
+<li><strong>有一 B-tree of order 3 如下，若連續 Delete “5”， “65”， “50” 會得到什麼結果?</strong> <img src="/posts/fc4bcf8f/b12.jpg" class=""></li>
 </ol>
+<p><strong>Ans:</strong></p>
 <ul>
 <li><p>2 ≤ degree ≤ 3 ⇒ <code>1 ≤ 鍵値數量 ≤ 2</code></p></li>
-<li>Delete “5”
+<li><strong>Delete “5”</strong>
 <ul>
-<li>無 Underflow，∴ OK <img src="/posts/fc4bcf8f/b13.jpg" class=""></li>
+<li><strong>無 Underflow，∴ OK</strong> <img src="/posts/fc4bcf8f/b13.jpg" class=""></li>
 </ul></li>
-<li>Delete “65”
+<li><strong>Delete “65”</strong>
 <ul>
-<li>有 Underflow <img src="/posts/fc4bcf8f/b14.jpg" class=""></li>
+<li><strong>有 Underflow</strong> <img src="/posts/fc4bcf8f/b14.jpg" class=""></li>
 </ul></li>
-<li>Delete “50”
+<li><strong>Delete “50”</strong>
 <ul>
-<li>有 Underflow <img src="/posts/fc4bcf8f/b15.jpg" class=""></li>
+<li><strong>有 Underflow</strong> <img src="/posts/fc4bcf8f/b15.jpg" class=""></li>
 </ul></li>
 </ul>
 <ol start="2" type="1">
@@ -238,46 +329,66 @@
 </ol>
 <ul>
 <li><p>2 ≤ degree ≤ 3 ⇒ <code>1 ≤ 鍵値數量 ≤ 2</code></p></li>
-<li>Delete “80”
+<li><strong>Delete “80”</strong>
 <ul>
-<li>有 Underflow <img src="/posts/fc4bcf8f/b17.jpg" class=""></li>
+<li><strong>有 Underflow</strong> <img src="/posts/fc4bcf8f/b17.jpg" class=""></li>
 </ul></li>
-<li>父點有 Underflow <img src="/posts/fc4bcf8f/b18.jpg" class=""></li>
-<li>Delete “10”
+<li><strong>父點有 Underflow</strong> <img src="/posts/fc4bcf8f/b18.jpg" class=""></li>
+<li><strong>Delete “10”</strong>
 <ul>
-<li>有 Underflow <img src="/posts/fc4bcf8f/b19.jpg" class=""></li>
+<li><strong>有 Underflow</strong> <img src="/posts/fc4bcf8f/b19.jpg" class=""></li>
 </ul></li>
-<li>父點有 Underflow <img src="/posts/fc4bcf8f/b20.jpg" class=""></li>
-<li><p>父點又有 Underflow <img src="/posts/fc4bcf8f/b21.jpg" class=""></p></li>
+<li><strong>父點有 Underflow</strong> <img src="/posts/fc4bcf8f/b20.jpg" class=""></li>
+<li><p><strong>父點又有 Underflow</strong> <img src="/posts/fc4bcf8f/b21.jpg" class=""></p></li>
 </ul>
 <h2 id="case-2-x-位於-non-leaf-node">Case 2: x 位於 Non-leaf Node</h2>
-<p>Step: 1. 1. 以 <code>x 的右子樹中之最小鍵値</code>取代 x ；或是 2. 以 <code>x 的左子樹中之最大鍵値</code>取代 x 2. 返回 Case 1 作後續處理</p>
+<p><strong>Step:</strong></p>
+<ol type="1">
+<li><ol type="1">
+<li>以 <code>x 的右子樹中之最小鍵値</code>取代 x ；或是</li>
+<li>以 <code>x 的左子樹中之最大鍵値</code>取代 x</li>
+</ol></li>
+<li>返回 Case 1 作後續處理</li>
+</ol>
 <h3 id="範例-3">範例</h3>
-<p>有一 B-tree of order 3 如下，若連續 Delete “60”， “100” 會得到什麼結果? <img src="/posts/fc4bcf8f/b22.jpg" class=""> <strong>Ans:</strong> - 2 ≤ degree ≤ 3 ⇒ <code>1 ≤ 鍵値數量 ≤ 2</code></p>
+<p><strong>有一 B-tree of order 3 如下，若連續 Delete “60”， “100” 會得到什麼結果?</strong> <img src="/posts/fc4bcf8f/b22.jpg" class=""></p>
+<p><strong>Ans:</strong></p>
 <ul>
-<li>Delete “60”
+<li><p>2 ≤ degree ≤ 3 ⇒ <code>1 ≤ 鍵値數量 ≤ 2</code></p></li>
+<li><strong>Delete “60”</strong>
 <ul>
 <li>要選擇<code>右子樹最小</code> or <code>左子樹最大</code>的鍵値來取代被刪除的資料，以最方便的為優先</li>
 <li>Rotation &gt; Combination</li>
 </ul></li>
 <li>返回 Case 1 做後續處理 <img src="/posts/fc4bcf8f/b23.jpg" class=""> <img src="/posts/fc4bcf8f/b24.jpg" class=""> <img src="/posts/fc4bcf8f/b25.jpg" class=""></li>
-<li>Delete “100”
+<li><strong>Delete “100”</strong>
 <ul>
 <li>要選擇右子樹最小 or 左子樹最大的鍵値來取代被刪除的資料，以最方便的為優先</li>
 <li>Rotation &gt; Combination <img src="/posts/fc4bcf8f/b26.jpg" class=""></li>
 </ul></li>
-<li>返回 Case 1 做後續處理 <img src="/posts/fc4bcf8f/b27.jpg" class=""></li>
+<li><p>返回 Case 1 做後續處理 <img src="/posts/fc4bcf8f/b27.jpg" class=""></p></li>
 </ul>
 <h1 id="b-tree">B+ Tree</h1>
 <h2 id="定義-1">定義</h2>
 <ul>
-<li>是 B Tree 之變形，也是用於 External Search/Sort 上</li>
-<li>可以支援 ISAM (Index Sequential Access Method)之實施，常用於 DBMS 內層製作</li>
+<li><code>是 B Tree 之變形</code>，也是用於 External Search / Sort 上</li>
+<li>可以支援 <strong>ISAM</strong> (Index Sequential Access Method)之實施，常用於 <strong>DBMS</strong> 內層製作</li>
 </ul>
 <img src="/posts/fc4bcf8f/bb1.jpg" class="">
 <h2 id="layer">Layer</h2>
 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.075ex" height="1.754ex" role="img" focusable="false" viewBox="0 -775.2 1359.1 775.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-3-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D435"></use></g><g data-mml-node="mo" transform="translate(759, 363) scale(0.707)"><use xlink:href="#MJX-3-TEX-N-2B"></use></g></g></g></g></svg></mjx-container>
-<p>tree 分為兩個 Layer: - <code>Index Layer:</code> - 採 B tree 結構。僅用來存放<code>索引</code>，以幫助 User 正確地找到所需之 Data Block - <code>Data Blocks Layer:</code> - 用以存放 <code>Data</code> ，且 Blocks 之間以 <code>Link List</code> 串連 - Data Block 存放資料時，通常<code>不會受到 B tree 的 Order 限制</code>。因此，每個 Data Block 最多要塞多少筆 Data 可自訂。當然也可以和 Index Layer 內的節點一致</p>
+<p>tree 分為兩個 <strong>Layer</strong>:</p>
+<ul>
+<li><code>Index Layer:</code>
+<ul>
+<li>採 B tree 結構。僅用來存放<code>索引</code>，以幫助 User 正確地找到所需之 Data Block</li>
+</ul></li>
+<li><code>Data Blocks Layer:</code>
+<ul>
+<li>用以存放 <code>Data</code> ，且 Blocks 之間以 <code>Link List</code> 串連</li>
+<li>Data Block 存放資料時，通常<code>不會受到 B tree 的 Order 限制</code>。因此，每個 Data Block 最多要塞多少筆 Data 可自訂。當然也可以和 Index Layer 內的節點一致</li>
+</ul></li>
+</ul>
 <h2 id="index-sequential-access">Index Sequential Access</h2>
 <ul>
 <li>透過 Index 找到對應的起始 Data Block 之後，即可循序讀取其它資料</li>
