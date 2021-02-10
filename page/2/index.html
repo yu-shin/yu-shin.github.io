@@ -886,7 +886,12 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="merge-sort">Merge sort</h1>
-<p>Merge sort利用divide and conquer遵循以下三個步驟: 1. <strong>Divide</strong> by finding the number q of the position midway between p and r. Do this step the same way we found the midpoint in binary search: add p and r, divide by 2, and round down. 2. <strong>Conquer</strong> by recursively sorting the subarrays in each of the two subproblems created by the divide step. That is, recursively sort the subarray <strong>array[p..q]</strong> and recursively sort the subarray <strong>array[q+1..r]</strong> 3. <strong>Combine</strong> by merging the two sorted subarrays back into the single sorted subarray <strong>array[p..r]</strong></p>
+<p>Merge sort 利用 divide and conquer 遵循以下三個步驟:</p>
+<ol type="1">
+<li><strong>Divide</strong> by finding the number q of the position midway between p and r. Do this step the same way we found the midpoint in binary search: add p and r, divide by 2, and round down.</li>
+<li><strong>Conquer</strong> by recursively sorting the subarrays in each of the two subproblems created by the divide step. That is, recursively sort the subarray <strong>array[p..q]</strong> and recursively sort the subarray <strong>array[q+1..r]</strong></li>
+<li><strong>Combine</strong> by merging the two sorted subarrays back into the single sorted subarray <strong>array[p..r]</strong></li>
+</ol>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/d7c658d8/#more" rel="contents">
@@ -969,7 +974,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>364</span>
+      <span>358</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -988,7 +993,12 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="divide-and-conquer">Divide and conquer</h1>
-<p><strong>Divide and conquer</strong> 具有以下三種特性: 1. <strong>Divide</strong> the problem into a number of subproblems that are smaller instances of the same problem. 2. <strong>Conquer</strong> the subproblems by solving them recursively. If they are small enough, solve the subproblems as base cases. 3. <strong>Combine</strong> the solutions to the subproblems into the solution for the original problem.</p>
+<p><strong>Divide and conquer</strong> 具有以下三種特性:</p>
+<ol type="1">
+<li><strong>Divide</strong> the problem into a number of subproblems that are smaller instances of the same problem.</li>
+<li><strong>Conquer</strong> the subproblems by solving them recursively. If they are small enough, solve the subproblems as base cases.</li>
+<li><strong>Combine</strong> the solutions to the subproblems into the solution for the original problem.</li>
+</ol>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/6018ea0/#more" rel="contents">
@@ -1090,7 +1100,9 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="recursion">Recursion</h1>
-<p>遞迴的基本概念就是: &gt; To solve a problem, solve a subproblem that is a smaller instance of the same problem, and then use the solution to that smaller instance to solve the original problem.
+<p>遞迴的基本概念就是:</p>
+<blockquote>
+<p>To solve a problem, solve a subproblem that is a smaller instance of the same problem, and then use the solution to that smaller instance to solve the original problem.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/36e66ece/#more" rel="contents">
@@ -1296,11 +1308,11 @@
           <h1 id="selection-sort">Selection Sort</h1>
 <p>Selection Sort的概念很簡單，假設有一個array需要排序，按照以下步驟排序。</p>
 <ol type="1">
-<li>找到最小的數，和第一個數swap</li>
-<li>找到第二小的數，和第二個數swap</li>
+<li>找到最小的數，和第一個數 swap</li>
+<li>找到第二小的數，和第二個數 swap</li>
 <li>繼續往下找直到最後一個數</li>
 </ol>
-<p>找第二小的數可以視為找到array中最小數後，找subarray中的最小數。
+<p>找第二小的數可以視為找到 array 中最小數後，找 subarray 中的最小數。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/937e8c27/#more" rel="contents">
