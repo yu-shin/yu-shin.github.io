@@ -24,19 +24,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="YOLO">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nicholas Blogger">
-<meta property="og:url" content="https://yu-shin.github.io/tags/LastPass/index.html">
+<meta name="description" content="Algorithm 通常在針對某一問題開發程式時，都會經過下列步驟：  明確定義問題 設計演算法，並評估其執行效率 撰寫程式，並加以測試">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm">
+<meta property="og:url" content="https://yu-shin.github.io/posts/17f44e1a/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="YOLO">
+<meta property="og:description" content="Algorithm 通常在針對某一問題開發程式時，都會經過下列步驟：  明確定義問題 設計演算法，並評估其執行效率 撰寫程式，並加以測試">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-02-24T08:55:11.000Z">
+<meta property="article:modified_time" content="2021-02-24T09:39:51.837Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="部落格, 筆記">
+<meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/tags/LastPass/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/17f44e1a/">
 
 
 <script data-pjax class="page-configurations">
@@ -44,11 +46,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
-<title>標籤: LastPass | Nicholas Blogger</title>
+<title>Algorithm | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -188,7 +190,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -201,6 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithm"><span class="nav-number">1.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-number">1.1.</span> <span class="nav-text">定義</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pseudocode%E8%99%9B%E6%93%AC%E7%A2%BC"><span class="nav-number">2.</span> <span class="nav-text">Pseudocode(虛擬碼)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9-1"><span class="nav-number">2.1.</span> <span class="nav-text">定義</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%94%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">演算法的分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%EF%A8%81-time-complexity"><span class="nav-number">3.1.</span> <span class="nav-text">時間複雜度 (Time Complexity)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#case"><span class="nav-number">3.1.1.</span> <span class="nav-text">Case</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,51 +269,220 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">LastPass
-          <small>標籤</small>
-        </h2>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/17f44e1a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="YOLO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Algorithm
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-02-24 16:55:11" itemprop="dateCreated datePublished" datetime="2021-02-24T16:55:11+08:00">2021-02-24</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/17f44e1a/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/17f44e1a/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>2 分鐘</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="algorithm">Algorithm</h1>
+<p>通常在針對某一問題開發程式時，都會經過下列步驟：</p>
+<ol type="1">
+<li>明確<code>定義問題</code></li>
+<li>設計<code>演算法</code>，並評估其執行效率</li>
+<li>撰寫<code>程式</code>，並加以測試 <a id="more"></a></li>
+</ol>
+<p>當我們使用某種技巧解決一個問題時，會產生一種逐步執行的程序 ( step-by-step procedure )來解決問題，該種逐步執行的程序即稱為解決這個問題的<code>演算法</code></p>
+<h2 id="定義">定義</h2>
+<ul>
+<li>完成特定功能之有限個指令之集合</li>
+<li><p>需滿足下列5個性質：</p>
+<ol type="1">
+<li><code>Input</code>: 外界至少提供 ≥ 0 個輸入</li>
+<li><code>Output</code>: Algorithm 至少產生 ≥ 1 個輸出結果</li>
+<li><code>Definiteness (明確)</code>: 每個指令必須是 Clear and Unambiguous <div class="note success"><p>任何人來看都會得到一樣的解讀</p>
+</div></li>
+<li><code>Finiteness (有限性)</code>: Algorithm 在執行有限個步驟後，必定終止</li>
+<li><code>Effectiveness (有效性)</code>: 用紙跟筆即可追蹤 Algorithm 中執行的過程及結果</li>
+</ol></li>
+</ul>
+<h1 id="pseudocode虛擬碼">Pseudocode(虛擬碼)</h1>
+<h2 id="定義-1">定義</h2>
+<p>最常被使用來定義 Algorithm 的工具是<mark class="label success">pseudocode</mark>, 它有可能是部份 <mark class="label danger">English</mark>, 部份 <mark class="label danger">Structured Structured Code</mark></p>
+<p><code>pseudocode 沒有任何標準！</code></p>
+<ul>
+<li>可以寫得很像英文敘述</li>
+<li>也可以寫得很像程式語句</li>
+</ul>
+<h1 id="演算法的分析">演算法的分析</h1>
+<ul>
+<li>若要得知一個演算法解決一個問題有效率的程度，我們必須分析 (Analyze) 該演算法</li>
+<li>一個 Algorithm 的好壞，通常有兩個評估因子：
+<ul>
+<li><code>Space (空間)</code>: Space Complexity</li>
+<li><code>Time (時間)</code>: Time Complexity</li>
+</ul></li>
+</ul>
+<h2 id="時間複雜度-time-complexity">時間複雜度 (Time Complexity)</h2>
+<ul>
+<li>一般來說，對一個演算法進行時間複雜度分析就是求得：
+<ul>
+<li>在每個不同的<strong>輸入大小</strong> (the size of the input) 之下，該演算法所執行的<strong>基本運算次數</strong> (how many times some basic operation is done)</li>
+</ul></li>
+<li>分析方式:
+<ul>
+<li>我們要分析一個演算法的效率，是將該演算法在每個不同的<strong>輸入大小</strong>之下，所執行的<strong>基本運算次數</strong>設定成一個<code>函數</code> ( Function ; 或稱 Time function, Complexity function 亦可) <code>T(n)</code></li>
+</ul></li>
+</ul>
+<h3 id="case">Case</h3>
+<ul>
+<li>有許多被設計出來的演算法，當<code>輸入資料的情況不同</code>時，所分析出來的執行次數也有所不同</li>
+<li>因此，在分析這些演算法的執行次數時，可依據<mark class="label success">輸入資料的不同情況</mark>區分成三個 Case 來加以分析:
+<ul>
+<li><code>The worst case (最差情況)</code></li>
+<li><code>The best case (最佳情況)</code></li>
+<li><code>The average case (平均情況)</code></li>
+</ul></li>
+<li>對於上述時間複雜度分析，我們較常進行最差情況與平均情況的分析，而不是最佳情況分析
+<ul>
+<li><code>平均情況</code>分析是很有用的，這是因為它告訴我們：一個演算法在有<strong>許多不同的輸入狀況時，總共所花費的時間為何</strong></li>
+<li><code>最差情況</code>分析是很有用的，這是因為它告訴我們：一個演算法<strong>執行時間的上限為何</strong></li>
+<li>相對來說，最佳情況分析的用處實在不大</li>
+</ul></li>
+<li>通常，平均情況比最差情況要難分析(<code>∴ Worst Case 最常被討論</code>)</li>
+</ul>
+<h1 id="參考資料">參考資料</h1>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course01.pdf">國立聯合大學陳士杰資料結構</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-12-23T12:15:00+08:00"
-              content="2020-12-23">
-          12-23
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    捐贈
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/ETH.jpg" alt="Nicholas Tsai ETH">
+        <span>ETH</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/4df1633d/" itemprop="url">
-            <span itemprop="name">npm 和 npx</span>
-          </a>
-      </div>
+  </div>
+</div>
 
-      
-    </header>
+          <div class="followme">
+  <span>歡迎關注我的其它發布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nichola69108664" rel="external nofollow noreferrer">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 演算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/6592a919/" rel="prev" title="Graph Storage Structures">
+                  <i class="fa fa-chevron-left"></i> Graph Storage Structures
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
   </div>
   
-  
-  
-
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -419,7 +591,38 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 <script>
@@ -431,6 +634,26 @@ document.addEventListener('pjax:success', () => {
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://yu-shin.github.io/posts/17f44e1a/";
+    this.page.identifier = "posts/17f44e1a/";
+    this.page.title = "Algorithm";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://nicholas-tsai.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
     </div>

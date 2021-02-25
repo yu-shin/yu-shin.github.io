@@ -24,14 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Stack (堆疊) 具有 LIFO (last in-first out)或 FILO (first in-last out)性質的有序串列  插入元素的動作稱為 Push, 刪除元素的動作稱為 Pop Push&#x2F;Pop 的動作皆發生在同一端，此端稱為 Top">
+<meta name="description" content="Stack (堆疊) 具有 LIFO (last in-first out) 或 FILO (first in-last out) 性質的有序串列  插入元素的動作稱為 Push, 刪除元素的動作稱為 Pop Push&#x2F;Pop 的動作皆發生在同一端，此端稱為 Top">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stack">
 <meta property="og:url" content="https://yu-shin.github.io/posts/8069546e/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Stack (堆疊) 具有 LIFO (last in-first out)或 FILO (first in-last out)性質的有序串列  插入元素的動作稱為 Push, 刪除元素的動作稱為 Pop Push&#x2F;Pop 的動作皆發生在同一端，此端稱為 Top">
+<meta property="og:description" content="Stack (堆疊) 具有 LIFO (last in-first out) 或 FILO (first in-last out) 性質的有序串列  插入元素的動作稱為 Push, 刪除元素的動作稱為 Pop Push&#x2F;Pop 的動作皆發生在同一端，此端稱為 Top">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/stack1.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/adt.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/stack2.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/stack3.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/stack4.jpg">
@@ -46,7 +47,7 @@
 <meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/stack13.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/8069546e/stack14.jpg">
 <meta property="article:published_time" content="2021-01-20T13:29:41.000Z">
-<meta property="article:modified_time" content="2021-01-30T08:44:21.104Z">
+<meta property="article:modified_time" content="2021-02-23T14:42:12.363Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="資料結構">
 <meta name="twitter:card" content="summary">
@@ -234,7 +235,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -344,7 +345,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>4.7k</span>
+      <span>4.8k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -363,7 +364,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="stack-堆疊">Stack (堆疊)</h1>
-<p>具有 LIFO (last in-first out)或 FILO (first in-last out)性質的有序串列</p>
+<p>具有 LIFO (last in-first out) 或 FILO (first in-last out) 性質的有序串列</p>
 <ul>
 <li>插入元素的動作稱為 <code>Push</code>, 刪除元素的動作稱為 <code>Pop</code></li>
 <li>Push/Pop 的動作皆發生在同一端，此端稱為 <code>Top</code></li>
@@ -371,6 +372,8 @@
 <img src="/posts/8069546e/stack1.jpg" class="">
 <a id="more"></a>
 <h1 id="stack之adt">Stack之ADT</h1>
+<p><strong>ADT (Abstract Data Type; 抽象資料型態)</strong> - Def: ADT 是一種 Data Type，且要滿足：<code>資料的規格與操作的規格</code>獨立於<code>資料的實際表示方式與操作的實際製作方式</code></p>
+<img src="/posts/8069546e/adt.jpg" class="">
 <h2 id="data-object-spec">Data Object Spec</h2>
 <ul>
 <li>A <code>set</code> of data item</li>
@@ -820,13 +823,13 @@ pop stack; &#x2F;&#x2F;即為結果<span aria-hidden="true" class="line-numbers-
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">80k</span>
+    <span title="總字數">83k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:26</span>
+    <span title="所需總閱讀時間">2:32</span>
   </span>
 </div>
 
