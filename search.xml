@@ -3553,6 +3553,53 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
       </tags>
   </entry>
   <entry>
+    <title>使用 Limit 來決定 Order</title>
+    <url>/posts/1d24ff71/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol type="1">
+<li><img src="/posts/1d24ff71/%E6%A5%B5%E9%99%90%E8%A1%A8.jpg" class=""></li>
+<li><strong>邏必達法則 (L’ Hospital Rule)</strong></li>
+</ol>
+<a id="more"></a>
+<h1 id="先備工具">先備工具</h1>
+<h2 id="常用的數學式子">常用的數學式子</h2>
+
+<ol type="1">
+<li><span class="math inline">\(\log \log n = \log (\log n)\)</span></li>
+<li><span class="math inline">\({\log}^kn = (\log n)^k\)</span></li>
+<li><span class="math inline">\(a = b^{\log_ba}\)</span></li>
+<li><span class="math inline">\(\log_cab = \log_ca + \log_cb\)</span></li>
+<li><span class="math inline">\(\log_c\frac{a}{b} = \log_ca - \log_cb\)</span></li>
+<li><span class="math inline">\(\log_ba^n = n\log_ba\)</span></li>
+<li><span class="math inline">\(\log_ba = \frac{\log_ca}{\log_cb}\)</span></li>
+<li><span class="math inline">\(\log_ba = \frac{1}{\log_ab}\)</span></li>
+<li><span class="math inline">\(\log_b\frac{1}{a} = \log_ba^{-1} = -\log_ba\)</span></li>
+<li><span class="math inline">\(a^{\log_bc} = c^{\log_ba}\)</span></li>
+</ol>
+<h1 id="練習">練習</h1>
+<img src="/posts/1d24ff71/1.jpg" class="">
+<img src="/posts/1d24ff71/2.jpg" class="">
+<img src="/posts/1d24ff71/3.jpg" class="">
+<img src="/posts/1d24ff71/%E8%A3%9C1.jpg" class="">
+<img src="/posts/1d24ff71/%E8%A3%9C2.jpg" class="">
+<h2 id="note">Note</h2>
+<ol type="1">
+<li>Log 的底和 Complexity 無關</li>
+<li><ul>
+<li>若 log f(n) = o(log g(n))，<code>可保証</code> f(n) = o(g(n))</li>
+<li>若 log f(n) = ω(log g(n))，<code>可保証</code> f(n) = ω(g(n))</li>
+<li>若 log f(n) = θ(log g(n))，<code>不可保証</code> f(n) = θ(g(n)) <div class="note warning"><p><img src="/posts/1d24ff71/note2.jpg" class=""></p>
+</div></li>
+</ul></li>
+<li>兩函數的 Complexity 有可能無法比較 (Ex: 週期函數)</li>
+</ol>
+<h1 id="參考資料">參考資料</h1>
+<p><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course01.pdf">國立聯合大學陳士杰資料結構</a></p>
+]]></content>
+      <tags>
+        <tag>演算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>區塊鏈之始</title>
     <url>/posts/54c45e77/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言">前言</h1>
