@@ -2123,6 +2123,92 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
       </tags>
   </entry>
   <entry>
+    <title>Recursion 的複雜度分析</title>
+    <url>/posts/2105c5c8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="複雜度分析">複雜度分析</h1>
+<p>分析步驟：</p>
+<ol type="1">
+<li>找出遞迴演算法的<code>遞迴方程式 T(n)</code> 來表達該演算法的執行次數</li>
+<li>解這個遞迴方程式來求出該演算法的<code>時間複雜度</code></li>
+</ol>
+<h2 id="例子">例子</h2>
+<h3 id="factorial">Factorial</h3>
+<img src="/posts/2105c5c8/f.jpg" class="">
+<h3 id="fibonacci">Fibonacci</h3>
+<img src="/posts/2105c5c8/fi.jpg" class="">
+<a id="more"></a>
+<h1 id="如何解遞迴方程式">如何解遞迴方程式</h1>
+<p>通常在討論遞迴演算法時，我們常會一起將這些演算法的遞迴方程式列出。因此，<strong>本篇假設遞迴方程式已給定</strong>，主要議題則設定在<code>如何解遞迴方程式</code></p>
+<ul>
+<li><strong>遞迴方程式的解法與使用時機:</strong></li>
+</ul>
+<img src="/posts/2105c5c8/%E8%A7%A3%E8%A1%A8.jpg" class="">
+<p><strong>下面來深入探討個別解法</strong></p>
+<h2 id="數學解法">數學解法</h2>
+<p>直接將遞迴方程式<strong>以遞迴的觀念由<code>最末項</code>往前求解</strong>，然後整理出答案</p>
+<h3 id="範例-1">範例 1</h3>
+<img src="/posts/2105c5c8/%E6%95%B81.jpg" class="">
+<h3 id="範例-2">範例 2</h3>
+<img src="/posts/2105c5c8/%E6%95%B82.jpg" class="">
+<h2 id="遞迴樹法">遞迴樹法</h2>
+<ul>
+<li>適用於母問題由<code>多個子問題</code>所構成</li>
+<li>使用一個<code>樹狀結構</code>表示遞迴演算法則在執行過程<strong>被遞迴呼叫</strong>的情況，這個樹狀結構稱為遞迴樹。其中:
+<ul>
+<li><code>Node</code>: 存放遞迴關係式所相對應之子問題的 <strong>Cost</strong></li>
+<li><code>Degree</code>: 子問題的數目</li>
+</ul></li>
+<li>遞迴樹法的三個步驟:
+<ul>
+<li>按照遞迴方程式展開</li>
+<li>對每一層的所有子問題之 cost 加總，得到<code>每一層之 cost</code></li>
+<li>加總每一層的 cost，以得到 <code>total cost</code>，即為答案</li>
+</ul></li>
+<li>通常只能求出 Big-O 或 Ω，若要計算 θ 得用“夾擠＂法</li>
+</ul>
+<h3 id="範例-1-1">範例 1</h3>
+<img src="/posts/2105c5c8/%E9%81%9E1.jpg" class="">
+<img src="/posts/2105c5c8/%E9%81%9E2.jpg" class="">
+<img src="/posts/2105c5c8/%E9%81%9E3.jpg" class="">
+<h3 id="範例2">範例2</h3>
+<img src="/posts/2105c5c8/%E9%81%9E4.jpg" class="">
+<img src="/posts/2105c5c8/%E9%81%9E5.jpg" class="">
+<img src="/posts/2105c5c8/%E9%81%9E6.jpg" class="">
+<img src="/posts/2105c5c8/%E9%81%9E7.jpg" class="">
+<img src="/posts/2105c5c8/%E9%81%9E8.jpg" class="">
+<h2 id="支配理論方法">支配理論方法</h2>
+<ul>
+<li>當<strong>遞迴方程式</strong>具有<code>某種特定型式</code>時適用</li>
+<li>【精神】讓 f(n) 和 <span class="math inline">\(n^{log_ba}\)</span> 比大小</li>
+</ul>
+<img src="/posts/2105c5c8/%E6%94%AF.jpg" class="">
+<h3 id="範例-1-2">範例 1</h3>
+<img src="/posts/2105c5c8/%E6%94%AF1.jpg" class="">
+<h3 id="範例-2-1">範例 2</h3>
+<img src="/posts/2105c5c8/%E6%94%AF2.jpg" class="">
+<h2 id="替代法">替代法</h2>
+<ul>
+<li>適用於<strong><code>檢驗</code>某個候選解答是否為此遞迴演算法的正確解</strong>，而不適用於求遞迴方程式的解答</li>
+<li>使用步驟:
+<ol type="1">
+<li>利用<strong>猜測、觀察或匯整</strong>的方式，找出遞迴方程式的解(很麻煩)</li>
+<li>利用<code>數學歸納法</code>証明此解是正確的</li>
+</ol></li>
+<li>由於利用此方法求解遞迴方程式，最難的地方就是<strong><mark class="label info">如何去猜出、觀察出或匯整出遞迴方程式的解</mark></strong>。所以一般只適合當已有候選解時，用來驗証該解是否正確，也就是為了避開第一個步驟。</li>
+</ul>
+<h3 id="範例-1-3">範例 1</h3>
+<img src="/posts/2105c5c8/%E6%9B%BF1.jpg" class="">
+<img src="/posts/2105c5c8/%E6%9B%BF2.jpg" class="">
+<h3 id="範例-2-2">範例 2</h3>
+<img src="/posts/2105c5c8/%E6%9B%BF3.jpg" class="">
+<h1 id="參考資料">參考資料</h1>
+<p><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course02.pdf">國立聯合大學陳士杰資料結構</a></p>
+]]></content>
+      <tags>
+        <tag>演算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Recursion</title>
     <url>/posts/36e66ece/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="recursion">Recursion</h1>
@@ -2489,42 +2575,13 @@ else                               &#x2F;&#x2F; 當 list[ ] 中的元素尚未�
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h1 id="recursion-與-non-recursion-的比較">Recursion 與 Non-recursion 的比較</h1>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Recursion</th>
-<th>Non-recursion</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>優</td>
-<td>程式碼較精簡</td>
-<td>冗長</td>
-<td>缺</td>
-</tr>
-<tr class="even">
-<td>優</td>
-<td>需要宣告的區域變數較少</td>
-<td>較多</td>
-<td>缺</td>
-</tr>
-<tr class="odd">
-<td>優</td>
-<td>程式碼較節省空間</td>
-<td>浪費</td>
-<td>缺</td>
-</tr>
-<tr class="even">
-<td>優</td>
-<td>表達力強，易於理解</td>
-<td>表達力差，不易理解</td>
-<td>缺</td>
-</tr>
-</tbody>
-</table>
+<img src="/posts/36e66ece/r1.jpg" class="">
+<div class="note success"><p>上圖說明:</p>
+<ul>
+<li><code>區域變數</code>指的是<strong>程式碼</strong>而非執行時期的</li>
+<li><code>Storage空間</code>指的是<strong>程式碼</strong>的儲存空間而非執行時期的</li>
+</ul>
+</div>
 <h1 id="memoization-優化">Memoization 優化</h1>
 <p>考慮 Fibonacci 數列:</p>
 <ol type="1">
@@ -3555,7 +3612,8 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
   <entry>
     <title>使用 Limit 來決定 Order</title>
     <url>/posts/1d24ff71/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol type="1">
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="limit">Limit</h1>
+<ol type="1">
 <li><img src="/posts/1d24ff71/%E6%A5%B5%E9%99%90%E8%A1%A8.jpg" class=""></li>
 <li><strong>邏必達法則 (L’ Hospital Rule)</strong></li>
 </ol>
