@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="定義 由一組節點 (Node) 所組成的有序串列，各 Node 除了 Data 欄之外，另外有 ≥ 1 個 Link 欄 (或稱 Pointer)，用以指向其它 Node 之位址。 特質  各Node不一定要佔用連續的Memory空間 各Node之型態 (Data Type) (Data Type) 不一定要相同 僅支援Sequential Access Insert&#x2F;Delete Node In">
 <meta property="og:type" content="article">
@@ -393,7 +393,7 @@
   t → data &#x3D; item;    &#x2F;&#x2F;把item塞到這個新節點t的Data欄位中
 1 t → link &#x3D; x → link;&#x2F;&#x2F;先把新節點t掛到x節點之後!!
 2 x → link &#x3D; t;       &#x2F;&#x2F;再將x節點接到節點t
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+end</code></pre></li>
 <li><img src="/posts/d37550bb/link4.jpg" class="">
 <pre class="line-numbers language-none"><code class="language-none">begin
   New(t);
@@ -402,7 +402,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   x → link &#x3D; t;
   x → data &#x3D; 20;
   x &#x3D; t;
-end;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+end;</code></pre></li>
 </ul>
 <h3 id="delete-node">Delete Node</h3>
 <p>刪除鏈節串列的節點時，會先:</p>
@@ -420,7 +420,7 @@ end;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
     list &#x3D; x → link;
   else                     &#x2F;&#x2F;表示 x 節點是中間節點
     pPre → link &#x3D; x → link;
-2 Ret(x);                  &#x2F;&#x2F;將 “節點 x” 回收. 有的書是用delete(x), release(x), dispose(x)…etc.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+2 Ret(x);                  &#x2F;&#x2F;將 “節點 x” 回收. 有的書是用delete(x), release(x), dispose(x)…etc.</code></pre>
 <h3 id="storage-pool">Storage Pool</h3>
 <p><code>可用節點 (Free Node)</code> 之集合 (集中管理之處)，通常O.S.以 <code>Single link list</code> 來管理 Free Nodes，稱為 <code>AV-list</code>(Available list) <img src="/posts/d37550bb/link9.jpg" class=""> 提供兩個動作:</p>
 <ul>
@@ -433,13 +433,13 @@ end;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 1 t &#x3D; AV
 2 AV &#x3D; AV → link;
 else
-  print(“No Free Node.”);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  print(“No Free Node.”);</code></pre>
 <h4 id="rett">Ret(t)</h4>
 <img src="/posts/d37550bb/link8.jpg" class="">
 <pre class="line-numbers language-none"><code class="language-none">begin
 1 t → link &#x3D; AV;
 2 AV &#x3D; t;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h2 id="circular-link-list-環状鏈結串列">Circular Link List (環状鏈結串列)</h2>
 <p>將 Single link list 中，最後一個 node 的指標指回第一個 node <img src="/posts/d37550bb/link6.jpg" class=""></p>
 <ul>
@@ -462,7 +462,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 1   while (S → link ≠ nil) do &#x2F;&#x2F;while迴圈會讓S一直前進至最後一節點
       S &#x3D; S → link;
 2     S → link &#x3D; AV;
-3     AV &#x3D; list;              &#x2F;&#x2F;回收節點至AV list AV list 中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+3     AV &#x3D; list;              &#x2F;&#x2F;回收節點至AV list AV list 中</code></pre>
 <p><code>Time Complexity: O(N)</code></p>
 <h4 id="circular-linked-list">Circular Linked List</h4>
 <img src="/posts/d37550bb/link11.jpg" class="">
@@ -472,7 +472,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 1     p &#x3D; C → link;
 2     C → link &#x3D; AV;
 3     AV &#x3D; P
-  end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  end</code></pre>
 <p><code>Time Complexity: O(1)</code></p>
 <h2 id="double-link-list-雙向鏈結串列">Double Link List (雙向鏈結串列)</h2>
 <p>串列中各節點除了 Data 欄之外，另外有 2 個 Link 欄，用以指向前一個與下一個節點之位址 <img src="/posts/d37550bb/link12.jpg" class=""></p>
@@ -486,13 +486,13 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 2 t → LLink &#x3D; x;
 3 (x → RLink) → LLink &#x3D; t;
 4 x → RLink &#x3D; t;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+end</code></pre></p>
 <h3 id="deletion">Deletion</h3>
 <p>刪除一個節點 x: <img src="/posts/d37550bb/link15.jpg" class=""> <pre class="line-numbers language-none"><code class="language-none">begin
 1 (x → LLink) → RLink &#x3D; x → RLink;
 2 (x → RLink) → LLink &#x3D; x → LLink ;
 3 Ret(x);
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+end</code></pre></p>
 <h3 id="double-linked-list-與-single-linked-list-的比較">Double linked list 與 Single linked list 的比較</h3>
 <img src="/posts/d37550bb/link16.jpg" class="">
 <h1 id="link-list-三個常見的動作">Link list 三個常見的動作</h1>
@@ -505,7 +505,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   while (p≠ nil) do
     count++;
     p &#x3D; p → link;
-  return count;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  return count;</code></pre>
 <p><code>Time Complexity: O(N)</code></p>
 <h3 id="circular-linked-list-1">Circular linked list</h3>
 <img src="/posts/d37550bb/link18.jpg" class="">
@@ -518,7 +518,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     repeat            &#x2F;&#x2F;不能用while迴圈!!∵一定至少要做一次!!!
       count++;
       p &#x3D; p → link;
-    until p &#x3D; C;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    until p &#x3D; C;</code></pre>
 <p><code>Time Complexity: O(N)</code></p>
 <h2 id="concatenate">Concatenate</h2>
 <h3 id="single-linked-list-2">Single linked list</h3>
@@ -540,7 +540,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
         p &#x3D; p → link;
 2     p → link &#x3D; B;
 3     C &#x3D; A;
-  return C;                       &#x2F;&#x2F;回傳Case 1~4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  return C;                       &#x2F;&#x2F;回傳Case 1~4</code></pre>
 <p><code>Time Complexity: O(N) 或 O(M)</code></p>
 <h3 id="circular-linked-list-2">Circular linked list</h3>
 <p>假設連結A, B串列成為C串列:</p>
@@ -559,7 +559,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 1   C &#x3D; A → link;
 2   A → link &#x3D; B → link;
 3   B → link &#x3D; C;
-  return C;                             &#x2F;&#x2F;回傳 Case 1~ 4 的結果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  return C;                             &#x2F;&#x2F;回傳 Case 1~ 4 的結果</code></pre>
 <p><code>Time Complexity: O(1)</code></p>
 <h2 id="invert">Invert</h2>
 <h3 id="single-linked-list-3">Single linked list</h3>
@@ -575,7 +575,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     q &#x3D; p;
     p &#x3D; p → link;
     q → link &#x3D; r;
-  S &#x3D; q;       &#x2F;&#x2F;S可能指向反轉後的第一個節點或是null list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  S &#x3D; q;       &#x2F;&#x2F;S可能指向反轉後的第一個節點或是null list</code></pre>
 <p><code>Time Complexity: O(N)</code></p>
 <h3 id="circular-linked-list-3">Circular linked list</h3>
 <p>亦需要三個指標: r, q, p</p>
@@ -593,7 +593,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
       p &#x3D; p → link;
       q → link &#x3D; r;
     C → link &#x3D; q;
-    C &#x3D; q;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    C &#x3D; q;</code></pre>
 <p><code>Time Complexity: O(N)</code></p>
 <h1 id="array-與-link-list-的比較">Array 與 Link List 的比較</h1>
 <img src="/posts/d37550bb/link23.jpg" class="">
@@ -714,13 +714,13 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">85k</span>
+    <span title="總字數">86k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:34</span>
+    <span title="所需總閱讀時間">2:37</span>
   </span>
 </div>
 
@@ -729,6 +729,9 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/components/prism-core.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>

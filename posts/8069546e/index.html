@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="Stack (堆疊) 具有 LIFO (last in-first out) 或 FILO (first in-last out) 性質的有序串列  插入元素的動作稱為 Push, 刪除元素的動作稱為 Pop Push&#x2F;Pop 的動作皆發生在同一端，此端稱為 Top">
 <meta property="og:type" content="article">
@@ -399,7 +399,7 @@
 <h2 id="以-array-製作-stack">以 Array 製作 Stack</h2>
 <h3 id="creates">Create(S)</h3>
 <p>只需做宣告即可： <pre class="line-numbers language-none"><code class="language-none">S: Array[1…n] item &#x2F;&#x2F;宣告一個Array
-int top &#x3D; 0 &#x2F;&#x2F;設定一整數變數top且初値為0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre> <div class="note danger"><p>為了説明方便，這邊用 Array 製作 Stack 時，均假設一維陣列的起始位址是從 1 開始!</p>
+int top &#x3D; 0 &#x2F;&#x2F;設定一整數變數top且初値為0</code></pre> <div class="note danger"><p>為了説明方便，這邊用 Array 製作 Stack 時，均假設一維陣列的起始位址是從 1 開始!</p>
 </div></p>
 <h3 id="pushs-item">Push(S, item)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
@@ -408,7 +408,7 @@ int top &#x3D; 0 &#x2F;&#x2F;設定一整數變數top且初値為0<span aria-hid
   else:
     top &#x3D; top + 1; &#x2F;&#x2F;top要先加1
     S[top] &#x3D; item; &#x2F;&#x2F;再將item置入
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="pops">Pop(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if top &#x3D; 0:
@@ -416,28 +416,28 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else:
     item &#x3D; S[top]; &#x2F;&#x2F;先將item叫出
     top &#x3D; top - 1; &#x2F;&#x2F;再將top減1
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="tops">Top(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if top &#x3D; 0:
     stack empty;
   else:
     return S[top]; &#x2F;&#x2F;將item叫出
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="isemptys">IsEmpty(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if top &#x3D; 0:
     return True;
   else:
     return False;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="isfulls">IsFull(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if top &#x3D; n:
     return True;
   else:
     return False;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h2 id="以-linked-list-製作-stack">以 Linked List 製作 Stack</h2>
 <p>要利用 linked list 實作 stack，需要撰寫兩個不同的結構(Structure)：</p>
 <ul>
@@ -453,14 +453,14 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 </ul>
 <img src="/posts/8069546e/stack3.jpg" class="">
 <h3 id="creates-1">Create(S)</h3>
-<p>宣告top指標為null即可: <pre class="line-numbers language-none"><code class="language-none">top &#x3D; null;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> <img src="/posts/8069546e/stack4.jpg" class=""></p>
+<p>宣告top指標為null即可: <pre class="line-numbers language-none"><code class="language-none">top &#x3D; null;</code></pre> <img src="/posts/8069546e/stack4.jpg" class=""></p>
 <h3 id="pushs-item-1">Push(S, item)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   New(t); &#x2F;&#x2F;跟系統要求記憶體空間以產生並置放一個新節點pNew
   pNew → data &#x3D; item; &#x2F;&#x2F;把資料 “item” 塞到這個新節點pNew的Data欄位中
 1 pNew → link &#x3D; top;
 2 top &#x3D; pNew;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <div class="note success"><p>只要 Memory 有空間，O.S.就允許 Linked Stack 去 Push 新資料!!不用像 Array 一樣，要先檢查 Array 是否滿了</p>
 </div>
 <img src="/posts/8069546e/stack5.jpg" class="">
@@ -473,7 +473,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 2   item &#x3D; top → data;
 3   top &#x3D; dltPtr → link;
 4   Ret(dltPtr);
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <img src="/posts/8069546e/stack6.jpg" class="">
 <h3 id="tops-1">Top(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
@@ -483,7 +483,7 @@ else:
   print(top → data);
   success &#x3D; true;
 return success;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="isemptys-1">IsEmpty(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if (top &#x3D; null):
@@ -491,7 +491,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else:
     result &#x3D; false;
   return result;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="isfulls-1">IsFull(S)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if (memory available):
@@ -499,7 +499,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else:
     result &#x3D; true;
   return result;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h1 id="stack-application">Stack Application</h1>
 <h2 id="procedure-call-recursive-call-之處理">Procedure Call / Recursive Call 之處理</h2>
 <img src="/posts/8069546e/stack7.jpg" class="">
@@ -555,13 +555,13 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <h4 id="中序式轉後序式前序式">中序式轉後序式、前序式</h4>
 <p><strong>使用 “<code>括號法</code>”:</strong></p>
 <ul>
-<li>中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-15-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-15-TEX-N-21D2"></use></g></g></g></svg></mjx-container> 後的歩驟:
+<li>中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-14-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-14-TEX-N-21D2"></use></g></g></g></svg></mjx-container> 後的歩驟:
 <ul>
 <li>對於中序式，先加上<code>完整的括號配對</code></li>
 <li>將運算子取代最近的<code>右</code>括號</li>
 <li>刪除<code>左</code>括號，予以輸出即可</li>
 </ul></li>
-<li>中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-14-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-14-TEX-N-21D2"></use></g></g></g></svg></mjx-container> 前的歩驟:
+<li>中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-12-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-12-TEX-N-21D2"></use></g></g></g></svg></mjx-container> 前的歩驟:
 <ul>
 <li>對於中序式，先加上<code>完整的括號配對</code></li>
 <li>將運算子取代最近的<code>左</code>括號</li>
@@ -572,13 +572,13 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <h4 id="後序式前序式轉中序式">後序式、前序式轉中序式</h4>
 <p>很直觀，都是由左往右掃:</p>
 <ul>
-<li>Prefix <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-14-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-14-TEX-N-21D2"></use></g></g></g></svg></mjx-container> Infix
+<li>Prefix <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-12-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-12-TEX-N-21D2"></use></g></g></g></svg></mjx-container> Infix
 <ul>
-<li><strong><mark class="label success">Operator(運算子)</mark> <mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-13-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-13-TEX-N-21D2"></use></g></g></g></svg></mjx-container> <mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label success">Operator(運算子)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark></strong></li>
+<li><strong><mark class="label success">Operator(運算子)</mark> <mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-11-TEX-N-21D2"></use></g></g></g></svg></mjx-container> <mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label success">Operator(運算子)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark></strong></li>
 </ul></li>
-<li>Postfix <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-13-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-13-TEX-N-21D2"></use></g></g></g></svg></mjx-container> Infix
+<li>Postfix <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-11-TEX-N-21D2"></use></g></g></g></svg></mjx-container> Infix
 <ul>
-<li><strong><mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark> <mark class="label success">Operator(運算子)</mark> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-12-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-12-TEX-N-21D2"></use></g></g></g></svg></mjx-container> <mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label success">Operator(運算子)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark></strong></li>
+<li><strong><mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark> <mark class="label success">Operator(運算子)</mark> <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-10-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-10-TEX-N-21D2"></use></g></g></g></svg></mjx-container> <mark class="label primary">Operand 1 (運算元 1)</mark> <mark class="label success">Operator(運算子)</mark> <mark class="label primary">Operand 2 (運算元 2)</mark></strong></li>
 </ul></li>
 </ul>
 <p>以下是一些練習範例： <img src="/posts/8069546e/stack13.jpg" class=""> <img src="/posts/8069546e/stack14.jpg" class=""> <div class="note success"><p>轉完中序後記得把多餘的括號拿掉</p>
@@ -613,12 +613,12 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <p><strong>Ex. 寫出 Infix: A+B×(C-D÷E)+F 轉 Postfix 的過程:</strong></p>
 <ol type="1">
 <li>Print ‘A’</li>
-<li>‘+’ &gt; 空的 Stack <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-11-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘+’</li>
+<li>‘+’ &gt; 空的 Stack <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-9-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-9-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘+’</li>
 <li>Print ‘B’</li>
-<li>‘×’ &gt; ‘+’(堆疊的top元素) <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-9-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-9-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘×’</li>
-<li>‘(’ &gt; ‘×’ <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-7-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘(’</li>
+<li>‘×’ &gt; ‘+’(堆疊的top元素) <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-8-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-8-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘×’</li>
+<li>‘(’ &gt; ‘×’ <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-6-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘(’</li>
 <li>Print ‘C’</li>
-<li>‘-’ &gt; ‘(’ (on stack)<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-5-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘-’</li>
+<li>‘-’ &gt; ‘(’ (on stack)<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-4-TEX-N-21D2"></use></g></g></g></svg></mjx-container> push ‘-’</li>
 <li>Print ‘D’</li>
 <li>‘÷’ &gt; ‘-’ <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 1000 549" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-N-21D2" d="M580 514Q580 525 596 525Q601 525 604 525T609 525T613 524T615 523T617 520T619 517T622 512Q659 438 720 381T831 300T927 263Q944 258 944 250T935 239T898 228T840 204Q696 134 622 -12Q618 -21 615 -22T600 -24Q580 -24 580 -17Q580 -13 585 0Q620 69 671 123L681 133H70Q56 140 56 153Q56 168 72 173H725L735 181Q774 211 852 250Q851 251 834 259T789 283T735 319L725 327H72Q56 332 56 347Q56 360 70 367H681L671 377Q638 412 609 458T580 514Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-4-TEX-N-21D2"></use></g></g></g></svg></mjx-container>push ‘÷’</li>
 <li>Print ‘E’</li>
@@ -647,7 +647,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
       - case “x &gt; top”: 則 push(x, S);
       - case “x ≤ top”: 則 pop(S), 直到 x &gt; top為止, 再push(x, S);
 while (stack ≠empty):
-  pop stack;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  pop stack;</code></pre>
 <h4 id="postfix-之計算的演算法">Postfix 之計算的演算法</h4>
 <p>由左往右掃 <pre class="line-numbers language-none"><code class="language-none">while (Postfix尚未Scan完畢):
   x &#x3D; NextToken; &#x2F;&#x2F;Token是指運算的單元，可能是運算元或是運算子
@@ -657,7 +657,7 @@ while (stack ≠empty):
     pop適當數目的運算元
     - 計算
     - 再將計算結果push回stack
-pop stack; &#x2F;&#x2F;即為結果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> <strong>Ex. 43-15×+，寫出postfix計算過程 (含Stack內容):</strong></p>
+pop stack; &#x2F;&#x2F;即為結果</code></pre> <strong>Ex. 43-15×+，寫出postfix計算過程 (含Stack內容):</strong></p>
 <ol type="1">
 <li>Push ‘4’</li>
 <li>Push ‘3’</li>
@@ -823,13 +823,13 @@ pop stack; &#x2F;&#x2F;即為結果<span aria-hidden="true" class="line-numbers-
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">85k</span>
+    <span title="總字數">86k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:34</span>
+    <span title="所需總閱讀時間">2:37</span>
   </span>
 </div>
 
@@ -838,6 +838,9 @@ pop stack; &#x2F;&#x2F;即為結果<span aria-hidden="true" class="line-numbers-
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/components/prism-core.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>

@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="Queue (佇列)  具有 FIFO (First-in, First-out) 性質的有序串列 插入與刪除元素的動作發生在佇列的不同端  插入動作發生在尾端 (Rear) 刪除動作發生在前端 (Front)">
 <meta property="og:type" content="article">
@@ -425,7 +425,7 @@ begin
   else:                    &#x2F;&#x2F;Case 2
     rear → link &#x3D; newPtr;
   rear &#x3D; newPtr;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h3 id="deleteq">Delete(Q)</h3>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if (front &#x3D; nil):
@@ -437,7 +437,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 4   Ret(deleteLoc);
     if (front &#x3D; nil):   &#x2F;&#x2F;見下面註釋
       rear &#x3D; nil;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <img src="/posts/be3c5067/queue4.jpg" class="">
 <div class="note info no-icon"><ul>
 <li>假設 Queue 中只有一個 node，回收後把 Rear 指向 nil</li>
@@ -460,7 +460,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else:
     rear &#x3D; rear +1
     Q[rear] &#x3D; item
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <img src="/posts/be3c5067/queue6.jpg" class="">
 <h4 id="deleteqq-item-queue">DeleteQ(Q) → item, Queue</h4>
 <pre class="line-numbers language-none"><code class="language-none">begin
@@ -469,7 +469,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else:
     front &#x3D; front +1
     item &#x3D; Q[front]
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <div class="note danger"><p>問題: <code>當 rear = n 時，Queue 並不代表真正為滿的情況</code> <img src="/posts/be3c5067/queue7.jpg" class=""></p>
 <ul>
 <li>為解決上述問題，我們或許可以設計一個副程式，當資料已成長到 Arrar 的最末端時，作一次 “<code>是否真的為滿</code>” 的判斷 (即：<strong><mark class="label info">Rear = n</mark></strong> 且 <strong><mark class="label info">Front = 0</mark></strong>)。若不為真滿，則需將 <strong><mark class="label danger">(Front+1)</strong> 到 Rear 端的所有元素往左移 Front 格，並重設 Rear 與 Front 的指標値</mark></li>
@@ -496,7 +496,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     rear &#x3D; rear-1 mod n;  &#x2F;&#x2F;將rear重設回前一格
   else
     Q[rear]&#x3D;item;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h4 id="deleteqq-item-queue-1">DeleteQ(Q) → item, Queue</h4>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if (front&#x3D;rear): &#x2F;&#x2F;先檢查
@@ -504,7 +504,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
   else:
     front &#x3D; (front+1) mod n;
     item &#x3D; Q[front];
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h4 id="特點">特點</h4>
 <ul>
 <li>最多只利用到 <code>n-1 格空間</code></li>
@@ -541,7 +541,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     Q[rear]&#x3D;item;
     if (rear&#x3D;front):
       Tag&#x3D;1;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h4 id="deleteqq-item-queue-2">DeleteQ(Q) → item, Queue</h4>
 <pre class="line-numbers language-none"><code class="language-none">begin
   if (Front&#x3D;Rear and Tag&#x3D;0):
@@ -551,7 +551,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     item &#x3D; Q[Front];
     if (Front&#x3D;Rear):
       Tag&#x3D;0;
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+end</code></pre>
 <h4 id="特點-1">特點</h4>
 <ul>
 <li>最多可利用到 <code>n 格空間</code></li>
@@ -703,13 +703,13 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">85k</span>
+    <span title="總字數">86k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:34</span>
+    <span title="所需總閱讀時間">2:37</span>
   </span>
 </div>
 
@@ -718,6 +718,9 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/components/prism-core.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>

@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="Bucket Sort 桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。">
 <meta property="og:type" content="article">
@@ -357,15 +357,15 @@
 <p>準備好每個分數的<strong>空桶子(0)</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">max_score &#x3D; 100
 bucket &#x3D; []
 for i in range(max_score+1):
-    bucket.append(0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre> ## 2.分類成績</p>
+    bucket.append(0)</code></pre> ## 2.分類成績</p>
 <p>接著把未排序的成績們放入相對應分數的桶子 每次桶子+1 <pre class="line-numbers language-python" data-language="python"><code class="language-python">for score in data:
-    bucket[score] &#x3D; bucket[score] + 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre> ## 3.讀取成績</p>
+    bucket[score] &#x3D; bucket[score] + 1</code></pre> ## 3.讀取成績</p>
 <p>依序檢查每個桶子是否有東西在裡面(非0) 有的話看此桶子有幾個，一個一個拿出來排好 最後就得出排序完的分數了 <pre class="line-numbers language-python" data-language="python"><code class="language-python">index &#x3D; 0
 for i in range(len(bucket)):
     if bucket[i] !&#x3D; 0:
         for j in range(bucket[i]):
             data[index] &#x3D; i
-            index +&#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> ## 4.完整程式碼</p>
+            index +&#x3D; 1</code></pre> ## 4.完整程式碼</p>
 <p>程式時間複雜度：<strong>O(M+N)</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]
 
 def bucketsort(data):
@@ -385,9 +385,9 @@ def bucketsort(data):
                 index +&#x3D; 1
 
 bucketsort(data)
-print(data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> <code>[23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code></p>
+print(data)</code></pre> <code>[23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code></p>
 <h1 id="練習">練習</h1>
-<p>如果假設我們的資料還包含了姓名在內，那要如何排序呢？ <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 我的答案：</p>
+<p>如果假設我們的資料還包含了姓名在內，那要如何排序呢？ <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]</code></pre> 我的答案：</p>
 <h2 id="陣列">陣列</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82], [&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]
 
@@ -406,7 +406,7 @@ for i, j in enumerate(bucket):
         for name in j:
 	        data_sorted.append([name, i])
 
-print(data_sorted) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+print(data_sorted) </code></pre>
 <p><code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Abby', 58], ['Caroline', 65], ['Stephen', 76], ['Elena', 76], ['Ryn', 82], ['James', 87], ['Justin', 99]]</code> 以上是利用陣列，但其實也可以用字典</p>
 <h2 id="字典">字典</h2>
 <p>簡略</p>
@@ -526,13 +526,13 @@ print(data_sorted) <span aria-hidden="true" class="line-numbers-rows"><span></sp
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">85k</span>
+    <span title="總字數">86k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:34</span>
+    <span title="所需總閱讀時間">2:37</span>
   </span>
 </div>
 
@@ -541,6 +541,9 @@ print(data_sorted) <span aria-hidden="true" class="line-numbers-rows"><span></sp
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/components/prism-core.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>

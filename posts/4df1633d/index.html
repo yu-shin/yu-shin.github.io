@@ -22,7 +22,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="npm Node Package Manger，是 nodejs 的 dependency&#x2F;package manager，提供開發者 install packages both globally and locally。">
 <meta property="og:type" content="article">
@@ -367,28 +367,28 @@
 </ol>
 <p>To execute a package with npm 有兩種方法:</p>
 <ol type="1">
-<li>指定路徑 <pre class="line-numbers language-none"><code class="language-none">$ .&#x2F;node_modules&#x2F;.bin&#x2F;your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>指定路徑 <pre class="line-numbers language-none"><code class="language-none">$ .&#x2F;node_modules&#x2F;.bin&#x2F;your-package</code></pre></li>
 <li>adding it into your package.json file in the scripts section <pre class="line-numbers language-none"><code class="language-none">&#123;
   &quot;name&quot;: &quot;your-application&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;scripts&quot;: &#123;
     &quot;your-package&quot;: &quot;your-package&quot;
   &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> 接下來就可以 run the script using npm run: <pre class="line-numbers language-none"><code class="language-none">$ npm run your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> <strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong> 所以接下來介紹<code>npx</code>。</li>
+&#125;</code></pre> 接下來就可以 run the script using npm run: <pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre> <strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong> 所以接下來介紹<code>npx</code>。</li>
 </ol>
 <h1 id="npx">npx</h1>
 <p>npm 只要更新到 <strong>npm@5.2.0</strong> 後，就會多出一個 npx 指令。</p>
 <h2 id="npx使用情況">npx使用情況:</h2>
 <h3 id="run-a-locally-installed-package-easily">*Run a locally installed package easily</h3>
-<p>如果想要執行 locally installed package，只需要 type: <pre class="line-numbers language-none"><code class="language-none">$ npx your-package<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> npx 會檢查 local 或 <code>$PATH</code> 裡是否存在 <code>&lt;command&gt;</code> or <code>&lt;package&gt;</code> 的 binaries，有的話便會執行。</p>
+<p>如果想要執行 locally installed package，只需要 type: <pre class="line-numbers language-none"><code class="language-none">$ npx your-package</code></pre> npx 會檢查 local 或 <code>$PATH</code> 裡是否存在 <code>&lt;command&gt;</code> or <code>&lt;package&gt;</code> 的 binaries，有的話便會執行。</p>
 <h3 id="execute-packages-that-are-not-previously-installed">Execute packages that are not previously installed</h3>
 <p>使用 npx 命令，他會安裝在臨時安裝包上，等到項目初始化完成後就刪除，不用全局性的安裝，避免被汙染。</p>
 <h3 id="test-different-package-versions">Test different package versions</h3>
-<p>npx makes it extremely easy to test different versions of a Node.js package or module。 以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> /posts/4df1633d/npx_create-react-app.jpg</p>
-<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。 安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。 <pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
-$ npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre> <img src="/posts/4df1633d/react-app.jpg" class=""></p>
+<p>npx makes it extremely easy to test different versions of a Node.js package or module。 以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> /posts/4df1633d/npx_create-react-app.jpg</p>
+<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。 安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。 <pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
+$ npm start</code></pre> <img src="/posts/4df1633d/react-app.jpg" class=""></p>
 <h3 id="run-code-directly-from-github">Run code directly from GitHub</h3>
-<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> /posts/4df1633d/npx_github.jpg 可以看到輸出 yay gist</p>
+<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> /posts/4df1633d/npx_github.jpg 可以看到輸出 yay gist</p>
 <h3 id="bonus-round-shell-auto-fallback">Bonus Round: shell auto-fallback</h3>
 <p><strong>待更新...</strong></p>
 <h1 id="參考資料">參考資料</h1>
@@ -517,13 +517,13 @@ $ npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">85k</span>
+    <span title="總字數">86k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:34</span>
+    <span title="所需總閱讀時間">2:37</span>
   </span>
 </div>
 
@@ -532,6 +532,9 @@ $ npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/components/prism-core.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>
