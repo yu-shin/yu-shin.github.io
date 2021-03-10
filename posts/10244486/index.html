@@ -31,12 +31,16 @@
 <meta property="og:site_name" content="Nicholas Blogger">
 <meta property="og:description" content="Bubble Sort Bucket Sort 雖然直覺、簡單好懂，但也遺留了一些問題。舉例來說如果資料很大，就會很浪費空間，或者當資料有小數的時候，沒辦法產生相對應的桶子。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/posts/10244486/%E6%8E%92%E5%BA%8F.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/10244486/%E6%AF%94%E8%BC%83%E5%9C%96.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/10244486/w.jpg">
 <meta property="article:published_time" content="2020-12-25T05:32:20.000Z">
-<meta property="article:modified_time" content="2021-02-10T14:11:24.813Z">
+<meta property="article:modified_time" content="2021-03-10T10:38:53.801Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="資料結構">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/10244486/%E6%8E%92%E5%BA%8F.jpg">
 
 
 <link rel="canonical" href="https://yu-shin.github.io/posts/10244486/">
@@ -204,7 +208,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bubble-sort"><span class="nav-number">1.</span> <span class="nav-text">Bubble Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%88%E7%AE%97%E5%B9%BE%E5%80%8B%E6%B3%A1%E6%B3%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.計算幾個泡泡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E5%9C%88%E8%A6%81%E8%B7%91n-1%E6%AC%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.外圈要跑n-1次</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B7%B4%E7%BF%92"><span class="nav-number">2.</span> <span class="nav-text">練習</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bubble-sort"><span class="nav-number">1.</span> <span class="nav-text">Bubble Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bubble"><span class="nav-number">1.1.</span> <span class="nav-text">Bubble</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort"><span class="nav-number">1.2.</span> <span class="nav-text">Sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%88%E7%AE%97%E5%B9%BE%E5%80%8B%E6%B3%A1%E6%B3%A1"><span class="nav-number">1.3.</span> <span class="nav-text">計算幾個泡泡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E5%9C%88%E8%A6%81%E8%B7%91n-1%E6%AC%A1"><span class="nav-number">1.4.</span> <span class="nav-text">外圈要跑n-1次</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">時間複雜度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#best-case"><span class="nav-number">2.1.</span> <span class="nav-text">Best Case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#worst-case"><span class="nav-number">2.2.</span> <span class="nav-text">Worst Case</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B7%B4%E7%BF%92"><span class="nav-number">3.</span> <span class="nav-text">練習</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -330,14 +334,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.3k</span>
+      <span>1.6k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>2 分鐘</span>
+      <span>3 分鐘</span>
     </span>
 </div>
 
@@ -349,20 +353,31 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="bubble-sort">Bubble Sort</h1>
-<p><strong>Bucket Sort</strong> 雖然直覺、簡單好懂，但也遺留了一些問題。舉例來說如果資料很大，就會很浪費空間，或者當資料有小數的時候，沒辦法產生相對應的桶子。<a id="more"></a></p>
+<p><strong>Bucket Sort</strong> 雖然直覺、簡單好懂，但也遺留了一些問題。舉例來說如果資料很大，就會很浪費空間，或者當資料有小數的時候，沒辦法產生相對應的桶子。<a id="more"></a> <img src="/posts/10244486/%E6%8E%92%E5%BA%8F.jpg" class=""> <img src="/posts/10244486/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class=""></p>
 <p><strong>Bubble Sort</strong> 想法是這樣的，假設要由小排到大，左邊為小右邊為大，以左邊第一個為基準點，不斷的跟右邊的值比大小，比較小的就往左，大的就停住，然後再從這個大的值繼續往右比，直到最後一個位置。現在比完第一輪了，接著再從最左邊的頭開始，往下比下去。</p>
+<h2 id="bubble">Bubble</h2>
+<ul>
+<li>由左至右，兩兩記錄依序互相比較</li>
+<li>if (前者 &gt; 後者) then Swap (前者, 後者)</li>
+</ul>
+<h2 id="sort">Sort</h2>
+<ul>
+<li>將<strong>未排序好</strong>的記錄透過 <code>Bubble</code> 的動作，使之成為排序好的記錄</li>
+<li>共需做 n-1 回合，且<mark class="label primary">由第 1 筆資料</mark>開始做起，∴ 迴圈: <mark class="label info">for i = 1 to (n-1)</mark></li>
+<li>若在某回合處理過程中，<mark class="label primary">沒有任何 Swap 動作發生</mark>，則 Sort 完成，後續回合不用執行</li>
+</ul>
 <hr />
 <p>假設我們現在有一筆班上的成績想要排序：</p>
 <p><code>data = [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]</code></p>
-<h2 id="計算幾個泡泡">1.計算幾個泡泡</h2>
+<h2 id="計算幾個泡泡">計算幾個泡泡</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">n &#x3D; len(data)</code></pre>
-<h2 id="外圈要跑n-1次">2.外圈要跑n-1次</h2>
-<p>最後剩下最小泡泡不用比較所以-1次 <pre class="line-numbers language-python" data-language="python"><code class="language-python">for i in range(n-1):
+<h2 id="外圈要跑n-1次">外圈要跑n-1次</h2>
+<p>最後剩下最小泡泡不用比較所以 -1 次 <pre class="line-numbers language-python" data-language="python"><code class="language-python">for i in range(n-1):
     # code
-</code></pre> ## 3.內圈跑n-1-i次（兩兩比較次數）</p>
-<p>因為每一圈剩下n-i個泡泡 每圈比較n-i-1次 <pre class="line-numbers language-python" data-language="python"><code class="language-python">for j in range(n-i-1):
-    # code</code></pre> ## 4.完整程式碼</p>
-<p><strong>時間複雜度：O(N^2)</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]
+</code></pre> ## 內圈跑n-1-i次（兩兩比較次數）</p>
+<p>因為每一圈剩下 n-i 個泡泡 每圈比較 n-i-1 次 <pre class="line-numbers language-python" data-language="python"><code class="language-python">for j in range(n-i-1):
+    # code</code></pre> ## 程式碼</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]
 
 n &#x3D; len(data)
 # 總共跑n-1次
@@ -371,7 +386,13 @@ for i in range(n-1):
     for j in range(n-i-1):
         if data[j] &gt; data[j+1]:
             data[j], data[j+1] &#x3D; data[j+1], data[j]
-print(data)</code></pre> <code>[23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code></p>
+print(data)</code></pre>
+<p><code>[23, 23, 29, 34, 55, 66, 67, 78, 78, 79, 88, 89, 92, 96, 96, 100]</code></p>
+<h1 id="時間複雜度">時間複雜度</h1>
+<h2 id="best-case">Best Case</h2>
+<p><strong>O(n)</strong> 當輸入資料已經是<strong>由小到大</strong>排好時</p>
+<h2 id="worst-case">Worst Case</h2>
+<p><strong>O(<span class="math inline">\(n^2\)</span>)</strong> 當輸入資料已經是<strong>由大到小</strong>排好時 <img src="/posts/10244486/w.jpg" class=""></p>
 <h1 id="練習">練習</h1>
 <p><code>data = [['Abby', 58], ['Julia', 44], ['Jane', 31], ['Stephen', 76], ['Ryn', 82],['Justin', 99], ['Caroline', 65], ['James', 87], ['Damon', 25], ['Elena', 76]]</code> <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82],[&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]
 n &#x3D; len(data)
@@ -380,7 +401,7 @@ for i in range(n-1):
     for j in range(n-i-1):
         if data[j][1] &gt; data[j+1][1]:
             data[j], data[j+1] &#x3D; data[j+1], data[j]
-print(data)</code></pre> <code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Abby', 58], ['Caroline', 65], ['Stephen', 76], ['Elena', 76], ['Ryn', 82], ['James', 87], ['Justin', 99]]</code> # 參考資料 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://ithelp.ithome.com.tw/articles/10202160">泡沫排序</a></p>
+print(data)</code></pre> <code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Abby', 58], ['Caroline', 65], ['Stephen', 76], ['Elena', 76], ['Ryn', 82], ['James', 87], ['Justin', 99]]</code> # 參考資料 - <a target="_blank" rel="noopener external nofollow noreferrer" href="https://ithelp.ithome.com.tw/articles/10202160">泡沫排序</a> - <a target="_blank" rel="noopener external nofollow noreferrer" href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></p>
 
     </div>
 
@@ -495,13 +516,13 @@ print(data)</code></pre> <code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Ab
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">86k</span>
+    <span title="總字數">87k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:37</span>
+    <span title="所需總閱讀時間">2:38</span>
   </span>
 </div>
 
@@ -564,7 +585,38 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 <script>
