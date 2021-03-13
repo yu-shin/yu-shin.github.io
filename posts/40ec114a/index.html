@@ -24,15 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Introduction 本文蒐集 - LeetCode 485 - LeetCode 1295 - LeetCode 977">
+<meta name="description" content="Introduction 本文蒐集  LeetCode 485 LeetCode 1295 LeetCode 977">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Array Introduction">
 <meta property="og:url" content="https://yu-shin.github.io/posts/40ec114a/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Introduction 本文蒐集 - LeetCode 485 - LeetCode 1295 - LeetCode 977">
+<meta property="og:description" content="Introduction 本文蒐集  LeetCode 485 LeetCode 1295 LeetCode 977">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-03-12T16:36:07.000Z">
-<meta property="article:modified_time" content="2021-03-13T08:55:37.696Z">
+<meta property="article:modified_time" content="2021-03-13T09:05:42.366Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -349,7 +349,11 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="introduction">Introduction</h1>
 <p><strong>本文蒐集</strong></p>
-<p><strong>- <a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/max-consecutive-ones/">LeetCode 485</a></strong> <strong>- <a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/find-numbers-with-even-number-of-digits/">LeetCode 1295</a></strong> <strong>- <a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/squares-of-a-sorted-array/">LeetCode 977</a></strong> <a id="more"></a></p>
+<ul>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/max-consecutive-ones/">LeetCode 485</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/find-numbers-with-even-number-of-digits/">LeetCode 1295</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/squares-of-a-sorted-array/">LeetCode 977</a></strong> <a id="more"></a></li>
+</ul>
 <h1 id="leetcode-485-max-consecutive-ones">LeetCode 485: Max Consecutive Ones</h1>
 <p><strong>Given a binary array, find the maximum number of consecutive 1s in this array.</strong></p>
 <p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: [1,1,0,1,1,1]
@@ -469,7 +473,7 @@ def sortSquares(arr, n):
     # first dived array into part negative and positive
     K &#x3D; 0
     for K in range(n):
-	if (arr[K] &gt;&#x3D; 0 ):
+	    if (arr[K] &gt;&#x3D; 0 ):
        	    break
 	
     # Now do the same process that we learn
@@ -484,29 +488,29 @@ def sortSquares(arr, n):
     # store sorted array
     temp &#x3D; [0]*n
     while (i &gt;&#x3D; 0 and j &lt; n):	
-	if (arr[i] * arr[i] &lt; arr[j] * arr[j]):
+	    if (arr[i] * arr[i] &lt; arr[j] * arr[j]):
        	    temp[ind] &#x3D; arr[i] * arr[i]
-	    i -&#x3D; 1
-	else:
-	    temp[ind] &#x3D; arr[j] * arr[j]
-	    j +&#x3D; 1	
-	ind +&#x3D; 1
+	        i -&#x3D; 1
+	    else:
+	        temp[ind] &#x3D; arr[j] * arr[j]
+	        j +&#x3D; 1	
+	    ind +&#x3D; 1
 	
     &#39;&#39;&#39; Copy the remaining elements of first half &#39;&#39;&#39;
     while (i &gt;&#x3D; 0):	
-	temp[ind] &#x3D; arr[i] * arr[i]
-	i -&#x3D; 1
-	ind +&#x3D; 1
+	    temp[ind] &#x3D; arr[i] * arr[i]
+	    i -&#x3D; 1
+	    ind +&#x3D; 1
 		
     &#39;&#39;&#39; Copy the remaining elements of second half &#39;&#39;&#39;
     while (j &lt; n):
-	temp[ind] &#x3D; arr[j] * arr[j]
-	j +&#x3D; 1
-	ind +&#x3D; 1
+	    temp[ind] &#x3D; arr[j] * arr[j]
+	    j +&#x3D; 1
+	    ind +&#x3D; 1
 		
     # copy &#39;temp&#39; array into original array
     for i in range(n):
-	arr[i] &#x3D; temp[i]
+	    arr[i] &#x3D; temp[i]
 
 # Driver code
 arr &#x3D; [-6, -3, -1, 2, 4, 5 ]

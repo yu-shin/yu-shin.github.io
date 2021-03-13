@@ -6,7 +6,7 @@ def sortSquares(arr, n):
     # first dived array into part negative and positive
     K = 0
     for K in range(n):
-	if (arr[K] >= 0 ):
+	    if (arr[K] >= 0 ):
        	    break
 	
     # Now do the same process that we learn
@@ -21,29 +21,29 @@ def sortSquares(arr, n):
     # store sorted array
     temp = [0]*n
     while (i >= 0 and j < n):	
-	if (arr[i] * arr[i] < arr[j] * arr[j]):
+	    if (arr[i] * arr[i] < arr[j] * arr[j]):
        	    temp[ind] = arr[i] * arr[i]
-	    i -= 1
-	else:
-	    temp[ind] = arr[j] * arr[j]
-	    j += 1	
-	ind += 1
+	        i -= 1
+	    else:
+	        temp[ind] = arr[j] * arr[j]
+	        j += 1	
+	    ind += 1
 	
     ''' Copy the remaining elements of first half '''
     while (i >= 0):	
-	temp[ind] = arr[i] * arr[i]
-	i -= 1
-	ind += 1
+	    temp[ind] = arr[i] * arr[i]
+	    i -= 1
+	    ind += 1
 		
     ''' Copy the remaining elements of second half '''
     while (j < n):
-	temp[ind] = arr[j] * arr[j]
-	j += 1
-	ind += 1
+	    temp[ind] = arr[j] * arr[j]
+	    j += 1
+	    ind += 1
 		
     # copy 'temp' array into original array
     for i in range(n):
-	arr[i] = temp[i]
+	    arr[i] = temp[i]
 
 # Driver code
 arr = [-6, -3, -1, 2, 4, 5 ]

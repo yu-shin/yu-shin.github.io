@@ -185,7 +185,11 @@
     <url>/posts/40ec114a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="introduction">Introduction</h1>
 <p><strong>本文蒐集</strong></p>
-<p><strong>- <a href="https://leetcode.com/problems/max-consecutive-ones/">LeetCode 485</a></strong> <strong>- <a href="https://leetcode.com/problems/find-numbers-with-even-number-of-digits/">LeetCode 1295</a></strong> <strong>- <a href="https://leetcode.com/problems/squares-of-a-sorted-array/">LeetCode 977</a></strong> <a id="more"></a></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/max-consecutive-ones/">LeetCode 485</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/find-numbers-with-even-number-of-digits/">LeetCode 1295</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/squares-of-a-sorted-array/">LeetCode 977</a></strong> <a id="more"></a></li>
+</ul>
 <h1 id="leetcode-485-max-consecutive-ones">LeetCode 485: Max Consecutive Ones</h1>
 <p><strong>Given a binary array, find the maximum number of consecutive 1s in this array.</strong></p>
 <p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: [1,1,0,1,1,1]
@@ -305,7 +309,7 @@ def sortSquares(arr, n):
     # first dived array into part negative and positive
     K &#x3D; 0
     for K in range(n):
-	if (arr[K] &gt;&#x3D; 0 ):
+	    if (arr[K] &gt;&#x3D; 0 ):
        	    break
 	
     # Now do the same process that we learn
@@ -320,29 +324,29 @@ def sortSquares(arr, n):
     # store sorted array
     temp &#x3D; [0]*n
     while (i &gt;&#x3D; 0 and j &lt; n):	
-	if (arr[i] * arr[i] &lt; arr[j] * arr[j]):
+	    if (arr[i] * arr[i] &lt; arr[j] * arr[j]):
        	    temp[ind] &#x3D; arr[i] * arr[i]
-	    i -&#x3D; 1
-	else:
-	    temp[ind] &#x3D; arr[j] * arr[j]
-	    j +&#x3D; 1	
-	ind +&#x3D; 1
+	        i -&#x3D; 1
+	    else:
+	        temp[ind] &#x3D; arr[j] * arr[j]
+	        j +&#x3D; 1	
+	    ind +&#x3D; 1
 	
     &#39;&#39;&#39; Copy the remaining elements of first half &#39;&#39;&#39;
     while (i &gt;&#x3D; 0):	
-	temp[ind] &#x3D; arr[i] * arr[i]
-	i -&#x3D; 1
-	ind +&#x3D; 1
+	    temp[ind] &#x3D; arr[i] * arr[i]
+	    i -&#x3D; 1
+	    ind +&#x3D; 1
 		
     &#39;&#39;&#39; Copy the remaining elements of second half &#39;&#39;&#39;
     while (j &lt; n):
-	temp[ind] &#x3D; arr[j] * arr[j]
-	j +&#x3D; 1
-	ind +&#x3D; 1
+	    temp[ind] &#x3D; arr[j] * arr[j]
+	    j +&#x3D; 1
+	    ind +&#x3D; 1
 		
     # copy &#39;temp&#39; array into original array
     for i in range(n):
-	arr[i] &#x3D; temp[i]
+	    arr[i] &#x3D; temp[i]
 
 # Driver code
 arr &#x3D; [-6, -3, -1, 2, 4, 5 ]
@@ -1003,7 +1007,10 @@ print(data_sorted) </code></pre>
     <url>/posts/bad31420/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="deleting-items-from-an-array">Deleting Items From an Array</h1>
 <p><strong>本文蒐集</strong></p>
-<p><strong>- <a href="https://leetcode.com/problems/remove-element/">LeetCode 27</a></strong> <strong>- <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong> <a id="more"></a></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/remove-element/">LeetCode 27</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong> <a id="more"></a></li>
+</ul>
 <h1 id="leetcode-27-remove-element">LeetCode 27: Remove Element</h1>
 <p>Given an array nums and a value <code>val</code>, remove all instances of that value <code>in-place</code> and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory.</p>
@@ -1072,22 +1079,22 @@ Explanation: Your function should return length &#x3D; 5, with the first five el
     def removeElement(self, nums: List[int], val: int) -&gt; int:
         count &#x3D; 0
         for i in range(len(nums)):
-            if nums[i] !&#x3D; val :
+            if nums[i] !&#x3D; val:
                 nums[count] &#x3D; nums[i]
                 count +&#x3D;1
         return count</code></pre>
 <h2 id="其他解法-2">其他解法 2</h2>
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解2.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解2.py">view raw</a></div><code class="language-python">class Solution:
     def removeElement(self, nums: List[int], val: int) -&gt; int:
-        i &#x3D; 0
-	n &#x3D; len(nums)
-	while i &lt; n:
-	    if nums[i] &#x3D;&#x3D; val:
-		nums[i] &#x3D; nums[n-1]
-		n -&#x3D; 1
-	    else:
-		i +&#x3D; 1
-	return n</code></pre>
+		i &#x3D; 0
+		n &#x3D; len(nums)
+		while i &lt; n:
+			if nums[i] &#x3D;&#x3D; val:
+				nums[i] &#x3D; nums[n-1]
+				n -&#x3D; 1
+	    	else:
+				i +&#x3D; 1
+		return n</code></pre>
 <h1 id="leetcode-27-remove-duplicates-from-sorted-array">LeetCode 27: Remove Duplicates from Sorted Array</h1>
 <p>Given a sorted array nums, remove the duplicates <code>in-place</code> such that each element appears only once and returns the new length.</p>
 <p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory. Clarification:</p>
@@ -1127,8 +1134,8 @@ class Solution:
 <pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26解.py">view raw</a></div><code class="language-python">class Solution:
     def removeDuplicates(self, nums: List[int]) -&gt; int:
         if len(nums) &#x3D;&#x3D; 0:
-	    return 0
-	i &#x3D; 0
+	        return 0
+	    i &#x3D; 0
         for j in range(1, len(nums)):
             if nums[j] !&#x3D; nums[i]:
                 i +&#x3D; 1
@@ -1772,7 +1779,10 @@ e = \sum_{i=1}^n Indegree_i = \sum_{i=1}^n Outdegree_i
     <url>/posts/d3f87549/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="inserting-items-into-an-array">Inserting Items Into an Array</h1>
 <p><strong>本文蒐集</strong></p>
-<p><strong>- <a href="https://leetcode.com/problems/duplicate-zeros/">LeetCode 1089</a></strong> <strong>- <a href="https://leetcode.com/problems/merge-sorted-array/">LeetCode 88</a></strong> <a id="more"></a></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/duplicate-zeros/">LeetCode 1089</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/merge-sorted-array/">LeetCode 88</a></strong> <a id="more"></a></li>
+</ul>
 <h1 id="leetcode-1089-duplicate-zeros">LeetCode 1089: Duplicate Zeros</h1>
 <p>Given a fixed length array <code>arr</code> of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.</p>
 <p>Note that elements beyond the length of the original array are not written.</p>
