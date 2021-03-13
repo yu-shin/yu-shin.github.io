@@ -184,7 +184,7 @@
     <title>Array Introduction</title>
     <url>/posts/40ec114a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="introduction">Introduction</h1>
-<p><strong>本文蒐集 <code>LeetCode 485</code>, <code>LeetCode 1295</code>, <code>LeetCode 977</code></strong> <a id="more"></a></p>
+<p><strong>本文蒐集 <a href="https://leetcode.com/problems/max-consecutive-ones/">LeetCode 485</a>, <a href="https://leetcode.com/problems/find-numbers-with-even-number-of-digits/">LeetCode 1295</a>, <a href="https://leetcode.com/problems/squares-of-a-sorted-array/">LeetCode 977</a></strong> <a id="more"></a></p>
 <h1 id="leetcode-485-max-consecutive-ones">LeetCode 485: Max Consecutive Ones</h1>
 <p><strong>Given a binary array, find the maximum number of consecutive 1s in this array.</strong></p>
 <p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: [1,1,0,1,1,1]
@@ -1623,6 +1623,151 @@ e = \sum_{i=1}^n Indegree_i = \sum_{i=1}^n Outdegree_i
 ]]></content>
       <tags>
         <tag>資料結構</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Inserting Items Into an Array</title>
+    <url>/posts/d3f87549/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="inserting-items-into-an-array">Inserting Items Into an Array</h1>
+<p><strong>本文蒐集 <a href="https://leetcode.com/problems/duplicate-zeros/">LeetCode 1089</a>, <a href="https://leetcode.com/problems/merge-sorted-array/">LeetCode 88</a></strong> <a id="more"></a></p>
+<h1 id="leetcode-1089-duplicate-zeros">LeetCode 1089: Duplicate Zeros</h1>
+<p>Given a fixed length array <code>arr</code> of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.</p>
+<p>Note that elements beyond the length of the original array are not written.</p>
+<p>Do the above modifications to the input array <strong>in place</strong>, do not return anything from your function.</p>
+<p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: [1,0,2,3,0,4,5,0]
+Output: null
+Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]</code></pre> Example 2: <pre class="line-numbers language-none"><code class="language-none">Input: [1,2,3]
+Output: null
+Explanation: After calling your function, the input array is modified to: [1,2,3]</code></pre> Note:</p>
+<ul>
+<li><code>1 &lt;= arr.length &lt;= 10000</code></li>
+<li><code>0 &lt;= arr[i] &lt;= 9</code></li>
+</ul>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089.py">view raw</a></div><code class="language-python">class Solution:
+    def duplicateZeros(self, arr: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify arr in-place instead.
+        &quot;&quot;&quot;
+        i &#x3D; 0
+        while i &lt; (len(arr)-1):
+            if arr[i] &#x3D;&#x3D; 0:
+                j &#x3D; len(arr)-1
+                while i &lt; j:
+                    arr[j] &#x3D; arr[j-1]
+                    j -&#x3D; 1
+                i +&#x3D; 2
+            else:
+                i +&#x3D; 1</code></pre>
+<ul>
+<li><strong>Time complexity:</strong> O(<span class="math inline">\(n^2\)</span>)</li>
+<li><strong>space complexity:</strong> O(1)</li>
+</ul>
+<h2 id="簡潔-code">簡潔 code</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089_簡潔.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089_簡潔.py">view raw</a></div><code class="language-python">class Solution:
+    def duplicateZeros(self, arr: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify arr in-place instead.
+        &quot;&quot;&quot;
+        i&#x3D;0
+        while i&lt;len(arr):
+            if arr[i]&#x3D;&#x3D;0:
+                arr.pop() # O(1)
+                arr.insert(i+1,0) # O(N)
+                i+&#x3D;2
+            else:i+&#x3D;1</code></pre>
+<p><code>不建議</code></p>
+<h2 id="空間換時間">空間換時間</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089_空間換時間.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089_空間換時間.py">view raw</a></div><code class="language-python">class Solution:
+    def duplicateZeros(self, arr: List[int]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify arr in-place instead.
+        &quot;&quot;&quot;
+        len_arr&#x3D;len(arr)
+        rst&#x3D;[]
+        for num in arr:
+            if num&#x3D;&#x3D;0:
+                rst.append(0)
+                rst.append(0)
+            else:rst.append(num)
+            if len(rst)&gt;&#x3D;len_arr:
+                arr[:]&#x3D;rst[:len_arr]
+                # arr&#x3D;rst[:len_arr] this do not work
+                break</code></pre>
+<p>盡量把<code>append()</code>和<code>[:]</code>換掉</p>
+<ul>
+<li><strong>Time complexity:</strong> O(n)</li>
+<li><strong>space complexity:</strong> O(n)</li>
+</ul>
+<h1 id="leetcode-88-merge-sorted-array">LeetCode 88: Merge Sorted Array</h1>
+<p>Given two sorted integer arrays <code>nums1</code> and <code>nums2</code>, merge <code>nums2</code> into <code>nums1</code> as one sorted array.</p>
+<p>The number of elements initialized in <code>nums1</code> and <code>nums2</code> are <code>m</code> and <code>n</code> respectively. You may assume that <code>nums1</code> has a size equal to <code>m + n</code> such that it has enough space to hold additional elements from <code>nums2</code>.</p>
+<p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: nums1 &#x3D; [1,2,3,0,0,0], m &#x3D; 3, nums2 &#x3D; [2,5,6], n &#x3D; 3
+Output: [1,2,2,3,5,6]</code></pre> Example 2: <pre class="line-numbers language-none"><code class="language-none">Input: nums1 &#x3D; [1], m &#x3D; 1, nums2 &#x3D; [], n &#x3D; 0
+Output: [1]</code></pre> Constraints:</p>
+<ul>
+<li><code>nums1.length == m + n</code></li>
+<li><code>nums2.length == n</code></li>
+<li><code>0 &lt;= m, n &lt;= 200</code></li>
+<li><code>1 &lt;= m + n &lt;= 200</code></li>
+<li><code>-109 &lt;= nums1[i], nums2[i] &lt;= 109</code></li>
+</ul>
+<h2 id="我的解法">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q88.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q88.py">view raw</a></div><code class="language-python">class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums1 in-place instead.
+        &quot;&quot;&quot;
+        if n &#x3D;&#x3D; 0:
+            return
+        elif m &#x3D;&#x3D; 0:
+            nums1[:n] &#x3D; nums2[:]
+            return
+        else:
+            temp &#x3D; [0] * m
+            temp[:] &#x3D; nums1[:m]
+            i, j, k &#x3D; 0, 0, 0
+            while k &lt; m+n:
+                if temp[i] &lt; nums2[j]:
+                    nums1[k] &#x3D; temp[i]
+                    k +&#x3D; 1
+                    i +&#x3D; 1
+                    if i &#x3D;&#x3D; m:
+                        break
+                else:
+                    nums1[k] &#x3D; nums2[j]
+                    k +&#x3D; 1
+                    j +&#x3D; 1
+                    if j &#x3D;&#x3D; n:
+                        break
+            if i &#x3D;&#x3D; m:
+                nums1[k:] &#x3D; nums2[j:]
+            else:
+                nums1[k:] &#x3D; temp[i:]</code></pre>
+<ul>
+<li><strong>Time complexity:</strong> O(n)</li>
+<li><strong>space complexity:</strong> O(1)</li>
+</ul>
+<h2 id="神人解法">神人解法</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q88_改進.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q88_改進.py">view raw</a></div><code class="language-python">class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify nums1 in-place instead.
+        &quot;&quot;&quot;
+        while n &gt; 0:
+            if m &lt;&#x3D; 0 or nums2[n-1] &gt;&#x3D; nums1[m-1]:  
+                nums1[m+n-1] &#x3D; nums2[n-1]
+                n -&#x3D; 1
+            else:
+                nums1[m+n-1] &#x3D; nums1[m-1]
+                m -&#x3D; 1</code></pre>
+<ul>
+<li><strong>Time complexity:</strong> O(n)</li>
+<li><strong>space complexity:</strong> O(1)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
