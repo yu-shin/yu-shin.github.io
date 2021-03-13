@@ -181,6 +181,152 @@
       </tags>
   </entry>
   <entry>
+    <title>Array Introduction</title>
+    <url>/posts/40ec114a/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="introduction">Introduction</h1>
+<p><strong>本文蒐集 <code>LeetCode 485</code>, <code>LeetCode 1295</code>, <code>LeetCode 977</code></strong> <a id="more"></a></p>
+<h1 id="leetcode-485-max-consecutive-ones">LeetCode 485: Max Consecutive Ones</h1>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q485_loop.py</span><a href="/downloads/code/LeetCode/Array-Introduction/q485_loop.py">view raw</a></div><code class="language-python">class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -&gt; int:
+        count &#x3D; 0
+        m &#x3D; 0
+        for i in range(len(nums)):
+            if nums[i] &#x3D;&#x3D; 1:
+                count +&#x3D; 1
+            else:
+                if count &gt; m:
+                    m &#x3D; count
+                count &#x3D; 0
+        return max(m, count)</code></pre>
+<ul>
+<li><strong>Time Complexity:</strong> O(n)</li>
+<li><strong>Auxiliary Space:</strong> O(1)</li>
+</ul>
+<h2 id="利用-itertools.groupby">利用 itertools.groupby</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q485_itertools.groupby.py</span><a href="/downloads/code/LeetCode/Array-Introduction/q485_itertools.groupby.py">view raw</a></div><code class="language-python">class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -&gt; int:
+        if 1 not in nums: return 0
+        groups &#x3D; [(key, len(list(group))) for key, group in itertools.groupby(nums) if key &#x3D;&#x3D; 1] # [(1, 2), (0, 1), (1, 3)]
+        return max(groups, key&#x3D;lambda s: s[1])[1]</code></pre>
+<p><code>不建議使用內部函式</code>，這邊只是提供簡潔寫法</p>
+<h1 id="leetcode-1295-find-numbers-with-even-number-of-digits">LeetCode 1295: Find Numbers with Even Number of Digits</h1>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1295.py</span><a href="/downloads/code/LeetCode/Array-Introduction/q1295.py">view raw</a></div><code class="language-python">class Solution:
+    def findNumbers(self, nums: List[int]) -&gt; int:
+        count &#x3D; 0
+        for i in nums:
+            if len(str(i)) % 2 &#x3D;&#x3D; 0:
+                count +&#x3D; 1
+        return count</code></pre>
+<ul>
+<li><strong>Time Complexity:</strong> O(N * log(max(nums[i])))</li>
+<li><strong>Space Complexity:</strong> O(1)</li>
+</ul>
+<h2 id="我竟然沒想到-lenstr">我竟然沒想到 len(str())</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1295_str.py</span><a href="/downloads/code/LeetCode/Array-Introduction/q1295_str.py">view raw</a></div><code class="language-python">class Solution:
+    def findNumbers(self, nums: List[int]) -&gt; int:
+        count &#x3D; 0
+        for i in nums:
+            if len(str(i)) % 2 &#x3D;&#x3D; 0:
+                count +&#x3D; 1
+        return count</code></pre>
+<p><code>不建議</code></p>
+<h1 id="leetcode-977-squares-of-a-sorted-array">LeetCode 977: Squares of a Sorted Array</h1>
+<h2 id="我的解答-2">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q977.py</span><a href="/downloads/code/LeetCode/Array-Introduction/q977.py">view raw</a></div><code class="language-python">class Solution:
+    def sortedSquares(self, nums: List[int]) -&gt; List[int]:
+        i &#x3D; 0
+        j &#x3D; len(nums) - 1
+        k &#x3D; 0
+        ans &#x3D; [0] * len(nums)
+        for _ in range(len(nums)):
+            nums[_] &#x3D; nums[_] ** 2
+        while i &lt;&#x3D; j:
+            if nums[i] &gt; nums[j]:
+                ans[k] &#x3D; nums[i]
+                i +&#x3D; 1
+            else:
+                ans[k] &#x3D; nums[j]
+                j -&#x3D; 1
+            k +&#x3D; 1
+        for i in range(len(nums)):
+            nums[i] &#x3D; ans[len(nums)-1-i]
+        return nums</code></pre>
+<ul>
+<li><strong>Time complexity:</strong> O(n)</li>
+<li><strong>Auxiliary Space:</strong> O(n)</li>
+</ul>
+<h2 id="利用-mergesort-的概念">利用 MergeSort 的概念</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q977_MergeSort.py</span><a href="/downloads/code/LeetCode/Array-Introduction/q977_MergeSort.py">view raw</a></div><code class="language-python"># Python3 program to Sort square of the numbers of the array
+
+# function to sort array after doing squares of elements
+def sortSquares(arr, n):
+	
+    # first dived array into part negative and positive
+    K &#x3D; 0
+    for K in range(n):
+	if (arr[K] &gt;&#x3D; 0 ):
+       	    break
+	
+    # Now do the same process that we learn
+    # in merge sort to merge to two sorted array
+    # here both two half are sorted and we traverse
+    # first half in reverse meaner because
+    # first half contain negative element
+    i &#x3D; K - 1 # Initial index of first half
+    j &#x3D; K # Initial index of second half
+    ind &#x3D; 0 # Initial index of temp array
+	
+    # store sorted array
+    temp &#x3D; [0]*n
+    while (i &gt;&#x3D; 0 and j &lt; n):	
+	if (arr[i] * arr[i] &lt; arr[j] * arr[j]):
+       	    temp[ind] &#x3D; arr[i] * arr[i]
+	    i -&#x3D; 1
+	else:
+	    temp[ind] &#x3D; arr[j] * arr[j]
+	    j +&#x3D; 1	
+	ind +&#x3D; 1
+	
+    &#39;&#39;&#39; Copy the remaining elements of first half &#39;&#39;&#39;
+    while (i &gt;&#x3D; 0):	
+	temp[ind] &#x3D; arr[i] * arr[i]
+	i -&#x3D; 1
+	ind +&#x3D; 1
+		
+    &#39;&#39;&#39; Copy the remaining elements of second half &#39;&#39;&#39;
+    while (j &lt; n):
+	temp[ind] &#x3D; arr[j] * arr[j]
+	j +&#x3D; 1
+	ind +&#x3D; 1
+		
+    # copy &#39;temp&#39; array into original array
+    for i in range(n):
+	arr[i] &#x3D; temp[i]
+
+# Driver code
+arr &#x3D; [-6, -3, -1, 2, 4, 5 ]
+n &#x3D; len(arr)
+
+print(&quot;Before sort &quot;)
+for i in range(n):
+    print(arr[i], end &#x3D;&quot; &quot; )
+	
+sortSquares(arr, n)
+print(&quot;\nAfter Sort &quot;)
+for i in range(n):
+    print(arr[i], end &#x3D;&quot; &quot; )</code></pre>
+<ul>
+<li><strong>Time complexity:</strong> O(n)</li>
+<li><strong>space complexity:</strong> O(n)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Array</title>
     <url>/posts/60cdc1b3/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="array">Array</h1>
@@ -579,6 +725,10 @@ print(data)</code></pre>
 <p><strong>O(n)</strong> 當輸入資料已經是<strong>由小到大</strong>排好時</p>
 <h2 id="worst-case">Worst Case</h2>
 <p><strong>O(<span class="math inline">\(n^2\)</span>)</strong> 當輸入資料已經是<strong>由大到小</strong>排好時 <img src="/posts/10244486/w.jpg" class=""></p>
+<h2 id="average-case">Average Case</h2>
+<p><strong>O(<span class="math inline">\(n^2\)</span>)</strong> <img src="/posts/10244486/a.jpg" class=""></p>
+<h1 id="空間複雜度">空間複雜度</h1>
+<p><strong>O(1)</strong></p>
 <h1 id="練習">練習</h1>
 <p><code>data = [['Abby', 58], ['Julia', 44], ['Jane', 31], ['Stephen', 76], ['Ryn', 82],['Justin', 99], ['Caroline', 65], ['James', 87], ['Damon', 25], ['Elena', 76]]</code> <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [[&#39;Abby&#39;, 58], [&#39;Julia&#39;, 44], [&#39;Jane&#39;, 31], [&#39;Stephen&#39;, 76], [&#39;Ryn&#39;, 82],[&#39;Justin&#39;, 99], [&#39;Caroline&#39;, 65], [&#39;James&#39;, 87], [&#39;Damon&#39;, 25], [&#39;Elena&#39;, 76]]
 n &#x3D; len(data)
@@ -587,7 +737,12 @@ for i in range(n-1):
     for j in range(n-i-1):
         if data[j][1] &gt; data[j+1][1]:
             data[j], data[j+1] &#x3D; data[j+1], data[j]
-print(data)</code></pre> <code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Abby', 58], ['Caroline', 65], ['Stephen', 76], ['Elena', 76], ['Ryn', 82], ['James', 87], ['Justin', 99]]</code> # 參考資料 - <a href="https://ithelp.ithome.com.tw/articles/10202160">泡沫排序</a> - <a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></p>
+print(data)</code></pre> <code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Abby', 58], ['Caroline', 65], ['Stephen', 76], ['Elena', 76], ['Ryn', 82], ['James', 87], ['Justin', 99]]</code></p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10202160">泡沫排序</a></li>
+<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
+</ul>
 ]]></content>
       <tags>
         <tag>資料結構</tag>
