@@ -55,7 +55,7 @@
 <meta property="og:image" content="https://yu-shin.github.io/posts/d37550bb/link23.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/d37550bb/link24.jpg">
 <meta property="article:published_time" content="2021-01-19T12:58:55.000Z">
-<meta property="article:modified_time" content="2021-01-30T08:04:09.368Z">
+<meta property="article:modified_time" content="2021-03-18T12:46:57.624Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="資料結構">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,14 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-number">1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E8%B3%AA"><span class="nav-number">2.</span> <span class="nav-text">特質</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#link-list%E7%9A%84%E7%A8%AE%E9%A1%9E"><span class="nav-number">3.</span> <span class="nav-text">Link list的種類</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#single-link-list-%E5%96%AE%E5%90%91%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">Single Link List (單向鏈結串列)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-list"><span class="nav-number">3.1.1.</span> <span class="nav-text">Create List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-node"><span class="nav-number">3.1.2.</span> <span class="nav-text">Insert Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-node"><span class="nav-number">3.1.3.</span> <span class="nav-text">Delete Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#storage-pool"><span class="nav-number">3.1.4.</span> <span class="nav-text">Storage Pool</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#newt"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">New(t)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rett"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">Ret(t)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#circular-link-list-%E7%92%B0%E7%8A%B6%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97"><span class="nav-number">3.2.</span> <span class="nav-text">Circular Link List (環状鏈結串列)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%94%B6%E6%99%82%E9%96%93%E7%9A%84%E6%AF%94%E8%BC%83%E5%96%AE%E5%90%91-vs.-%E7%92%B0%E7%8B%80"><span class="nav-number">3.2.1.</span> <span class="nav-text">回收時間的比較(單向 vs. 環狀)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#single-linked-list"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Single Linked List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circular-linked-list"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Circular Linked List</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-link-list-%E9%9B%99%E5%90%91%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97"><span class="nav-number">3.3.</span> <span class="nav-text">Double Link List (雙向鏈結串列)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insertion"><span class="nav-number">3.3.1.</span> <span class="nav-text">Insertion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deletion"><span class="nav-number">3.3.2.</span> <span class="nav-text">Deletion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#double-linked-list-%E8%88%87-single-linked-list-%E7%9A%84%E6%AF%94%E8%BC%83"><span class="nav-number">3.3.3.</span> <span class="nav-text">Double linked list 與 Single linked list 的比較</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#link-list-%E4%B8%89%E5%80%8B%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%8B%95%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">Link list 三個常見的動作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#length"><span class="nav-number">4.1.</span> <span class="nav-text">Length</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-linked-list-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">Single linked list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circular-linked-list-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">Circular linked list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concatenate"><span class="nav-number">4.2.</span> <span class="nav-text">Concatenate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-linked-list-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">Single linked list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circular-linked-list-2"><span class="nav-number">4.2.2.</span> <span class="nav-text">Circular linked list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invert"><span class="nav-number">4.3.</span> <span class="nav-text">Invert</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-linked-list-3"><span class="nav-number">4.3.1.</span> <span class="nav-text">Single linked list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circular-linked-list-3"><span class="nav-number">4.3.2.</span> <span class="nav-text">Circular linked list</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#array-%E8%88%87-link-list-%E7%9A%84%E6%AF%94%E8%BC%83"><span class="nav-number">5.</span> <span class="nav-text">Array 與 Link List 的比較</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-single-link-list-%E8%A1%A8%E7%A4%BA%E5%A4%9A%E9%A0%85%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">利用 Single link list 表示多項式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-number">1.</span> <span class="nav-text">定義</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E8%B3%AA"><span class="nav-number">2.</span> <span class="nav-text">特質</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#link-list%E7%9A%84%E7%A8%AE%E9%A1%9E"><span class="nav-number">3.</span> <span class="nav-text">Link list的種類</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#single-link-list-%E5%96%AE%E5%90%91%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">Single Link List (單向鏈結串列)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-list"><span class="nav-number">3.1.1.</span> <span class="nav-text">Create List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insert-node"><span class="nav-number">3.1.2.</span> <span class="nav-text">Insert Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-node"><span class="nav-number">3.1.3.</span> <span class="nav-text">Delete Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#storage-pool"><span class="nav-number">3.1.4.</span> <span class="nav-text">Storage Pool</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#newt"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">New(t)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rett"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">Ret(t)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#circular-link-list-%E7%92%B0%E7%8A%B6%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97"><span class="nav-number">3.2.</span> <span class="nav-text">Circular Link List (環状鏈結串列)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E6%94%B6%E6%99%82%E9%96%93%E7%9A%84%E6%AF%94%E8%BC%83%E5%96%AE%E5%90%91-vs.-%E7%92%B0%E7%8B%80"><span class="nav-number">3.2.1.</span> <span class="nav-text">回收時間的比較(單向 vs. 環狀)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#single-linked-list"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Single Linked List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circular-linked-list"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Circular Linked List</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-link-list-%E9%9B%99%E5%90%91%E9%8F%88%E7%B5%90%E4%B8%B2%E5%88%97"><span class="nav-number">3.3.</span> <span class="nav-text">Double Link List (雙向鏈結串列)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insertion"><span class="nav-number">3.3.1.</span> <span class="nav-text">Insertion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deletion"><span class="nav-number">3.3.2.</span> <span class="nav-text">Deletion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#double-linked-list-%E8%88%87-single-linked-list-%E7%9A%84%E6%AF%94%E8%BC%83"><span class="nav-number">3.3.3.</span> <span class="nav-text">Double linked list 與 Single linked list 的比較</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#link-list-%E4%B8%89%E5%80%8B%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%8B%95%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">Link list 三個常見的動作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#length"><span class="nav-number">4.1.</span> <span class="nav-text">Length</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-linked-list-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">Single linked list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circular-linked-list-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">Circular linked list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concatenate"><span class="nav-number">4.2.</span> <span class="nav-text">Concatenate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-linked-list-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">Single linked list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circular-linked-list-2"><span class="nav-number">4.2.2.</span> <span class="nav-text">Circular linked list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invert-reverse"><span class="nav-number">4.3.</span> <span class="nav-text">Invert ( Reverse )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-linked-list-3"><span class="nav-number">4.3.1.</span> <span class="nav-text">Single linked list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">4.4.</span> <span class="nav-text">Procedure Invert S(S: pointer to S.L.)
+  p &#x3D; S; q &#x3D; nil;
+  while (p ≠ nil) do
+    r &#x3D; q;    &#x2F;&#x2F;r 一開始會在此被設為 nil
+    q &#x3D; p;
+    p &#x3D; p → link;
+    q → link &#x3D; r;
+  S &#x3D; q;       &#x2F;&#x2F;S可能指向反轉後的第一個節點或是null list</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#array-%E8%88%87-link-list-%E7%9A%84%E6%AF%94%E8%BC%83"><span class="nav-number">5.</span> <span class="nav-text">Array 與 Link List 的比較</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-single-link-list-%E8%A1%A8%E7%A4%BA%E5%A4%9A%E9%A0%85%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">利用 Single link list 表示多項式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -243,7 +250,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -353,14 +360,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>4k</span>
+      <span>4.5k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>7 分鐘</span>
+      <span>8 分鐘</span>
     </span>
 </div>
 
@@ -561,26 +568,52 @@ end</code></pre></p>
 3   B → link &#x3D; C;
   return C;                             &#x2F;&#x2F;回傳 Case 1~ 4 的結果</code></pre>
 <p><code>Time Complexity: O(1)</code></p>
-<h2 id="invert">Invert</h2>
+<h2 id="invert-reverse">Invert ( Reverse )</h2>
 <h3 id="single-linked-list-3">Single linked list</h3>
 <p>需要三個指標: r, q, p</p>
 <ul>
 <li>r 跟著 q 走， q 跟著 p 走， p 往前進</li>
 </ul>
 <img src="/posts/d37550bb/link21.jpg" class="">
-<pre class="line-numbers language-none"><code class="language-none">Procedure Invert S(S: pointer to S.L.)
+<h2 id="section"><pre class="line-numbers language-none"><code class="language-none">Procedure Invert S(S: pointer to S.L.)
   p &#x3D; S; q &#x3D; nil;
   while (p ≠ nil) do
     r &#x3D; q;    &#x2F;&#x2F;r 一開始會在此被設為 nil
     q &#x3D; p;
     p &#x3D; p → link;
     q → link &#x3D; r;
-  S &#x3D; q;       &#x2F;&#x2F;S可能指向反轉後的第一個節點或是null list</code></pre>
-<p><code>Time Complexity: O(N)</code></p>
-<h3 id="circular-linked-list-3">Circular linked list</h3>
-<p>亦需要三個指標: r, q, p</p>
+  S &#x3D; q;       &#x2F;&#x2F;S可能指向反轉後的第一個節點或是null list</code></pre></h2>
+<p><strong>PYTHON</strong> - <strong>Iterative</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">def reverseList(self, head):
+    &quot;&quot;&quot;
+    :type head: ListNode
+    :rtype: ListNode
+    &quot;&quot;&quot;
+    prev &#x3D; None
+    while head:
+        curr &#x3D; head
+        head &#x3D; head.next
+        curr.next &#x3D; prev
+        prev &#x3D; curr
+    return prev
+#    python 簡潔寫法
+#    cur, prev &#x3D; head, None
+#    while cur:
+#        cur.next, prev, cur &#x3D; prev, cur, cur.next
+#    return prev</code></pre> <code>Time Complexity: O(N)</code></p>
 <ul>
-<li>r跟著q走，q跟著p走，p往前進</li>
+<li><p><strong>Recursive</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+# @param &#123;ListNode&#125; head
+# @return &#123;ListNode&#125;
+    def reverseList(self, head):
+        return self._reverse(head)
+
+    def _reverse(self, node, prev&#x3D;None):
+        if not node:
+	    return prev
+        n &#x3D; node.next
+        node.next &#x3D; prev
+        return self._reverse(n, node)</code></pre> ### Circular linked list 亦需要三個指標: r, q, p</p></li>
+<li><p>r跟著q走，q跟著p走，p往前進</p></li>
 </ul>
 <img src="/posts/d37550bb/link22.jpg" class="">
 <pre class="line-numbers language-none"><code class="language-none">Procedure Invert C(C: pointer to C.L.)
@@ -714,13 +747,13 @@ end</code></pre></p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">98k</span>
+    <span title="總字數">108k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:59</span>
+    <span title="所需總閱讀時間">3:17</span>
   </span>
 </div>
 

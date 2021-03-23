@@ -33,12 +33,13 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/%E6%8E%92%E5%BA%8F.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/%E6%AF%94%E8%BC%83%E5%9C%96.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/qs.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/quicksort_3group.png">
 <meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/quick_tree1.png">
 <meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/quick_tree2.png">
 <meta property="og:image" content="https://yu-shin.github.io/posts/932bcef/quick_tree_average.png">
 <meta property="article:published_time" content="2020-12-25T11:22:51.000Z">
-<meta property="article:modified_time" content="2021-03-13T08:05:35.506Z">
+<meta property="article:modified_time" content="2021-03-16T07:11:58.905Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="資料結構">
 <meta property="article:tag" content="演算法">
@@ -211,7 +212,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-sort"><span class="nav-number">1.</span> <span class="nav-text">Quick Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%AF%AB%E5%87%BA%E9%81%9E%E8%BF%B4%E5%87%BD%E6%95%B8%E6%9E%B6%E6%A7%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1.先寫出遞迴函數架構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E5%B7%A6%E5%8F%B3%E9%96%8B%E5%A7%8B%E6%89%BE%E5%87%BA%E5%A4%A7%E5%B0%8F%E6%96%BC%E5%9F%BA%E6%BA%96%E9%BB%9E%E7%9A%84%E5%80%BC"><span class="nav-number">1.2.</span> <span class="nav-text">2.由左(右)開始找出大(小)於基準點的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E9%81%87%E9%BB%9E%E5%92%8C%E5%9F%BA%E6%BA%96%E9%BB%9E%E5%B0%8D%E8%AA%BF"><span class="nav-number">1.3.</span> <span class="nav-text">3.相遇點和基準點對調</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E9%81%9E%E8%BF%B4%E4%B8%8B%E5%8E%BB"><span class="nav-number">1.4.</span> <span class="nav-text">4.左右遞迴下去</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">1.5.</span> <span class="nav-text">5.完整程式碼</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">時間複雜度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#worst-case"><span class="nav-number">2.1.</span> <span class="nav-text">Worst-case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#best-case"><span class="nav-number">2.2.</span> <span class="nav-text">best case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#average-case"><span class="nav-number">2.3.</span> <span class="nav-text">average case</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">空間複雜度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#randomized-quicksort"><span class="nav-number">4.</span> <span class="nav-text">Randomized quicksort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E9%9D%A0%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">參靠資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-sort"><span class="nav-number">1.</span> <span class="nav-text">Quick Sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithm"><span class="nav-number">2.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%AF%AB%E5%87%BA%E9%81%9E%E8%BF%B4%E5%87%BD%E6%95%B8%E6%9E%B6%E6%A7%8B"><span class="nav-number">2.1.</span> <span class="nav-text">1.先寫出遞迴函數架構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E5%B7%A6%E5%8F%B3%E9%96%8B%E5%A7%8B%E6%89%BE%E5%87%BA%E5%A4%A7%E5%B0%8F%E6%96%BC%E5%9F%BA%E6%BA%96%E9%BB%9E%E7%9A%84%E5%80%BC"><span class="nav-number">2.2.</span> <span class="nav-text">2.由左(右)開始找出大(小)於基準點的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E9%81%87%E9%BB%9E%E5%92%8C%E5%9F%BA%E6%BA%96%E9%BB%9E%E5%B0%8D%E8%AA%BF"><span class="nav-number">2.3.</span> <span class="nav-text">3.相遇點和基準點對調</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E9%81%9E%E8%BF%B4%E4%B8%8B%E5%8E%BB"><span class="nav-number">2.4.</span> <span class="nav-text">4.左右遞迴下去</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">2.5.</span> <span class="nav-text">5.完整程式碼</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">時間複雜度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#worst-case"><span class="nav-number">3.1.</span> <span class="nav-text">Worst-case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#best-case"><span class="nav-number">3.2.</span> <span class="nav-text">best case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#average-case"><span class="nav-number">3.3.</span> <span class="nav-text">average case</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">空間複雜度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#randomized-quicksort"><span class="nav-number">5.</span> <span class="nav-text">Randomized quicksort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E9%9D%A0%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參靠資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -227,7 +228,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -337,14 +338,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>4.7k</span>
+      <span>5.7k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>9 分鐘</span>
+      <span>10 分鐘</span>
     </span>
 </div>
 
@@ -359,6 +360,9 @@
 <p><strong>快速排序 (Quick Sort)</strong> 的想法是說，先找一個基準點，然後派兩個代理人分別從資料的兩邊開始往中間找，如果右邊找到一個值比基準點小，左邊找到一個值比基準點大，就讓他們互換。反覆找並互換，直到兩個人相遇。然後再將相遇的點跟基準點互換，第一輪結束。 接下來再分別從兩邊資料做子循環，但做法跟上面一樣，這就用到了遞迴的概念。 <a id="more"></a></p>
 <img src="/posts/932bcef/%E6%8E%92%E5%BA%8F.jpg" class="">
 <img src="/posts/932bcef/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
+<h1 id="algorithm">Algorithm</h1>
+<p><strong>Algorithm</strong> 主要由 <strong>2</strong> 個副程式組成: - <code>Partition</code> 副程式 - 將記錄串中的第一筆記錄經過運算後，置於該記錄串中“最正確” 的位置上 - 即: <strong>找出 P.K.的最正確位置</strong> - <code>Sort</code> 副程式(可當作主程式) - 將 <strong>Partition</strong> 後、位於 <strong>P.K.</strong> 前後<strong>未排序好</strong>的兩筆記錄串，透過<code>遞迴</code>的方式分別執行 <strong>Partition</strong> 副程式，使之成為排序好的記錄</p>
+<img src="/posts/932bcef/qs.jpg" class="">
 <hr />
 <p>假設我們現在有一筆班上的成績想要排序： <code>data = [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]</code></p>
 <h2 id="先寫出遞迴函數架構">1.先寫出遞迴函數架構</h2>
@@ -377,7 +381,6 @@
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">while i !&#x3D; j:
     while data[j] &gt; key and i &lt; j:
         j -&#x3D; 1
-    # 注意&quot;&lt;&#x3D;&quot;
     while data[i] &lt;&#x3D; key and i &lt; j:
         i +&#x3D; 1
     # 如果兩者還未相遇
@@ -390,8 +393,7 @@
 quicksort(data, i+1, right)</code></pre>
 <h2 id="完整程式碼">5.完整程式碼</h2>
 <p>範例一：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">
-def quicksort(data, left, right): # 輸入資料，和從兩邊開始的位置
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def quicksort(data, left, right): # 輸入資料，和從兩邊開始的位置
     if left &gt;&#x3D; right :            # 如果左邊大於右邊，就跳出function
         return
 
@@ -416,6 +418,62 @@ def quicksort(data, left, right): # 輸入資料，和從兩邊開始的位置
 
 quicksort(data, 0, len(data)-1)
 print(data)</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Python program for implementation of Quicksort Sort 
+
+# This function takes last element as pivot, places 
+# the pivot element at its correct position in sorted 
+# array, and places all smaller (smaller than pivot) 
+# to left of pivot and all greater elements to right 
+# of pivot 
+
+
+def partition(arr, low, high): 
+	i &#x3D; (low-1)		 # index of smaller element 
+	pivot &#x3D; arr[high]	 # pivot 
+
+	for j in range(low, high): 
+
+		# If current element is smaller than or 
+		# equal to pivot 
+		if arr[j] &lt;&#x3D; pivot: 
+
+			# increment index of smaller element 
+			i &#x3D; i+1
+			arr[i], arr[j] &#x3D; arr[j], arr[i] 
+
+	arr[i+1], arr[high] &#x3D; arr[high], arr[i+1] 
+	return (i+1) 
+
+# The main function that implements QuickSort 
+# arr[] --&gt; Array to be sorted, 
+# low --&gt; Starting index, 
+# high --&gt; Ending index 
+
+# Function to do Quick sort 
+
+
+def quickSort(arr, low, high): 
+	if len(arr) &#x3D;&#x3D; 1: 
+		return arr 
+	if low &lt; high: 
+
+		# pi is partitioning index, arr[p] is now 
+		# at right place 
+		pi &#x3D; partition(arr, low, high) 
+
+		# Separately sort elements before 
+		# partition and after partition 
+		quickSort(arr, low, pi-1) 
+		quickSort(arr, pi+1, high) 
+
+
+# Driver code to test above 
+arr &#x3D; [10, 7, 8, 9, 1, 5] 
+n &#x3D; len(arr) 
+quickSort(arr, 0, n-1) 
+print(&quot;Sorted array is:&quot;) 
+for i in range(n): 
+	print(&quot;%d&quot; % arr[i]), </code></pre>
 <p>範例二：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def quick_sort(collection: list) -&gt; list:
 
@@ -454,45 +512,34 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 <p>random 選擇 index 當成 pivot，然後再和最左或最右的數交換後進行 normal quick sort。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">import random
 
+def qsort(xs, fst, lst):
+    &#39;&#39;&#39;
+    Sort the range xs[fst, lst] in-place with vanilla QuickSort
 
-def partition(A, left_index, right_index):
-    pivot &#x3D; A[left_index]
-    i &#x3D; left_index + 1
-    for j in range(left_index + 1, right_index):
-        if A[j] &lt; pivot:
-            A[j], A[i] &#x3D; A[i], A[j]
+    :param xs:  the list of numbers to sort
+    :param fst: the first index from xs to begin sorting from,
+                must be in the range [0, len(xs))
+    :param lst: the last index from xs to stop sorting at
+                must be in the range [fst, len(xs))
+    :return:    nothing, the side effect is that xs[fst, lst] is sorted
+    &#39;&#39;&#39;
+    if fst &gt;&#x3D; lst:
+        return
+
+    i, j &#x3D; fst, lst
+    pivot &#x3D; xs[random.randint(fst, lst)]
+
+    while i &lt;&#x3D; j:
+        while xs[i] &lt; pivot:
             i +&#x3D; 1
-    A[left_index], A[i - 1] &#x3D; A[i - 1], A[left_index]
-    return i - 1
+        while xs[j] &gt; pivot:
+            j -&#x3D; 1
 
-
-def quick_sort_random(A, left, right):
-    if left &lt; right:
-        pivot &#x3D; random.randint(left, right - 1)
-        A[pivot], A[left] &#x3D; (
-            A[left],
-            A[pivot],
-        )  # switches the pivot with the left most bound
-        pivot_index &#x3D; partition(A, left, right)
-        quick_sort_random(
-            A, left, pivot_index
-        )  # recursive quicksort to the left of the pivot point
-        quick_sort_random(
-            A, pivot_index + 1, right
-        )  # recursive quicksort to the right of the pivot point
-
-
-def main():
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    arr &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-
-    quick_sort_random(arr, 0, len(arr))
-
-    print(arr)
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    main()</code></pre>
+        if i &lt;&#x3D; j:
+            xs[i], xs[j] &#x3D; xs[j], xs[i]
+            i, j &#x3D; i + 1, j - 1
+    qsort(xs, fst, j)
+    qsort(xs, i, lst)</code></pre>
 <p>範例五:</p>
 <p>此方法的圖示可參考下圖(唯一差別是圖中把 right 當成 pivot): <img src="/posts/932bcef/quicksort_3group.png" class=""> 詳細請參考<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/linear-time-partitioning">Linear-time partitioning</a> <pre class="line-numbers language-python" data-language="python"><code class="language-python">def quick_sort_3partition(sorting: list, left: int, right: int) -&gt; None:
     if right &lt;&#x3D; left:
@@ -674,13 +721,13 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">98k</span>
+    <span title="總字數">108k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:59</span>
+    <span title="所需總閱讀時間">3:17</span>
   </span>
 </div>
 

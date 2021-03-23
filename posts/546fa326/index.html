@@ -24,21 +24,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Inserting Items Into an Array 本文蒐集  LeetCode 1089 LeetCode 88">
+<meta name="description" content="In-Place Operations 本文蒐集  LeetCode 1299 LeetCode 26 LeetCode 283 LeetCode 905 LeetCode 27">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Inserting Items Into an Array">
-<meta property="og:url" content="https://yu-shin.github.io/posts/d3f87549/index.html">
+<meta property="og:title" content="In-Place Operations">
+<meta property="og:url" content="https://yu-shin.github.io/posts/546fa326/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Inserting Items Into an Array 本文蒐集  LeetCode 1089 LeetCode 88">
+<meta property="og:description" content="In-Place Operations 本文蒐集  LeetCode 1299 LeetCode 26 LeetCode 283 LeetCode 905 LeetCode 27">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2021-03-13T05:58:15.000Z">
-<meta property="article:modified_time" content="2021-03-13T09:05:09.878Z">
+<meta property="article:published_time" content="2021-03-22T10:30:02.000Z">
+<meta property="article:modified_time" content="2021-03-22T10:56:18.602Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/posts/d3f87549/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/546fa326/">
 
 
 <script data-pjax class="page-configurations">
@@ -50,7 +50,7 @@
     lang   : 'zh-TW'
   };
 </script>
-<title>Inserting Items Into an Array | Nicholas Blogger</title>
+<title>In-Place Operations | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -203,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#inserting-items-into-an-array"><span class="nav-number">1.</span> <span class="nav-text">Inserting Items Into an Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-1089-duplicate-zeros"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 1089: Duplicate Zeros</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94"><span class="nav-number">2.1.</span> <span class="nav-text">我的解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E6%BD%94-code"><span class="nav-number">2.2.</span> <span class="nav-text">簡潔 code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%96%93%E6%8F%9B%E6%99%82%E9%96%93"><span class="nav-number">2.3.</span> <span class="nav-text">空間換時間</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-88-merge-sorted-array"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 88: Merge Sorted Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E4%BA%BA%E8%A7%A3%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">神人解法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#in-place-operations"><span class="nav-number">1.</span> <span class="nav-text">In-Place Operations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-1299-replace-elements-with-greatest-element-on-right-side"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 1299: Replace Elements with Greatest Element on Right Side</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94"><span class="nav-number">2.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-26-remove-duplicates-from-sorted-array"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 26: Remove Duplicates from Sorted Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">3.2.</span> <span class="nav-text">解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-283-move-zeroes"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 283: Move Zeroes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-1"><span class="nav-number">4.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-905-sort-array-by-parity"><span class="nav-number">5.</span> <span class="nav-text">LeetCode 905: Sort Array By Parity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-2"><span class="nav-number">5.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-27-remove-element"><span class="nav-number">6.</span> <span class="nav-text">LeetCode 27: Remove Element</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-%E5%88%A9%E7%94%A8-bubblesort"><span class="nav-number">6.1.</span> <span class="nav-text">我的解法: 利用 BubbleSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-%E5%88%A9%E7%94%A8-quicksort"><span class="nav-number">6.2.</span> <span class="nav-text">我的解法: 利用 QuickSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3%E6%B3%95-1"><span class="nav-number">6.3.</span> <span class="nav-text">其他解法 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3%E6%B3%95-2"><span class="nav-number">6.4.</span> <span class="nav-text">其他解法 2</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,7 +280,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/d3f87549/">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/546fa326/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bighead.jpg">
@@ -293,7 +293,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Inserting Items Into an Array
+          In-Place Operations
         </h1>
 
         <div class="post-meta-container">
@@ -304,7 +304,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-03-13 13:58:15" itemprop="dateCreated datePublished" datetime="2021-03-13T13:58:15+08:00">2021-03-13</time>
+      <time title="創建時間：2021-03-22 18:30:02" itemprop="dateCreated datePublished" datetime="2021-03-22T18:30:02+08:00">2021-03-22</time>
     </span>
 
   
@@ -316,8 +316,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/posts/d3f87549/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/d3f87549/" itemprop="commentCount"></span>
+    <a title="disqus" href="/posts/546fa326/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/546fa326/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -329,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>3.1k</span>
+      <span>6.8k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>6 分鐘</span>
+      <span>12 分鐘</span>
     </span>
 </div>
 
@@ -347,147 +347,231 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="inserting-items-into-an-array">Inserting Items Into an Array</h1>
+        <h1 id="in-place-operations">In-Place Operations</h1>
 <p><strong>本文蒐集</strong></p>
 <ul>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/duplicate-zeros/">LeetCode 1089</a></strong></li>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/merge-sorted-array/">LeetCode 88</a></strong> <a id="more"></a></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/">LeetCode 1299</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/move-zeroes/">LeetCode 283</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/sort-array-by-parity/">LeetCode 905</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/remove-element/">LeetCode 27</a></strong> <a id="more"></a></li>
 </ul>
-<h1 id="leetcode-1089-duplicate-zeros">LeetCode 1089: Duplicate Zeros</h1>
-<p>Given a fixed length array <code>arr</code> of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.</p>
-<p>Note that elements beyond the length of the original array are not written.</p>
-<p>Do the above modifications to the input array <strong>in place</strong>, do not return anything from your function.</p>
-<p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: [1,0,2,3,0,4,5,0]
-Output: null
-Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]</code></pre> Example 2: <pre class="line-numbers language-none"><code class="language-none">Input: [1,2,3]
-Output: null
-Explanation: After calling your function, the input array is modified to: [1,2,3]</code></pre> Note:</p>
+<h1 id="leetcode-1299-replace-elements-with-greatest-element-on-right-side">LeetCode 1299: Replace Elements with Greatest Element on Right Side</h1>
+<p>Given an array <code>arr</code>, replace every element in that array with the greatest element among the elements to its right, and replace the last element with <code>-1</code>.</p>
+<p>After doing so, return the array.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+Explanation: 
+- index 0 --&gt; the greatest element to the right of index 0 is index 1 (18).
+- index 1 --&gt; the greatest element to the right of index 1 is index 4 (6).
+- index 2 --&gt; the greatest element to the right of index 2 is index 4 (6).
+- index 3 --&gt; the greatest element to the right of index 3 is index 4 (6).
+- index 4 --&gt; the greatest element to the right of index 4 is index 5 (1).
+- index 5 --&gt; there are no elements to the right of index 5, so we put -1.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [400]
+Output: [-1]
+Explanation: There are no elements to the right of index 0.</code></pre></p>
+<p><strong>Constraints:</strong></p>
 <ul>
-<li><code>1 &lt;= arr.length &lt;= 10000</code></li>
-<li><code>0 &lt;= arr[i] &lt;= 9</code></li>
+<li>1 &lt;= arr.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li>1 &lt;= arr[i] &lt;= <span class="math inline">\(10^5\)</span></li>
 </ul>
 <h2 id="我的解答">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089.py">view raw</a></div><code class="language-python">class Solution:
-    def duplicateZeros(self, arr: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify arr in-place instead.
-        &quot;&quot;&quot;
-        i &#x3D; 0
-        while i &lt; (len(arr)-1):
-            if arr[i] &#x3D;&#x3D; 0:
-                j &#x3D; len(arr)-1
-                while i &lt; j:
-                    arr[j] &#x3D; arr[j-1]
-                    j -&#x3D; 1
-                i +&#x3D; 2
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def replaceElements(self, arr: List[int]) -&gt; List[int]:
+        j &#x3D; len(arr)-2
+        max &#x3D; arr[len(arr)-1]
+        while j &gt;&#x3D; 0:
+            if arr[j] &gt; max:
+                arr[j], max &#x3D; max, arr[j]
             else:
-                i +&#x3D; 1</code></pre>
+                arr[j] &#x3D; max
+            j -&#x3D; 1
+        arr[len(arr)-1] &#x3D; -1
+        return arr</code></pre>
+<p><strong>Time</strong>: O(n) <strong>Space</strong>: O(1)</p>
+<h1 id="leetcode-26-remove-duplicates-from-sorted-array">LeetCode 26: Remove Duplicates from Sorted Array</h1>
+<p>Given a sorted array nums, remove the duplicates <code>in-place</code> such that each element appears only once and returns the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory. Clarification:</p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this: <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)
+int len &#x3D; removeDuplicates(nums);
+
+&#x2F;&#x2F; any modification to nums in your function would be known by the caller.
+&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.
+for (int i &#x3D; 0; i &lt; len; i++) &#123;
+    print(nums[i]);
+&#125;</code></pre> <strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1,1,2]
+Output: 2, nums &#x3D; [1,2]
+Explanation: Your function should return length &#x3D; 2, with the first two elements of nums being 1 and 2 respectively. It doesn&#39;t matter what you leave beyond the returned length.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,0,1,1,1,2,2,3,3,4]
+Output: 5, nums &#x3D; [0,1,2,3,4]
+Explanation: Your function should return length &#x3D; 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively. It doesn&#39;t matter what values are set beyond the returned length.</code></pre> <strong>Constraints:</strong></p>
 <ul>
-<li><strong>Time complexity:</strong> O(<span class="math inline">\(n^2\)</span>)</li>
-<li><strong>space complexity:</strong> O(1)</li>
-</ul>
-<h2 id="簡潔-code">簡潔 code</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089_簡潔.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089_簡潔.py">view raw</a></div><code class="language-python">class Solution:
-    def duplicateZeros(self, arr: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify arr in-place instead.
-        &quot;&quot;&quot;
-        i&#x3D;0
-        while i&lt;len(arr):
-            if arr[i]&#x3D;&#x3D;0:
-                arr.pop() # O(1)
-                arr.insert(i+1,0) # O(N)
-                i+&#x3D;2
-            else:i+&#x3D;1</code></pre>
-<p><code>不建議</code></p>
-<h2 id="空間換時間">空間換時間</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089_空間換時間.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089_空間換時間.py">view raw</a></div><code class="language-python">class Solution:
-    def duplicateZeros(self, arr: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify arr in-place instead.
-        &quot;&quot;&quot;
-        len_arr&#x3D;len(arr)
-        rst&#x3D;[]
-        for num in arr:
-            if num&#x3D;&#x3D;0:
-                rst.append(0)
-                rst.append(0)
-            else:rst.append(num)
-            if len(rst)&gt;&#x3D;len_arr:
-                arr[:]&#x3D;rst[:len_arr]
-                # arr&#x3D;rst[:len_arr] this do not work
-                break</code></pre>
-<p>盡量把<code>append()</code>和<code>[:]</code>換掉</p>
-<ul>
-<li><strong>Time complexity:</strong> O(n)</li>
-<li><strong>space complexity:</strong> O(n)</li>
-</ul>
-<h1 id="leetcode-88-merge-sorted-array">LeetCode 88: Merge Sorted Array</h1>
-<p>Given two sorted integer arrays <code>nums1</code> and <code>nums2</code>, merge <code>nums2</code> into <code>nums1</code> as one sorted array.</p>
-<p>The number of elements initialized in <code>nums1</code> and <code>nums2</code> are <code>m</code> and <code>n</code> respectively. You may assume that <code>nums1</code> has a size equal to <code>m + n</code> such that it has enough space to hold additional elements from <code>nums2</code>.</p>
-<p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: nums1 &#x3D; [1,2,3,0,0,0], m &#x3D; 3, nums2 &#x3D; [2,5,6], n &#x3D; 3
-Output: [1,2,2,3,5,6]</code></pre> Example 2: <pre class="line-numbers language-none"><code class="language-none">Input: nums1 &#x3D; [1], m &#x3D; 1, nums2 &#x3D; [], n &#x3D; 0
-Output: [1]</code></pre> Constraints:</p>
-<ul>
-<li><code>nums1.length == m + n</code></li>
-<li><code>nums2.length == n</code></li>
-<li><code>0 &lt;= m, n &lt;= 200</code></li>
-<li><code>1 &lt;= m + n &lt;= 200</code></li>
-<li><code>-109 &lt;= nums1[i], nums2[i] &lt;= 109</code></li>
+<li><code>0 &lt;= nums.length &lt;= 3 * 104</code></li>
+<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
+<li><code>nums</code> is sorted in ascending order.</li>
 </ul>
 <h2 id="我的解法">我的解法</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q88.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q88.py">view raw</a></div><code class="language-python">class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26.py">view raw</a></div><code class="language-python">import math
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -&gt; int:
+        temp &#x3D; -math.inf
+        count &#x3D; 0
+        for i in range(len(nums)):
+            if nums[i] &gt; temp:
+                temp &#x3D; nums[i]
+                nums[count] &#x3D; temp
+                count +&#x3D; 1
+        return count</code></pre>
+<h2 id="解答">解答</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26解.py">view raw</a></div><code class="language-python">class Solution:
+    def removeDuplicates(self, nums: List[int]) -&gt; int:
+        if len(nums) &#x3D;&#x3D; 0:
+	        return 0
+	    i &#x3D; 0
+        for j in range(1, len(nums)):
+            if nums[j] !&#x3D; nums[i]:
+                i +&#x3D; 1
+                nums[i] &#x3D; nums[j]
+        return i+1</code></pre>
+<h1 id="leetcode-283-move-zeroes">LeetCode 283: Move Zeroes</h1>
+<p>Given an integer array <code>nums</code>, move all <code>0</code>'s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,1,0,3,12]
+Output: [1,3,12,0,0]</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0]
+Output: [0]</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= nums.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li><span class="math inline">\(-2^31\)</span> &lt;= nums[i] &lt;= <span class="math inline">\(2^31\)</span> - 1</li>
+</ul>
+<p><strong>Follow up:</strong> Could you minimize the total number of operations done?</p>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def moveZeroes(self, nums: List[int]) -&gt; None:
         &quot;&quot;&quot;
-        Do not return anything, modify nums1 in-place instead.
+        Do not return anything, modify nums in-place instead.
         &quot;&quot;&quot;
-        if n &#x3D;&#x3D; 0:
-            return
-        elif m &#x3D;&#x3D; 0:
-            nums1[:n] &#x3D; nums2[:]
-            return
+        i &#x3D; 0
+        count &#x3D; 0
+        while i &lt; len(nums):
+            if nums[i] !&#x3D; 0:
+                nums[count] &#x3D; nums[i]
+                count +&#x3D; 1
+            i +&#x3D; 1
+        while count &lt; len(nums):
+            nums[count] &#x3D; 0
+            count +&#x3D; 1</code></pre>
+<p><strong>Time</strong>: O(n) <strong>Space</strong>: O(1)</p>
+<h1 id="leetcode-905-sort-array-by-parity">LeetCode 905: Sort Array By Parity</h1>
+<p>Given an array <code>A</code> of non-negative integers, return an array consisting of all the even elements of <code>A</code>, followed by all the odd elements of <code>A</code>.</p>
+<p>You may return any answer array that satisfies this condition.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</code></pre></p>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= A.length &lt;= 5000</code></li>
+<li><code>0 &lt;= A[i] &lt;= 5000</code></li>
+</ul>
+<h2 id="我的解答-2">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def sortArrayByParity(self, A: List[int]) -&gt; List[int]:
+        i &#x3D; 0
+        j &#x3D; len(A)-1
+        while i &lt; j:
+            while A[i] % 2 !&#x3D; 1 and i &lt; j:
+                i +&#x3D; 1
+            while A[j] % 2 !&#x3D; 0 and i &lt; j:
+                j -&#x3D; 1
+            A[i], A[j] &#x3D; A[j], A[i]
+        return A</code></pre>
+<p><strong>Time</strong>: O(n) <strong>Space</strong>: O(1)</p>
+<h1 id="leetcode-27-remove-element">LeetCode 27: Remove Element</h1>
+<p>Given an array nums and a value <code>val</code>, remove all instances of that value <code>in-place</code> and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory.</p>
+<p>The order of elements can be changed. It doesn't matter what you leave beyond the new length.</p>
+<p><strong>Clarification:</strong></p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this: <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)
+int len &#x3D; removeElement(nums, val);
+
+&#x2F;&#x2F; any modification to nums in your function would be known by the caller.
+&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.
+for (int i &#x3D; 0; i &lt; len; i++) &#123;
+    print(nums[i]);
+&#125;</code></pre> <strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [3,2,2,3], val &#x3D; 3
+Output: 2, nums &#x3D; [2,2]
+Explanation: Your function should return length &#x3D; 2, with the first two elements of nums being 2.
+It doesn&#39;t matter what you leave beyond the returned length. For example if you return 2 with nums &#x3D; [2,2,3,3] or nums &#x3D; [2,2,0,0], your answer will be accepted.</code></pre></p>
+<p><strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2
+Output: 5, nums &#x3D; [0,1,4,0,3]
+Explanation: Your function should return length &#x3D; 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be arbitrary. It doesn&#39;t matter what values are set beyond the returned length.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= nums.length &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
+<li><code>0 &lt;= val &lt;= 100</code></li>
+</ul>
+<h2 id="我的解法-利用-bubblesort">我的解法: 利用 BubbleSort</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27_BubbleSort.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27_BubbleSort.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+        l &#x3D; len(nums)
+        count &#x3D; 0
+        for i in range(l-1):
+            swapped &#x3D; False
+            for j in range(l-1-i):
+                if nums[j] &#x3D;&#x3D; val:
+                    if nums[j] !&#x3D; nums[j+1]:
+                        nums[j], nums[j+1] &#x3D; nums[j+1], nums[j]
+                        swapped &#x3D; True
+            if not swapped:
+                break
+        for v in nums:
+            if v !&#x3D; val:
+                count +&#x3D; 1
+        return count</code></pre>
+<h2 id="我的解法-利用-quicksort">我的解法: 利用 QuickSort</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27_QuickSort.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27_QuickSort.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+        if len(nums) &#x3D;&#x3D; 0:
+            return 0
         else:
-            temp &#x3D; [0] * m
-            temp[:] &#x3D; nums1[:m]
-            i, j, k &#x3D; 0, 0, 0
-            while k &lt; m+n:
-                if temp[i] &lt; nums2[j]:
-                    nums1[k] &#x3D; temp[i]
-                    k +&#x3D; 1
+            i &#x3D; 0
+            j &#x3D; len(nums)-1
+            while i !&#x3D; j:
+                while nums[i] !&#x3D; val and i &lt; j:
                     i +&#x3D; 1
-                    if i &#x3D;&#x3D; m:
-                        break
-                else:
-                    nums1[k] &#x3D; nums2[j]
-                    k +&#x3D; 1
-                    j +&#x3D; 1
-                    if j &#x3D;&#x3D; n:
-                        break
-            if i &#x3D;&#x3D; m:
-                nums1[k:] &#x3D; nums2[j:]
-            else:
-                nums1[k:] &#x3D; temp[i:]</code></pre>
-<ul>
-<li><strong>Time complexity:</strong> O(n)</li>
-<li><strong>space complexity:</strong> O(1)</li>
-</ul>
-<h2 id="神人解法">神人解法</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q88_改進.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q88_改進.py">view raw</a></div><code class="language-python">class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify nums1 in-place instead.
-        &quot;&quot;&quot;
-        while n &gt; 0:
-            if m &lt;&#x3D; 0 or nums2[n-1] &gt;&#x3D; nums1[m-1]:  
-                nums1[m+n-1] &#x3D; nums2[n-1]
-                n -&#x3D; 1
-            else:
-                nums1[m+n-1] &#x3D; nums1[m-1]
-                m -&#x3D; 1</code></pre>
-<ul>
-<li><strong>Time complexity:</strong> O(n)</li>
-<li><strong>space complexity:</strong> O(1)</li>
-</ul>
+                while nums[j] &#x3D;&#x3D; val and i &lt; j:
+                    j -&#x3D; 1
+                if i &lt; j:
+                    nums[i], nums[j] &#x3D; nums[j], nums[i]
+        if nums[i] &#x3D;&#x3D; val:
+            return i
+        else:
+            return i+1</code></pre>
+<h2 id="其他解法-1">其他解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+        count &#x3D; 0
+        for i in range(len(nums)):
+            if nums[i] !&#x3D; val:
+                nums[count] &#x3D; nums[i]
+                count +&#x3D;1
+        return count</code></pre>
+<h2 id="其他解法-2">其他解法 2</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解2.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解2.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+		i &#x3D; 0
+		n &#x3D; len(nums)
+		while i &lt; n:
+			if nums[i] &#x3D;&#x3D; val:
+				nums[i] &#x3D; nums[n-1]
+				n -&#x3D; 1
+	    	else:
+				i +&#x3D; 1
+		return n</code></pre>
 
     </div>
 
@@ -535,13 +619,13 @@ Output: [1]</code></pre> Constraints:</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/40ec114a/" rel="prev" title="Array Introduction">
-                  <i class="fa fa-chevron-left"></i> Array Introduction
+                <a href="/posts/a81fe50f/" rel="prev" title="Searching for Items in an Array">
+                  <i class="fa fa-chevron-left"></i> Searching for Items in an Array
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/bad31420/" rel="next" title="Deleting Items From an Array">
-                  Deleting Items From an Array <i class="fa fa-chevron-right"></i>
+                <a href="/posts/94e375d1/" rel="next" title="Array Conclusion">
+                  Array Conclusion <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -716,9 +800,9 @@ document.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yu-shin.github.io/posts/d3f87549/";
-    this.page.identifier = "posts/d3f87549/";
-    this.page.title = "Inserting Items Into an Array";
+    this.page.url = "https://yu-shin.github.io/posts/546fa326/";
+    this.page.identifier = "posts/546fa326/";
+    this.page.title = "In-Place Operations";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

@@ -216,7 +216,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -267,6 +267,350 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/fc4bcf8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="YOLO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/fc4bcf8f/" class="post-title-link" itemprop="url">B-Tree</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-01-31 17:55:36" itemprop="dateCreated datePublished" datetime="2021-01-31T17:55:36+08:00">2021-01-31</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/fc4bcf8f/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/fc4bcf8f/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>5 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言">前言</h1>
+<p><strong>m-way Search Tree</strong> 雖利用<strong>增大</strong> Tree 的 Degree 來<strong>降低 Search Tree 的高度</strong>，以<strong>減少 Disk I/O 的次數</strong>，但<code>若此 Tree 不平衡</code>，也可能會變相地<strong>增加 Disk I/O 的次數</strong></p>
+<ul>
+<li><strong>因此發展出 <code>B-tree</code> of order m</strong></li>
+</ul>
+<h1 id="定義">定義</h1>
+<p><strong>是一個 Balanced m-way search tree。可以為空，若不為空，則滿足：</strong></p>
+<ul>
+<li><strong>Root 至少有 2 個 Childs ( <code>Root: 2 ≤ degree ≤ m</code>)</strong></li>
+<li><strong>除了 Root 及 Failure Node 之外，其餘 Node 的分支度介於 ⎡m/2⎤ 及 m 之間 (<code>⎡m/2⎤  ≤ degree ≤ m</code>)</strong></li>
+<li><strong>所有的 Failure Node 皆位於同一 Level。(即：所有葉子節點位於同一 Level)</strong>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/fc4bcf8f/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/eb32b5ac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="YOLO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/eb32b5ac/" class="post-title-link" itemprop="url">M-way Search Tree</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-01-31 17:22:04" itemprop="dateCreated datePublished" datetime="2021-01-31T17:22:04+08:00">2021-01-31</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/eb32b5ac/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/eb32b5ac/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>2 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言-外部搜尋-external-search">前言： 外部搜尋 (External Search)</h1>
+<p><strong>m-way Search Tree</strong> 主要用於<code>外部搜尋 (External Search)</code></p>
+<ul>
+<li>先前的樹状搜尋方法皆為<strong>內部搜尋 (Internal Search)</strong>( B.S.T.和 AVL )</li>
+<li><strong>Internal Search:</strong>
+<ul>
+<li><mark class="label info">資料量少</mark>
+，可以一次全部置於 <code>Memory</code> 中進行 search 之工作</li>
+</ul></li>
+<li><strong>External Search:</strong>
+<ul>
+<li><mark class="label info">資料量大</mark>
+，無法一次全置於 Memory 中，須藉助輔助儲存體( E.g. Disk )，進行分段 search 之工作</li>
+</ul></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/eb32b5ac/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/4f030a7a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="YOLO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/4f030a7a/" class="post-title-link" itemprop="url">AVL Tree</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-01-31 15:38:53" itemprop="dateCreated datePublished" datetime="2021-01-31T15:38:53+08:00">2021-01-31</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/4f030a7a/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/4f030a7a/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>2 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言-binary-search-tree-的效益">前言 ： Binary Search Tree 的效益</h1>
+<ul>
+<li>當 <strong>B.S.T.</strong> 建立之後，可以用來搜尋資料。因此，由平均比較次數來決定其效益
+<ul>
+<li>若平均比較次數<strong>愈低</strong>，則效益<strong>愈高</strong></li>
+</ul></li>
+<li>例：
+<ul>
+<li><strong>成功搜尋的平均比較次數</strong>： <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.816ex" xmlns="http://www.w3.org/2000/svg" width="21.494ex" height="2.782ex" role="img" focusable="false" viewBox="0 -868.9 9500.5 1229.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-1-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-1-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-1-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220, 398) scale(0.707)"><g data-mml-node="mn"><use xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(500, 0)"><use xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(1278, 0)"><use xlink:href="#MJX-1-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(1778, 0)"><use xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(2556, 0)"><use xlink:href="#MJX-1-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(3056, 0)"><use xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(3834, 0)"><use xlink:href="#MJX-1-TEX-N-33"></use></g><g data-mml-node="mo" transform="translate(4334, 0)"><use xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(5112, 0)"><use xlink:href="#MJX-1-TEX-N-33"></use></g></g><g data-mml-node="mn" transform="translate(2027.4, -345) scale(0.707)"><use xlink:href="#MJX-1-TEX-N-35"></use></g><rect width="4168.3" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(4686.1, 0)"><use xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(5741.8, 0)"><g data-mml-node="mn" transform="translate(220, 394) scale(0.707)"><use xlink:href="#MJX-1-TEX-N-31"></use><use xlink:href="#MJX-1-TEX-N-31" transform="translate(500, 0)"></use></g><g data-mml-node="mn" transform="translate(396.8, -345) scale(0.707)"><use xlink:href="#MJX-1-TEX-N-35"></use></g><rect width="907.1" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(7166.7, 0)"><use xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(8222.5, 0)"><use xlink:href="#MJX-1-TEX-N-32"></use><use xlink:href="#MJX-1-TEX-N-2E" transform="translate(500, 0)"></use><use xlink:href="#MJX-1-TEX-N-32" transform="translate(778, 0)"></use></g></g></g></svg></mjx-container> <img src="/posts/4f030a7a/avl1.jpg" class=""></li>
+</ul></li>
+<li>結論： 不考慮加權値或加權値皆相同的情形下
+<ul>
+<li>愈<code>平衡</code>的 <strong>Binary Search Tree</strong>，其平均比較次數愈<code>小</code>，<strong>Big-O</strong> ≈ <code>O (log n)</code></li>
+<li>愈<code>偏斜</code>的 <strong>Binary Search Tree</strong>，其平均比較次數愈<code>大</code>，<strong>Big-O</strong> ≈ <code>O (n)</code></li>
+</ul></li>
+<li>在<code>靜態</code>的環境下，一般 Binary Search Tree 的建構方法可以<strong>有較充裕的時間</strong>將欲搜尋的所有資料建構成較<code>平衡的 Binary Search Tree</code>，以提升後續資料搜尋時的效率</li>
+<li>然而，若是在<code>動態</code>的環境下，資料可以隨時 <code>Insert / Delete</code>。此時，一般 Binary Search Tree 的建構方法會産生 <code>Skewed Binary Tree</code>，導致資料搜尋的效率變差 (即：O (n))</li>
+<li>∴ 面對<strong>動態資料</strong>，需要 <code>AVL Tree</code> 讓 Tree 的高度均維持在高度平衡的情況
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/4f030a7a/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1027,338 +1371,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/d37550bb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/d37550bb/" class="post-title-link" itemprop="url">Link Lists</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2021-01-19 20:58:55" itemprop="dateCreated datePublished" datetime="2021-01-19T20:58:55+08:00">2021-01-19</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/d37550bb/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/d37550bb/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>4k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>7 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="定義">定義</h1>
-<p>由一組<code>節點 (Node)</code> 所組成的<code>有序串列</code>，各 Node 除了 <code>Data 欄</code>之外，另外有 <code>≥ 1 個 Link 欄</code> (或稱 Pointer)，用以指向其它 Node 之位址。</p>
-<h1 id="特質">特質</h1>
-<ul>
-<li>各Node不一定要佔用連續的Memory空間</li>
-<li>各Node之型態 (Data Type) (Data Type) 不一定要相同</li>
-<li>僅支援Sequential Access</li>
-<li>Insert/Delete Node Insert/Delete Node 容易
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/d37550bb/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/60cdc1b3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/60cdc1b3/" class="post-title-link" itemprop="url">Array</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2021-01-09 20:12:21" itemprop="dateCreated datePublished" datetime="2021-01-09T20:12:21+08:00">2021-01-09</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/60cdc1b3/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/60cdc1b3/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>550</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>1 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="array">Array</h1>
-<ul>
-<li>為表示<strong>有序串列</strong>之一種方式</li>
-<li>其佔用<strong>連續性的記憶體空間</strong></li>
-<li>各元素型態皆需<strong>相同</strong> (一致)</li>
-<li>支援 <strong>Sequential Sequential</strong> 及 <strong>Random Access Random Access</strong></li>
-<li><strong>插入</strong>、<strong>刪除</strong>元素較為麻煩
-<ul>
-<li>∵ 需挪移其它元素</li>
-<li>∴ 不易動態增刪空間大小</li>
-<li>Time = O(n)</li>
-</ul></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/60cdc1b3/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/2c38fcfa/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/2c38fcfa/" class="post-title-link" itemprop="url">Heap Sort</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2021-01-09 00:28:26" itemprop="dateCreated datePublished" datetime="2021-01-09T00:28:26+08:00">2021-01-09</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/2c38fcfa/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/2c38fcfa/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>3.1k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>6 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="heap-sort">Heap Sort</h1>
-<p><strong>Heapsort</strong> 的演算法分為兩大步驟：</p>
-<ol type="1">
-<li>將資料轉換為 <code>heap</code> 資料結構（<strong>遞增</strong>排序用 <code>max-heap</code>, <strong>遞減</strong>排序選擇 <code>min-heap</code>）。</li>
-<li>逐步取出<strong>最大／最小值</strong>，並與<strong>最後一個元素</strong>置換。具體步驟如下：
-<ol type="1">
-<li>交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。</li>
-<li>更新剩下的資料，使其滿足 heap 的特性，稱為 heap ordering property。</li>
-<li>重複前兩個步驟，直到 heap 中剩最後一個未排序的資料。</li>
-</ol></li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/2c38fcfa/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
@@ -1405,13 +1417,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">98k</span>
+    <span title="總字數">108k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:59</span>
+    <span title="所需總閱讀時間">3:17</span>
   </span>
 </div>
 

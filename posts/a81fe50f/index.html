@@ -24,19 +24,23 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="YOLO">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nicholas Blogger">
-<meta property="og:url" content="https://yu-shin.github.io/archives/2021/page/3/index.html">
+<meta name="description" content="Searching for Items in an Array 本文蒐集  LeetCode 1346 LeetCode 941">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Searching for Items in an Array">
+<meta property="og:url" content="https://yu-shin.github.io/posts/a81fe50f/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="YOLO">
+<meta property="og:description" content="Searching for Items in an Array 本文蒐集  LeetCode 1346 LeetCode 941">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/posts/a81fe50f/Valid.jpg">
+<meta property="article:published_time" content="2021-03-22T10:06:36.000Z">
+<meta property="article:modified_time" content="2021-03-22T10:56:18.606Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="部落格, 筆記">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/a81fe50f/Valid.jpg">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/archives/2021/page/3/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/a81fe50f/">
 
 
 <script data-pjax class="page-configurations">
@@ -44,11 +48,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
-<title>歸檔 | Nicholas Blogger</title>
+<title>Searching for Items in an Array | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -188,7 +192,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -201,6 +205,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#searching-for-items-in-an-array"><span class="nav-number">1.</span> <span class="nav-text">Searching for Items in an Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-1346-check-if-n-and-its-double-exist"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 1346: Check If N and Its Double Exist</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-%E6%9A%B4%E5%8A%9B%E5%85%A9%E5%B1%A4%E8%BF%B4%E5%9C%88"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法: 暴力兩層迴圈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-941-valid-mountain-array"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 941: Valid Mountain Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,114 +271,225 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/a81fe50f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="name" content="Nicholas Tsai">
+      <meta itemprop="description" content="YOLO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nicholas Blogger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Searching for Items in an Array
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-03-22 18:06:36" itemprop="dateCreated datePublished" datetime="2021-03-22T18:06:36+08:00">2021-03-22</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/posts/a81fe50f/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/a81fe50f/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>1.6k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>3 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="searching-for-items-in-an-array">Searching for Items in an Array</h1>
+<p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/check-if-n-and-its-double-exist/">LeetCode 1346</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/valid-mountain-array/">LeetCode 941</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-1346-check-if-n-and-its-double-exist">LeetCode 1346: Check If N and Its Double Exist</h1>
+<p>Given an array <code>arr</code> of integers, check if there exists two integers <code>N</code> and <code>M</code> such that <code>N</code> is the double of <code>M</code> ( i.e. <code>N = 2 * M</code>).</p>
+<p>More formally check if there exists two indices <code>i</code> and <code>j</code> such that :</p>
+<ul>
+<li><code>i != j</code></li>
+<li><code>0 &lt;= i, j &lt; arr.length</code></li>
+<li><code>arr[i] == 2 * arr[j]</code></li>
+</ul>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [10,2,5,3]
+Output: true
+Explanation: N &#x3D; 10 is the double of M &#x3D; 5,that is, 10 &#x3D; 2 * 5.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [7,1,14,11]
+Output: true
+Explanation: N &#x3D; 14 is the double of M &#x3D; 7,that is, 14 &#x3D; 2 * 7.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [3,1,7,11]
+Output: false
+Explanation: In this case does not exist N and M, such that N &#x3D; 2 * M.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>2 &lt;= arr.length &lt;= 500</code></li>
+<li><code>-10^3 &lt;= arr[i] &lt;= 10^3</code></li>
+</ul>
+<h2 id="我的解法-暴力兩層迴圈">我的解法: 暴力兩層迴圈</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def checkIfExist(self, arr: List[int]) -&gt; bool:
+        for i in range(len(arr)):
+            for j in range(len(arr)):
+                if i !&#x3D; j and arr[i] &#x3D;&#x3D; arr[j]*2:
+                    return True
+        return False</code></pre>
+<p><strong>Time</strong>: O(<span class="math inline">\(n^2\)</span>) <strong>Space</strong>: O(1)</p>
+<h1 id="leetcode-941-valid-mountain-array">LeetCode 941: Valid Mountain Array</h1>
+<p>Given an array of integers <code>arr</code>, return <code>true</code> if and only if it is a valid mountain array.</p>
+<p>Recall that arr is a mountain array if and only if:</p>
+<ul>
+<li><code>arr.length &gt;= 3</code></li>
+<li>There exists some <code>i</code> with <code>0 &lt; i &lt; arr.length - 1</code> such that:
+<ul>
+<li><code>arr[0] &lt; arr[1] &lt; ... &lt; arr[i - 1] &lt; arr[i]</code></li>
+<li><code>arr[i] &gt; arr[i + 1] &gt; ... &gt; arr[arr.length - 1]</code></li>
+</ul></li>
+</ul>
+<img src="/posts/a81fe50f/Valid.jpg" class="">
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [2,1]
+Output: false</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [3,5,5]
+Output: false</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [0,3,2,1]
+Output: true</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= arr.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li>0 &lt;= arr[i] &lt;= <span class="math inline">\(10^4\)</span></li>
+</ul>
+<h2 id="我的解法">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def validMountainArray(self, arr: List[int]) -&gt; bool:
+        i &#x3D; 0
+        j &#x3D; len(arr)-1
+        if len(arr) &gt;&#x3D; 3:
+            for i in range(len(arr)-1):
+                if arr[i] &gt;&#x3D; arr[i+1]:
+                    break
+            for j in range(len(arr)-1, 0, -1):    
+                if arr[j-1] &lt;&#x3D; arr[j]:
+                    break
+            if i &#x3D;&#x3D; j:
+                return True
+        return False</code></pre>
+<p><strong>Time</strong>: O(n) <strong>Space</strong>: O(1)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    捐贈
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/ETH.jpg" alt="Nicholas Tsai ETH">
+        <span>ETH</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>歡迎關注我的其它發布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nichola69108664" rel="external nofollow noreferrer">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          </div>
+
         
-        <span class="collection-header">還行! 目前共有 36 篇文章。 繼續努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-01-19T20:58:55+08:00"
-              content="2021-01-19">
-          01-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/d37550bb/" itemprop="url">
-            <span itemprop="name">Link Lists</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/bad31420/" rel="prev" title="Deleting Items From an Array">
+                  <i class="fa fa-chevron-left"></i> Deleting Items From an Array
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/546fa326/" rel="next" title="In-Place Operations">
+                  In-Place Operations <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-01-09T20:12:21+08:00"
-              content="2021-01-09">
-          01-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/60cdc1b3/" itemprop="url">
-            <span itemprop="name">Array</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-01-09T00:28:26+08:00"
-              content="2021-01-09">
-          01-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/2c38fcfa/" itemprop="url">
-            <span itemprop="name">Heap Sort</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-01-02T14:05:52+08:00"
-              content="2021-01-02">
-          01-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/posts/1730cd52/" itemprop="url">
-            <span itemprop="name">Hardhat Tutorial</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
   </div>
   
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2021/page/2/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -485,7 +601,38 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 <script>
@@ -497,6 +644,26 @@ document.addEventListener('pjax:success', () => {
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://yu-shin.github.io/posts/a81fe50f/";
+    this.page.identifier = "posts/a81fe50f/";
+    this.page.title = "Searching for Items in an Array";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://nicholas-tsai.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
     </div>
