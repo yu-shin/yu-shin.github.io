@@ -24,15 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Algorithms  Algorithm 使用 Limit 來決定 Order  Recursion  Recursion Recursion 的複雜度分析  排序  Bucket Sort Bubble Sort Selection Sort Insertion Sort Merge sort Quick Sort Heap Sort">
+<meta name="description" content="Algorithms  Algorithm 使用 Limit 來決定 Order  Recursion  Recursion Recursion 的複雜度分析  排序   Bubble Sort Selection Sort Insertion Sort Merge sort Quick Sort Heap Sort  以上排序皆採用 Comparison &amp; Swap 技巧:  即: 利">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Algorithm">
 <meta property="og:url" content="https://yu-shin.github.io/categories/algorithm.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Algorithms  Algorithm 使用 Limit 來決定 Order  Recursion  Recursion Recursion 的複雜度分析  排序  Bucket Sort Bubble Sort Selection Sort Insertion Sort Merge sort Quick Sort Heap Sort">
+<meta property="og:description" content="Algorithms  Algorithm 使用 Limit 來決定 Order  Recursion  Recursion Recursion 的複雜度分析  排序   Bubble Sort Selection Sort Insertion Sort Merge sort Quick Sort Heap Sort  以上排序皆採用 Comparison &amp; Swap 技巧:  即: 利">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-01-08T10:01:30.000Z">
-<meta property="article:modified_time" content="2021-03-10T10:04:47.239Z">
+<meta property="article:modified_time" content="2021-03-28T14:50:22.784Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="部落格, 筆記">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithms"><span class="nav-number">1.</span> <span class="nav-text">Algorithms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recursion"><span class="nav-number">2.</span> <span class="nav-text">Recursion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">排序</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#algorithms"><span class="nav-number">1.</span> <span class="nav-text">Algorithms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recursion"><span class="nav-number">2.</span> <span class="nav-text">Recursion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%8E%92%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">其他排序</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -340,14 +340,24 @@
 <li><a href="/posts/2105c5c8/" title="Recursion 的複雜度分析">Recursion 的複雜度分析</a></li>
 </ul>
 <h1 id="排序">排序</h1>
+
 <ul>
-<li><a href="/posts/4502df03/" title="Bucket Sort">Bucket Sort</a></li>
 <li><a href="/posts/10244486/" title="Bubble Sort">Bubble Sort</a></li>
 <li><a href="/posts/937e8c27/" title="Selection Sort">Selection Sort</a></li>
 <li><a href="/posts/76d24d28/" title="Insertion Sort">Insertion Sort</a></li>
 <li><a href="/posts/d7c658d8/" title="Merge sort">Merge sort</a></li>
 <li><a href="/posts/932bcef/" title="Quick Sort">Quick Sort</a></li>
 <li><a href="/posts/2c38fcfa/" title="Heap Sort">Heap Sort</a></li>
+</ul>
+<p>以上排序皆採用 <code>Comparison &amp; Swap</code> 技巧:</p>
+<ul>
+<li>即: 利用<strong>鍵值 (Key)</strong> 來與欲排序的數字做比較，合乎某種條件就將 Key 與被比較的數字做交換的動作</li>
+<li>已有科學家証明，若採用此技巧所開發出來的演算法，<code>θ (n log n)</code> 的時間已是<strong>最好</strong>的，不會出現有比該時間更有效率的演算法</li>
+<li>詳情請見這篇說明 <strong><a href="/posts/34e3d240/" title="Comparison &amp; Swap">Comparison &amp; Swap</a></strong></li>
+</ul>
+<h2 id="其他排序">其他排序</h2>
+<ul>
+<li><a href="/posts/4502df03/" title="Bucket Sort">Bucket Sort</a></li>
 </ul>
 
       </div>

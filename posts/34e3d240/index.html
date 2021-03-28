@@ -24,30 +24,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Heap Sort Heapsort 的演算法分為兩大步驟：  將資料轉換為 heap 資料結構（遞增排序用 max-heap, 遞減排序選擇 min-heap）。 逐步取出最大／最小值，並與最後一個元素置換。具體步驟如下：  交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。 更新剩下的資料，使其滿足 heap 的特性，稱為 h">
+<meta name="description" content="排序方法能達到多快 ? 假設排序方法的設計是採用 Comparison &amp; Swap 技巧  利用決策樹 (Decision Tree) 來判斷:  Decision Tree: 描述 Sort 過程中，各種狀況的比較過程  Non-leaf Node: 表示 “Comparison” 左、右分枝: 表示 “Yes” or “No” Leaf: 排序結果">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Heap Sort">
-<meta property="og:url" content="https://yu-shin.github.io/posts/2c38fcfa/index.html">
+<meta property="og:title" content="Comparison &amp; Swap">
+<meta property="og:url" content="https://yu-shin.github.io/posts/34e3d240/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Heap Sort Heapsort 的演算法分為兩大步驟：  將資料轉換為 heap 資料結構（遞增排序用 max-heap, 遞減排序選擇 min-heap）。 逐步取出最大／最小值，並與最後一個元素置換。具體步驟如下：  交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。 更新剩下的資料，使其滿足 heap 的特性，稱為 h">
+<meta property="og:description" content="排序方法能達到多快 ? 假設排序方法的設計是採用 Comparison &amp; Swap 技巧  利用決策樹 (Decision Tree) 來判斷:  Decision Tree: 描述 Sort 過程中，各種狀況的比較過程  Non-leaf Node: 表示 “Comparison” 左、右分枝: 表示 “Yes” or “No” Leaf: 排序結果">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/%E6%8E%92%E5%BA%8F.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/%E6%AF%94%E8%BC%83%E5%9C%96.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/1610176202580.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/1610176456485.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/%E5%BB%BAh.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/h.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/2c38fcfa/hs.jpg">
-<meta property="article:published_time" content="2021-01-08T16:28:26.000Z">
-<meta property="article:modified_time" content="2021-03-28T14:07:03.929Z">
+<meta property="article:published_time" content="2021-03-28T14:13:38.000Z">
+<meta property="article:modified_time" content="2021-03-28T14:54:45.744Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="資料結構">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yu-shin.github.io/posts/2c38fcfa/%E6%8E%92%E5%BA%8F.jpg">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/posts/2c38fcfa/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/34e3d240/">
 
 
 <script data-pjax class="page-configurations">
@@ -59,7 +50,7 @@
     lang   : 'zh-TW'
   };
 </script>
-<title>Heap Sort | Nicholas Blogger</title>
+<title>Comparison & Swap | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -212,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#heap-sort"><span class="nav-number">1.</span> <span class="nav-text">Heap Sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-heap"><span class="nav-number">2.</span> <span class="nav-text">Binary Heap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text">特徵一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%B5%E4%BA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">特徵二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#heap-%E7%9B%B8%E9%97%9C%E6%93%8D%E4%BD%9C%E8%88%87%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">Heap 相關操作與分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#insert"><span class="nav-number">3.1.</span> <span class="nav-text">Insert</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#time-%E4%B9%8B%E5%88%86%E6%9E%90"><span class="nav-number">3.1.1.</span> <span class="nav-text">Time 之分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete"><span class="nav-number">3.2.</span> <span class="nav-text">Delete</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#time-%E4%B9%8B%E5%88%86%E6%9E%90-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Time 之分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#heap-%E7%9A%84%E5%BB%BA%EF%A7%B7%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">Heap 的建立方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#top-down"><span class="nav-number">4.1.</span> <span class="nav-text">Top-Down</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bottom-up-siftdown"><span class="nav-number">4.2.</span> <span class="nav-text">Bottom-Up (Siftdown)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%EF%A7%B7-heap-%E8%8A%B1%E8%B2%BB%E6%99%82%E9%96%93"><span class="nav-number">4.3.</span> <span class="nav-text">建立 Heap 花費時間</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%8C%E8%A8%98"><span class="nav-number">4.4.</span> <span class="nav-text">後記</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#heapsort-%E6%AD%A5%E9%A9%9F%E8%AA%AA%E6%98%8E"><span class="nav-number">5.</span> <span class="nav-text">heapsort 步驟說明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">6.</span> <span class="nav-text">程式碼</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">時間複雜度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">8.</span> <span class="nav-text">空間複雜度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unstable"><span class="nav-number">9.</span> <span class="nav-text">Unstable</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95%E8%83%BD%E9%81%94%E5%88%B0%E5%A4%9A%E5%BF%AB"><span class="nav-number">1.</span> <span class="nav-text">排序方法能達到多快 ?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AA%AA%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">說明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -289,7 +280,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/2c38fcfa/">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/34e3d240/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bighead.jpg">
@@ -302,7 +293,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Heap Sort
+          Comparison & Swap
         </h1>
 
         <div class="post-meta-container">
@@ -313,7 +304,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-01-09 00:28:26" itemprop="dateCreated datePublished" datetime="2021-01-09T00:28:26+08:00">2021-01-09</time>
+      <time title="創建時間：2021-03-28 22:13:38" itemprop="dateCreated datePublished" datetime="2021-03-28T22:13:38+08:00">2021-03-28</time>
     </span>
 
   
@@ -325,8 +316,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/posts/2c38fcfa/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/2c38fcfa/" itemprop="commentCount"></span>
+    <a title="disqus" href="/posts/34e3d240/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/34e3d240/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -338,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>3k</span>
+      <span>584</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>6 分鐘</span>
+      <span>1 分鐘</span>
     </span>
 </div>
 
@@ -356,166 +347,35 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="heap-sort">Heap Sort</h1>
-<p><strong>Heapsort</strong> 的演算法分為兩大步驟：</p>
-<ol type="1">
-<li>將資料轉換為 <code>heap</code> 資料結構（<strong>遞增</strong>排序用 <code>max-heap</code>, <strong>遞減</strong>排序選擇 <code>min-heap</code>）。</li>
-<li>逐步取出<strong>最大／最小值</strong>，並與<strong>最後一個元素</strong>置換。具體步驟如下：
-<ol type="1">
-<li>交換 heap 的 root 與最後一個 node，縮小 heap 的範圍（排序一筆資料，故 heap 長度 -1）。</li>
-<li>更新剩下的資料，使其滿足 heap 的特性，稱為 heap ordering property。</li>
-<li>重複前兩個步驟，直到 heap 中剩最後一個未排序的資料。</li>
-</ol></li>
-</ol>
+        <h1 id="排序方法能達到多快">排序方法能達到多快 ?</h1>
+<p>假設排序方法的設計是採用 <code>Comparison &amp; Swap</code> 技巧</p>
+<ul>
+<li>利用<code>決策樹 (Decision Tree)</code> 來判斷:
+<ul>
+<li><strong>Decision Tree</strong>: 描述 <strong>Sort</strong> 過程中，各種狀況的比較過程
+<ul>
+<li><strong><mark class="label info">Non-leaf Node</mark></strong>: 表示 “<strong>Comparison</strong>”</li>
+<li><strong><mark class="label info">左、右分枝</mark></strong>: 表示 “<strong>Yes</strong>” or “<strong>No</strong>”</li>
+<li><strong><mark class="label info">Leaf</mark></strong>: <strong>排序結果</strong></li>
+</ul></li>
+</ul></li>
+</ul>
 <a id="more"></a>
-<p>Heapsort（堆積排序）可以看作是 <a href="https://yu-shin.github.io/2020-12-30-Selection-Sort.html#more">selection sort</a> 的變形，同樣會將資料分為 sorted pile 與 unsorted pile，並在 unsorted pile 中尋找最大值（或最小值），加入 sorted pile 中。 <img src="/posts/2c38fcfa/%E6%8E%92%E5%BA%8F.jpg" class=""> <img src="/posts/2c38fcfa/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class=""></p>
-<h1 id="binary-heap">Binary Heap</h1>
-<p><strong>Binary Heap</strong> 有兩項基本特徵：</p>
-<h2 id="特徵一">特徵一</h2>
-<p>Binary Heap 之結構可以視作 <strong>Complete Binary Tree</strong> 。</p>
 <ul>
-<li>如圖一(a)，數值1～9，一共有9個元素，按照 <strong>Complete Binary Tree</strong> 之順序規則，填滿位置1～9，以 index(1)～index(9) 表示。</li>
+<li>例:試說明 <strong>3</strong> 個資料 <strong>a，b，c</strong> 排序之 <strong>Decision Tree</strong> </li>
 </ul>
-<p>這樣的優點是方便尋找「parent-child」之關係，以 index(i) 的 node 為例：</p>
+<h1 id="說明">說明</h1>
 <ul>
-<li>其 <strong>left child</strong> 必定位在 <strong>index(2i)</strong></li>
-<li>其 <strong>right child</strong> 必定位在 <strong>index(2i+1)</strong></li>
-<li>其 <strong>parent</strong> 必定位在 <strong>index(⌊i/2⌋)</strong></li>
-</ul>
-<p>以圖一(a)中位於 index(3) 之 node(8) 為例：</p>
+<li><strong>n</strong> 個資料做 <strong>Sort</strong>，有 <strong>n!</strong> 個可能的排序結果。因此，<strong>Sort</strong> 的 <strong>Decision Tree</strong> 有 <strong><mark class="label info">n! 個 Leaf nodes</mark></strong></li>
+<li>根據<strong>二元樹</strong>之定理: 二元樹中，第 <strong>i</strong> 個 <strong>level</strong> 的 <strong>node</strong> 個數最多有 <span class="math inline">\(2^{i-1}\)</span> 個
 <ul>
-<li>其 <strong>left child</strong> 為 index(6) 之 node(2)；</li>
-<li>其 <strong>right child</strong> 為 index(7) 之 node(3)；</li>
-<li>其 <strong>parent</strong> 為 index(1) 之 node(9)。</li>
-</ul>
-<img src="/posts/2c38fcfa/1610176202580.jpg" class="">
-<h2 id="特徵二">特徵二</h2>
-<p>若將位於 index(i) 之 node 視為 subtree 之 root ，那麼，可將此 Binary Heap 分為兩類：</p>
-<ul>
-<li><strong>Max Heap</strong>：在每一個 subtree 中， <strong>root</strong> 之「數值」要比兩個 <strong>child</strong> 之「數值」還要大，見圖一(a)：
-<ul>
-<li>value(i) &gt; value(2i)</li>
-<li>value(i) &gt; value(2i+1)</li>
+<li>∴ <span class="math inline">\(2^{i-1} = n!\)</span> ⇒ <span class="math inline">\(i-1 = \lceil \log_2n!\rceil\)</span> ⇒ <span class="math inline">\(i = \lceil \log_2n!\rceil + 1\)</span>，表示此 <strong>Tree</strong> 的<strong>高度</strong>至少為<span class="math inline">\(\lceil \log_2n!\rceil + 1\)</span></li>
 </ul></li>
-<li><strong>Min Heap</strong>：在每一個 subtree 中， <strong>root</strong> 之「數值」要比兩個 <strong>child</strong> 之「數值」還要小，見圖一(b)：
-<ul>
-<li>value(i) &lt; value(2i)</li>
-<li>value(i) &lt; value(2i+1)</li>
-</ul></li>
+<li>比較次數為 <span class="math inline">\(\geq \lceil \log_2n!\rceil\)</span></li>
+<li>又 <span class="math inline">\(n! \geq {\frac{n}{2}}^{\frac{n}{2}}\)</span> ⇒ <span class="math inline">\(\lceil \log_2n!\rceil \geq \log{\frac{n}{2}}^{\frac{n}{2}} = \frac{n}{2}\log\frac{n}{2} \leq O(n\log n)\)</span></li>
 </ul>
-<img src="/posts/2c38fcfa/1610176456485.jpg" class="">
-<h1 id="heap-相關操作與分析">Heap 相關操作與分析</h1>
-<p>Heap 提供下列 <strong>2</strong> 個運作:</p>
-<h2 id="insert">Insert</h2>
-<ol type="1">
-<li>將 x 置於 <strong>Last Node</strong> 之<strong>後</strong></li>
-<li>x 向上<strong>挑戰父點</strong>(即: 與父點的值<strong>比大小</strong>)，直到發生下列任一狀況為止:
-<ul>
-<li><strong>挑戰失敗</strong></li>
-<li><strong>無父點</strong></li>
-</ul></li>
-</ol>
-<h3 id="time-之分析">Time 之分析</h3>
-<ul>
-<li>Insert x 後，x 的最大移動距離為<code>從 leaf 到 root</code>，即為<strong>樹高</strong>，又 Heap 為 <strong>Complete B.T.</strong></li>
-<li>∴ 當有 <strong>n</strong> 個 nodes 時，<strong>樹高</strong>為: <span class="math inline">\(\lceil \log_2(n+1)\rceil\)</span></li>
-</ul>
-<p>∴ <strong>Insert</strong> 之 Time 為 <strong>O(log n)</strong></p>
-<h2 id="delete">Delete</h2>
-<ol type="1">
-<li><strong>移走 Root</strong> 的元素</li>
-<li>將 <strong>Last Node x</strong> 刪除並<strong>置於 Root</strong> 位置</li>
-<li><strong>從 Root 往下調整</strong>成 Max-Heap (Max-Heap 調整方法: <strong>跟較大的兒子交換</strong>)</li>
-</ol>
-<h3 id="time-之分析-1">Time 之分析</h3>
-<ul>
-<li>Step 1 與 Step 2 的動作只花 <strong>O(1)</strong> (常數時間)</li>
-<li>Step 3 花費時間較多，故以此為主
-<ul>
-<li>Last Node x 的最大移動距離為<code>從 Root 到 leaf</code>，即為<strong>樹高</strong>，又 Heap 為 <strong>Complete B.T.</strong></li>
-<li>∴ 當有 <strong>n</strong> 個 nodes 時，<strong>樹高</strong>為: <span class="math inline">\(\lceil \log_2(n+1)\rceil\)</span></li>
-</ul></li>
-</ul>
-<p>∴ <strong>Delete</strong> 之 Time 為 <strong>O(log n)</strong></p>
-<h1 id="heap-的建立方式">Heap 的建立方式</h1>
-<p>分為以下兩種：</p>
-<ul>
-<li><strong>Top-Down</strong></li>
-<li><strong>Bottom-Up (Siftdown)</strong></li>
-</ul>
-<h2 id="top-down">Top-Down</h2>
-<p>連續執行<code>Insert</code>的動作，每一個步驟執行後均<strong>維持 Max-Heap</strong></p>
-<h2 id="bottom-up-siftdown">Bottom-Up (Siftdown)</h2>
-<ol type="1">
-<li>先將資料建成<strong>Complete B.T.</strong></li>
-<li>從 “<strong>Last Parent</strong>” 往 “<strong>Root</strong>” 方向，逐次調整<strong>每棵子樹</strong>成為 <strong>Max-Heap</strong></li>
-</ol>
-<div class="note success"><p><strong>Stpe 1</strong> 之所以將之建成 <strong>Complete B.T.</strong>，是因為真正在寫程式時，可用 <strong>Array</strong> 儲存，會較易搜尋子節點及父節點</p>
-</div>
-<h2 id="建立-heap-花費時間">建立 Heap 花費時間</h2>
-<img src="/posts/2c38fcfa/%E5%BB%BAh.jpg" class="">
-<blockquote>
-<p>可以參考 UMD 演算法課程 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.cs.umd.edu/~meesh/351/mount/lectures/lect14-heapsort-analysis-part.pdf">Lecture note 的分析</a>。</p>
-</blockquote>
-<h2 id="後記">後記</h2>
-<ul>
-<li>同樣資料，用 <strong>Top-Down</strong> 及 <strong>Bottom-up</strong> 所建立出來的 Max-Heap <code>不一定相同</code></li>
-<li>通常 <strong>Bottom-up</strong> 的實際執行速度較<code>快</code>!! (但兩者的 <strong>Time Complexity</strong> 相同)</li>
-</ul>
-<img src="/posts/2c38fcfa/h.jpg" class="">
-<h1 id="heapsort-步驟說明">heapsort 步驟說明</h1>
-<p>而 heapsort 主要分為兩個部分：</p>
-<ol type="1">
-<li><strong>Heapify</strong>：將資料先以“<strong>Bottom-up</strong>” 的方式建立 <strong>Max-Heap</strong></li>
-<li><strong>Sorting</strong>：執行 <strong>n-1</strong> 回合的 “<strong>Delete Max</strong>” 動作</li>
-</ol>
-<h1 id="程式碼">程式碼</h1>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>HeapSort</span><a href="/downloads/code/heapsort/heapsort.py">view raw</a></div><code class="language-python">def heapify(unsorted, index, heap_size):
-    largest &#x3D; index
-    left_index &#x3D; 2 * index + 1
-    right_index &#x3D; 2 * index + 2
-    if left_index &lt; heap_size and unsorted[left_index] &gt; unsorted[largest]:
-        largest &#x3D; left_index
-
-    if right_index &lt; heap_size and unsorted[right_index] &gt; unsorted[largest]:
-        largest &#x3D; right_index
-
-    if largest !&#x3D; index:
-        unsorted[largest], unsorted[index] &#x3D; unsorted[index], unsorted[largest]
-        heapify(unsorted, largest, heap_size)
-
-
-def heap_sort(unsorted):
-    n &#x3D; len(unsorted)
-    # 建立 binary heap(heapify)
-    for i in range(n &#x2F;&#x2F; 2 - 1, -1, -1):
-        heapify(unsorted, i, n)
-    # Sorting(sift down)
-    for i in range(n - 1, 0, -1):
-        unsorted[0], unsorted[i] &#x3D; unsorted[i], unsorted[0]
-        heapify(unsorted, 0, i)
-    return unsorted
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    print(heap_sort(unsorted))</code></pre>
-<h1 id="時間複雜度">時間複雜度</h1>
-<p><strong>Avg. / Worst / Best Case: O(n log n)</strong></p>
-<ol type="1">
-<li>建立 <strong>Max-Heap</strong> 會花費 <strong>O(n)</strong> 時間</li>
-<li>需執行 <strong>n-1</strong> 回合的 <strong>Delete Max</strong> 動作，而每一次的 Delete Max 動作需花費 <strong>O(log n)</strong> 時間 ⇒ 共花費 <strong>O(n log n)</strong></li>
-</ol>
-<p>∴ 整個 <strong>Heap-Sort</strong> 花費 <strong>O(n) + O(n log n) ≅ O(n log n)</strong> 時間</p>
-<h1 id="空間複雜度">空間複雜度</h1>
-<p><strong>Heap-Sort</strong> 是 <strong>in-place sort</strong> ∴ <strong>Space Complexity: Θ(1)</strong></p>
-<h1 id="unstable">Unstable</h1>
-<p>有一組資料: <strong>8, <mark class="label danger">8</mark>, 77</strong>,其 <strong>Max-Heap</strong> 如下。若進行 <strong>Heap Sort</strong> 時，執行一回合的 <strong>Delete Max</strong>: <img src="/posts/2c38fcfa/hs.jpg" class=""></p>
 <h1 id="參考資料">參考資料</h1>
 <ul>
-<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://alrightchiu.github.io/SecondRound/comparison-sort-heap-sortdui-ji-pai-xu-fa.html#bh">堆積排序法</a></li>
-<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://rust-algo.club/sorting/heapsort/index.html">堆積排序 Heapsort</a></li>
 <li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
 </ul>
 
@@ -558,7 +418,6 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag"># 資料結構</a>
               <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 演算法</a>
           </div>
 
@@ -566,14 +425,11 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/1730cd52/" rel="prev" title="Hardhat Tutorial">
-                  <i class="fa fa-chevron-left"></i> Hardhat Tutorial
+                <a href="/posts/94e375d1/" rel="prev" title="Array Conclusion">
+                  <i class="fa fa-chevron-left"></i> Array Conclusion
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/60cdc1b3/" rel="next" title="Array">
-                  Array <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -747,9 +603,9 @@ document.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yu-shin.github.io/posts/2c38fcfa/";
-    this.page.identifier = "posts/2c38fcfa/";
-    this.page.title = "Heap Sort";
+    this.page.url = "https://yu-shin.github.io/posts/34e3d240/";
+    this.page.identifier = "posts/34e3d240/";
+    this.page.title = "Comparison & Swap";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
