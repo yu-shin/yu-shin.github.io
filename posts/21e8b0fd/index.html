@@ -24,15 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Queue and BFS 本文蒐集  LeetCode 155 LeetCode 20 LeetCode 739 LeetCode 150">
+<meta name="description" content="Stack: Last in first out Data Structure 本文蒐集  LeetCode 155 LeetCode 20 LeetCode 739 LeetCode 150">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stack: Last in first out Data Structure">
 <meta property="og:url" content="https://yu-shin.github.io/posts/21e8b0fd/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Queue and BFS 本文蒐集  LeetCode 155 LeetCode 20 LeetCode 739 LeetCode 150">
+<meta property="og:description" content="Stack: Last in first out Data Structure 本文蒐集  LeetCode 155 LeetCode 20 LeetCode 739 LeetCode 150">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-01T09:30:57.000Z">
-<meta property="article:modified_time" content="2021-04-01T10:19:04.144Z">
+<meta property="article:modified_time" content="2021-04-01T10:30:37.043Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#queue-and-bfs"><span class="nav-number">1.</span> <span class="nav-text">Queue and BFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-155-min-stack"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 155: Min Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94"><span class="nav-number">2.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-20-valid-parentheses"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 20: Valid Parentheses</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-1"><span class="nav-number">3.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-739-daily-temperatures"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 739: Daily Temperatures</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-2"><span class="nav-number">4.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-150-evaluate-reverse-polish-notation"><span class="nav-number">5.</span> <span class="nav-text">LeetCode 150: Evaluate Reverse Polish Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-3"><span class="nav-number">5.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#stack-last-in-first-out-data-structure"><span class="nav-number">1.</span> <span class="nav-text">Stack: Last in first out Data Structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-155-min-stack"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 155: Min Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94"><span class="nav-number">2.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-20-valid-parentheses"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 20: Valid Parentheses</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-1"><span class="nav-number">3.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-739-daily-temperatures"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 739: Daily Temperatures</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-2"><span class="nav-number">4.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-150-evaluate-reverse-polish-notation"><span class="nav-number">5.</span> <span class="nav-text">LeetCode 150: Evaluate Reverse Polish Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-3"><span class="nav-number">5.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -347,7 +347,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="queue-and-bfs">Queue and BFS</h1>
+        <h1 id="stack-last-in-first-out-data-structure">Stack: Last in first out Data Structure</h1>
 <p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/min-stack/">LeetCode 155</a></strong></li>
