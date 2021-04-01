@@ -31,9 +31,11 @@
 <meta property="og:site_name" content="Nicholas Blogger">
 <meta property="og:description" content="npm Node Package Manger，是 nodejs 的 dependency&#x2F;package manager，提供開發者 install packages both globally and locally。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/posts/4df1633d/npx_create-react-app.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/4df1633d/react-app.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/4df1633d/npx_github.jpg">
 <meta property="article:published_time" content="2020-12-23T04:15:00.000Z">
-<meta property="article:modified_time" content="2021-02-10T13:57:33.153Z">
+<meta property="article:modified_time" content="2021-04-01T08:13:25.740Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="nodejs">
 <meta property="article:tag" content="npm">
@@ -42,7 +44,7 @@
 <meta property="article:tag" content="LastPass">
 <meta property="article:tag" content="1Password">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yu-shin.github.io/posts/4df1633d/react-app.jpg">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/4df1633d/npx_create-react-app.jpg">
 
 
 <link rel="canonical" href="https://yu-shin.github.io/posts/4df1633d/">
@@ -210,7 +212,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#npm"><span class="nav-number">1.</span> <span class="nav-text">npm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E4%BE%9B-cli-tool-%E8%AE%93%E9%96%8B%E7%99%BC%E8%80%85-install-packages-and-manage-their-versions-and-dependencies"><span class="nav-number">1.1.</span> <span class="nav-text">提供 CLI tool 讓開發者 install packages and manage their versions and dependencies</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npx"><span class="nav-number">2.</span> <span class="nav-text">npx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npx%E4%BD%BF%E7%94%A8%E6%83%85%E6%B3%81"><span class="nav-number">2.1.</span> <span class="nav-text">npx使用情況:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#run-a-locally-installed-package-easily"><span class="nav-number">2.1.1.</span> <span class="nav-text">*Run a locally installed package easily</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execute-packages-that-are-not-previously-installed"><span class="nav-number">2.1.2.</span> <span class="nav-text">Execute packages that are not previously installed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-different-package-versions"><span class="nav-number">2.1.3.</span> <span class="nav-text">Test different package versions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-code-directly-from-github"><span class="nav-number">2.1.4.</span> <span class="nav-text">Run code directly from GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonus-round-shell-auto-fallback"><span class="nav-number">2.1.5.</span> <span class="nav-text">Bonus Round: shell auto-fallback</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#npm"><span class="nav-number">1.</span> <span class="nav-text">npm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npx"><span class="nav-number">2.</span> <span class="nav-text">npx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npx%E4%BD%BF%E7%94%A8%E6%83%85%E6%B3%81"><span class="nav-number">2.1.</span> <span class="nav-text">npx使用情況:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#run-a-locally-installed-package-easily"><span class="nav-number">2.1.1.</span> <span class="nav-text">Run a locally installed package easily</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execute-packages-that-are-not-previously-installed"><span class="nav-number">2.1.2.</span> <span class="nav-text">Execute packages that are not previously installed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-different-package-versions"><span class="nav-number">2.1.3.</span> <span class="nav-text">Test different package versions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-code-directly-from-github"><span class="nav-number">2.1.4.</span> <span class="nav-text">Run code directly from GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bonus-round-shell-auto-fallback"><span class="nav-number">2.1.5.</span> <span class="nav-text">Bonus Round: shell auto-fallback</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -336,14 +338,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>2k</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>4 分鐘</span>
+      <span>3 分鐘</span>
     </span>
 </div>
 
@@ -358,8 +360,9 @@
 <p><strong>Node Package Manger</strong>，是 <code>nodejs</code> 的 dependency/package manager，提供開發者 install packages both globally and locally。 <a id="more"></a></p>
 <ol type="1">
 <li><strong>提供 online repository 可以 publish <code>open-source Node.js projects</code></strong></li>
-<li><h2 id="提供-cli-tool-讓開發者-install-packages-and-manage-their-versions-and-dependencies"><strong>提供 <code>CLI tool</code> 讓開發者 install packages and manage their versions and dependencies</strong></h2></li>
+<li><strong>提供 <code>CLI tool</code> 讓開發者 install packages and manage their versions and dependencies</strong></li>
 </ol>
+<hr />
 <p>如果想使用<code>npm</code> 去 run a package，必須在 <code>package.json</code> 檔案裡指定 package。 當 executables are installed via npm packages, npm creates links to them:</p>
 <ol type="1">
 <li><strong>local installs have links created at the <code>./node_modules/.bin/ directory</code></strong></li>
@@ -374,21 +377,30 @@
   &quot;scripts&quot;: &#123;
     &quot;your-package&quot;: &quot;your-package&quot;
   &#125;
-&#125;</code></pre> 接下來就可以 run the script using npm run: <pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre> <strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong> 所以接下來介紹<code>npx</code>。</li>
+&#125;</code></pre></li>
 </ol>
+<p>接下來就可以 run the script using npm run:</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre>
+<p><strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong></p>
+<p>所以接下來介紹<code>npx</code>。</p>
 <h1 id="npx">npx</h1>
 <p>npm 只要更新到 <strong>npm@5.2.0</strong> 後，就會多出一個 npx 指令。</p>
 <h2 id="npx使用情況">npx使用情況:</h2>
-<h3 id="run-a-locally-installed-package-easily">*Run a locally installed package easily</h3>
+<h3 id="run-a-locally-installed-package-easily">Run a locally installed package easily</h3>
 <p>如果想要執行 locally installed package，只需要 type: <pre class="line-numbers language-none"><code class="language-none">$ npx your-package</code></pre> npx 會檢查 local 或 <code>$PATH</code> 裡是否存在 <code>&lt;command&gt;</code> or <code>&lt;package&gt;</code> 的 binaries，有的話便會執行。</p>
 <h3 id="execute-packages-that-are-not-previously-installed">Execute packages that are not previously installed</h3>
 <p>使用 npx 命令，他會安裝在臨時安裝包上，等到項目初始化完成後就刪除，不用全局性的安裝，避免被汙染。</p>
 <h3 id="test-different-package-versions">Test different package versions</h3>
-<p>npx makes it extremely easy to test different versions of a Node.js package or module。 以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> /posts/4df1633d/npx_create-react-app.jpg</p>
-<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。 安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。 <pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
-$ npm start</code></pre> <img src="/posts/4df1633d/react-app.jpg" class=""></p>
+<p>npx makes it extremely easy to test different versions of a Node.js package or module。</p>
+<p>以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> <img src="/posts/4df1633d/npx_create-react-app.jpg" class=""></p>
+<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。</p>
+<p>安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
+$ npm start</code></pre>
+<img src="/posts/4df1633d/react-app.jpg" class="">
 <h3 id="run-code-directly-from-github">Run code directly from GitHub</h3>
-<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> /posts/4df1633d/npx_github.jpg 可以看到輸出 yay gist</p>
+<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> <img src="/posts/4df1633d/npx_github.jpg" class=""></p>
+<p>可以看到輸出 yay gist</p>
 <h3 id="bonus-round-shell-auto-fallback">Bonus Round: shell auto-fallback</h3>
 <p><strong>待更新...</strong></p>
 <h1 id="參考資料">參考資料</h1>
@@ -517,13 +529,13 @@ $ npm start</code></pre> <img src="/posts/4df1633d/react-app.jpg" class=""></p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">124k</span>
+    <span title="總字數">130k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">3:45</span>
+    <span title="所需總閱讀時間">3:56</span>
   </span>
 </div>
 

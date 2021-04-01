@@ -24,15 +24,17 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
+<meta name="description" content="Linked List Conclusion 本文蒐集  LeetCode 21 LeetCode 2 LeetCode 430 LeetCode 138 LeetCode 61">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linked List Conclusion">
 <meta property="og:url" content="https://yu-shin.github.io/posts/7042832/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
+<meta property="og:description" content="Linked List Conclusion 本文蒐集  LeetCode 21 LeetCode 2 LeetCode 430 LeetCode 138 LeetCode 61">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-01T06:21:16.000Z">
-<meta property="article:modified_time" content="2021-04-01T06:21:16.768Z">
+<meta property="article:modified_time" content="2021-04-01T08:29:06.299Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="部落格, 筆記">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
 
@@ -188,7 +190,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -201,6 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linked-list-conclusion"><span class="nav-number">1.</span> <span class="nav-text">Linked List Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-21-merge-two-sorted-lists"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 21: Merge Two Sorted Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94"><span class="nav-number">2.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-2-add-two-numbers"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 2: Add Two Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88"><span class="nav-number">3.1.</span> <span class="nav-text">我的答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-430-flatten-a-multilevel-doubly-linked-list"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 430: Flatten a Multilevel Doubly Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88-1"><span class="nav-number">4.1.</span> <span class="nav-text">我的答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-138-copy-list-with-random-pointer"><span class="nav-number">5.</span> <span class="nav-text">LeetCode 138: Copy List with Random Pointer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94-1"><span class="nav-number">5.1.</span> <span class="nav-text">我的解答</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-61-rotate-list"><span class="nav-number">6.</span> <span class="nav-text">LeetCode 61: Rotate List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88-2"><span class="nav-number">6.1.</span> <span class="nav-text">我的答案</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -326,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>0</span>
+      <span>6.5k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>1 分鐘</span>
+      <span>12 分鐘</span>
     </span>
 </div>
 
@@ -344,7 +347,313 @@
     
     
     <div class="post-body" itemprop="articleBody">
+        <h1 id="linked-list-conclusion">Linked List Conclusion</h1>
+<p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/merge-two-sorted-lists/">LeetCode 21</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/add-two-numbers/">LeetCode 2</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/">LeetCode 430</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/copy-list-with-random-pointer/">LeetCode 138</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/rotate-list/">LeetCode 61</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-21-merge-two-sorted-lists">LeetCode 21: Merge Two Sorted Lists</h1>
+<p>Merge two <strong>sorted</strong> linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in both lists is in the range <code>[0, 50]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li>Both <code>l1</code> and <code>l2</code> are sorted in <strong>non-decreasing</strong> order.</li>
+</ul>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val&#x3D;0, next&#x3D;None):
+#         self.val &#x3D; val
+#         self.next &#x3D; next
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
+        if not l1 and not l2:
+            return
+        elif not l1:
+            return l2
+        elif not l2:
+            return l1
+        else:
+            head &#x3D; perv &#x3D; None
+            
+            if l1.val &lt;&#x3D; l2.val:
+                head &#x3D; perv &#x3D; l1
+                l1 &#x3D; l1.next
+            else:
+                head &#x3D; perv &#x3D; l2
+                l2 &#x3D; l2.next
+                
+            while l1 and l2:
+                if l1.val &lt;&#x3D; l2.val:
+                    perv.next &#x3D; l1
+                    l1 &#x3D; l1.next
+                    perv &#x3D; perv.next
+                else:
+                    perv.next &#x3D; l2
+                    l2 &#x3D; l2.next
+                    perv &#x3D; perv.next
+            
+            if not l1:
+                perv.next &#x3D; l2
+            else:
+                perv.next &#x3D; l1
+            
+            return head</code></pre>
+<h1 id="leetcode-2-add-two-numbers">LeetCode 2: Add Two Numbers</h1>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in each linked list is in the range <code>[1, 100]</code>.</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+<li>It is guaranteed that the list represents a number that does not have leading zeros.</li>
+</ul>
+<h2 id="我的答案">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val&#x3D;0, next&#x3D;None):
+#         self.val &#x3D; val
+#         self.next &#x3D; next
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
+        head1 &#x3D; l1
+        head2 &#x3D; l2
+        sum2 &#x3D; 0
+        flag &#x3D; 0
+        whichHead &#x3D; 1
         
+        while l1 and l2:
+            sum2 &#x3D; l1.val + l2.val + flag
+            
+            if sum2 &gt;&#x3D; 10:
+                flag &#x3D; 1
+                l1.val &#x3D; l2.val &#x3D; sum2 - 10
+            else:
+                flag &#x3D; 0
+                l1.val &#x3D; l2.val &#x3D; sum2
+            l1 &#x3D; l1.next
+            l2 &#x3D; l2.next
+        
+        if l2:
+            whichHead &#x3D; 2
+    
+        while l1 and flag:
+            sum1 &#x3D; l1.val + flag
+            flag &#x3D; 0
+            
+            if sum1 &gt;&#x3D; 10:
+                l1.val &#x3D; sum1 - 10
+                flag &#x3D; 1
+            else:
+                l1.val &#x3D; sum1
+            l1 &#x3D; l1.next
+        if flag &#x3D;&#x3D; 1:
+            perv &#x3D; head1
+            while perv.next:
+                perv &#x3D; perv.next
+            perv.next &#x3D; ListNode(1)
+
+        while l2 and flag:
+            sum1 &#x3D; l2.val + flag
+            flag &#x3D; 0
+            
+            if sum1 &gt;&#x3D; 10:
+                l2.val &#x3D; sum1 - 10
+                flag &#x3D; 1
+            else:
+                l2.val &#x3D; sum1
+            l2 &#x3D; l2.next
+        if flag &#x3D;&#x3D; 1:
+            perv &#x3D; head2
+            while perv.next:
+                perv &#x3D; perv.next
+            perv.next &#x3D; ListNode(1)
+        
+        if whichHead &#x3D;&#x3D; 2:
+            return head2
+        else:
+            return head1
+
+
+# 誤解題意，原本題意更簡單&#x3D; &#x3D; 
+#         l1_size &#x3D; 0
+#         l2_size &#x3D; 0
+#         head1 &#x3D; l1
+#         head2 &#x3D; l2
+        
+#         while l1:
+#             l1 &#x3D; l1.next
+#             l1_size +&#x3D; 1
+#         while l2:
+#             l2 &#x3D; l2.next
+#             l2_size +&#x3D; 1
+        
+#         if l1_size &gt; l2_size:
+#             curr &#x3D; head1
+#             index &#x3D; l1_size - l2_size
+#             sum2 &#x3D; 0
+#             flag &#x3D; 0
+            
+#             for i in range(index):
+#                 curr &#x3D; curr.next
+#             while curr:
+#                 sum2 &#x3D; curr.val + head2.val + flag
+#                 if sum2 &gt;&#x3D; 10:
+#                     flag &#x3D; 1
+#                     curr.val &#x3D; sum2 - 10
+#                 else:
+#                     curr.val &#x3D; sum2
+#                 curr &#x3D; curr.next
+#                 head2 &#x3D; head2.next
+#             return head1
+#         else:
+#             curr &#x3D; head2
+#             index &#x3D; l2_size - l1_size
+#             sum2 &#x3D; 0
+#             flag &#x3D; 0
+            
+#             for i in range(index):
+#                 curr &#x3D; curr.next
+#             while curr:
+#                 sum2 &#x3D; curr.val + head1.val + flag
+#                 if sum2 &gt;&#x3D; 10:
+#                     flag &#x3D; 1
+#                     curr.val &#x3D; sum2 - 10
+#                 else:
+#                     curr.val &#x3D; sum2
+#                 curr &#x3D; curr.next
+#                 head1 &#x3D; head1.next
+#             return head2</code></pre>
+<h1 id="leetcode-430-flatten-a-multilevel-doubly-linked-list">LeetCode 430: Flatten a Multilevel Doubly Linked List</h1>
+<p>You are given a doubly linked list which in addition to the next and previous pointers, it could have a child pointer, which may or may not point to a separate doubly linked list. These child lists may have one or more children of their own, and so on, to produce a multilevel data structure, as shown in the example below.</p>
+<p>Flatten the list so that all the nodes appear in a single-level, doubly linked list. You are given the head of the first level of the list.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of Nodes will not exceed <code>1000</code>.</li>
+<li>1 &lt;= Node.val &lt;= <span class="math inline">\(10^5\)</span></li>
+</ul>
+<h2 id="我的答案-1">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, val, prev, next, child):
+        self.val &#x3D; val
+        self.prev &#x3D; prev
+        self.next &#x3D; next
+        self.child &#x3D; child
+&quot;&quot;&quot;
+
+class Solution(object):
+    def flatten(self, head):
+        if not head:
+            return
+        
+        dummy &#x3D; Node(0,None,head,None)     
+        stack &#x3D; []
+        stack.append(head)
+        prev &#x3D; dummy
+        
+        while stack:
+            root &#x3D; stack.pop()
+
+            root.prev &#x3D; prev
+            prev.next &#x3D; root
+            
+            if root.next:
+                stack.append(root.next)
+                root.next &#x3D; None
+            if root.child:
+                stack.append(root.child)
+                root.child &#x3D; None
+            prev &#x3D; root        
+            
+        
+        dummy.next.prev &#x3D; None
+        return dummy.next</code></pre>
+<h1 id="leetcode-138-copy-list-with-random-pointer">LeetCode 138: Copy List with Random Pointer</h1>
+<p>A linked list of length <code>n</code> is given such that each node contains an additional random pointer, which could point to any node in the list, or <code>null</code>.</p>
+<p>Construct a <code>deep copy</code> of the list. The deep copy should consist of exactly <code>n</code> <strong>brand new</strong> nodes, where each new node has its value set to the value of its corresponding original node. Both the <code>next</code> and <code>random</code> pointer of the new nodes should point to new nodes in the copied list such that the pointers in the original list and copied list represent the same list state. <strong>None of the pointers in the new list should point to nodes in the original list.</strong></p>
+<p>For example, if there are two nodes <code>X</code> and <code>Y</code> in the original list, where <code>X.random --&gt; Y</code>, then for the corresponding two nodes <code>x</code> and <code>y</code> in the copied list, <code>x.random --&gt; y</code>.</p>
+<p>Return the head of the copied linked list.</p>
+<p>The linked list is represented in the input/output as a list of n nodes. Each node is represented as a pair of <code>[val, random_index]</code> where:</p>
+<p><code>val</code>: an integer representing <code>Node.val</code> <code>random_index</code>: the index of the node (range from <code>0</code> to <code>n-1</code>) that the <code>random</code> pointer points to, or <code>null</code> if it does not point to any node. Your code will <strong>only</strong> be given the <code>head</code> of the original linked list.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= n &lt;= 1000</code></li>
+<li><code>-10000 &lt;= Node.val &lt;= 10000</code></li>
+<li><code>Node.random</code> is <code>null</code> or is pointing to some node in the linked list.</li>
+</ul>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: &#39;Node&#39; &#x3D; None, random: &#39;Node&#39; &#x3D; None):
+        self.val &#x3D; int(x)
+        self.next &#x3D; next
+        self.random &#x3D; random
+&quot;&quot;&quot;
+
+class Solution:
+    def copyRandomList(self, head: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        dic &#x3D; dict()
+        m &#x3D; n &#x3D; head
+        while m:
+            dic[m] &#x3D; Node(m.val)
+            m &#x3D; m.next
+        while n:
+            dic[n].next &#x3D; dic.get(n.next)
+            dic[n].random &#x3D; dic.get(n.random)
+            n &#x3D; n.next
+        return dic.get(head)</code></pre>
+<h1 id="leetcode-61-rotate-list">LeetCode 61: Rotate List</h1>
+<p>Given the <code>head</code> of a linked list, rotate the list to the right by <code>k</code> places.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the list is in the range <code>[0, 500]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li>0 &lt;= k &lt;= 2 * <span class="math inline">\(10^9\)</span></li>
+</ul>
+<h2 id="我的答案-2">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val&#x3D;0, next&#x3D;None):
+#         self.val &#x3D; val
+#         self.next &#x3D; next
+class Solution:
+    def rotateRight(self, head: ListNode, k: int) -&gt; ListNode:
+        if not head:
+            return
+        
+        count &#x3D; 1
+        h &#x3D; head
+        
+        while head.next:
+            count +&#x3D; 1
+            head &#x3D; head.next
+        k &#x3D; k % count
+        
+        if k &#x3D;&#x3D; 0:
+            return h
+        else:
+            head.next &#x3D; h
+            head &#x3D; h
+            for i in range(count-k):
+                head &#x3D; head.next
+            h &#x3D; head
+            for i in range(count-1):
+                head &#x3D; head.next
+            head.next &#x3D; None
+            return h</code></pre>
 
     </div>
 
@@ -384,6 +693,9 @@
   </div>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          </div>
 
         
 
@@ -452,13 +764,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">124k</span>
+    <span title="總字數">130k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">3:45</span>
+    <span title="所需總閱讀時間">3:56</span>
   </span>
 </div>
 
@@ -521,7 +833,38 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 <script>

@@ -896,7 +896,12 @@ print(data_sorted) </code></pre>
 <a id="more"></a>
 <h1 id="leetcode-206-reverse-linked-list">LeetCode 206: Reverse Linked List</h1>
 <p>Given the <code>head</code> of a singly linked list, reverse the list, and return the reversed list.</p>
-<p><strong>Constraints:</strong> - The number of nodes in the list is the range <code>[0, 5000]</code>. - <code>-5000 &lt;= Node.val &lt;= 5000</code></p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the list is the range <code>[0, 5000]</code>.</li>
+<li><code>-5000 &lt;= Node.val &lt;= 5000</code></li>
+</ul>
 <p><strong>Follow up:</strong> A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
 <h2 id="我的解答">我的解答</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
@@ -906,7 +911,7 @@ print(data_sorted) </code></pre>
 #         self.next &#x3D; next
 class Solution:
     def reverseList(self, head: ListNode) -&gt; ListNode:
-#         # iteratively 1
+#         # iteratively
 #         temp &#x3D; head
         
 #         while temp and temp.next:
@@ -927,7 +932,13 @@ class Solution:
         return self._reverse(n, node)</code></pre>
 <h1 id="leetcode-203-remove-linked-list-elements">LeetCode 203: Remove Linked List Elements</h1>
 <p>Given the <code>head</code> of a linked list and an integer <code>val</code>, remove all the nodes of the linked list that has <code>Node.val == val</code>, and return the new head.</p>
-<p><strong>Constraints:</strong> - The number of nodes in the list is in the range [0, <span class="math inline">\(10^4\)</span>]. - <code>1 &lt;= Node.val &lt;= 50</code> - <code>0 &lt;= k &lt;= 50</code></p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the list is in the range [0, <span class="math inline">\(10^4\)</span>].</li>
+<li><code>1 &lt;= Node.val &lt;= 50</code></li>
+<li><code>0 &lt;= k &lt;= 50</code></li>
+</ul>
 <h2 id="我的答案">我的答案</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
 # class ListNode:
@@ -999,7 +1010,7 @@ class Solution:
 <li>The number of nodes in the linked list is in the range [1, <span class="math inline">\(10^5\)</span>].</li>
 <li><code>0 &lt;= Node.val &lt;= 9</code></li>
 </ul>
-<p><strong>Follow up:</strong> Could you do it in O(n) time and O(1) space?</p>
+<p><strong>Follow up:</strong> Could you do it in <code>O(n)</code> time and <code>O(1)</code> space?</p>
 <h2 id="我的解答-2">我的解答</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
 # class ListNode:
@@ -1390,7 +1401,7 @@ class Solution:
 <ul>
 <li><strong><a href="https://leetcode.com/problems/design-linked-list/">LeetCode 707</a></strong></li>
 </ul>
-<p><strong>但注意，雖然視同一題，但之前是實做 Singly Linked List ,本篇則是實做 <code>Doubly Linked List</code> </strong> <a id="more"></a></p>
+<p><strong>但注意，雖然是同一題，但之前是實做 Singly Linked List ,本篇則是實做 <code>Doubly Linked List</code> </strong> <a id="more"></a></p>
 <h1 id="leetcode-707-design-linked-list">LeetCode 707: Design Linked List</h1>
 <p>Design your implementation of the linked list. You can choose to use a singly or doubly linked list. A node in a singly linked list should have two attributes: <code>val</code> and <code>next</code>. <code>val</code> is the value of the current node, and <code>next</code> is a pointer/reference to the next node. If you want to use the doubly linked list, you will need one more attribute <code>prev</code> to indicate the previous node in the linked list. Assume all nodes in the linked list are <strong>0-indexed</strong>.</p>
 <p>Implement the <code>MyLinkedList</code> class:</p>
@@ -1415,7 +1426,12 @@ myLinkedList.addAtTail(3);
 myLinkedList.addAtIndex(1, 2);    &#x2F;&#x2F; linked list becomes 1-&gt;2-&gt;3
 myLinkedList.get(1);              &#x2F;&#x2F; return 2
 myLinkedList.deleteAtIndex(1);    &#x2F;&#x2F; now the linked list is 1-&gt;3
-myLinkedList.get(1);              &#x2F;&#x2F; return 3</code></pre> <strong>Constraints:</strong> - <code>0 &lt;= index, val &lt;= 1000</code> - Please do not use the built-in LinkedList library. - At most <code>2000</code> calls will be made to <code>get</code>, <code>addAtHead</code>, <code>addAtTail</code>, <code>addAtIndex</code> and <code>deleteAtIndex</code>.</p>
+myLinkedList.get(1);              &#x2F;&#x2F; return 3</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= index, val &lt;= 1000</code></li>
+<li>Please do not use the built-in LinkedList library.</li>
+<li>At most <code>2000</code> calls will be made to <code>get</code>, <code>addAtHead</code>, <code>addAtTail</code>, <code>addAtIndex</code> and <code>deleteAtIndex</code>.</li>
+</ul>
 <h2 id="我的答案">我的答案</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Node(object):
 
@@ -2875,8 +2891,317 @@ end</code></pre></p>
   <entry>
     <title>Linked List Conclusion</title>
     <url>/posts/7042832/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="linked-list-conclusion">Linked List Conclusion</h1>
+<p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/merge-two-sorted-lists/">LeetCode 21</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/add-two-numbers/">LeetCode 2</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/">LeetCode 430</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/copy-list-with-random-pointer/">LeetCode 138</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/rotate-list/">LeetCode 61</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-21-merge-two-sorted-lists">LeetCode 21: Merge Two Sorted Lists</h1>
+<p>Merge two <strong>sorted</strong> linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in both lists is in the range <code>[0, 50]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li>Both <code>l1</code> and <code>l2</code> are sorted in <strong>non-decreasing</strong> order.</li>
+</ul>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val&#x3D;0, next&#x3D;None):
+#         self.val &#x3D; val
+#         self.next &#x3D; next
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
+        if not l1 and not l2:
+            return
+        elif not l1:
+            return l2
+        elif not l2:
+            return l1
+        else:
+            head &#x3D; perv &#x3D; None
+            
+            if l1.val &lt;&#x3D; l2.val:
+                head &#x3D; perv &#x3D; l1
+                l1 &#x3D; l1.next
+            else:
+                head &#x3D; perv &#x3D; l2
+                l2 &#x3D; l2.next
+                
+            while l1 and l2:
+                if l1.val &lt;&#x3D; l2.val:
+                    perv.next &#x3D; l1
+                    l1 &#x3D; l1.next
+                    perv &#x3D; perv.next
+                else:
+                    perv.next &#x3D; l2
+                    l2 &#x3D; l2.next
+                    perv &#x3D; perv.next
+            
+            if not l1:
+                perv.next &#x3D; l2
+            else:
+                perv.next &#x3D; l1
+            
+            return head</code></pre>
+<h1 id="leetcode-2-add-two-numbers">LeetCode 2: Add Two Numbers</h1>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in each linked list is in the range <code>[1, 100]</code>.</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
+<li>It is guaranteed that the list represents a number that does not have leading zeros.</li>
+</ul>
+<h2 id="我的答案">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val&#x3D;0, next&#x3D;None):
+#         self.val &#x3D; val
+#         self.next &#x3D; next
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
+        head1 &#x3D; l1
+        head2 &#x3D; l2
+        sum2 &#x3D; 0
+        flag &#x3D; 0
+        whichHead &#x3D; 1
+        
+        while l1 and l2:
+            sum2 &#x3D; l1.val + l2.val + flag
+            
+            if sum2 &gt;&#x3D; 10:
+                flag &#x3D; 1
+                l1.val &#x3D; l2.val &#x3D; sum2 - 10
+            else:
+                flag &#x3D; 0
+                l1.val &#x3D; l2.val &#x3D; sum2
+            l1 &#x3D; l1.next
+            l2 &#x3D; l2.next
+        
+        if l2:
+            whichHead &#x3D; 2
+    
+        while l1 and flag:
+            sum1 &#x3D; l1.val + flag
+            flag &#x3D; 0
+            
+            if sum1 &gt;&#x3D; 10:
+                l1.val &#x3D; sum1 - 10
+                flag &#x3D; 1
+            else:
+                l1.val &#x3D; sum1
+            l1 &#x3D; l1.next
+        if flag &#x3D;&#x3D; 1:
+            perv &#x3D; head1
+            while perv.next:
+                perv &#x3D; perv.next
+            perv.next &#x3D; ListNode(1)
+
+        while l2 and flag:
+            sum1 &#x3D; l2.val + flag
+            flag &#x3D; 0
+            
+            if sum1 &gt;&#x3D; 10:
+                l2.val &#x3D; sum1 - 10
+                flag &#x3D; 1
+            else:
+                l2.val &#x3D; sum1
+            l2 &#x3D; l2.next
+        if flag &#x3D;&#x3D; 1:
+            perv &#x3D; head2
+            while perv.next:
+                perv &#x3D; perv.next
+            perv.next &#x3D; ListNode(1)
+        
+        if whichHead &#x3D;&#x3D; 2:
+            return head2
+        else:
+            return head1
+
+
+# 誤解題意，原本題意更簡單&#x3D; &#x3D; 
+#         l1_size &#x3D; 0
+#         l2_size &#x3D; 0
+#         head1 &#x3D; l1
+#         head2 &#x3D; l2
+        
+#         while l1:
+#             l1 &#x3D; l1.next
+#             l1_size +&#x3D; 1
+#         while l2:
+#             l2 &#x3D; l2.next
+#             l2_size +&#x3D; 1
+        
+#         if l1_size &gt; l2_size:
+#             curr &#x3D; head1
+#             index &#x3D; l1_size - l2_size
+#             sum2 &#x3D; 0
+#             flag &#x3D; 0
+            
+#             for i in range(index):
+#                 curr &#x3D; curr.next
+#             while curr:
+#                 sum2 &#x3D; curr.val + head2.val + flag
+#                 if sum2 &gt;&#x3D; 10:
+#                     flag &#x3D; 1
+#                     curr.val &#x3D; sum2 - 10
+#                 else:
+#                     curr.val &#x3D; sum2
+#                 curr &#x3D; curr.next
+#                 head2 &#x3D; head2.next
+#             return head1
+#         else:
+#             curr &#x3D; head2
+#             index &#x3D; l2_size - l1_size
+#             sum2 &#x3D; 0
+#             flag &#x3D; 0
+            
+#             for i in range(index):
+#                 curr &#x3D; curr.next
+#             while curr:
+#                 sum2 &#x3D; curr.val + head1.val + flag
+#                 if sum2 &gt;&#x3D; 10:
+#                     flag &#x3D; 1
+#                     curr.val &#x3D; sum2 - 10
+#                 else:
+#                     curr.val &#x3D; sum2
+#                 curr &#x3D; curr.next
+#                 head1 &#x3D; head1.next
+#             return head2</code></pre>
+<h1 id="leetcode-430-flatten-a-multilevel-doubly-linked-list">LeetCode 430: Flatten a Multilevel Doubly Linked List</h1>
+<p>You are given a doubly linked list which in addition to the next and previous pointers, it could have a child pointer, which may or may not point to a separate doubly linked list. These child lists may have one or more children of their own, and so on, to produce a multilevel data structure, as shown in the example below.</p>
+<p>Flatten the list so that all the nodes appear in a single-level, doubly linked list. You are given the head of the first level of the list.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of Nodes will not exceed <code>1000</code>.</li>
+<li>1 &lt;= Node.val &lt;= <span class="math inline">\(10^5\)</span></li>
+</ul>
+<h2 id="我的答案-1">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, val, prev, next, child):
+        self.val &#x3D; val
+        self.prev &#x3D; prev
+        self.next &#x3D; next
+        self.child &#x3D; child
+&quot;&quot;&quot;
+
+class Solution(object):
+    def flatten(self, head):
+        if not head:
+            return
+        
+        dummy &#x3D; Node(0,None,head,None)     
+        stack &#x3D; []
+        stack.append(head)
+        prev &#x3D; dummy
+        
+        while stack:
+            root &#x3D; stack.pop()
+
+            root.prev &#x3D; prev
+            prev.next &#x3D; root
+            
+            if root.next:
+                stack.append(root.next)
+                root.next &#x3D; None
+            if root.child:
+                stack.append(root.child)
+                root.child &#x3D; None
+            prev &#x3D; root        
+            
+        
+        dummy.next.prev &#x3D; None
+        return dummy.next</code></pre>
+<h1 id="leetcode-138-copy-list-with-random-pointer">LeetCode 138: Copy List with Random Pointer</h1>
+<p>A linked list of length <code>n</code> is given such that each node contains an additional random pointer, which could point to any node in the list, or <code>null</code>.</p>
+<p>Construct a <code>deep copy</code> of the list. The deep copy should consist of exactly <code>n</code> <strong>brand new</strong> nodes, where each new node has its value set to the value of its corresponding original node. Both the <code>next</code> and <code>random</code> pointer of the new nodes should point to new nodes in the copied list such that the pointers in the original list and copied list represent the same list state. <strong>None of the pointers in the new list should point to nodes in the original list.</strong></p>
+<p>For example, if there are two nodes <code>X</code> and <code>Y</code> in the original list, where <code>X.random --&gt; Y</code>, then for the corresponding two nodes <code>x</code> and <code>y</code> in the copied list, <code>x.random --&gt; y</code>.</p>
+<p>Return the head of the copied linked list.</p>
+<p>The linked list is represented in the input/output as a list of n nodes. Each node is represented as a pair of <code>[val, random_index]</code> where:</p>
+<p><code>val</code>: an integer representing <code>Node.val</code> <code>random_index</code>: the index of the node (range from <code>0</code> to <code>n-1</code>) that the <code>random</code> pointer points to, or <code>null</code> if it does not point to any node. Your code will <strong>only</strong> be given the <code>head</code> of the original linked list.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= n &lt;= 1000</code></li>
+<li><code>-10000 &lt;= Node.val &lt;= 10000</code></li>
+<li><code>Node.random</code> is <code>null</code> or is pointing to some node in the linked list.</li>
+</ul>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: &#39;Node&#39; &#x3D; None, random: &#39;Node&#39; &#x3D; None):
+        self.val &#x3D; int(x)
+        self.next &#x3D; next
+        self.random &#x3D; random
+&quot;&quot;&quot;
+
+class Solution:
+    def copyRandomList(self, head: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        dic &#x3D; dict()
+        m &#x3D; n &#x3D; head
+        while m:
+            dic[m] &#x3D; Node(m.val)
+            m &#x3D; m.next
+        while n:
+            dic[n].next &#x3D; dic.get(n.next)
+            dic[n].random &#x3D; dic.get(n.random)
+            n &#x3D; n.next
+        return dic.get(head)</code></pre>
+<h1 id="leetcode-61-rotate-list">LeetCode 61: Rotate List</h1>
+<p>Given the <code>head</code> of a linked list, rotate the list to the right by <code>k</code> places.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the list is in the range <code>[0, 500]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li>0 &lt;= k &lt;= 2 * <span class="math inline">\(10^9\)</span></li>
+</ul>
+<h2 id="我的答案-2">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val&#x3D;0, next&#x3D;None):
+#         self.val &#x3D; val
+#         self.next &#x3D; next
+class Solution:
+    def rotateRight(self, head: ListNode, k: int) -&gt; ListNode:
+        if not head:
+            return
+        
+        count &#x3D; 1
+        h &#x3D; head
+        
+        while head.next:
+            count +&#x3D; 1
+            head &#x3D; head.next
+        k &#x3D; k % count
+        
+        if k &#x3D;&#x3D; 0:
+            return h
+        else:
+            head.next &#x3D; h
+            head &#x3D; h
+            for i in range(count-k):
+                head &#x3D; head.next
+            h &#x3D; head
+            for i in range(count-1):
+                head &#x3D; head.next
+            head.next &#x3D; None
+            return h</code></pre>
 ]]></content>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
   </entry>
   <entry>
     <title>M-way Search Tree</title>
@@ -4059,119 +4384,116 @@ myLinkedList.addAtTail(3);
 myLinkedList.addAtIndex(1, 2);    &#x2F;&#x2F; linked list becomes 1-&gt;2-&gt;3
 myLinkedList.get(1);              &#x2F;&#x2F; return 2
 myLinkedList.deleteAtIndex(1);    &#x2F;&#x2F; now the linked list is 1-&gt;3
-myLinkedList.get(1);              &#x2F;&#x2F; return 3</code></pre> <strong>Constraints:</strong> - <code>0 &lt;= index, val &lt;= 1000</code> - Please do not use the built-in LinkedList library. - At most <code>2000</code> calls will be made to <code>get</code>, <code>addAtHead</code>, <code>addAtTail</code>, <code>addAtIndex</code> and <code>deleteAtIndex</code>.</p>
+myLinkedList.get(1);              &#x2F;&#x2F; return 3</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= index, val &lt;= 1000</code></li>
+<li>Please do not use the built-in LinkedList library.</li>
+<li>At most <code>2000</code> calls will be made to <code>get</code>, <code>addAtHead</code>, <code>addAtTail</code>, <code>addAtIndex</code> and <code>deleteAtIndex</code>.</li>
+</ul>
 <h2 id="我的答案">我的答案</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Node(object):
 
     def __init__(self, val):
         self.val &#x3D; val
         self.next &#x3D; None
-        self.perv &#x3D; None
 
 
-class MyLinkedList:
-    
+class MyLinkedList(object):
+
     def __init__(self):
         &quot;&quot;&quot;
         Initialize your data structure here.
         &quot;&quot;&quot;
         self.head &#x3D; None
-        self.tail &#x3D; None
         self.size &#x3D; 0
-        
 
-    def get(self, index: int) -&gt; int:
+    def get(self, index):
         &quot;&quot;&quot;
         Get the value of the index-th node in the linked list. If the index is invalid, return -1.
+        :type index: int
+        :rtype: int
         &quot;&quot;&quot;
         if index &lt; 0 or index &gt;&#x3D; self.size:
             return -1
-            
+
+        if self.head is None:
+            return -1
+
         curr &#x3D; self.head
         for i in range(index):
             curr &#x3D; curr.next
         return curr.val
-    
-        
-    def addAtHead(self, val: int) -&gt; None:
+
+    def addAtHead(self, val):
         &quot;&quot;&quot;
-        Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
+        Add a node of value val before the first element of the linked list.
+        After the insertion, the new node will be the first node of the linked list.
+        :type val: int
+        :rtype: void
         &quot;&quot;&quot;
         node &#x3D; Node(val)
         node.next &#x3D; self.head
-        node.prev &#x3D; None
-        if self.size &gt; 0:
-            self.head.perv &#x3D; node
         self.head &#x3D; node
+
         self.size +&#x3D; 1
-            
-            
-    def addAtTail(self, val: int) -&gt; None:
+
+    def addAtTail(self, val):
         &quot;&quot;&quot;
         Append a node of value val to the last element of the linked list.
+        :type val: int
+        :rtype: void
         &quot;&quot;&quot;
-        if self.head is None:
-            self.addAtHead(val)
-            return
-        
-        node &#x3D; Node(val)
         curr &#x3D; self.head
-        while curr.next:
-            curr &#x3D; curr.next
-        node.perv &#x3D; curr
-        node.next &#x3D; None
-        curr.next &#x3D; node
-        self.size +&#x3D; 1
-        
+        if curr is None:
+            self.head &#x3D; Node(val)
+        else:
+            while curr.next is not None:
+                curr &#x3D; curr.next
+            curr.next &#x3D; Node(val)
 
-    def addAtIndex(self, index: int, val: int) -&gt; None:
+        self.size +&#x3D; 1
+
+    def addAtIndex(self, index, val):
         &quot;&quot;&quot;
-        Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
+        Add a node of value val before the index-th node in the linked list.
+        If index equals to the length of linked list, the node will be appended to the end of linked list.
+        If index is greater than the length, the node will not be inserted.
+        :type index: int
+        :type val: int
+        :rtype: void
         &quot;&quot;&quot;
         if index &lt; 0 or index &gt; self.size:
             return
-        
-        if index &#x3D;&#x3D; self.size:
-            self.addAtTail(val)
-            return
-        
+
         if index &#x3D;&#x3D; 0:
             self.addAtHead(val)
-            return
-        
-        node &#x3D; Node(val)
-        curr &#x3D; self.head
-        for i in range(index-1):
-            curr &#x3D; curr.next
-        node.next &#x3D; curr.next
-        node.perv &#x3D; curr
-        curr.next.perv &#x3D; node
-        curr.next &#x3D; node
-        self.size +&#x3D; 1
-        
+        else:
+            curr &#x3D; self.head
+            for i in range(index - 1):
+                curr &#x3D; curr.next
+            node &#x3D; Node(val)
+            node.next &#x3D; curr.next
+            curr.next &#x3D; node
 
-    def deleteAtIndex(self, index: int) -&gt; None:
+            self.size +&#x3D; 1
+
+    def deleteAtIndex(self, index):
         &quot;&quot;&quot;
         Delete the index-th node in the linked list, if the index is valid.
+        :type index: int
+        :rtype: void
         &quot;&quot;&quot;
-        if self.size &#x3D;&#x3D; 0:
-            return
-        
         if index &lt; 0 or index &gt;&#x3D; self.size:
             return
-        
-        if index &#x3D;&#x3D; 0:
-            self.head &#x3D; self.head.next
-            if self.head:
-                self.head.perv &#x3D; None
-            return
-        
+
         curr &#x3D; self.head
-        for i in range(index-1):
-            curr &#x3D; curr.next
-        curr.next &#x3D; curr.next.next
-        if index !&#x3D; self.size-1:
-            curr.next.perv &#x3D; curr
+        if index &#x3D;&#x3D; 0:
+            self.head &#x3D; curr.next
+        else:
+            for i in range(index - 1):
+                curr &#x3D; curr.next
+            curr.next &#x3D; curr.next.next
+
         self.size -&#x3D; 1</code></pre>
 ]]></content>
       <tags>
@@ -4800,11 +5122,15 @@ class Solution:
         return headA</code></pre>
 <h1 id="leetcode-19-remove-nth-node-from-end-of-list">LeetCode 19: Remove Nth Node From End of List</h1>
 <p>Given the <code>head</code> of a linked list, remove the <code>nth</code> node from the end of the list and return its head.</p>
-<p><strong>Follow up:</strong> Could you do this in one pass?</p>
 <p><strong>Example:</strong></p>
-<p><strong>Constraints:</strong> - The number of nodes in the list is <code>sz</code>. - <code>1 &lt;= sz &lt;= 30</code> - <code>0 &lt;= Node.val &lt;= 100</code> - <code>1 &lt;= n &lt;= sz</code></p>
-<h2 id="我的解答-3">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the list is <code>sz</code>.</li>
+<li><code>1 &lt;= sz &lt;= 30</code></li>
+<li><code>0 &lt;= Node.val &lt;= 100</code></li>
+<li><code>1 &lt;= n &lt;= sz</code></li>
+</ul>
+<p><strong>Follow up:</strong> Could you do this in one pass? ## 我的解答 <pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val&#x3D;0, next&#x3D;None):
 #         self.val &#x3D; val
@@ -4825,7 +5151,7 @@ class Solution:
             for i in range(sz-n-1):
                 a &#x3D; a.next
             a.next &#x3D; a.next.next
-            return head</code></pre>
+            return head</code></pre></p>
 ]]></content>
       <tags>
         <tag>LeetCode</tag>
@@ -5009,8 +5335,9 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 <p><strong>Node Package Manger</strong>，是 <code>nodejs</code> 的 dependency/package manager，提供開發者 install packages both globally and locally。 <a id="more"></a></p>
 <ol type="1">
 <li><strong>提供 online repository 可以 publish <code>open-source Node.js projects</code></strong></li>
-<li><h2 id="提供-cli-tool-讓開發者-install-packages-and-manage-their-versions-and-dependencies"><strong>提供 <code>CLI tool</code> 讓開發者 install packages and manage their versions and dependencies</strong></h2></li>
+<li><strong>提供 <code>CLI tool</code> 讓開發者 install packages and manage their versions and dependencies</strong></li>
 </ol>
+<hr />
 <p>如果想使用<code>npm</code> 去 run a package，必須在 <code>package.json</code> 檔案裡指定 package。 當 executables are installed via npm packages, npm creates links to them:</p>
 <ol type="1">
 <li><strong>local installs have links created at the <code>./node_modules/.bin/ directory</code></strong></li>
@@ -5025,21 +5352,30 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
   &quot;scripts&quot;: &#123;
     &quot;your-package&quot;: &quot;your-package&quot;
   &#125;
-&#125;</code></pre> 接下來就可以 run the script using npm run: <pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre> <strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong> 所以接下來介紹<code>npx</code>。</li>
+&#125;</code></pre></li>
 </ol>
+<p>接下來就可以 run the script using npm run:</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre>
+<p><strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong></p>
+<p>所以接下來介紹<code>npx</code>。</p>
 <h1 id="npx">npx</h1>
 <p>npm 只要更新到 <strong>npm@5.2.0</strong> 後，就會多出一個 npx 指令。</p>
 <h2 id="npx使用情況">npx使用情況:</h2>
-<h3 id="run-a-locally-installed-package-easily">*Run a locally installed package easily</h3>
+<h3 id="run-a-locally-installed-package-easily">Run a locally installed package easily</h3>
 <p>如果想要執行 locally installed package，只需要 type: <pre class="line-numbers language-none"><code class="language-none">$ npx your-package</code></pre> npx 會檢查 local 或 <code>$PATH</code> 裡是否存在 <code>&lt;command&gt;</code> or <code>&lt;package&gt;</code> 的 binaries，有的話便會執行。</p>
 <h3 id="execute-packages-that-are-not-previously-installed">Execute packages that are not previously installed</h3>
 <p>使用 npx 命令，他會安裝在臨時安裝包上，等到項目初始化完成後就刪除，不用全局性的安裝，避免被汙染。</p>
 <h3 id="test-different-package-versions">Test different package versions</h3>
-<p>npx makes it extremely easy to test different versions of a Node.js package or module。 以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> /posts/4df1633d/npx_create-react-app.jpg</p>
-<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。 安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。 <pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
-$ npm start</code></pre> <img src="/posts/4df1633d/react-app.jpg" class=""></p>
+<p>npx makes it extremely easy to test different versions of a Node.js package or module。</p>
+<p>以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> <img src="/posts/4df1633d/npx_create-react-app.jpg" class=""></p>
+<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。</p>
+<p>安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
+$ npm start</code></pre>
+<img src="/posts/4df1633d/react-app.jpg" class="">
 <h3 id="run-code-directly-from-github">Run code directly from GitHub</h3>
-<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> /posts/4df1633d/npx_github.jpg 可以看到輸出 yay gist</p>
+<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> <img src="/posts/4df1633d/npx_github.jpg" class=""></p>
+<p>可以看到輸出 yay gist</p>
 <h3 id="bonus-round-shell-auto-fallback">Bonus Round: shell auto-fallback</h3>
 <p><strong>待更新...</strong></p>
 <h1 id="參考資料">參考資料</h1>
