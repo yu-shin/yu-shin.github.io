@@ -3541,7 +3541,7 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
       </tags>
   </entry>
   <entry>
-    <title>Queue: First-in-first-out Data Structure</title>
+    <title>Queue: First in first out Data Structure</title>
     <url>/posts/2f0b1ee1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="queue-first-in-first-out-data-structure">Queue: First-in-first-out Data Structure</h1>
 <p><strong>本文蒐集</strong></p>
@@ -4886,7 +4886,7 @@ class MyLinkedList(object):
       </tags>
   </entry>
   <entry>
-    <title>Stack: Last-in-first-out Data Structure</title>
+    <title>Stack: Last in first out Data Structure</title>
     <url>/posts/21e8b0fd/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="queue-and-bfs">Queue and BFS</h1>
 <p><strong>本文蒐集</strong></p>
@@ -4924,7 +4924,7 @@ minStack.top();    &#x2F;&#x2F; return 0
 minStack.getMin(); &#x2F;&#x2F; return -2</code></pre></p>
 <p><strong>Constraints:</strong></p>
 <ul>
-<li><span class="math inline">\(-2^31\)</span> &lt;= val &lt;= <span class="math inline">\(2^31\)</span> - 1</li>
+<li><span class="math inline">\(-2^{31}\)</span> &lt;= val &lt;= <span class="math inline">\(2^{31}\)</span> - 1</li>
 <li>Methods <code>pop</code>, <code>top</code> and <code>getMin</code> operations will always be called on non-empty stacks.</li>
 <li>At most 3 * <span class="math inline">\(10^4\)</span> calls will be made to <code>push</code>, <code>pop</code>, <code>top</code>, and <code>getMin</code>.</li>
 </ul>
