@@ -183,8 +183,7 @@
   <entry>
     <title>Array Conclusion</title>
     <url>/posts/94e375d1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="in-place-operations">In-Place Operations</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/height-checker/">LeetCode 1051</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/third-maximum-number/">LeetCode 414</a></strong></li>
@@ -315,8 +314,7 @@ class Solution:
   <entry>
     <title>Array Introduction</title>
     <url>/posts/40ec114a/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="introduction">Introduction</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/max-consecutive-ones/">LeetCode 485</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/find-numbers-with-even-number-of-digits/">LeetCode 1295</a></strong></li>
@@ -1000,8 +998,7 @@ print(data_sorted) </code></pre>
   <entry>
     <title>Classic Problems</title>
     <url>/posts/2874825c/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="classic-problems">Classic Problems</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/reverse-linked-list/">LeetCode 206</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/remove-linked-list-elements/">LeetCode 203</a></strong></li>
@@ -1348,8 +1345,7 @@ class Solution:
   <entry>
     <title>Deleting Items From an Array</title>
     <url>/posts/bad31420/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="deleting-items-from-an-array">Deleting Items From an Array</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/remove-element/">LeetCode 27</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong> <a id="more"></a></li>
@@ -1511,8 +1507,7 @@ class Solution:
   <entry>
     <title>Doubly Linked List</title>
     <url>/posts/9b2ee64/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="doubly-linked-list">Doubly Linked List</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/design-linked-list/">LeetCode 707</a></strong></li>
 </ul>
@@ -2277,8 +2272,7 @@ e = \sum_{i=1}^n Indegree_i = \sum_{i=1}^n Outdegree_i
   <entry>
     <title>In-Place Operations</title>
     <url>/posts/546fa326/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="in-place-operations">In-Place Operations</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/">LeetCode 1299</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong></li>
@@ -2510,8 +2504,7 @@ Explanation: Your function should return length &#x3D; 5, with the first five el
   <entry>
     <title>Inserting Items Into an Array</title>
     <url>/posts/d3f87549/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="inserting-items-into-an-array">Inserting Items Into an Array</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/duplicate-zeros/">LeetCode 1089</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/merge-sorted-array/">LeetCode 88</a></strong> <a id="more"></a></li>
@@ -3006,8 +2999,7 @@ end</code></pre></p>
   <entry>
     <title>Linked List Conclusion</title>
     <url>/posts/7042832/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="linked-list-conclusion">Linked List Conclusion</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/merge-two-sorted-lists/">LeetCode 21</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/add-two-numbers/">LeetCode 2</a></strong></li>
@@ -3543,8 +3535,7 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
   <entry>
     <title>Queue: First in first out Data Structure</title>
     <url>/posts/2f0b1ee1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="queue-first-in-first-out-data-structure">Queue: First-in-first-out Data Structure</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/design-circular-queue/">LeetCode 622</a></strong> <a id="more"></a></li>
 </ul>
@@ -3637,178 +3628,6 @@ myCircularQueue.Rear();     &#x2F;&#x2F; return 4</code></pre> <strong>Constrain
     <url>/posts/b48d0745/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Queue and BFS</title>
-    <url>/posts/4d006a22/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="queue-and-bfs">Queue and BFS</h1>
-<p><strong>本文蒐集</strong></p>
-<ul>
-<li><strong><a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/open-the-lock/">LeetCode 752</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/perfect-squares/">LeetCode 279</a></strong> <a id="more"></a></li>
-</ul>
-<h1 id="leetcode-200-number-of-islands">LeetCode 200: Number of Islands</h1>
-<p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>'1'</code>s (land) and <code>'0'</code>s (water), return the number of islands.</p>
-<p>An <strong>island</strong> is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: grid &#x3D; [
-  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;0&quot;],
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;],
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]
-]
-Output: 1</code></pre> <pre class="line-numbers language-none"><code class="language-none">Example 2:
-
-Input: grid &#x3D; [
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;]
-]
-Output: 3</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li><code>m == grid.length</code></li>
-<li><code>n == grid[i].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 300</code></li>
-<li><code>grid[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
-</ul>
-<h2 id="我的答案">我的答案</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
-    def is_valid(self, grid, r, c):
-        m, n &#x3D; len(grid), len(grid[0])
-        if r &lt; 0 or c &lt; 0 or r &gt;&#x3D; m or c &gt;&#x3D; n:
-            return False
-        return True
-    def numIslandsBFS(self, grid):
-        &quot;&quot;&quot;
-        :type grid: List[List[str]]
-        :rtype: int
-        &quot;&quot;&quot;
-        if not grid or not grid[0]:
-            return 0
-
-        m, n &#x3D; len(grid), len(grid[0])
-        count &#x3D; 0
-        for i in xrange(m):
-            for j in xrange(n):
-                if grid[i][j] &#x3D;&#x3D; &#39;1&#39;:
-                    self.bfs(grid, i, j)
-                    count +&#x3D; 1
-        return count
-
-    def bfs(self, grid, r, c):
-        queue &#x3D; collections.deque()
-        queue.append((r, c))
-        grid[r][c] &#x3D; &#39;0&#39;
-        while queue:
-            directions &#x3D; [(0,1), (0,-1), (-1,0), (1,0)]
-            r, c &#x3D; queue.popleft()
-            for d in directions:
-                nr, nc &#x3D; r + d[0], c + d[1]    
-                if self.is_valid(grid, nr, nc) and grid[nr][nc] &#x3D;&#x3D; &#39;1&#39;:
-                    queue.append((nr, nc))
-                    grid[nr][nc] &#x3D; &#39;0&#39;</code></pre>
-<h1 id="leetcode-752-open-the-lock">LeetCode 752: Open the Lock</h1>
-<p>You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: <code>'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'</code>. The wheels can rotate freely and wrap around: for example we can turn <code>'9'</code> to be <code>'0'</code>, or <code>'0'</code> to be <code>'9'</code>. Each move consists of turning one wheel one slot.</p>
-<p>The lock initially starts at <code>'0000'</code>, a string representing the state of the 4 wheels.</p>
-<p>You are given a list of <code>deadends</code> dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.</p>
-<p>Given a <code>target</code> representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0201&quot;,&quot;0101&quot;,&quot;0102&quot;,&quot;1212&quot;,&quot;2002&quot;], target &#x3D; &quot;0202&quot;
-Output: 6
-Explanation:
-A sequence of valid moves would be &quot;0000&quot; -&gt; &quot;1000&quot; -&gt; &quot;1100&quot; -&gt; &quot;1200&quot; -&gt; &quot;1201&quot; -&gt; &quot;1202&quot; -&gt; &quot;0202&quot;.
-Note that a sequence like &quot;0000&quot; -&gt; &quot;0001&quot; -&gt; &quot;0002&quot; -&gt; &quot;0102&quot; -&gt; &quot;0202&quot; would be invalid,
-because the wheels of the lock become stuck after the display becomes the dead end &quot;0102&quot;.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8888&quot;], target &#x3D; &quot;0009&quot;
-Output: 1
-Explanation:
-We can turn the last wheel in reverse to move from &quot;0000&quot; -&gt; &quot;0009&quot;.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8887&quot;,&quot;8889&quot;,&quot;8878&quot;,&quot;8898&quot;,&quot;8788&quot;,&quot;8988&quot;,&quot;7888&quot;,&quot;9888&quot;], target &#x3D; &quot;8888&quot;
-Output: -1
-Explanation:
-We can&#39;t reach the target without getting stuck.</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0000&quot;], target &#x3D; &quot;8888&quot;
-Output: -1</code></pre></p>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= deadends.length &lt;= 500</code></li>
-<li><code>deadends[i].length == 4</code></li>
-<li><code>target.length == 4</code></li>
-<li>target will not be in the list <code>deadends</code>.</li>
-<li><code>target</code> and <code>deadends[i]</code> consist of digits only.</li>
-</ul>
-<h2 id="我的解答">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from collections import deque
-
-class Solution:
-    def openLock(self, deadends: List[str], target: str) -&gt; int:
-        
-        if &#39;0000&#39; in deadends:
-            return -1
-        
-        queue, visited &#x3D; deque([&#39;0000&#39;]), set(deadends)
-        count &#x3D; -1
-        
-        while len(queue) !&#x3D; 0:
-            count +&#x3D; 1
-            size &#x3D; len(queue)
-            
-            for _ in range(size):
-                
-                curr &#x3D; queue.popleft()
-
-                if curr &#x3D;&#x3D; target:
-                    return count
-
-                if curr in visited:
-                    continue
-
-                visited.add(curr)
-                
-                res &#x3D; []
-                for i, char in enumerate(curr):
-                    num &#x3D; int(char)
-                    res.append(curr[:i] + str((num - 1) % 10) + curr[i+1:])
-                    res.append(curr[:i] + str((num + 1) % 10) + curr[i+1:])
-                
-                queue.extend(res)
-                
-        return -1</code></pre>
-<h1 id="leetcode-279-perfect-squares">LeetCode 279: Perfect Squares</h1>
-<p>Given an integer <code>n</code>, return the least number of perfect square numbers that sum to <code>n</code>.</p>
-<p>A <strong>perfect square</strong> is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, <code>1</code>, <code>4</code>, <code>9</code>, and <code>16</code> are perfect squares while <code>3</code> and <code>11</code> are not.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 12
-Output: 3
-Explanation: 12 &#x3D; 4 + 4 + 4.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 13
-Output: 2
-Explanation: 13 &#x3D; 4 + 9.</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li>1 &lt;= n &lt;= <span class="math inline">\(10^4\)</span></li>
-</ul>
-<h2 id="我的解答-1">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
-    def numSquares(self, n: int) -&gt; int:
-        if n &lt; 2:
-            return n
-        lst &#x3D; []
-        i &#x3D; 1
-        while i * i &lt;&#x3D; n:
-            lst.append( i * i )
-            i +&#x3D; 1
-        cnt &#x3D; 0
-        toCheck &#x3D; &#123;n&#125;
-        while toCheck:
-            cnt +&#x3D; 1
-            temp &#x3D; set()
-            for x in toCheck:
-                for y in lst:
-                    if x &#x3D;&#x3D; y:
-                        return cnt
-                    if x &lt; y:
-                        break
-                    temp.add(x-y)
-            toCheck &#x3D; temp</code></pre>
-]]></content>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
   </entry>
   <entry>
     <title>Queue</title>
@@ -4050,6 +3869,177 @@ end</code></pre>
 ]]></content>
       <tags>
         <tag>資料結構</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Queue and BFS</title>
+    <url>/posts/4d006a22/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/open-the-lock/">LeetCode 752</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/perfect-squares/">LeetCode 279</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-200-number-of-islands">LeetCode 200: Number of Islands</h1>
+<p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>'1'</code>s (land) and <code>'0'</code>s (water), return the number of islands.</p>
+<p>An <strong>island</strong> is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: grid &#x3D; [
+  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;0&quot;],
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;],
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]
+]
+Output: 1</code></pre> <pre class="line-numbers language-none"><code class="language-none">Example 2:
+
+Input: grid &#x3D; [
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;]
+]
+Output: 3</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>m == grid.length</code></li>
+<li><code>n == grid[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 300</code></li>
+<li><code>grid[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
+</ul>
+<h2 id="我的答案">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
+    def is_valid(self, grid, r, c):
+        m, n &#x3D; len(grid), len(grid[0])
+        if r &lt; 0 or c &lt; 0 or r &gt;&#x3D; m or c &gt;&#x3D; n:
+            return False
+        return True
+    def numIslandsBFS(self, grid):
+        &quot;&quot;&quot;
+        :type grid: List[List[str]]
+        :rtype: int
+        &quot;&quot;&quot;
+        if not grid or not grid[0]:
+            return 0
+
+        m, n &#x3D; len(grid), len(grid[0])
+        count &#x3D; 0
+        for i in xrange(m):
+            for j in xrange(n):
+                if grid[i][j] &#x3D;&#x3D; &#39;1&#39;:
+                    self.bfs(grid, i, j)
+                    count +&#x3D; 1
+        return count
+
+    def bfs(self, grid, r, c):
+        queue &#x3D; collections.deque()
+        queue.append((r, c))
+        grid[r][c] &#x3D; &#39;0&#39;
+        while queue:
+            directions &#x3D; [(0,1), (0,-1), (-1,0), (1,0)]
+            r, c &#x3D; queue.popleft()
+            for d in directions:
+                nr, nc &#x3D; r + d[0], c + d[1]    
+                if self.is_valid(grid, nr, nc) and grid[nr][nc] &#x3D;&#x3D; &#39;1&#39;:
+                    queue.append((nr, nc))
+                    grid[nr][nc] &#x3D; &#39;0&#39;</code></pre>
+<h1 id="leetcode-752-open-the-lock">LeetCode 752: Open the Lock</h1>
+<p>You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: <code>'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'</code>. The wheels can rotate freely and wrap around: for example we can turn <code>'9'</code> to be <code>'0'</code>, or <code>'0'</code> to be <code>'9'</code>. Each move consists of turning one wheel one slot.</p>
+<p>The lock initially starts at <code>'0000'</code>, a string representing the state of the 4 wheels.</p>
+<p>You are given a list of <code>deadends</code> dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.</p>
+<p>Given a <code>target</code> representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0201&quot;,&quot;0101&quot;,&quot;0102&quot;,&quot;1212&quot;,&quot;2002&quot;], target &#x3D; &quot;0202&quot;
+Output: 6
+Explanation:
+A sequence of valid moves would be &quot;0000&quot; -&gt; &quot;1000&quot; -&gt; &quot;1100&quot; -&gt; &quot;1200&quot; -&gt; &quot;1201&quot; -&gt; &quot;1202&quot; -&gt; &quot;0202&quot;.
+Note that a sequence like &quot;0000&quot; -&gt; &quot;0001&quot; -&gt; &quot;0002&quot; -&gt; &quot;0102&quot; -&gt; &quot;0202&quot; would be invalid,
+because the wheels of the lock become stuck after the display becomes the dead end &quot;0102&quot;.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8888&quot;], target &#x3D; &quot;0009&quot;
+Output: 1
+Explanation:
+We can turn the last wheel in reverse to move from &quot;0000&quot; -&gt; &quot;0009&quot;.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8887&quot;,&quot;8889&quot;,&quot;8878&quot;,&quot;8898&quot;,&quot;8788&quot;,&quot;8988&quot;,&quot;7888&quot;,&quot;9888&quot;], target &#x3D; &quot;8888&quot;
+Output: -1
+Explanation:
+We can&#39;t reach the target without getting stuck.</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0000&quot;], target &#x3D; &quot;8888&quot;
+Output: -1</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= deadends.length &lt;= 500</code></li>
+<li><code>deadends[i].length == 4</code></li>
+<li><code>target.length == 4</code></li>
+<li>target will not be in the list <code>deadends</code>.</li>
+<li><code>target</code> and <code>deadends[i]</code> consist of digits only.</li>
+</ul>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from collections import deque
+
+class Solution:
+    def openLock(self, deadends: List[str], target: str) -&gt; int:
+        
+        if &#39;0000&#39; in deadends:
+            return -1
+        
+        queue, visited &#x3D; deque([&#39;0000&#39;]), set(deadends)
+        count &#x3D; -1
+        
+        while len(queue) !&#x3D; 0:
+            count +&#x3D; 1
+            size &#x3D; len(queue)
+            
+            for _ in range(size):
+                
+                curr &#x3D; queue.popleft()
+
+                if curr &#x3D;&#x3D; target:
+                    return count
+
+                if curr in visited:
+                    continue
+
+                visited.add(curr)
+                
+                res &#x3D; []
+                for i, char in enumerate(curr):
+                    num &#x3D; int(char)
+                    res.append(curr[:i] + str((num - 1) % 10) + curr[i+1:])
+                    res.append(curr[:i] + str((num + 1) % 10) + curr[i+1:])
+                
+                queue.extend(res)
+                
+        return -1</code></pre>
+<h1 id="leetcode-279-perfect-squares">LeetCode 279: Perfect Squares</h1>
+<p>Given an integer <code>n</code>, return the least number of perfect square numbers that sum to <code>n</code>.</p>
+<p>A <strong>perfect square</strong> is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, <code>1</code>, <code>4</code>, <code>9</code>, and <code>16</code> are perfect squares while <code>3</code> and <code>11</code> are not.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 12
+Output: 3
+Explanation: 12 &#x3D; 4 + 4 + 4.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 13
+Output: 2
+Explanation: 13 &#x3D; 4 + 9.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= n &lt;= <span class="math inline">\(10^4\)</span></li>
+</ul>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def numSquares(self, n: int) -&gt; int:
+        if n &lt; 2:
+            return n
+        lst &#x3D; []
+        i &#x3D; 1
+        while i * i &lt;&#x3D; n:
+            lst.append( i * i )
+            i +&#x3D; 1
+        cnt &#x3D; 0
+        toCheck &#x3D; &#123;n&#125;
+        while toCheck:
+            cnt +&#x3D; 1
+            temp &#x3D; set()
+            for x in toCheck:
+                for y in lst:
+                    if x &#x3D;&#x3D; y:
+                        return cnt
+                    if x &lt; y:
+                        break
+                    temp.add(x-y)
+            toCheck &#x3D; temp</code></pre>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -4888,8 +4878,7 @@ class MyLinkedList(object):
   <entry>
     <title>Stack: Last in first out Data Structure</title>
     <url>/posts/21e8b0fd/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="stack-last-in-first-out-data-structure">Stack: Last in first out Data Structure</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/min-stack/">LeetCode 155</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/valid-parentheses/">LeetCode 20</a></strong></li>
@@ -5073,8 +5062,7 @@ class Solution:
   <entry>
     <title>Stack and DFS</title>
     <url>/posts/e0dfb60b/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="stack-and-dfs">Stack and DFS</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/clone-graph/">LeetCode 133</a></strong></li>
@@ -5592,8 +5580,7 @@ pop stack; &#x2F;&#x2F;即為結果</code></pre> <strong>Ex. 43-15×+，寫出po
   <entry>
     <title>Two Pointer Technique</title>
     <url>/posts/a9f1a2f1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="two-pointer-technique">Two Pointer Technique</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/linked-list-cycle/">LeetCode 141</a></strong></li>
 <li><strong><a href="https://leetcode.com/problems/linked-list-cycle-ii/">LeetCode 142</a></strong></li>
@@ -5789,6 +5776,74 @@ class Solution:
       </tags>
   </entry>
   <entry>
+    <title>npm 和 npx</title>
+    <url>/posts/4df1633d/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="npm">npm</h1>
+<p><strong>Node Package Manger</strong>，是 <code>nodejs</code> 的 dependency/package manager，提供開發者 install packages both globally and locally。 <a id="more"></a></p>
+<ol type="1">
+<li><strong>提供 online repository 可以 publish <code>open-source Node.js projects</code></strong></li>
+<li><strong>提供 <code>CLI tool</code> 讓開發者 install packages and manage their versions and dependencies</strong></li>
+</ol>
+<hr />
+<p>如果想使用<code>npm</code> 去 run a package，必須在 <code>package.json</code> 檔案裡指定 package。 當 executables are installed via npm packages, npm creates links to them:</p>
+<ol type="1">
+<li><strong>local installs have links created at the <code>./node_modules/.bin/ directory</code></strong></li>
+<li><strong>global installs have links created from the global <code>bin/</code> directory (for example: <code>/usr/local/bin</code> on Linux or at <code>%AppData%/npm</code> on Windows)</strong></li>
+</ol>
+<p>To execute a package with npm 有兩種方法:</p>
+<ol type="1">
+<li>指定路徑 <pre class="line-numbers language-none"><code class="language-none">$ .&#x2F;node_modules&#x2F;.bin&#x2F;your-package</code></pre></li>
+<li>adding it into your package.json file in the scripts section <pre class="line-numbers language-none"><code class="language-none">&#123;
+  &quot;name&quot;: &quot;your-application&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;scripts&quot;: &#123;
+    &quot;your-package&quot;: &quot;your-package&quot;
+  &#125;
+&#125;</code></pre></li>
+</ol>
+<p>接下來就可以 run the script using npm run:</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre>
+<p><strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong></p>
+<p>所以接下來介紹<code>npx</code>。</p>
+<h1 id="npx">npx</h1>
+<p>npm 只要更新到 <strong>npm@5.2.0</strong> 後，就會多出一個 npx 指令。</p>
+<h2 id="npx使用情況">npx使用情況:</h2>
+<h3 id="run-a-locally-installed-package-easily">Run a locally installed package easily</h3>
+<p>如果想要執行 locally installed package，只需要 type: <pre class="line-numbers language-none"><code class="language-none">$ npx your-package</code></pre> npx 會檢查 local 或 <code>$PATH</code> 裡是否存在 <code>&lt;command&gt;</code> or <code>&lt;package&gt;</code> 的 binaries，有的話便會執行。</p>
+<h3 id="execute-packages-that-are-not-previously-installed">Execute packages that are not previously installed</h3>
+<p>使用 npx 命令，他會安裝在臨時安裝包上，等到項目初始化完成後就刪除，不用全局性的安裝，避免被汙染。</p>
+<h3 id="test-different-package-versions">Test different package versions</h3>
+<p>npx makes it extremely easy to test different versions of a Node.js package or module。</p>
+<p>以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> <img src="/posts/4df1633d/npx_create-react-app.jpg" class=""></p>
+<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。</p>
+<p>安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
+$ npm start</code></pre>
+<img src="/posts/4df1633d/react-app.jpg" class="">
+<h3 id="run-code-directly-from-github">Run code directly from GitHub</h3>
+<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> <img src="/posts/4df1633d/npx_github.jpg" class=""></p>
+<p>可以看到輸出 yay gist</p>
+<h3 id="bonus-round-shell-auto-fallback">Bonus Round: shell auto-fallback</h3>
+<p><strong>待更新...</strong></p>
+<h1 id="參考資料">參考資料</h1>
+<ol type="1">
+<li><a href="https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner">npmjs</a></li>
+<li><a href="https://medium.com/itsems-frontend/whats-npx-e83400efe7f8">npx 是什麼? 跟 npm 差在哪?</a></li>
+<li><a href="https://medium.com/@hot50773/npx-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-c9c6074c9a64">用 npx 代替 npm run xxx – 以套件 mocha 為例</a></li>
+<li><a href="https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/">npm vs npx — What’s the Difference?</a></li>
+<li><a href="https://docs.npmjs.com/">npm的Docs</a></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>nodejs</tag>
+        <tag>npm</tag>
+        <tag>npx</tag>
+        <tag>haveibeenpwned</tag>
+        <tag>LastPass</tag>
+        <tag>1Password</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Heap Sort</title>
     <url>/posts/2c38fcfa/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="heap-sort">Heap Sort</h1>
@@ -5957,74 +6012,6 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
       <tags>
         <tag>資料結構</tag>
         <tag>演算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm 和 npx</title>
-    <url>/posts/4df1633d/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="npm">npm</h1>
-<p><strong>Node Package Manger</strong>，是 <code>nodejs</code> 的 dependency/package manager，提供開發者 install packages both globally and locally。 <a id="more"></a></p>
-<ol type="1">
-<li><strong>提供 online repository 可以 publish <code>open-source Node.js projects</code></strong></li>
-<li><strong>提供 <code>CLI tool</code> 讓開發者 install packages and manage their versions and dependencies</strong></li>
-</ol>
-<hr />
-<p>如果想使用<code>npm</code> 去 run a package，必須在 <code>package.json</code> 檔案裡指定 package。 當 executables are installed via npm packages, npm creates links to them:</p>
-<ol type="1">
-<li><strong>local installs have links created at the <code>./node_modules/.bin/ directory</code></strong></li>
-<li><strong>global installs have links created from the global <code>bin/</code> directory (for example: <code>/usr/local/bin</code> on Linux or at <code>%AppData%/npm</code> on Windows)</strong></li>
-</ol>
-<p>To execute a package with npm 有兩種方法:</p>
-<ol type="1">
-<li>指定路徑 <pre class="line-numbers language-none"><code class="language-none">$ .&#x2F;node_modules&#x2F;.bin&#x2F;your-package</code></pre></li>
-<li>adding it into your package.json file in the scripts section <pre class="line-numbers language-none"><code class="language-none">&#123;
-  &quot;name&quot;: &quot;your-application&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;scripts&quot;: &#123;
-    &quot;your-package&quot;: &quot;your-package&quot;
-  &#125;
-&#125;</code></pre></li>
-</ol>
-<p>接下來就可以 run the script using npm run:</p>
-<pre class="line-numbers language-none"><code class="language-none">$ npm run your-package</code></pre>
-<p><strong>以上就是使用 <code>npm</code> run a package 麻煩的地方。</strong></p>
-<p>所以接下來介紹<code>npx</code>。</p>
-<h1 id="npx">npx</h1>
-<p>npm 只要更新到 <strong>npm@5.2.0</strong> 後，就會多出一個 npx 指令。</p>
-<h2 id="npx使用情況">npx使用情況:</h2>
-<h3 id="run-a-locally-installed-package-easily">Run a locally installed package easily</h3>
-<p>如果想要執行 locally installed package，只需要 type: <pre class="line-numbers language-none"><code class="language-none">$ npx your-package</code></pre> npx 會檢查 local 或 <code>$PATH</code> 裡是否存在 <code>&lt;command&gt;</code> or <code>&lt;package&gt;</code> 的 binaries，有的話便會執行。</p>
-<h3 id="execute-packages-that-are-not-previously-installed">Execute packages that are not previously installed</h3>
-<p>使用 npx 命令，他會安裝在臨時安裝包上，等到項目初始化完成後就刪除，不用全局性的安裝，避免被汙染。</p>
-<h3 id="test-different-package-versions">Test different package versions</h3>
-<p>npx makes it extremely easy to test different versions of a Node.js package or module。</p>
-<p>以下是示範 install the <code>create-react-app</code> package and test out an upcoming version。 <pre class="line-numbers language-none"><code class="language-none">$ npm v create-react-app</code></pre> <img src="/posts/4df1633d/npx_create-react-app.jpg" class=""></p>
-<p>Let’s use <code>npx</code> to try out the <strong>next</strong> dist tag of <strong>create-react-app</strong> which will create the app inside a sandbox directory. <pre class="line-numbers language-none"><code class="language-none">$ npx create-react-app@next sandbox</code></pre> <code>npx</code> 會暫時 install the next version 的 create-react-app，然後執行以搭建該應用並安裝其 dependencies。</p>
-<p>安裝好後，我們可以進入資料夾並且執行 <code>start</code> command，它將在您的默認瀏覽器窗口中自動打開 React 應用。</p>
-<pre class="line-numbers language-none"><code class="language-none">$ cd sandbox
-$ npm start</code></pre>
-<img src="/posts/4df1633d/react-app.jpg" class="">
-<h3 id="run-code-directly-from-github">Run code directly from GitHub</h3>
-<p>在 terminal 輸入 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npx https:&#x2F;&#x2F;gist.github.com&#x2F;yu-shin&#x2F;6e4b9d49ec00cc9b219ab6bfe72309ab</code></pre> <img src="/posts/4df1633d/npx_github.jpg" class=""></p>
-<p>可以看到輸出 yay gist</p>
-<h3 id="bonus-round-shell-auto-fallback">Bonus Round: shell auto-fallback</h3>
-<p><strong>待更新...</strong></p>
-<h1 id="參考資料">參考資料</h1>
-<ol type="1">
-<li><a href="https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner">npmjs</a></li>
-<li><a href="https://medium.com/itsems-frontend/whats-npx-e83400efe7f8">npx 是什麼? 跟 npm 差在哪?</a></li>
-<li><a href="https://medium.com/@hot50773/npx-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-c9c6074c9a64">用 npx 代替 npm run xxx – 以套件 mocha 為例</a></li>
-<li><a href="https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/">npm vs npx — What’s the Difference?</a></li>
-<li><a href="https://docs.npmjs.com/">npm的Docs</a></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>nodejs</tag>
-        <tag>npm</tag>
-        <tag>npx</tag>
-        <tag>haveibeenpwned</tag>
-        <tag>LastPass</tag>
-        <tag>1Password</tag>
       </tags>
   </entry>
   <entry>
