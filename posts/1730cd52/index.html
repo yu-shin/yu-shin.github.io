@@ -24,23 +24,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Overview Hardhat 是一個有助於在 Ethereum 上進行構建的開發環境(development environment)。它幫助 developers 在構建 smart contracts 和 dApps 時 manage and automate the recurring tasks，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。 Ha">
+<meta name="description" content="Overview Hardhat 是一個有助於在 Ethereum 上進行構建的開發環境。它幫助開發者在構建 smart contracts 和 dApps 時管理和自動化重複的工作，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。 Hardhat 還內建了 Hardhat Network (一個為開發而設計的 local Ethereum network)，它">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hardhat Tutorial">
 <meta property="og:url" content="https://yu-shin.github.io/posts/1730cd52/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Overview Hardhat 是一個有助於在 Ethereum 上進行構建的開發環境(development environment)。它幫助 developers 在構建 smart contracts 和 dApps 時 manage and automate the recurring tasks，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。 Ha">
+<meta property="og:description" content="Overview Hardhat 是一個有助於在 Ethereum 上進行構建的開發環境。它幫助開發者在構建 smart contracts 和 dApps 時管理和自動化重複的工作，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。 Hardhat 還內建了 Hardhat Network (一個為開發而設計的 local Ethereum network)，它">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://yu-shin.github.io/posts/1730cd52/front-5.png">
 <meta property="og:image" content="https://yu-shin.github.io/posts/1730cd52/front-2.png">
 <meta property="og:image" content="https://yu-shin.github.io/posts/1730cd52/front-6.png">
 <meta property="article:published_time" content="2021-01-02T06:05:52.000Z">
-<meta property="article:modified_time" content="2021-01-30T08:43:33.617Z">
+<meta property="article:modified_time" content="2021-04-08T07:09:26.784Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="blockchain">
-<meta property="article:tag" content="smart contracts">
-<meta property="article:tag" content="metamask">
-<meta property="article:tag" content="HardHat">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yu-shin.github.io/posts/1730cd52/front-5.png">
 
@@ -218,7 +215,7 @@
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <a href="/">
     <img class="site-author-image" itemprop="image" alt="Nicholas Tsai"
-      src="/images/bighead.jpg">
+      src="/images/bighead2.jpg">
   <p class="site-author-name" itemprop="name">Nicholas Tsai</p>
   <div class="site-description" itemprop="description">YOLO</div>
 </div>
@@ -232,7 +229,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -290,7 +287,7 @@
     <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/1730cd52/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead.jpg">
+      <meta itemprop="image" content="/images/bighead2.jpg">
       <meta itemprop="name" content="Nicholas Tsai">
       <meta itemprop="description" content="YOLO">
     </span>
@@ -343,7 +340,7 @@
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>34 分鐘</span>
+      <span>33 分鐘</span>
     </span>
 </div>
 
@@ -355,13 +352,13 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="overview">Overview</h1>
-<p><strong>Hardhat</strong> 是一個有助於在 Ethereum 上進行構建的開發環境(development environment)。它幫助 developers 在構建 smart contracts 和 dApps 時 manage and automate the recurring tasks，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。</p>
+<p><strong>Hardhat</strong> 是一個有助於在 Ethereum 上進行構建的開發環境。它幫助開發者在構建 smart contracts 和 dApps 時管理和自動化重複的工作，以及在工作流程中引入更多功能。這意味著從根本上進行 compilie 和 test。</p>
 <p><strong>Hardhat</strong> 還內建了 <strong>Hardhat Network</strong> (一個為開發而設計的 local Ethereum network)，它允許你 deploy contracts, run tests, debug codes. <a id="more"></a></p>
 <p>在本教程將會學到：</p>
 <ul>
 <li>為以太坊開發設置 Node.js 環境</li>
 <li>創建和配置 a <strong>Hardhat</strong> project</li>
-<li>implements a token 所需 Solidity 智能合約的基礎</li>
+<li>實做 a token 所需 Solidity 智能合約的基礎</li>
 <li>使用 <strong>Ethers.js</strong> 和 <strong>Waffle</strong> 為合約編寫自動化測試</li>
 <li>使用 <strong>Hardhat Network</strong> 的 <code>console.log()</code> Debug Solidity</li>
 <li>將合約部署到 <strong>Hardhat Network</strong> and Ethereum testnets</li>
@@ -377,7 +374,8 @@
 <h1 id="setting-up-the-environment">Setting up the environment</h1>
 <p>因為很簡單，所以請參考 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hardhat.org/tutorial/setting-up-the-environment.html">Setting up the environment</a>。</p>
 <h1 id="creating-a-new-hardhat-project">Creating a new Hardhat project</h1>
-<p>我們將使用 npm 下載 <strong>Hardhat</strong>。The <strong>N</strong>ode.js <strong>p</strong>ackage <strong>m</strong>anager is a package manager and an online repository for JavaScript code. ( npm 的官方敘述)</p>
+<p>我們將使用 npm 下載 <strong>Hardhat</strong>。 <div class="note warning"><p>The <strong>N</strong>ode.js <strong>p</strong>ackage <strong>m</strong>anager is a package manager and an online repository for JavaScript code. ( npm 的官方敘述)</p>
+</div></p>
 <p>打開 terminal 接著輸入以下 commands : <pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">mkdir hardhat-tutorial 
 cd hardhat-tutorial 
 npm init --yes 
@@ -401,9 +399,8 @@ Welcome to Hardhat v2.0.0
 <p><strong>Hardhat</strong> 是圍繞 <strong>tasks</strong> 和 <strong>plugins</strong> 的概念而設計的。 <strong>Hardhat</strong> 大部分的功能來自於 plugins，做為一個開發者你可以自由選擇你所需要的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hardhat.org/plugins/">plugin</a> 。</p>
 <h3 id="tasks">Tasks</h3>
 <p>其實每次從 CLI 運行 <strong>Hardhat</strong> 時都是在執行一個 task 。例如 <code>npx hardhat compile</code> 是在執行 <code>compile</code> task 。執行 <code>npx hardhat</code> 可以查看 project 中當前可用的 tasks 。 執行 <code>npx hardhat help [task]</code> 可以查看該 task 詳細信息。</p>
-<blockquote>
-<p>TIP 你可以創造自己的 tasks 。詳情請看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hardhat.org/guides/create-task.html">Creating a task</a> guide 。</p>
-</blockquote>
+<div class="note warning"><p>你可以創造自己的 tasks 。詳情請看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://hardhat.org/guides/create-task.html">Creating a task guide</a>。</p>
+</div>
 <h3 id="plugins">Plugins</h3>
 <p><strong>Hardhat</strong> 有一些預設值，但全部都可以被 override 。大多數時候使用給定的工具的方式是利用 Plugin 集成到 <strong>Hardhat</strong> 中。</p>
 <p>在此教程我們將會使用 <code>Ethers.js</code> 和 <code>Waffle</code> plugins 。它允許我們和 Ethereum 溝通並且 test 自己的 contracts 。後面會再介紹怎麼使用它們，在此同時我們先在 project 目錄 install ： <pre class="language-bash" data-language="bash" data-line="" data-line-offset="0"><code class="language-bash">npm install --save-dev @nomiclabs&#x2F;hardhat-ethers ethers @nomiclabs&#x2F;hardhat-waffle ethereum-waffle chai</code></pre> 將第一行添加到 <code>hardhat.config.js</code> 中，使其如下所示： <pre class="line-numbers language-javascript" data-language="javascript"><div class="caption"><span>hardhat.config.js</span><a href="/downloads/code/hardhat/hardhat.config_1.js">view raw</a></div><code class="language-javascript">require(&quot;@nomiclabs&#x2F;hardhat-waffle&quot;);
@@ -423,14 +420,12 @@ module.exports &#x3D; {
 <li>任何人只要擁有至少一個 token 則可以 transfer</li>
 <li>The token 無法分割。只可以 transfer 1, 2, 3 or 37 tokens but not 2.5</li>
 </ul>
-<blockquote>
-<p>TIP 你可能聽說過 ERC20，這是 Ethereum 中的 token 標準。DAI，USDC，MKR和ZRX之類的 tokens 遵循 ERC20 標準，使它們都可以與任何可以處理 ERC20 tokens 的軟件兼容。 <strong>為簡單起見，我們要構建的 token 不是 ERC20 。</strong></p>
-</blockquote>
+<div class="note warning"><p>可能聽說過 ERC20，這是 Ethereum 中的 token 標準。DAI，USDC，MKR 和 ZRX 之類的 tokens 遵循 ERC20 標準，使它們都可以與任何可以處理 ERC20 tokens 的軟件兼容。 <strong>為簡單起見，我們要構建的 token 不是 ERC20 。</strong></p>
+</div>
 <h3 id="writing-smart-contracts">Writing smart contracts</h3>
 <p>首先新增一個名為 <code>contracts</code> 的新目錄，然後在該目錄內新增檔案 <code>Token.sol</code>。 將下面的代碼複製到檔案中，花一點時間閱讀代碼。它很簡單，並且裡頭充滿了解釋 Solidity 代碼基礎的註釋。</p>
-<blockquote>
-<p>TIP 如果要 syntax highlighting 應該在 text editor 中添加 Solidity support。 只需尋找 Solidity 或 Ethereum plugins。 建議使用 Visual Studio Code 或 Sublime Text 3。</p>
-</blockquote>
+<div class="note warning"><p>如果要 syntax highlighting 應該在 text editor 中添加 Solidity support。 只需尋找 Solidity 或 Ethereum plugins。 建議使用 Visual Studio Code 或 Sublime Text 3。</p>
+</div>
 <pre class="line-numbers language-solidity" data-language="solidity"><div class="caption"><span>Token.sol</span><a href="/downloads/code/hardhat/Token_1.sol">view raw</a></div><code class="language-solidity">&#x2F;&#x2F; Solidity files have to start with this pragma.
 &#x2F;&#x2F; It will be used by the Solidity compiler to validate its version.
 pragma solidity ^0.7.0;
@@ -491,9 +486,8 @@ contract Token {
         return balances[account];
     }
 }</code></pre>
-<blockquote>
-<p>TIP <code>*.sol</code> 用於 Solidity 文件。建議將文件名與其包含的 contract 進行匹配，這是一種常見的做法。</p>
-</blockquote>
+<div class="note warning"><p><code>*.sol</code> 用於 Solidity 文件。建議將文件名與其包含的 contract 進行匹配，這是一種常見的做法。</p>
+</div>
 <h3 id="compiling-contracts">Compiling contracts</h3>
 <p>要編譯 contract，在 terminal 執行 <code>npx hardhat compile</code>。 The <code>compile</code> task 是 hardhat 內建的 tasks 之一。 <pre class="line-numbers language-none" data-start="1" data-line="" data-line-offset="0"><code class="language-none">$ npx hardhat compile
 Compiling 1 file with 0.7.3
@@ -521,8 +515,10 @@ describe(&quot;Token contract&quot;, function() {
     ✓ Deployment should assign the total supply of tokens to the owner (654ms)
 
 
-  1 passing (663ms)</code></pre> 這意味著測試通過了。現在讓我們解釋每一行： <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const [owner] &#x3D; await ethers.getSigners();</code></pre> <code>ethers.js</code> 中的 <code>Signer</code> 是一個代表 Ethereum account 的 object。它用於將 transactions 發送到 contracts 和其他 accounts 。在這裡，我們獲得了所連接 node 中的 accounts list，在本例中為 <strong>Hardhat Network</strong>，僅保留第一個 account 。</p>
-<p>The <code>ethers</code> variable is available in the global scope. 如果想要 code always being explicit, 可以在頂部加上這行: <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const &#123; ethers &#125; &#x3D; require(&quot;hardhat&quot;);</code></pre> &gt; TIP &gt; 要了解有關 Signer 的更多信息，可以查看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.ethers.io/v5/api/signer/">Signers documentation</a>。 <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const Token &#x3D; await ethers.getContractFactory(&quot;Token&quot;);</code></pre> ethers.js 中的 <code>ContractFactory</code> 是用於 deploy new smart contracts 的 abstraction，因此 <code>Token</code> 這裡是 a factory for instances of our token contract. <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const hardhatToken &#x3D; await Token.deploy();</code></pre> 在 <code>ContractFactory</code> 上調用 <code>deploy()</code> 將啟動 deployment，並返回解析為 <code>Contract</code> 的 <code>Promise</code>。該 object 具有用於每個 smart contract functions 的 method 。 <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const ownerBalance &#x3D; await hardhatToken.balanceOf(owner.address);</code></pre> deploye contract 後，我們可以在 <code>hardhatToken</code> 上調用我們的 contract methods ，並通過調用 <code>balanceOf()</code> 來獲取 owner account 的 balance 。</p>
+  1 passing (663ms)</code></pre> 這意味著測試通過了。現在讓我們解釋每一行： <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const [owner] &#x3D; await ethers.getSigners();</code></pre></p>
+<p><code>ethers.js</code> 中的 <code>Signer</code> 是一個代表 Ethereum account 的 object。它用於將 transactions 發送到 contracts 和其他 accounts 。在這裡，我們獲得了所連接 node 中的 accounts list，在本例中為 <strong>Hardhat Network</strong>，僅保留第一個 account 。</p>
+<p>The <code>ethers</code> variable is available in the global scope. 如果想要 code always being explicit, 可以在頂部加上這行: <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const &#123; ethers &#125; &#x3D; require(&quot;hardhat&quot;);</code></pre> <div class="note warning"><p>要了解有關 Signer 的更多信息，可以查看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.ethers.io/v5/api/signer/">Signers documentation</a>。</p>
+</div> <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const Token &#x3D; await ethers.getContractFactory(&quot;Token&quot;);</code></pre> ethers.js 中的 <code>ContractFactory</code> 是用於 deploy new smart contracts 的 abstraction，因此 <code>Token</code> 這裡是 a factory for instances of our token contract. <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const hardhatToken &#x3D; await Token.deploy();</code></pre> 在 <code>ContractFactory</code> 上調用 <code>deploy()</code> 將啟動 deployment，並返回解析為 <code>Contract</code> 的 <code>Promise</code>。該 object 具有用於每個 smart contract functions 的 method 。 <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">const ownerBalance &#x3D; await hardhatToken.balanceOf(owner.address);</code></pre> deploye contract 後，我們可以在 <code>hardhatToken</code> 上調用我們的 contract methods ，並通過調用 <code>balanceOf()</code> 來獲取 owner account 的 balance 。</p>
 <p>請記住，獲得 entire supply token 的 owner 是進行 deploy 的 account ，並且在使用 <code>hardhat-ethers plugin</code> 時，預設情況下，<code>ContractFactory</code> 和 <code>Contract</code> instances 連接到 first signer 。 這意味著 <code>owner</code> variable 中的 account executed the deployment ，而 <code>balanceOf()</code> 應該 return the entire supply amount. <pre class="language-javascript" data-language="javascript" data-line="" data-line-offset="0"><code class="language-javascript">expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);</code></pre> 在這裡，我們再次使用 <code>Contract</code> instance 在 Solidity 代碼中調用 smart contract function 。<code>totalSupply()</code> 返回 token's supply amount ，我們正在檢查它是否等於 <code>ownerBalance</code> 。</p>
 <p>為此，我們使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.chaijs.com/">Chai</a> ，這是一個 assertions library。這些 asserting functions 稱為 "matchers" ，而我們在此處使用的實際上來自 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://getwaffle.io/">Waffle</a> 。這就是為什麼我們使用 <code>hardhat-waffle</code> plugin 的原因，這使得從 assert values from Ethereum 更加容易。查看 Waffle documentation 中的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://ethereum-waffle.readthedocs.io/en/latest/matchers.html">此部份</a>，以了解 Ethereum-specific matchers 的完整列表.</p>
 <h3 id="using-a-different-account">Using a different account</h3>
@@ -839,9 +835,6 @@ Transferred 1 ETH and 100 tokens to 0x0987a41e73e69f60c5071ce3c8f7e730f9a60f90</
 
           <div class="post-tags">
               <a href="/tags/blockchain/" rel="tag"># blockchain</a>
-              <a href="/tags/smart-contracts/" rel="tag"># smart contracts</a>
-              <a href="/tags/metamask/" rel="tag"># metamask</a>
-              <a href="/tags/HardHat/" rel="tag"># HardHat</a>
           </div>
 
         
@@ -983,7 +976,38 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 <script>
