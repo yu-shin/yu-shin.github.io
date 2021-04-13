@@ -107,8 +107,7 @@
   <entry>
     <title>Algorithm</title>
     <url>/posts/17f44e1a/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="algorithm">Algorithm</h1>
-<p>通常在針對某一問題開發程式時，都會經過下列步驟：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>通常在針對某一問題開發程式時，都會經過下列步驟：</p>
 <ol type="1">
 <li>明確<code>定義問題</code></li>
 <li>設計<code>演算法</code>，並評估其執行效率</li>
@@ -502,8 +501,7 @@ for i in range(n):
   <entry>
     <title>Array</title>
     <url>/posts/60cdc1b3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="array">Array</h1>
-<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>為表示<strong>有序串列</strong>之一種方式</li>
 <li>其佔用<strong>連續性的記憶體空間</strong></li>
 <li>各元素型態皆需<strong>相同</strong> (一致)</li>
@@ -798,10 +796,65 @@ for i in range(n):
       </tags>
   </entry>
   <entry>
+    <title>Binary Search</title>
+    <url>/posts/fbb0c1cd/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。 <a id="more"></a> 以下是 binary search step-by-step 的描述：</p>
+<ol type="1">
+<li>Let min = 1 and max = n</li>
+<li>(max+min)/2且round成整數</li>
+<li>如果猜中了，就停止</li>
+<li>如果太小，則把min設成guess+1</li>
+<li>如果太大，則把max設成guess-1</li>
+<li>重新從第二步驟開始</li>
+</ol>
+<h2 id="完整程式碼">完整程式碼</h2>
+<p>時間複雜度： <strong>O(logN)</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+def binary_search(data, key):
+    #設置選取範圍的指標
+    low &#x3D; 0
+    upper &#x3D; len(data) - 1
+    while low &lt;&#x3D; upper:
+        mid &#x3D; (low + upper) &#x2F; 2  #取中間索引的值
+        if data[mid] &lt; key:    #若搜尋值比中間的值大，將中間索引+1，取右半
+            low &#x3D; mid + 1
+        elif data[mid] &gt; key:  #若搜尋值比中間的值小，將中間索引+1，取左半
+            upper &#x3D; mid - 1
+        else:                    #若搜尋值等於中間的值，則回傳
+            return mid
+    return -1
+
+
+index &#x3D; binary_search(data, 5)
+if index &gt;&#x3D; 0:
+    print(&quot;找到數值於索引 &quot; + str(index))
+else:
+    print(&quot;找不到數值&quot;)</code></pre> # 時間複雜度 ## worst case</p>
+<p>剛好分割到最後一個數。</p>
+<ol type="1">
+<li>假設 n 為 2 的指數( n = 128 )，則需要 8 次( <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.466ex" xmlns="http://www.w3.org/2000/svg" width="6.662ex" height="2.036ex" role="img" focusable="false" viewBox="0 -694 2944.7 900" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-4-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-4-TEX-N-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path id="MJX-4-TEX-N-2061" d=""></path><path id="MJX-4-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-4-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-N-6C"></use><use xlink:href="#MJX-4-TEX-N-6F" transform="translate(278, 0)"></use><use xlink:href="#MJX-4-TEX-N-67" transform="translate(778, 0)"></use></g><g data-mml-node="mo" transform="translate(1278, 0)"><use xlink:href="#MJX-4-TEX-N-2061"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1444.7, 0)"><g data-mml-node="mn"><use xlink:href="#MJX-4-TEX-N-31"></use><use xlink:href="#MJX-4-TEX-N-32" transform="translate(500, 0)"></use><use xlink:href="#MJX-4-TEX-N-38" transform="translate(1000, 0)"></use></g></g></g></g></svg></mjx-container>+1 )</li>
+<li>假設 n 不為 2 的指數( n = 1000 )，則需要 10 次(round( <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.466ex" xmlns="http://www.w3.org/2000/svg" width="4.626ex" height="2.036ex" role="img" focusable="false" viewBox="0 -694 2044.7 900" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-3-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-3-TEX-N-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path id="MJX-3-TEX-N-2061" d=""></path><path id="MJX-3-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-N-6C"></use><use xlink:href="#MJX-3-TEX-N-6F" transform="translate(278, 0)"></use><use xlink:href="#MJX-3-TEX-N-67" transform="translate(778, 0)"></use></g><g data-mml-node="mo" transform="translate(1278, 0)"><use xlink:href="#MJX-3-TEX-N-2061"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1444.7, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D45B"></use></g></g></g></g></svg></mjx-container>)+1 )</li>
+</ol>
+<h2 id="best-case">best case</h2>
+<p>第一個就找到: <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-3-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-3-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-3-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-3-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-3-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-3-TEX-N-29"></use></g></g></g></svg></mjx-container></strong></p>
+<h1 id="practice">practice</h1>
+<p>You have an array containing the prime numbers from 2 to 311 in sorted order: [2, 3, 5, 7, 11, 13, ..., 307, 311]. There are 64 items in the array. About how many items of the array would binary search have to examine before concluding that 52 is not in the array, and therefore not prime?</p>
+<p><code>7</code></p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search">Binary search</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10206818">二分搜尋</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>資料結構</tag>
+        <tag>演算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Bubble Sort</title>
     <url>/posts/10244486/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="bubble-sort">Bubble Sort</h1>
-<p><strong>Bucket Sort</strong> 雖然直覺、簡單好懂，但也遺留了一些問題。舉例來說如果資料很大，就會很浪費空間，或者當資料有小數的時候，沒辦法產生相對應的桶子。<a id="more"></a> <img src="/posts/10244486/%E6%8E%92%E5%BA%8F.jpg" class=""> <img src="/posts/10244486/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class=""></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>Bucket Sort</strong> 雖然直覺、簡單好懂，但也遺留了一些問題。舉例來說如果資料很大，就會很浪費空間，或者當資料有小數的時候，沒辦法產生相對應的桶子。<a id="more"></a> <img src="/posts/10244486/%E6%8E%92%E5%BA%8F.jpg" class=""> <img src="/posts/10244486/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class=""></p>
 <p><strong>Bubble Sort</strong> 想法是這樣的，假設要由小排到大，左邊為小右邊為大，以左邊第一個為基準點，不斷的跟右邊的值比大小，比較小的就往左，大的就停住，然後再從這個大的值繼續往右比，直到最後一個位置。現在比完第一輪了，接著再從最左邊的頭開始，往下比下去。</p>
 <h2 id="bubble">Bubble</h2>
 <ul>
@@ -866,67 +919,9 @@ print(data)</code></pre> <code>[['Damon', 25], ['Jane', 31], ['Julia', 44], ['Ab
       </tags>
   </entry>
   <entry>
-    <title>Binary Search</title>
-    <url>/posts/fbb0c1cd/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="binary-search">Binary search</h1>
-<p>Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。 <a id="more"></a> 以下是 binary search step-by-step 的描述：</p>
-<ol type="1">
-<li>Let min = 1 and max = n</li>
-<li>(max+min)/2且round成整數</li>
-<li>如果猜中了，就停止</li>
-<li>如果太小，則把min設成guess+1</li>
-<li>如果太大，則把max設成guess-1</li>
-<li>重新從第二步驟開始</li>
-</ol>
-<h2 id="完整程式碼">完整程式碼</h2>
-<p>時間複雜度： <strong>O(logN)</strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-def binary_search(data, key):
-    #設置選取範圍的指標
-    low &#x3D; 0
-    upper &#x3D; len(data) - 1
-    while low &lt;&#x3D; upper:
-        mid &#x3D; (low + upper) &#x2F; 2  #取中間索引的值
-        if data[mid] &lt; key:    #若搜尋值比中間的值大，將中間索引+1，取右半
-            low &#x3D; mid + 1
-        elif data[mid] &gt; key:  #若搜尋值比中間的值小，將中間索引+1，取左半
-            upper &#x3D; mid - 1
-        else:                    #若搜尋值等於中間的值，則回傳
-            return mid
-    return -1
-
-
-index &#x3D; binary_search(data, 5)
-if index &gt;&#x3D; 0:
-    print(&quot;找到數值於索引 &quot; + str(index))
-else:
-    print(&quot;找不到數值&quot;)</code></pre> # 時間複雜度 ## worst case</p>
-<p>剛好分割到最後一個數。</p>
-<ol type="1">
-<li>假設 n 為 2 的指數( n = 128 )，則需要 8 次( <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.466ex" xmlns="http://www.w3.org/2000/svg" width="6.662ex" height="2.036ex" role="img" focusable="false" viewBox="0 -694 2944.7 900" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-4-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-4-TEX-N-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path id="MJX-4-TEX-N-2061" d=""></path><path id="MJX-4-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-4-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-4-TEX-N-6C"></use><use xlink:href="#MJX-4-TEX-N-6F" transform="translate(278, 0)"></use><use xlink:href="#MJX-4-TEX-N-67" transform="translate(778, 0)"></use></g><g data-mml-node="mo" transform="translate(1278, 0)"><use xlink:href="#MJX-4-TEX-N-2061"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1444.7, 0)"><g data-mml-node="mn"><use xlink:href="#MJX-4-TEX-N-31"></use><use xlink:href="#MJX-4-TEX-N-32" transform="translate(500, 0)"></use><use xlink:href="#MJX-4-TEX-N-38" transform="translate(1000, 0)"></use></g></g></g></g></svg></mjx-container>+1 )</li>
-<li>假設 n 不為 2 的指數( n = 1000 )，則需要 10 次(round( <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.466ex" xmlns="http://www.w3.org/2000/svg" width="4.626ex" height="2.036ex" role="img" focusable="false" viewBox="0 -694 2044.7 900" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-3-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-3-TEX-N-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path id="MJX-3-TEX-N-2061" d=""></path><path id="MJX-3-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-N-6C"></use><use xlink:href="#MJX-3-TEX-N-6F" transform="translate(278, 0)"></use><use xlink:href="#MJX-3-TEX-N-67" transform="translate(778, 0)"></use></g><g data-mml-node="mo" transform="translate(1278, 0)"><use xlink:href="#MJX-3-TEX-N-2061"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1444.7, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D45B"></use></g></g></g></g></svg></mjx-container>)+1 )</li>
-</ol>
-<h2 id="best-case">best case</h2>
-<p>第一個就找到: <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-3-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-3-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-3-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-3-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-3-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-3-TEX-N-29"></use></g></g></g></svg></mjx-container></strong></p>
-<h1 id="practice">practice</h1>
-<p>You have an array containing the prime numbers from 2 to 311 in sorted order: [2, 3, 5, 7, 11, 13, ..., 307, 311]. There are 64 items in the array. About how many items of the array would binary search have to examine before concluding that 52 is not in the array, and therefore not prime?</p>
-<p><code>7</code></p>
-<h1 id="參考資料">參考資料</h1>
-<ul>
-<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search">Binary search</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10206818">二分搜尋</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>資料結構</tag>
-        <tag>演算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Bucket Sort</title>
     <url>/posts/4502df03/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="bucket-sort">Bucket Sort</h1>
-<p>桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。 <a id="more"></a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。 <a id="more"></a></p>
 <hr />
 <p>假設我們現在有一筆班上的成績想要排序：</p>
 <p><code>data = [89, 34, 23, 78, 67, 100, 66, 29, 79, 55, 78, 88, 92, 96, 96, 23]</code></p>
@@ -1208,8 +1203,7 @@ class Solution:
   <entry>
     <title>Complexity</title>
     <url>/posts/17b8c54b/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="complexity">Complexity</h1>
-<img src="/posts/17b8c54b/complexity.png" class="">
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><img src="/posts/17b8c54b/complexity.png" class="">
 <a id="more"></a>
 <h2 id="section"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.781ex" xmlns="http://www.w3.org/2000/svg" width="76.891ex" height="2.892ex" role="img" focusable="false" viewBox="0 -933.2 33986 1278.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-5-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-5-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-5-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-5-TEX-N-3C" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path id="MJX-5-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-5-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-5-TEX-N-67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"></path><path id="MJX-5-TEX-N-2061" d=""></path><path id="MJX-5-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-5-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-5-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-5-TEX-N-21" d="M78 661Q78 682 96 699T138 716T180 700T199 661Q199 654 179 432T158 206Q156 198 139 198Q121 198 119 206Q118 209 98 431T78 661ZM79 61Q79 89 97 105T141 121Q164 119 181 104T198 61Q198 31 181 16T139 1Q114 1 97 16T79 61Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-5-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2318.8, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(3374.6, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(4137.6, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(4526.6, 0)"><use xlink:href="#MJX-5-TEX-N-6C"></use><use xlink:href="#MJX-5-TEX-N-6F" transform="translate(278, 0)"></use><use xlink:href="#MJX-5-TEX-N-67" transform="translate(778, 0)"></use></g><g data-mml-node="mo" transform="translate(5804.6, 0)"><use xlink:href="#MJX-5-TEX-N-2061"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5971.2, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g></g><g data-mml-node="mo" transform="translate(6859.2, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(7526, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(8581.8, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(9344.8, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(9733.8, 0)"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(10621.8, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(11288.6, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(12344.3, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(13107.3, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(13496.3, 0)"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(14551, 0)"><use xlink:href="#MJX-5-TEX-N-6C"></use><use xlink:href="#MJX-5-TEX-N-6F" transform="translate(278, 0)"></use><use xlink:href="#MJX-5-TEX-N-67" transform="translate(778, 0)"></use></g><g data-mml-node="mo" transform="translate(15829, 0)"><use xlink:href="#MJX-5-TEX-N-2061"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(15995.7, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g></g><g data-mml-node="mo" transform="translate(16883.7, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(17550.4, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(18606.2, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(19369.2, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(19758.2, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g><g data-mml-node="TeXAtom" transform="translate(942.3, 363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use xlink:href="#MJX-5-TEX-N-32"></use></g></g></g><g data-mml-node="mo" transform="translate(21104, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(21770.8, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(22826.6, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(23589.6, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(23978.6, 0)"><g data-mml-node="mn"><use xlink:href="#MJX-5-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(500, 363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g></g></g><g data-mml-node="mo" transform="translate(25156.5, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(25823.3, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(26879, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(27642, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(28031, 0)"><g data-mml-node="mfrac"><g data-mml-node="mi" transform="translate(220, 394) scale(0.707)"><use xlink:href="#MJX-5-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(255.4, -345) scale(0.707)"><use xlink:href="#MJX-5-TEX-N-32"></use></g><rect width="624.3" height="60" x="120" y="220"></rect></g><g data-mml-node="TeXAtom" transform="translate(864.3, 433.6) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mfrac"><g data-mml-node="mi" transform="translate(220, 394) scale(0.707)"><use xlink:href="#MJX-5-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(255.4, -345) scale(0.707)"><use xlink:href="#MJX-5-TEX-N-32"></use></g><rect width="624.3" height="60" x="120" y="220"></rect></g></g></g><g data-mml-node="mo" transform="translate(29556.4, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(30223.2, 0)"><use xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="mi" transform="translate(31279, 0)"><use xlink:href="#MJX-5-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(32042, 0)"><use xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(32431, 0)"><use xlink:href="#MJX-5-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(33319, 0)"><use xlink:href="#MJX-5-TEX-N-21"></use></g><g data-mml-node="mo" transform="translate(33597, 0)"><use xlink:href="#MJX-5-TEX-N-29"></use></g></g></g></svg></mjx-container></h2>
 <ul>
@@ -1343,10 +1337,152 @@ class Solution:
       </tags>
   </entry>
   <entry>
+    <title>Deleting Items From an Array</title>
+    <url>/posts/bad31420/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/remove-element/">LeetCode 27</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-27-remove-element">LeetCode 27: Remove Element</h1>
+<p>Given an array nums and a value <code>val</code>, remove all instances of that value <code>in-place</code> and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory.</p>
+<p>The order of elements can be changed. It doesn't matter what you leave beyond the new length.</p>
+<p><strong>Clarification:</strong></p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this: <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)
+int len &#x3D; removeElement(nums, val);
+
+&#x2F;&#x2F; any modification to nums in your function would be known by the caller.
+&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.
+for (int i &#x3D; 0; i &lt; len; i++) &#123;
+    print(nums[i]);
+&#125;</code></pre> <strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [3,2,2,3], val &#x3D; 3
+Output: 2, nums &#x3D; [2,2]
+Explanation: Your function should return length &#x3D; 2, with the first two elements of nums being 2.
+It doesn&#39;t matter what you leave beyond the returned length. For example if you return 2 with nums &#x3D; [2,2,3,3] or nums &#x3D; [2,2,0,0], your answer will be accepted.</code></pre></p>
+<p><strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2
+Output: 5, nums &#x3D; [0,1,4,0,3]
+Explanation: Your function should return length &#x3D; 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be arbitrary. It doesn&#39;t matter what values are set beyond the returned length.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= nums.length &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
+<li><code>0 &lt;= val &lt;= 100</code></li>
+</ul>
+<h2 id="我的解法-利用-bubblesort">我的解法: 利用 BubbleSort</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27_BubbleSort.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27_BubbleSort.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+        l &#x3D; len(nums)
+        count &#x3D; 0
+        for i in range(l-1):
+            swapped &#x3D; False
+            for j in range(l-1-i):
+                if nums[j] &#x3D;&#x3D; val:
+                    if nums[j] !&#x3D; nums[j+1]:
+                        nums[j], nums[j+1] &#x3D; nums[j+1], nums[j]
+                        swapped &#x3D; True
+            if not swapped:
+                break
+        for v in nums:
+            if v !&#x3D; val:
+                count +&#x3D; 1
+        return count</code></pre>
+<h2 id="我的解法-利用-quicksort">我的解法: 利用 QuickSort</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27_QuickSort.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27_QuickSort.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+        if len(nums) &#x3D;&#x3D; 0:
+            return 0
+        else:
+            i &#x3D; 0
+            j &#x3D; len(nums)-1
+            while i !&#x3D; j:
+                while nums[i] !&#x3D; val and i &lt; j:
+                    i +&#x3D; 1
+                while nums[j] &#x3D;&#x3D; val and i &lt; j:
+                    j -&#x3D; 1
+                if i &lt; j:
+                    nums[i], nums[j] &#x3D; nums[j], nums[i]
+        if nums[i] &#x3D;&#x3D; val:
+            return i
+        else:
+            return i+1</code></pre>
+<h2 id="其他解法-1">其他解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+        count &#x3D; 0
+        for i in range(len(nums)):
+            if nums[i] !&#x3D; val:
+                nums[count] &#x3D; nums[i]
+                count +&#x3D;1
+        return count</code></pre>
+<h2 id="其他解法-2">其他解法 2</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解2.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解2.py">view raw</a></div><code class="language-python">class Solution:
+    def removeElement(self, nums: List[int], val: int) -&gt; int:
+		i &#x3D; 0
+		n &#x3D; len(nums)
+		while i &lt; n:
+			if nums[i] &#x3D;&#x3D; val:
+				nums[i] &#x3D; nums[n-1]
+				n -&#x3D; 1
+	    	else:
+				i +&#x3D; 1
+		return n</code></pre>
+<h1 id="leetcode-26-remove-duplicates-from-sorted-array">LeetCode 26: Remove Duplicates from Sorted Array</h1>
+<p>Given a sorted array nums, remove the duplicates <code>in-place</code> such that each element appears only once and returns the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory. Clarification:</p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this: <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)
+int len &#x3D; removeDuplicates(nums);
+
+&#x2F;&#x2F; any modification to nums in your function would be known by the caller.
+&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.
+for (int i &#x3D; 0; i &lt; len; i++) &#123;
+    print(nums[i]);
+&#125;</code></pre> <strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1,1,2]
+Output: 2, nums &#x3D; [1,2]
+Explanation: Your function should return length &#x3D; 2, with the first two elements of nums being 1 and 2 respectively. It doesn&#39;t matter what you leave beyond the returned length.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,0,1,1,1,2,2,3,3,4]
+Output: 5, nums &#x3D; [0,1,2,3,4]
+Explanation: Your function should return length &#x3D; 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively. It doesn&#39;t matter what values are set beyond the returned length.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>0 &lt;= nums.length &lt;= 3 * 104</code></li>
+<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
+<li><code>nums</code> is sorted in ascending order.</li>
+</ul>
+<h2 id="我的解法">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26.py">view raw</a></div><code class="language-python">import math
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -&gt; int:
+        temp &#x3D; -math.inf
+        count &#x3D; 0
+        for i in range(len(nums)):
+            if nums[i] &gt; temp:
+                temp &#x3D; nums[i]
+                nums[count] &#x3D; temp
+                count +&#x3D; 1
+        return count</code></pre>
+<h2 id="解答">解答</h2>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26解.py">view raw</a></div><code class="language-python">class Solution:
+    def removeDuplicates(self, nums: List[int]) -&gt; int:
+        if len(nums) &#x3D;&#x3D; 0:
+	        return 0
+	    i &#x3D; 0
+        for j in range(1, len(nums)):
+            if nums[j] !&#x3D; nums[i]:
+                i +&#x3D; 1
+                nums[i] &#x3D; nums[j]
+        return i+1</code></pre>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Divide and conquer</title>
     <url>/posts/6018ea0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="divide-and-conquer">Divide and conquer</h1>
-<p><strong>Divide and conquer</strong> 具有以下三種特性:</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>Divide and conquer</strong> 具有以下三種特性:</p>
 <ol type="1">
 <li><strong>Divide</strong> the problem into a number of subproblems that are smaller instances of the same problem.</li>
 <li><strong>Conquer</strong> the subproblems by solving them recursively. If they are small enough, solve the subproblems as base cases.</li>
@@ -1518,153 +1654,9 @@ class MyLinkedList:
       </tags>
   </entry>
   <entry>
-    <title>Deleting Items From an Array</title>
-    <url>/posts/bad31420/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
-<ul>
-<li><strong><a href="https://leetcode.com/problems/remove-element/">LeetCode 27</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">LeetCode 26</a></strong> <a id="more"></a></li>
-</ul>
-<h1 id="leetcode-27-remove-element">LeetCode 27: Remove Element</h1>
-<p>Given an array nums and a value <code>val</code>, remove all instances of that value <code>in-place</code> and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory.</p>
-<p>The order of elements can be changed. It doesn't matter what you leave beyond the new length.</p>
-<p><strong>Clarification:</strong></p>
-<p>Confused why the returned value is an integer but your answer is an array?</p>
-<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>
-<p>Internally you can think of this: <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)
-int len &#x3D; removeElement(nums, val);
-
-&#x2F;&#x2F; any modification to nums in your function would be known by the caller.
-&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.
-for (int i &#x3D; 0; i &lt; len; i++) &#123;
-    print(nums[i]);
-&#125;</code></pre> <strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [3,2,2,3], val &#x3D; 3
-Output: 2, nums &#x3D; [2,2]
-Explanation: Your function should return length &#x3D; 2, with the first two elements of nums being 2.
-It doesn&#39;t matter what you leave beyond the returned length. For example if you return 2 with nums &#x3D; [2,2,3,3] or nums &#x3D; [2,2,0,0], your answer will be accepted.</code></pre></p>
-<p><strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2
-Output: 5, nums &#x3D; [0,1,4,0,3]
-Explanation: Your function should return length &#x3D; 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be arbitrary. It doesn&#39;t matter what values are set beyond the returned length.</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li><code>0 &lt;= nums.length &lt;= 100</code></li>
-<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
-<li><code>0 &lt;= val &lt;= 100</code></li>
-</ul>
-<h2 id="我的解法-利用-bubblesort">我的解法: 利用 BubbleSort</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27_BubbleSort.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27_BubbleSort.py">view raw</a></div><code class="language-python">class Solution:
-    def removeElement(self, nums: List[int], val: int) -&gt; int:
-        l &#x3D; len(nums)
-        count &#x3D; 0
-        for i in range(l-1):
-            swapped &#x3D; False
-            for j in range(l-1-i):
-                if nums[j] &#x3D;&#x3D; val:
-                    if nums[j] !&#x3D; nums[j+1]:
-                        nums[j], nums[j+1] &#x3D; nums[j+1], nums[j]
-                        swapped &#x3D; True
-            if not swapped:
-                break
-        for v in nums:
-            if v !&#x3D; val:
-                count +&#x3D; 1
-        return count</code></pre>
-<h2 id="我的解法-利用-quicksort">我的解法: 利用 QuickSort</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27_QuickSort.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27_QuickSort.py">view raw</a></div><code class="language-python">class Solution:
-    def removeElement(self, nums: List[int], val: int) -&gt; int:
-        if len(nums) &#x3D;&#x3D; 0:
-            return 0
-        else:
-            i &#x3D; 0
-            j &#x3D; len(nums)-1
-            while i !&#x3D; j:
-                while nums[i] !&#x3D; val and i &lt; j:
-                    i +&#x3D; 1
-                while nums[j] &#x3D;&#x3D; val and i &lt; j:
-                    j -&#x3D; 1
-                if i &lt; j:
-                    nums[i], nums[j] &#x3D; nums[j], nums[i]
-        if nums[i] &#x3D;&#x3D; val:
-            return i
-        else:
-            return i+1</code></pre>
-<h2 id="其他解法-1">其他解法 1</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解.py">view raw</a></div><code class="language-python">class Solution:
-    def removeElement(self, nums: List[int], val: int) -&gt; int:
-        count &#x3D; 0
-        for i in range(len(nums)):
-            if nums[i] !&#x3D; val:
-                nums[count] &#x3D; nums[i]
-                count +&#x3D;1
-        return count</code></pre>
-<h2 id="其他解法-2">其他解法 2</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q27解2.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q27解2.py">view raw</a></div><code class="language-python">class Solution:
-    def removeElement(self, nums: List[int], val: int) -&gt; int:
-		i &#x3D; 0
-		n &#x3D; len(nums)
-		while i &lt; n:
-			if nums[i] &#x3D;&#x3D; val:
-				nums[i] &#x3D; nums[n-1]
-				n -&#x3D; 1
-	    	else:
-				i +&#x3D; 1
-		return n</code></pre>
-<h1 id="leetcode-26-remove-duplicates-from-sorted-array">LeetCode 26: Remove Duplicates from Sorted Array</h1>
-<p>Given a sorted array nums, remove the duplicates <code>in-place</code> such that each element appears only once and returns the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array</strong> <code>in-place</code> with O(1) extra memory. Clarification:</p>
-<p>Confused why the returned value is an integer but your answer is an array?</p>
-<p>Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.</p>
-<p>Internally you can think of this: <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)
-int len &#x3D; removeDuplicates(nums);
-
-&#x2F;&#x2F; any modification to nums in your function would be known by the caller.
-&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.
-for (int i &#x3D; 0; i &lt; len; i++) &#123;
-    print(nums[i]);
-&#125;</code></pre> <strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1,1,2]
-Output: 2, nums &#x3D; [1,2]
-Explanation: Your function should return length &#x3D; 2, with the first two elements of nums being 1 and 2 respectively. It doesn&#39;t matter what you leave beyond the returned length.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [0,0,1,1,1,2,2,3,3,4]
-Output: 5, nums &#x3D; [0,1,2,3,4]
-Explanation: Your function should return length &#x3D; 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively. It doesn&#39;t matter what values are set beyond the returned length.</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li><code>0 &lt;= nums.length &lt;= 3 * 104</code></li>
-<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
-<li><code>nums</code> is sorted in ascending order.</li>
-</ul>
-<h2 id="我的解法">我的解法</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26.py">view raw</a></div><code class="language-python">import math
-
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -&gt; int:
-        temp &#x3D; -math.inf
-        count &#x3D; 0
-        for i in range(len(nums)):
-            if nums[i] &gt; temp:
-                temp &#x3D; nums[i]
-                nums[count] &#x3D; temp
-                count +&#x3D; 1
-        return count</code></pre>
-<h2 id="解答">解答</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q26解.py</span><a href="/downloads/code/LeetCode/Deleting-Items-From-an-Array/q26解.py">view raw</a></div><code class="language-python">class Solution:
-    def removeDuplicates(self, nums: List[int]) -&gt; int:
-        if len(nums) &#x3D;&#x3D; 0:
-	        return 0
-	    i &#x3D; 0
-        for j in range(1, len(nums)):
-            if nums[j] !&#x3D; nums[i]:
-                i +&#x3D; 1
-                nums[i] &#x3D; nums[j]
-        return i+1</code></pre>
-]]></content>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Extended Binary Tree</title>
     <url>/posts/a1a29755/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="extended-binary-tree">Extended Binary Tree</h1>
-<p>具有 <code>External Node</code> 的 B.T. 稱之</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>具有 <code>External Node</code> 的 B.T. 稱之</p>
 <ul>
 <li>一個二元樹具有 n 個節點，若以 Link List 表示，則會有 <code>n+1 條空 Link</code>，在這些空 Link 上加上特定節點，稱為 External Node (或 Failure Node)，其餘 Nodes 稱 <code>Internal Nodes</code></li>
 <li>外部節點數 = 內部節點數 + 1 <strong>( 2n – (n - 1) = n + 1 )</strong></li>
@@ -1797,8 +1789,7 @@ class Solution:
   <entry>
     <title>Graph Storage Structures</title>
     <url>/posts/6592a919/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="圖形的儲存結構-graph-storage-structures">圖形的儲存結構 (Graph Storage Structures)</h1>
-<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>若要在系統中表示一個圖形，需要儲存兩個集合：
 <ul>
 <li>圖形的頂點 ( <code>Vertices</code> )</li>
@@ -1954,8 +1945,7 @@ e &amp;= \sum_{i=1}^n D_i \\
   <entry>
     <title>Graph Traversal</title>
     <url>/posts/108de846/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="圖形追蹤-traverse-graph">圖形追蹤 (Traverse Graph)</h1>
-<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li><strong>目的：</strong>
 <ul>
 <li>圖形中的所有頂點都被拜訪到，且僅被拜訪到一次</li>
@@ -2139,8 +2129,7 @@ e &amp;= \sum_{i=1}^n D_i \\
   <entry>
     <title>Graph</title>
     <url>/posts/c8842ad8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="graph">Graph</h1>
-<p>一個圖形(Graph) 是由<strong>頂點集合</strong> V 與<strong>邊集合</strong> E 所組成，表示如下： <code>G (V, E)</code> <img src="/posts/c8842ad8/g1.jpg" class=""> <a id="more"></a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一個圖形(Graph) 是由<strong>頂點集合</strong> V 與<strong>邊集合</strong> E 所組成，表示如下： <code>G (V, E)</code> <img src="/posts/c8842ad8/g1.jpg" class=""> <a id="more"></a></p>
 <h2 id="圖形種類">圖形種類</h2>
 <h3 id="無向圖-undirected-graph">無向圖 (Undirected graph)</h3>
 <ul>
@@ -2650,6 +2639,88 @@ Output: [1]</code></pre> Constraints:</p>
       </tags>
   </entry>
   <entry>
+    <title>Insertion Sort</title>
+    <url>/posts/76d24d28/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>想像手上有一副撲克牌，若想要將紙牌從左到右按照「小到大」排序。 <strong>Insertion Sort</strong> 的方法為：將第i張紙牌加入(insert)「前i−1張排序過」的紙牌組合，得到i張排序過的紙牌組合。 給一張圖就很好理解: <img src="/posts/76d24d28/Insertion-sort-example-300px.gif" class=""> <a id="more"></a></p>
+<img src="/posts/76d24d28/%E6%8E%92%E5%BA%8F.jpg" class="">
+<img src="/posts/76d24d28/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
+<p><strong>Algorithm 主要由 2 個副程式組成:</strong></p>
+<h2 id="insert">Insert</h2>
+<ul>
+<li>將<strong>某一筆記錄 x</strong> 插入到 <mark class="label primary">S[1] ~ S[i-1] 等 i - 1 筆已排序好的串列</mark>中，使之成為 <mark class="label info">i 筆已排序好的串列</mark></li>
+<li>即: <strong>決定 x 插入的位置</strong></li>
+</ul>
+<h2 id="sort">Sort</h2>
+<ul>
+<li>將<strong>未排序好</strong>的記錄透過 <code>Insert</code> 的動作，使之成為排序好的記錄</li>
+<li>共需做 n - 1 回合，且由第二筆資料開始做起，∴ 迴圈: <mark class="label primary">for i = 2 to n</mark></li>
+</ul>
+<h1 id="程式碼">程式碼</h1>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>selection_sort</span><a href="/downloads/code/Insertion-Sort/code.py">view raw</a></div><code class="language-python">def insertion_sort(collection: list) -&gt; list:
+    # 依序從collection[1:]開始往前插入
+    for insert_index, insert_value in enumerate(collection[1:]):
+        temp_index &#x3D; insert_index
+        # 檢查到index&#x3D;0停止 and 一個一個往前比
+        while insert_index &gt;&#x3D; 0 and insert_value &lt; collection[insert_index]:
+            # 往後移一個index
+            collection[insert_index + 1] &#x3D; collection[insert_index]
+            # 繼續往前
+            insert_index -&#x3D; 1
+        # 有改變index
+        if insert_index !&#x3D; temp_index:
+            # 前面while最後一行insert_index -&#x3D; 1
+            collection[insert_index + 1] &#x3D; insert_value
+    return collection
+
+
+if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
+    from doctest import testmod
+
+    testmod()
+
+    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
+    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
+    print(f&quot;{insertion_sort(unsorted) &#x3D; }&quot;)</code></pre>
+<h1 id="特性">特性</h1>
+<ul>
+<li>資料量少時較高效，且比其他<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-11-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-11-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-11-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-11-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-11-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-11-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-11-TEX-N-29"></use></g></g></g></svg></mjx-container>的排序法高效（selection sort/bubble sort）。</li>
+<li><strong>自適應排序</strong>：可根據當前資料排序情形加速排序，資料越接近排序完成，效率越高。</li>
+<li><strong>穩定排序</strong>：相同鍵值的元素，排序後相對位置不改變。</li>
+<li><strong>原地排序</strong>：不需額外花費儲存空間來排序。</li>
+<li><strong>即時演算法</strong>：可處理逐步輸入的資料，不需等資料完全備妥。</li>
+</ul>
+<h1 id="變形">變形</h1>
+<p>請參考 <a href="https://rust-algo.club/sorting/insertion_sort/index.html#%E8%AE%8A%E5%BD%A2">Binary Insertion Sort</a></p>
+<h1 id="時間複雜度">時間複雜度</h1>
+<h2 id="best-case">best case</h2>
+<p>若要處理的 array 剛好是 ascending，那只要比較 n-1 次，所以 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-10-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-10-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-10-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-10-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-10-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-10-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-10-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-10-TEX-N-29"></use></g></g></g></svg></mjx-container> T(n) = T(n - 1) + 1</p>
+<h2 id="average-case">average case</h2>
+<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-8-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-8-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-8-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-8-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-8-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-8-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-8-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-8-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-8-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-8-TEX-N-29"></use></g></g></g></svg></mjx-container>
+<p>T(n) = T(n - 1) + n/2 <div class="note success"><p><img src="/posts/76d24d28/i.jpg" class=""></p>
+</div> <div class="note info"><p>詳情請參考 <a href="http://home.cse.ust.hk/faculty/golin/COMP271Sp03/Notes/Ins_Sort_Average_Case.pdf">Mordecai Golin：Average Case Analysis of Insertionsort</a></p>
+</div></p>
+<h2 id="worst-case">worst case</h2>
+<p>若要處理的 array 剛好是 descending，那麼第 i 個元素則需要向前比較 i-1 次，所以 n+(n-1)+...+1 = <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.781ex" xmlns="http://www.w3.org/2000/svg" width="6.204ex" height="3.15ex" role="img" focusable="false" viewBox="0 -1047.1 2742.3 1392.1" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-6-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220, 516.8) scale(0.707)"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(989, 0)"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1589, 0)"><use xlink:href="#MJX-6-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(2367, 0)"><use xlink:href="#MJX-6-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(2867, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g><g data-mml-node="mn" transform="translate(1194.4, -345) scale(0.707)"><use xlink:href="#MJX-6-TEX-N-32"></use></g><rect width="2502.3" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container>，因此是 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-6-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container> T(n) = T(n - 1) + (n - 1)</p>
+<h2 id="almost-sorted-case">"Almost sorted" case</h2>
+<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-6-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container>
+<p>幾乎每次進到 insert 動作時( while 迴圈 )條件檢查就被擋下來，所以是 constant time，最外圈 loop( for迴圈 )執行 N-1 次。 所以是 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-6-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container>。</p>
+<h1 id="空間複雜度">空間複雜度</h1>
+<p><strong>O(1)</strong></p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="http://alrightchiu.github.io/SecondRound/comparison-sort-insertion-sortcha-ru-pai-xu-fa.html">插入排序法</a></li>
+<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort">Insertion Sort</a></li>
+<li><a href="https://github.com/TheAlgorithms/Python/blob/master/sorts/insertion_sort.py">shellhub GitHub</a></li>
+<li><a href="https://rust-algo.club/sorting/insertion_sort/index.html#%E8%AE%8A%E5%BD%A2">插入排序 Insertion Sort</a></li>
+<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>資料結構</tag>
+        <tag>演算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Link Lists</title>
     <url>/posts/d37550bb/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="定義">定義</h1>
@@ -2911,89 +2982,6 @@ end</code></pre></p>
 ]]></content>
       <tags>
         <tag>資料結構</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Insertion Sort</title>
-    <url>/posts/76d24d28/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="insertion-sort">Insertion Sort</h1>
-<p>想像手上有一副撲克牌，若想要將紙牌從左到右按照「小到大」排序。 <strong>Insertion Sort</strong> 的方法為：將第i張紙牌加入(insert)「前i−1張排序過」的紙牌組合，得到i張排序過的紙牌組合。 給一張圖就很好理解: <img src="/posts/76d24d28/Insertion-sort-example-300px.gif" class=""> <a id="more"></a></p>
-<img src="/posts/76d24d28/%E6%8E%92%E5%BA%8F.jpg" class="">
-<img src="/posts/76d24d28/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
-<p><strong>Algorithm 主要由 2 個副程式組成:</strong></p>
-<h2 id="insert">Insert</h2>
-<ul>
-<li>將<strong>某一筆記錄 x</strong> 插入到 <mark class="label primary">S[1] ~ S[i-1] 等 i - 1 筆已排序好的串列</mark>中，使之成為 <mark class="label info">i 筆已排序好的串列</mark></li>
-<li>即: <strong>決定 x 插入的位置</strong></li>
-</ul>
-<h2 id="sort">Sort</h2>
-<ul>
-<li>將<strong>未排序好</strong>的記錄透過 <code>Insert</code> 的動作，使之成為排序好的記錄</li>
-<li>共需做 n - 1 回合，且由第二筆資料開始做起，∴ 迴圈: <mark class="label primary">for i = 2 to n</mark></li>
-</ul>
-<h1 id="程式碼">程式碼</h1>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>selection_sort</span><a href="/downloads/code/Insertion-Sort/code.py">view raw</a></div><code class="language-python">def insertion_sort(collection: list) -&gt; list:
-    # 依序從collection[1:]開始往前插入
-    for insert_index, insert_value in enumerate(collection[1:]):
-        temp_index &#x3D; insert_index
-        # 檢查到index&#x3D;0停止 and 一個一個往前比
-        while insert_index &gt;&#x3D; 0 and insert_value &lt; collection[insert_index]:
-            # 往後移一個index
-            collection[insert_index + 1] &#x3D; collection[insert_index]
-            # 繼續往前
-            insert_index -&#x3D; 1
-        # 有改變index
-        if insert_index !&#x3D; temp_index:
-            # 前面while最後一行insert_index -&#x3D; 1
-            collection[insert_index + 1] &#x3D; insert_value
-    return collection
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    from doctest import testmod
-
-    testmod()
-
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    print(f&quot;{insertion_sort(unsorted) &#x3D; }&quot;)</code></pre>
-<h1 id="特性">特性</h1>
-<ul>
-<li>資料量少時較高效，且比其他<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-11-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-11-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-11-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-11-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-11-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-11-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-11-TEX-N-29"></use></g></g></g></svg></mjx-container>的排序法高效（selection sort/bubble sort）。</li>
-<li><strong>自適應排序</strong>：可根據當前資料排序情形加速排序，資料越接近排序完成，效率越高。</li>
-<li><strong>穩定排序</strong>：相同鍵值的元素，排序後相對位置不改變。</li>
-<li><strong>原地排序</strong>：不需額外花費儲存空間來排序。</li>
-<li><strong>即時演算法</strong>：可處理逐步輸入的資料，不需等資料完全備妥。</li>
-</ul>
-<h1 id="變形">變形</h1>
-<p>請參考 <a href="https://rust-algo.club/sorting/insertion_sort/index.html#%E8%AE%8A%E5%BD%A2">Binary Insertion Sort</a></p>
-<h1 id="時間複雜度">時間複雜度</h1>
-<h2 id="best-case">best case</h2>
-<p>若要處理的 array 剛好是 ascending，那只要比較 n-1 次，所以 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-10-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-10-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-10-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-10-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-10-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-10-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-10-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-10-TEX-N-29"></use></g></g></g></svg></mjx-container> T(n) = T(n - 1) + 1</p>
-<h2 id="average-case">average case</h2>
-<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-8-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-8-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-8-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-8-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-8-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-8-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-8-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-8-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-8-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-8-TEX-N-29"></use></g></g></g></svg></mjx-container>
-<p>T(n) = T(n - 1) + n/2 <div class="note success"><p><img src="/posts/76d24d28/i.jpg" class=""></p>
-</div> <div class="note info"><p>詳情請參考 <a href="http://home.cse.ust.hk/faculty/golin/COMP271Sp03/Notes/Ins_Sort_Average_Case.pdf">Mordecai Golin：Average Case Analysis of Insertionsort</a></p>
-</div></p>
-<h2 id="worst-case">worst case</h2>
-<p>若要處理的 array 剛好是 descending，那麼第 i 個元素則需要向前比較 i-1 次，所以 n+(n-1)+...+1 = <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.781ex" xmlns="http://www.w3.org/2000/svg" width="6.204ex" height="3.15ex" role="img" focusable="false" viewBox="0 -1047.1 2742.3 1392.1" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-6-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220, 516.8) scale(0.707)"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(989, 0)"><use xlink:href="#MJX-6-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1589, 0)"><use xlink:href="#MJX-6-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(2367, 0)"><use xlink:href="#MJX-6-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(2867, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g><g data-mml-node="mn" transform="translate(1194.4, -345) scale(0.707)"><use xlink:href="#MJX-6-TEX-N-32"></use></g><rect width="2502.3" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container>，因此是 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.531ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 2886.8 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1152, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D441"></use></g><g data-mml-node="mn" transform="translate(942.3, 363) scale(0.707)"><use xlink:href="#MJX-6-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2497.8, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container> T(n) = T(n - 1) + (n - 1)</p>
-<h2 id="almost-sorted-case">"Almost sorted" case</h2>
-<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-6-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container>
-<p>幾乎每次進到 insert 動作時( while 迴圈 )條件檢查就被擋下來，所以是 constant time，最外圈 loop( for迴圈 )執行 N-1 次。 所以是 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="5.495ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2429 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-6-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-6-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-6-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-6-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-6-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-6-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(2040, 0)"><use xlink:href="#MJX-6-TEX-N-29"></use></g></g></g></svg></mjx-container>。</p>
-<h1 id="空間複雜度">空間複雜度</h1>
-<p><strong>O(1)</strong></p>
-<h1 id="參考資料">參考資料</h1>
-<ul>
-<li><a href="http://alrightchiu.github.io/SecondRound/comparison-sort-insertion-sortcha-ru-pai-xu-fa.html">插入排序法</a></li>
-<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort">Insertion Sort</a></li>
-<li><a href="https://github.com/TheAlgorithms/Python/blob/master/sorts/insertion_sort.py">shellhub GitHub</a></li>
-<li><a href="https://rust-algo.club/sorting/insertion_sort/index.html#%E8%AE%8A%E5%BD%A2">插入排序 Insertion Sort</a></li>
-<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>資料結構</tag>
-        <tag>演算法</tag>
       </tags>
   </entry>
   <entry>
@@ -3384,10 +3372,100 @@ class Solution:
       </tags>
   </entry>
   <entry>
+    <title>Queue: First in first out Data Structure</title>
+    <url>/posts/2f0b1ee1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/design-circular-queue/">LeetCode 622</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="design-circular-queue">Design Circular Queue</h1>
+<p>Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".</p>
+<p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p>
+<p>Implementation the <code>MyCircularQueue</code> class:</p>
+<p><code>MyCircularQueue(k)</code> Initializes the object with the size of the queue to be <code>k</code>. <code>int Front()</code> Gets the front item from the queue. If the queue is empty, return <code>-1</code>. <code>int Rear()</code> Gets the last item from the queue. If the queue is empty, return <code>-1</code>. <code>boolean enQueue(int value)</code> Inserts an element into the circular queue. Return <code>true</code> if the operation is successful. <code>boolean deQueue()</code> Deletes an element from the circular queue. Return <code>true</code> if the operation is successful. <code>boolean isEmpty()</code> Checks whether the circular queue is empty or not. <code>boolean isFull()</code> Checks whether the circular queue is full or not.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input
+[&quot;MyCircularQueue&quot;, &quot;enQueue&quot;, &quot;enQueue&quot;, &quot;enQueue&quot;, &quot;enQueue&quot;, &quot;Rear&quot;, &quot;isFull&quot;, &quot;deQueue&quot;, &quot;enQueue&quot;, &quot;Rear&quot;]
+[[3], [1], [2], [3], [4], [], [], [], [4], []]
+Output
+[null, true, true, true, false, 3, true, true, true, 4]
+
+Explanation
+MyCircularQueue myCircularQueue &#x3D; new MyCircularQueue(3);
+myCircularQueue.enQueue(1); &#x2F;&#x2F; return True
+myCircularQueue.enQueue(2); &#x2F;&#x2F; return True
+myCircularQueue.enQueue(3); &#x2F;&#x2F; return True
+myCircularQueue.enQueue(4); &#x2F;&#x2F; return False
+myCircularQueue.Rear();     &#x2F;&#x2F; return 3
+myCircularQueue.isFull();   &#x2F;&#x2F; return True
+myCircularQueue.deQueue();  &#x2F;&#x2F; return True
+myCircularQueue.enQueue(4); &#x2F;&#x2F; return True
+myCircularQueue.Rear();     &#x2F;&#x2F; return 4</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= k &lt;= 1000</code></li>
+<li><code>0 &lt;= value &lt;= 1000</code></li>
+<li>At most <code>3000</code> calls will be made to <code>enQueue</code>, <code>deQueue</code>, <code>Front</code>, <code>Rear</code>, <code>isEmpty</code>, and <code>isFull</code>.</li>
+</ul>
+<p><strong>Follow up:</strong> Could you solve the problem without using the built-in queue?</p>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MyCircularQueue:
+
+    def __init__(self, k: int):
+        self.queue &#x3D; [0] * k
+        self.head &#x3D; -1
+        self.tail &#x3D; -1
+
+    def enQueue(self, value: int) -&gt; bool:
+        if self.isFull():
+            return False
+        elif self.isEmpty():
+            self.head &#x3D; self.tail &#x3D; 0
+            self.queue[0] &#x3D; value
+            return True
+        else:
+            self.tail &#x3D; (self.tail+1) % len(self.queue)
+            self.queue[self.tail] &#x3D; value
+            return True
+                        
+    def deQueue(self) -&gt; bool:
+        if self.isEmpty():
+            return False
+        if self.head &#x3D;&#x3D; self.tail:
+            self.head &#x3D; self.tail &#x3D; -1
+        else:
+            self.head &#x3D; (self.head+1) % len(self.queue)
+        return True        
+            
+    def Front(self) -&gt; int:
+        if self.head !&#x3D; -1:
+            return self.queue[self.head]
+        else:
+            return -1
+
+    def Rear(self) -&gt; int:
+        if self.tail !&#x3D; -1:
+            return self.queue[self.tail]
+        else:
+            return -1
+
+    def isEmpty(self) -&gt; bool:
+        if self.head &#x3D;&#x3D; -1:
+            return True
+        else:
+            return False
+
+    def isFull(self) -&gt; bool:
+        if self.head !&#x3D; -1 and (self.tail+1) % len(self.queue) &#x3D;&#x3D; self.head:
+            return True
+        return False</code></pre>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Merge sort</title>
     <url>/posts/d7c658d8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="merge-sort">Merge sort</h1>
-<p>Merge sort 利用 <strong>divide and conquer</strong> 遵循以下三個步驟:</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Merge sort 利用 <strong>divide and conquer</strong> 遵循以下三個步驟:</p>
 <ol type="1">
 <li><strong>Divide</strong> by finding the number q of the position midway between p and r. Do this step the same way we found the midpoint in binary search: add p and r, divide by 2, and round down.</li>
 <li><strong>Conquer</strong> by recursively sorting the subarrays in each of the two subproblems created by the divide step. That is, recursively sort the subarray <strong>array[p..q]</strong> and recursively sort the subarray <strong>array[q+1..r]</strong></li>
@@ -3533,95 +3611,10 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
       </tags>
   </entry>
   <entry>
-    <title>Queue: First in first out Data Structure</title>
-    <url>/posts/2f0b1ee1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
-<ul>
-<li><strong><a href="https://leetcode.com/problems/design-circular-queue/">LeetCode 622</a></strong> <a id="more"></a></li>
-</ul>
-<h1 id="design-circular-queue">Design Circular Queue</h1>
-<p>Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".</p>
-<p>One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.</p>
-<p>Implementation the <code>MyCircularQueue</code> class:</p>
-<p><code>MyCircularQueue(k)</code> Initializes the object with the size of the queue to be <code>k</code>. <code>int Front()</code> Gets the front item from the queue. If the queue is empty, return <code>-1</code>. <code>int Rear()</code> Gets the last item from the queue. If the queue is empty, return <code>-1</code>. <code>boolean enQueue(int value)</code> Inserts an element into the circular queue. Return <code>true</code> if the operation is successful. <code>boolean deQueue()</code> Deletes an element from the circular queue. Return <code>true</code> if the operation is successful. <code>boolean isEmpty()</code> Checks whether the circular queue is empty or not. <code>boolean isFull()</code> Checks whether the circular queue is full or not.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input
-[&quot;MyCircularQueue&quot;, &quot;enQueue&quot;, &quot;enQueue&quot;, &quot;enQueue&quot;, &quot;enQueue&quot;, &quot;Rear&quot;, &quot;isFull&quot;, &quot;deQueue&quot;, &quot;enQueue&quot;, &quot;Rear&quot;]
-[[3], [1], [2], [3], [4], [], [], [], [4], []]
-Output
-[null, true, true, true, false, 3, true, true, true, 4]
-
-Explanation
-MyCircularQueue myCircularQueue &#x3D; new MyCircularQueue(3);
-myCircularQueue.enQueue(1); &#x2F;&#x2F; return True
-myCircularQueue.enQueue(2); &#x2F;&#x2F; return True
-myCircularQueue.enQueue(3); &#x2F;&#x2F; return True
-myCircularQueue.enQueue(4); &#x2F;&#x2F; return False
-myCircularQueue.Rear();     &#x2F;&#x2F; return 3
-myCircularQueue.isFull();   &#x2F;&#x2F; return True
-myCircularQueue.deQueue();  &#x2F;&#x2F; return True
-myCircularQueue.enQueue(4); &#x2F;&#x2F; return True
-myCircularQueue.Rear();     &#x2F;&#x2F; return 4</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= k &lt;= 1000</code></li>
-<li><code>0 &lt;= value &lt;= 1000</code></li>
-<li>At most <code>3000</code> calls will be made to <code>enQueue</code>, <code>deQueue</code>, <code>Front</code>, <code>Rear</code>, <code>isEmpty</code>, and <code>isFull</code>.</li>
-</ul>
-<p><strong>Follow up:</strong> Could you solve the problem without using the built-in queue?</p>
-<h2 id="我的解答">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MyCircularQueue:
-
-    def __init__(self, k: int):
-        self.queue &#x3D; [0] * k
-        self.head &#x3D; -1
-        self.tail &#x3D; -1
-
-    def enQueue(self, value: int) -&gt; bool:
-        if self.isFull():
-            return False
-        elif self.isEmpty():
-            self.head &#x3D; self.tail &#x3D; 0
-            self.queue[0] &#x3D; value
-            return True
-        else:
-            self.tail &#x3D; (self.tail+1) % len(self.queue)
-            self.queue[self.tail] &#x3D; value
-            return True
-                        
-    def deQueue(self) -&gt; bool:
-        if self.isEmpty():
-            return False
-        if self.head &#x3D;&#x3D; self.tail:
-            self.head &#x3D; self.tail &#x3D; -1
-        else:
-            self.head &#x3D; (self.head+1) % len(self.queue)
-        return True        
-            
-    def Front(self) -&gt; int:
-        if self.head !&#x3D; -1:
-            return self.queue[self.head]
-        else:
-            return -1
-
-    def Rear(self) -&gt; int:
-        if self.tail !&#x3D; -1:
-            return self.queue[self.tail]
-        else:
-            return -1
-
-    def isEmpty(self) -&gt; bool:
-        if self.head &#x3D;&#x3D; -1:
-            return True
-        else:
-            return False
-
-    def isFull(self) -&gt; bool:
-        if self.head !&#x3D; -1 and (self.tail+1) % len(self.queue) &#x3D;&#x3D; self.head:
-            return True
-        return False</code></pre>
+    <title>Queue &amp; Stack Conclusion</title>
+    <url>/posts/b48d0745/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>
 ]]></content>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
   </entry>
   <entry>
     <title>Queue and BFS</title>
@@ -3795,16 +3788,9 @@ Explanation: 13 &#x3D; 4 + 9.</code></pre> <strong>Constraints:</strong></p>
       </tags>
   </entry>
   <entry>
-    <title>Queue &amp; Stack Conclusion</title>
-    <url>/posts/b48d0745/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>
-]]></content>
-  </entry>
-  <entry>
     <title>Queue</title>
     <url>/posts/be3c5067/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="queue-佇列">Queue (佇列)</h1>
-<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>具有 FIFO (First-in, First-out) 性質的有序串列</li>
 <li>插入與刪除元素的動作發生在佇列的不同端
 <ul>
@@ -4045,8 +4031,7 @@ end</code></pre>
   <entry>
     <title>Recursion 的複雜度分析</title>
     <url>/posts/2105c5c8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="複雜度分析">複雜度分析</h1>
-<p>分析步驟：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>分析步驟：</p>
 <ol type="1">
 <li>找出遞迴演算法的<code>遞迴方程式 T(n)</code> 來表達該演算法的執行次數</li>
 <li>解這個遞迴方程式來求出該演算法的<code>時間複雜度</code></li>
@@ -4129,10 +4114,153 @@ end</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Searching for Items in an Array</title>
+    <url>/posts/a81fe50f/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/check-if-n-and-its-double-exist/">LeetCode 1346</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/valid-mountain-array/">LeetCode 941</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-1346-check-if-n-and-its-double-exist">LeetCode 1346: Check If N and Its Double Exist</h1>
+<p>Given an array <code>arr</code> of integers, check if there exists two integers <code>N</code> and <code>M</code> such that <code>N</code> is the double of <code>M</code> ( i.e. <code>N = 2 * M</code>).</p>
+<p>More formally check if there exists two indices <code>i</code> and <code>j</code> such that :</p>
+<ul>
+<li><code>i != j</code></li>
+<li><code>0 &lt;= i, j &lt; arr.length</code></li>
+<li><code>arr[i] == 2 * arr[j]</code></li>
+</ul>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [10,2,5,3]
+Output: true
+Explanation: N &#x3D; 10 is the double of M &#x3D; 5,that is, 10 &#x3D; 2 * 5.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [7,1,14,11]
+Output: true
+Explanation: N &#x3D; 14 is the double of M &#x3D; 7,that is, 14 &#x3D; 2 * 7.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [3,1,7,11]
+Output: false
+Explanation: In this case does not exist N and M, such that N &#x3D; 2 * M.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>2 &lt;= arr.length &lt;= 500</code></li>
+<li><code>-10^3 &lt;= arr[i] &lt;= 10^3</code></li>
+</ul>
+<h2 id="我的解法-暴力兩層迴圈">我的解法: 暴力兩層迴圈</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def checkIfExist(self, arr: List[int]) -&gt; bool:
+        for i in range(len(arr)):
+            for j in range(len(arr)):
+                if i !&#x3D; j and arr[i] &#x3D;&#x3D; arr[j]*2:
+                    return True
+        return False</code></pre>
+<p><strong>Time</strong>: O(<span class="math inline">\(n^2\)</span>) <strong>Space</strong>: O(1)</p>
+<h1 id="leetcode-941-valid-mountain-array">LeetCode 941: Valid Mountain Array</h1>
+<p>Given an array of integers <code>arr</code>, return <code>true</code> if and only if it is a valid mountain array.</p>
+<p>Recall that arr is a mountain array if and only if:</p>
+<ul>
+<li><code>arr.length &gt;= 3</code></li>
+<li>There exists some <code>i</code> with <code>0 &lt; i &lt; arr.length - 1</code> such that:
+<ul>
+<li><code>arr[0] &lt; arr[1] &lt; ... &lt; arr[i - 1] &lt; arr[i]</code></li>
+<li><code>arr[i] &gt; arr[i + 1] &gt; ... &gt; arr[arr.length - 1]</code></li>
+</ul></li>
+</ul>
+<img src="/posts/a81fe50f/Valid.jpg" class="">
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [2,1]
+Output: false</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [3,5,5]
+Output: false</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [0,3,2,1]
+Output: true</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= arr.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li>0 &lt;= arr[i] &lt;= <span class="math inline">\(10^4\)</span></li>
+</ul>
+<h2 id="我的解法">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def validMountainArray(self, arr: List[int]) -&gt; bool:
+        i &#x3D; 0
+        j &#x3D; len(arr)-1
+        if len(arr) &gt;&#x3D; 3:
+            for i in range(len(arr)-1):
+                if arr[i] &gt;&#x3D; arr[i+1]:
+                    break
+            for j in range(len(arr)-1, 0, -1):    
+                if arr[j-1] &lt;&#x3D; arr[j]:
+                    break
+            if i &#x3D;&#x3D; j:
+                return True
+        return False</code></pre>
+<p><strong>Time</strong>: O(n) <strong>Space</strong>: O(1)</p>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Selection Sort</title>
+    <url>/posts/937e8c27/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Selection Sort 的概念很簡單，假設有一個 array 需要排序，按照以下步驟排序。</p>
+<ol type="1">
+<li>找到最小的數，和第一個數 swap</li>
+<li>找到第二小的數，和第二個數 swap</li>
+<li>繼續往下找直到最後一個數</li>
+</ol>
+<a id="more"></a>
+<img src="/posts/937e8c27/Selection-Sort-Animation.gif" class="">
+<img src="/posts/937e8c27/%E6%8E%92%E5%BA%8F.jpg" class="">
+<img src="/posts/937e8c27/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
+<h1 id="完整程式碼">完整程式碼</h1>
+<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>selection_sort</span><a href="/downloads/code/Selection-Sort/Selection-Sort.py">view raw</a></div><code class="language-python">def selection_sort(collection):
+    length &#x3D; len(collection)
+    for i in range(length - 1):
+        least &#x3D; i
+        for k in range(i + 1, length):
+            if collection[k] &lt; collection[least]:
+                least &#x3D; k
+        if least !&#x3D; i:
+            collection[least], collection[i] &#x3D; (collection[i], collection[least])
+    return collection
+
+
+if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
+    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
+    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
+    print(selection_sort(unsorted))</code></pre>
+<h1 id="特性">特性</h1>
+<ul>
+<li>對小資料序列排序效率較高</li>
+<li><strong>不穩定排序</strong>：排序後，相同鍵值的元素相對位置可能改變</li>
+<li><strong>原地排序</strong>：不需額外花費儲存空間來排序</li>
+</ul>
+<h3 id="不穩定排序">不穩定排序</h3>
+<p>假定有一個序列要遞增排序，其中有重複的 2 元素，我們將其標上 2a、2b 以利辨識。 <pre class="line-numbers language-none"><code class="language-none">[2a, 3, 4, 2b, 1]</code></pre> 開始迭代找出最小值並置換。 <pre class="line-numbers language-none"><code class="language-none"> *             *
+[1, 3, 4, 2b, 2a] # 1. 置換 2a, 1
+
+     *     *
+[1, 2b, 4, 3, 2a] # 2. 置換 3, 2b
+
+        *       *
+[1, 2b, 2a, 3, 4] # 3. 置換 4, 2a</code></pre> 有沒有發現， 2a 與 2b 的相對順序顛倒了呢？</p>
+<p>問題出在 selection sort 是以置換的方式排序每次迭代的最小值。若我們將置換（swap）改為插入（insert），那麼 selection sort 就會是穩定排序，但相對地，需要位移剩餘未排序的元素，除非使用 linked list 或其他提供 <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-12-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-12-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-12-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-12-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-12-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-12-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-12-TEX-N-29"></use></g></g></g></svg></mjx-container></strong> insertion 的資料結構，不然就會多出額外 <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-11-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-11-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-11-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-11-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-11-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-11-TEX-N-29"></use></g></g></g></svg></mjx-container></strong> 的寫入成本。</p>
+<h1 id="時間複雜度">時間複雜度</h1>
+<p><strong>Best / Average / Worst Case: <span class="math inline">\(O(n^2)\)</span></strong></p>
+<p>不論輸入資料如何，演算法中的兩個迴圈皆會執行 <img src="/posts/937e8c27/s.jpg" class=""></p>
+<h1 id="空間複雜度">空間複雜度</h1>
+<p><strong>O(1)</strong></p>
+<h1 id="變形">變形</h1>
+<p><a href="https://yu-shin.github.io/2021-01-09-heapsort.html">Heapsort</a> 是一個高效的排序法，使用 selection sort 融合 <a href="https://en.wikipedia.org/wiki/Heap_(data_structure)">heap</a> 這種半排序的資料結構，讓時間複雜度進化至 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="10.355ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4577 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-9-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-9-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-9-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-9-TEX-I-1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path id="MJX-9-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-9-TEX-I-1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path id="MJX-9-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-9-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-9-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-9-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(2040, 0)"><use xlink:href="#MJX-9-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(2338, 0)"><use xlink:href="#MJX-9-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(2823, 0)"><use xlink:href="#MJX-9-TEX-I-1D454"></use></g><g data-mml-node="mi" transform="translate(3300, 0)"><use xlink:href="#MJX-9-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(4188, 0)"><use xlink:href="#MJX-9-TEX-N-29"></use></g></g></g></svg></mjx-container>。更多詳情可以參考<a href="https://yu-shin.github.io/2021-01-09-heapsort.html">這篇介紹</a>。</p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/selection-sort-pseudocode">Selection sort pseudocode</a></li>
+<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/analysis-of-selection-sort">Analysis of selection sort</a></li>
+<li><a href="https://github.com/TheAlgorithms/Python/blob/master/sorts/selection_sort.py">Selection Sort</a></li>
+<li><a href="https://rust-algo.club/sorting/selection_sort/index.html">選擇排序 Selection sort</a></li>
+<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>資料結構</tag>
+        <tag>演算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Recursion</title>
     <url>/posts/36e66ece/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="recursion">Recursion</h1>
-<p>遞迴的基本概念就是:</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>遞迴的基本概念就是:</p>
 <blockquote>
 <p>To solve a problem, solve a subproblem that is a smaller instance of the same problem, and then use the solution to that smaller instance to solve the original problem. <a id="more"></a></p>
 </blockquote>
@@ -4582,156 +4710,9 @@ else                               &#x2F;&#x2F; 當 list[ ] 中的元素尚未�
       </tags>
   </entry>
   <entry>
-    <title>Searching for Items in an Array</title>
-    <url>/posts/a81fe50f/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="searching-for-items-in-an-array">Searching for Items in an Array</h1>
-<p><strong>本文蒐集</strong></p>
-<ul>
-<li><strong><a href="https://leetcode.com/problems/check-if-n-and-its-double-exist/">LeetCode 1346</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/valid-mountain-array/">LeetCode 941</a></strong> <a id="more"></a></li>
-</ul>
-<h1 id="leetcode-1346-check-if-n-and-its-double-exist">LeetCode 1346: Check If N and Its Double Exist</h1>
-<p>Given an array <code>arr</code> of integers, check if there exists two integers <code>N</code> and <code>M</code> such that <code>N</code> is the double of <code>M</code> ( i.e. <code>N = 2 * M</code>).</p>
-<p>More formally check if there exists two indices <code>i</code> and <code>j</code> such that :</p>
-<ul>
-<li><code>i != j</code></li>
-<li><code>0 &lt;= i, j &lt; arr.length</code></li>
-<li><code>arr[i] == 2 * arr[j]</code></li>
-</ul>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [10,2,5,3]
-Output: true
-Explanation: N &#x3D; 10 is the double of M &#x3D; 5,that is, 10 &#x3D; 2 * 5.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [7,1,14,11]
-Output: true
-Explanation: N &#x3D; 14 is the double of M &#x3D; 7,that is, 14 &#x3D; 2 * 7.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [3,1,7,11]
-Output: false
-Explanation: In this case does not exist N and M, such that N &#x3D; 2 * M.</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li><code>2 &lt;= arr.length &lt;= 500</code></li>
-<li><code>-10^3 &lt;= arr[i] &lt;= 10^3</code></li>
-</ul>
-<h2 id="我的解法-暴力兩層迴圈">我的解法: 暴力兩層迴圈</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
-    def checkIfExist(self, arr: List[int]) -&gt; bool:
-        for i in range(len(arr)):
-            for j in range(len(arr)):
-                if i !&#x3D; j and arr[i] &#x3D;&#x3D; arr[j]*2:
-                    return True
-        return False</code></pre>
-<p><strong>Time</strong>: O(<span class="math inline">\(n^2\)</span>) <strong>Space</strong>: O(1)</p>
-<h1 id="leetcode-941-valid-mountain-array">LeetCode 941: Valid Mountain Array</h1>
-<p>Given an array of integers <code>arr</code>, return <code>true</code> if and only if it is a valid mountain array.</p>
-<p>Recall that arr is a mountain array if and only if:</p>
-<ul>
-<li><code>arr.length &gt;= 3</code></li>
-<li>There exists some <code>i</code> with <code>0 &lt; i &lt; arr.length - 1</code> such that:
-<ul>
-<li><code>arr[0] &lt; arr[1] &lt; ... &lt; arr[i - 1] &lt; arr[i]</code></li>
-<li><code>arr[i] &gt; arr[i + 1] &gt; ... &gt; arr[arr.length - 1]</code></li>
-</ul></li>
-</ul>
-<img src="/posts/a81fe50f/Valid.jpg" class="">
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [2,1]
-Output: false</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [3,5,5]
-Output: false</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: arr &#x3D; [0,3,2,1]
-Output: true</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li>1 &lt;= arr.length &lt;= <span class="math inline">\(10^4\)</span></li>
-<li>0 &lt;= arr[i] &lt;= <span class="math inline">\(10^4\)</span></li>
-</ul>
-<h2 id="我的解法">我的解法</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
-    def validMountainArray(self, arr: List[int]) -&gt; bool:
-        i &#x3D; 0
-        j &#x3D; len(arr)-1
-        if len(arr) &gt;&#x3D; 3:
-            for i in range(len(arr)-1):
-                if arr[i] &gt;&#x3D; arr[i+1]:
-                    break
-            for j in range(len(arr)-1, 0, -1):    
-                if arr[j-1] &lt;&#x3D; arr[j]:
-                    break
-            if i &#x3D;&#x3D; j:
-                return True
-        return False</code></pre>
-<p><strong>Time</strong>: O(n) <strong>Space</strong>: O(1)</p>
-]]></content>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Selection Sort</title>
-    <url>/posts/937e8c27/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="selection-sort">Selection Sort</h1>
-<p>Selection Sort 的概念很簡單，假設有一個 array 需要排序，按照以下步驟排序。</p>
-<ol type="1">
-<li>找到最小的數，和第一個數 swap</li>
-<li>找到第二小的數，和第二個數 swap</li>
-<li>繼續往下找直到最後一個數</li>
-</ol>
-<a id="more"></a>
-<img src="/posts/937e8c27/Selection-Sort-Animation.gif" class="">
-<img src="/posts/937e8c27/%E6%8E%92%E5%BA%8F.jpg" class="">
-<img src="/posts/937e8c27/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
-<h1 id="完整程式碼">完整程式碼</h1>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>selection_sort</span><a href="/downloads/code/Selection-Sort/Selection-Sort.py">view raw</a></div><code class="language-python">def selection_sort(collection):
-    length &#x3D; len(collection)
-    for i in range(length - 1):
-        least &#x3D; i
-        for k in range(i + 1, length):
-            if collection[k] &lt; collection[least]:
-                least &#x3D; k
-        if least !&#x3D; i:
-            collection[least], collection[i] &#x3D; (collection[i], collection[least])
-    return collection
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    user_input &#x3D; input(&quot;Enter numbers separated by a comma:\n&quot;).strip()
-    unsorted &#x3D; [int(item) for item in user_input.split(&quot;,&quot;)]
-    print(selection_sort(unsorted))</code></pre>
-<h1 id="特性">特性</h1>
-<ul>
-<li>對小資料序列排序效率較高</li>
-<li><strong>不穩定排序</strong>：排序後，相同鍵值的元素相對位置可能改變</li>
-<li><strong>原地排序</strong>：不需額外花費儲存空間來排序</li>
-</ul>
-<h3 id="不穩定排序">不穩定排序</h3>
-<p>假定有一個序列要遞增排序，其中有重複的 2 元素，我們將其標上 2a、2b 以利辨識。 <pre class="line-numbers language-none"><code class="language-none">[2a, 3, 4, 2b, 1]</code></pre> 開始迭代找出最小值並置換。 <pre class="line-numbers language-none"><code class="language-none"> *             *
-[1, 3, 4, 2b, 2a] # 1. 置換 2a, 1
-
-     *     *
-[1, 2b, 4, 3, 2a] # 2. 置換 3, 2b
-
-        *       *
-[1, 2b, 2a, 3, 4] # 3. 置換 4, 2a</code></pre> 有沒有發現， 2a 與 2b 的相對順序顛倒了呢？</p>
-<p>問題出在 selection sort 是以置換的方式排序每次迭代的最小值。若我們將置換（swap）改為插入（insert），那麼 selection sort 就會是穩定排序，但相對地，需要位移剩餘未排序的元素，除非使用 linked list 或其他提供 <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-12-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-12-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-12-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-12-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-12-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-12-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-12-TEX-N-29"></use></g></g></g></svg></mjx-container></strong> insertion 的資料結構，不然就會多出額外 <strong><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-11-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-11-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-11-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-11-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152, 0)"><use xlink:href="#MJX-11-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652, 0)"><use xlink:href="#MJX-11-TEX-N-29"></use></g></g></g></svg></mjx-container></strong> 的寫入成本。</p>
-<h1 id="時間複雜度">時間複雜度</h1>
-<p><strong>Best / Average / Worst Case: <span class="math inline">\(O(n^2)\)</span></strong></p>
-<p>不論輸入資料如何，演算法中的兩個迴圈皆會執行 <img src="/posts/937e8c27/s.jpg" class=""></p>
-<h1 id="空間複雜度">空間複雜度</h1>
-<p><strong>O(1)</strong></p>
-<h1 id="變形">變形</h1>
-<p><a href="https://yu-shin.github.io/2021-01-09-heapsort.html">Heapsort</a> 是一個高效的排序法，使用 selection sort 融合 <a href="https://en.wikipedia.org/wiki/Heap_(data_structure)">heap</a> 這種半排序的資料結構，讓時間複雜度進化至 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="10.355ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4577 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-9-TEX-I-1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path id="MJX-9-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-9-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-9-TEX-I-1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path id="MJX-9-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-9-TEX-I-1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path id="MJX-9-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-9-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763, 0)"><use xlink:href="#MJX-9-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152, 0)"><use xlink:href="#MJX-9-TEX-I-1D441"></use></g><g data-mml-node="mi" transform="translate(2040, 0)"><use xlink:href="#MJX-9-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(2338, 0)"><use xlink:href="#MJX-9-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(2823, 0)"><use xlink:href="#MJX-9-TEX-I-1D454"></use></g><g data-mml-node="mi" transform="translate(3300, 0)"><use xlink:href="#MJX-9-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(4188, 0)"><use xlink:href="#MJX-9-TEX-N-29"></use></g></g></g></svg></mjx-container>。更多詳情可以參考<a href="https://yu-shin.github.io/2021-01-09-heapsort.html">這篇介紹</a>。</p>
-<h1 id="參考資料">參考資料</h1>
-<ul>
-<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/selection-sort-pseudocode">Selection sort pseudocode</a></li>
-<li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/analysis-of-selection-sort">Analysis of selection sort</a></li>
-<li><a href="https://github.com/TheAlgorithms/Python/blob/master/sorts/selection_sort.py">Selection Sort</a></li>
-<li><a href="https://rust-algo.club/sorting/selection_sort/index.html">選擇排序 Selection sort</a></li>
-<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>資料結構</tag>
-        <tag>演算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Singly Linked List</title>
     <url>/posts/ee70a4b8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="singly-linked-list">Singly Linked List</h1>
-<p><strong>本文蒐集</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
 <ul>
 <li><strong><a href="https://leetcode.com/problems/design-linked-list/">LeetCode 707</a></strong> <a id="more"></a></li>
 </ul>
@@ -5091,7 +5072,7 @@ Output: 3</code></pre> <strong>Constraints:</strong></p>
 <li><code>1 &lt;= m, n &lt;= 300</code></li>
 <li><code>grid[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
 </ul>
-<h2 id="我的答案">我的答案</h2>
+<h2 id="我的解法">我的解法</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
     def numIslands(self, grid: List[List[str]]) -&gt; int:            
         queue &#x3D; []
@@ -5114,6 +5095,206 @@ Output: 3</code></pre> <strong>Constraints:</strong></p>
         self.dfs(grid, i-1, j)
         self.dfs(grid, i, j+1)
         self.dfs(grid, i, j-1)</code></pre>
+<h1 id="leetcode-133-clone-graph">LeetCode 133: Clone Graph</h1>
+<p>Given a reference of a node in a <strong>connected</strong> undirected graph.</p>
+<p>Return a <strong>deep copy</strong> (clone) of the graph.</p>
+<p>Each node in the graph contains a val (<code>int</code>) and a list (<code>List[Node]</code>) of its neighbors. <pre class="line-numbers language-none"><code class="language-none">class Node &#123;
+    public int val;
+    public List&lt;Node&gt; neighbors;
+&#125;</code></pre> <strong>Test case format:</strong></p>
+<p>For simplicity sake, each node's value is the same as the node's index (1-indexed). For example, the first node with <code>val = 1</code>, the second node with <code>val = 2</code>, and so on. The graph is represented in the test case using an adjacency list.</p>
+<p><strong>Adjacency list</strong> is a collection of unordered <strong>lists</strong> used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.</p>
+<p>The given node will always be the first node with <code>val = 1</code>. You must return the <strong>copy of the given node</strong> as a reference to the cloned graph.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= Node.val &lt;= 100</code></li>
+<li><code>Node.val</code> is unique for each node.</li>
+<li>Number of Nodes will not exceed 100.</li>
+<li>There is no repeated edges and no self-loops in the graph.</li>
+<li>The Graph is connected and all nodes can be visited starting from the given node.</li>
+</ul>
+<h2 id="我的解法-1">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for a Node.
+class Node:
+    def __init__(self, val &#x3D; 0, neighbors &#x3D; None):
+        self.val &#x3D; val
+        self.neighbors &#x3D; neighbors if neighbors is not None else []
+&quot;&quot;&quot;
+
+class Solution:
+    def cloneGraph(self, node: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        if node is None:
+            return
+        
+        self.nodes &#x3D; [None] * 100
+        self.dfs(node)
+        for i, _ in enumerate(self.nodes):
+            if _ is not None:
+                return _
+        
+    def dfs(self, node: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        if self.nodes[node.val-1] is None:
+            n &#x3D; Node(val &#x3D; node.val)
+            self.nodes[node.val-1] &#x3D; n
+             
+            for i in node.neighbors:
+                self.dfs(i)
+                n.neighbors.append(self.nodes[i.val-1])
+            
+        else:
+            return</code></pre>
+<h1 id="leetcode-494-target-sum">LeetCode 494: Target Sum</h1>
+<p>You are given an integer array <code>nums</code> and an integer <code>target</code>.</p>
+<p>You want to build an <strong>expression</strong> out of nums by adding one of the symbols <code>'+'</code> and <code>'-'</code> before each integer in nums and then concatenate all the integers.</p>
+<p>For example, if <code>nums = [2, 1]</code>, you can add a <code>'+'</code> before <code>2</code> and a <code>'-'</code> before <code>1</code> and concatenate them to build the expression <code>"+2-1"</code>. Return the number of different <strong>expressions</strong> that you can build, which evaluates to <code>target</code>.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1,1,1,1,1], target &#x3D; 3
+Output: 5
+Explanation: There are 5 ways to assign symbols to make the sum of nums be target 3.
+-1 + 1 + 1 + 1 + 1 &#x3D; 3
++1 - 1 + 1 + 1 + 1 &#x3D; 3
++1 + 1 - 1 + 1 + 1 &#x3D; 3
++1 + 1 + 1 - 1 + 1 &#x3D; 3
++1 + 1 + 1 + 1 - 1 &#x3D; 3</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1], target &#x3D; 1
+Output: 1</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 20</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 1000</code></li>
+<li><code>0 &lt;= sum(nums[i]) &lt;= 1000</code></li>
+<li><code>-1000 &lt;= target &lt;= 1000</code></li>
+</ul>
+<h2 id="我的解法-1-1">我的解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        if nums is None:
+            return
+        if len(nums) &#x3D;&#x3D; 1:
+            if nums[0] &#x3D;&#x3D; 0 and S &#x3D;&#x3D; 0:
+                return 2
+            elif nums[0] &#x3D;&#x3D; abs(S):
+                return 1
+            else:
+                return 0
+        else:
+            n1 &#x3D; self.findTargetSumWays(nums[:-1], S + nums[-1])
+            n2 &#x3D; self.findTargetSumWays(nums[:-1], S - nums[-1])
+            return n1 + n2</code></pre>
+<h2 id="我的解法-2">我的解法 2</h2>
+<p>利用 dict 字典紀錄搭配 list 兩層紀錄已計算過的資訊，但效率不好 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        self.arrived &#x3D; [dict()]*len(nums)
+        print(self.arrived)
+        return self.dfs(nums, S)
+    def dfs(self, nums: List[int], S: int) -&gt; int:
+        if len(nums) &#x3D;&#x3D; 1:
+            if nums[0] &#x3D;&#x3D; abs(S):
+                if S &#x3D;&#x3D; 0:
+                    self.arrived[0][S] &#x3D; 2
+                    return 2
+                else:
+                    self.arrived[0][S] &#x3D; 1
+                    return 1
+            else:
+                self.arrived[0][S] &#x3D; 0
+                return 0
+        else:
+            n1 &#x3D; self.arrived[len(nums)-2].get(S-nums[-1], self.dfs(nums[:-1], S-nums[-1]))
+            n2 &#x3D; self.arrived[len(nums)-2].get(S+nums[-1], self.dfs(nums[:-1], S+nums[-1]))
+            self.arrived[len(nums)-1][S] &#x3D; n1 + n2
+            return n1 + n2</code></pre></p>
+<h2 id="我的解法-3">我的解法 3</h2>
+<p><code>利用 @functools.cache 快取</code></p>
+<p>可參考 <strong><a href="https://docs.python.org/zh-tw/3/library/functools.html">docs</a></strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        @functools.cache
+        def _findWays(idx, remaining):
+            if idx &#x3D;&#x3D; len(nums):
+                return remaining &#x3D;&#x3D; 0
+            return _findWays(idx+1, remaining-nums[idx]) + _findWays(idx+1, remaining+nums[idx])
+        return _findWays(0, S)</code></pre>
+<h2 id="我的解法-4">我的解法 4</h2>
+<p>利用 dict 字典和 set 集合紀錄已計算過的資訊效率不錯 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution: 
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        dp &#x3D; &#123;&#125;
+        
+        def dfs(i&#x3D;0, total&#x3D;0):
+            
+            if i &gt;&#x3D; len(nums):
+                return 1 if total &#x3D;&#x3D; S else 0
+            
+            key &#x3D; (i, total)
+            if key not in dp:
+                dp[key] &#x3D; dfs(i+1, total+nums[i]) + dfs(i+1, total-nums[i])
+            
+            return dp[key]
+        
+        return dfs()</code></pre></p>
+<h1 id="leetcode-94-binary-tree-inorder-traversal">LeetCode 94: Binary Tree Inorder Traversal</h1>
+<p>Given the <code>root</code> of a binary tree, return the inorder traversal of its nodes' values.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the tree is in the range <code>[0, 100]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<p>Recursive solution is trivial, could you do it iteratively?</p>
+<h2 id="我的解法-1-2">我的解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):
+#         self.val &#x3D; val
+#         self.left &#x3D; left
+#         self.right &#x3D; right
+
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -&gt; List[int]:
+        result &#x3D; []
+        self.dfs(root, result)
+        return result
+    
+    def dfs(self, root, r):
+        if root is None:
+            return
+        
+        self.dfs(root.left, r)
+        r.append(root.val)
+        self.dfs(root.right, r)</code></pre>
+<h2 id="我的解法-2-1">我的解法 2</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):
+#         self.val &#x3D; val
+#         self.left &#x3D; left
+#         self.right &#x3D; right
+
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -&gt; List[int]:
+        
+        if root is None:
+            return
+        
+        result &#x3D; []
+        stack &#x3D; []
+        visited &#x3D; set()
+        
+        stack.append(root)
+        
+        while stack:
+            curr &#x3D; stack.pop()
+            
+            if curr in visited:
+                result.append(curr.val)
+            else:
+                if curr.right:
+                    stack.append(curr.right)
+                stack.append(curr)
+                visited.add(curr)
+                if curr.left:
+                    stack.append(curr.left)
+        return result</code></pre>
 ]]></content>
       <tags>
         <tag>LeetCode</tag>
@@ -5122,8 +5303,7 @@ Output: 3</code></pre> <strong>Constraints:</strong></p>
   <entry>
     <title>Stack</title>
     <url>/posts/8069546e/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="stack-堆疊">Stack (堆疊)</h1>
-<p>具有 LIFO (last in-first out) 或 FILO (first in-last out) 性質的有序串列</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>具有 LIFO (last in-first out) 或 FILO (first in-last out) 性質的有序串列</p>
 <ul>
 <li>插入元素的動作稱為 <code>Push</code>, 刪除元素的動作稱為 <code>Pop</code></li>
 <li>Push/Pop 的動作皆發生在同一端，此端稱為 <code>Top</code></li>
@@ -5477,8 +5657,7 @@ pop stack; &#x2F;&#x2F;即為結果</code></pre> <strong>Ex. 43-15×+，寫出po
   <entry>
     <title>Tree</title>
     <url>/posts/eaa4738c/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="tree">Tree</h1>
-<p><strong>Tree</strong> 是由 <code>1 個以上</code>的 <strong>Nodes</strong> 所組成的有限集合，滿足:</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>Tree</strong> 是由 <code>1 個以上</code>的 <strong>Nodes</strong> 所組成的有限集合，滿足:</p>
 <ul>
 <li>至少有一個 <strong>Node</strong>，稱為 <strong>Root</strong> (<code>Tree 不可為空</code>)</li>
 <li>其餘的 <strong>Nodes</strong> 分成 T1, T2, …, Tn 個互斥集合，稱為 <strong>Subtree</strong> (子集合(子樹)間沒有交集)</li>
@@ -5778,8 +5957,7 @@ class Solution:
   <entry>
     <title>Heap Sort</title>
     <url>/posts/2c38fcfa/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="heap-sort">Heap Sort</h1>
-<p><strong>Heapsort</strong> 的演算法分為兩大步驟：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>Heapsort</strong> 的演算法分為兩大步驟：</p>
 <ol type="1">
 <li>將資料轉換為 <code>heap</code> 資料結構（<strong>遞增</strong>排序用 <code>max-heap</code>, <strong>遞減</strong>排序選擇 <code>min-heap</code>）。</li>
 <li>逐步取出<strong>最大／最小值</strong>，並與<strong>最後一個元素</strong>置換。具體步驟如下：
@@ -6017,8 +6195,7 @@ $ npm start</code></pre>
   <entry>
     <title>Quick Sort</title>
     <url>/posts/932bcef/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="quick-sort">Quick Sort</h1>
-<p><strong>快速排序 (Quick Sort)</strong> 的想法是說，先找一個<code>基準點(pivot)</code>，然後派兩個代理人分別從資料的<strong>兩邊開始往中間找</strong>，如果<strong>右邊</strong>找到一個值比基準點<strong>小</strong>，<strong>左邊</strong>找到一個值比基準點<strong>大</strong>，就讓他們<strong>互換</strong>。反覆找並互換，<strong>直到兩個人相遇</strong>。然後再將相遇的點跟基準點互換，第一輪結束。 接下來再分別從兩邊資料做子循環，但做法跟上面一樣，這就用到了遞迴的概念。 <a id="more"></a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>快速排序 (Quick Sort)</strong> 的想法是說，先找一個<code>基準點(pivot)</code>，然後派兩個代理人分別從資料的<strong>兩邊開始往中間找</strong>，如果<strong>右邊</strong>找到一個值比基準點<strong>小</strong>，<strong>左邊</strong>找到一個值比基準點<strong>大</strong>，就讓他們<strong>互換</strong>。反覆找並互換，<strong>直到兩個人相遇</strong>。然後再將相遇的點跟基準點互換，第一輪結束。 接下來再分別從兩邊資料做子循環，但做法跟上面一樣，這就用到了遞迴的概念。 <a id="more"></a></p>
 <img src="/posts/932bcef/%E6%8E%92%E5%BA%8F.jpg" class="">
 <img src="/posts/932bcef/%E6%AF%94%E8%BC%83%E5%9C%96.jpg" class="">
 <h1 id="algorithm">Algorithm</h1>
@@ -6316,8 +6493,7 @@ def qsort(xs, fst, lst):
   <entry>
     <title>Binary Tree</title>
     <url>/posts/e0e2589a/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="binary-tree-二元樹">Binary Tree (二元樹)</h1>
-<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li><strong>Binary Tree 為具有 <code>≥ 0 個 nodes</code> 所構成的有限集合</strong>
 <ul>
 <li>Binary Tree可以為<mark class="label info">空的樹</mark></li>

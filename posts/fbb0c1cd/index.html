@@ -24,15 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Binary search Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。">
+<meta name="description" content="Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binary Search">
 <meta property="og:url" content="https://yu-shin.github.io/posts/fbb0c1cd/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Binary search Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。">
+<meta property="og:description" content="Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-12-29T12:35:06.000Z">
-<meta property="article:modified_time" content="2021-02-10T14:21:44.873Z">
+<meta property="article:modified_time" content="2021-04-13T07:33:32.534Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="資料結構">
 <meta property="article:tag" content="演算法">
@@ -204,7 +204,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binary-search"><span class="nav-number">1.</span> <span class="nav-text">Binary search</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">1.1.</span> <span class="nav-text">完整程式碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#best-case"><span class="nav-number">1.2.</span> <span class="nav-text">best case</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#practice"><span class="nav-number">2.</span> <span class="nav-text">practice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">1.</span> <span class="nav-text">完整程式碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#best-case"><span class="nav-number">2.</span> <span class="nav-text">best case</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#practice"><span class="nav-number"></span> <span class="nav-text">practice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number"></span> <span class="nav-text">參考資料</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -348,8 +348,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="binary-search">Binary search</h1>
-<p>Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。 <a id="more"></a> 以下是 binary search step-by-step 的描述：</p>
+        <p>Binary search 是一個用在已排序數列( sorted list )上有效率的演算法。 藉由不斷把 list 分割一半直到最後將可能的位置縮小到一個。 <a id="more"></a> 以下是 binary search step-by-step 的描述：</p>
 <ol type="1">
 <li>Let min = 1 and max = n</li>
 <li>(max+min)/2且round成整數</li>
@@ -510,13 +509,13 @@ else:
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">147k</span>
+    <span title="總字數">151k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">4:27</span>
+    <span title="所需總閱讀時間">4:35</span>
   </span>
 </div>
 

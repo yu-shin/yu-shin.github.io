@@ -32,7 +32,7 @@
 <meta property="og:description" content="本文蒐集  LeetCode 200 LeetCode 133 LeetCode 494 LeetCode 94">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-01T09:31:15.000Z">
-<meta property="article:modified_time" content="2021-04-02T10:53:06.266Z">
+<meta property="article:modified_time" content="2021-04-13T07:25:26.795Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-200-number-of-islands"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 200: Number of Islands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">我的答案</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-200-number-of-islands"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 200: Number of Islands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-133-clone-graph"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 133: Clone Graph</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-494-target-sum"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 494: Target Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1-1"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-2"><span class="nav-number">3.2.</span> <span class="nav-text">我的解法 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-3"><span class="nav-number">3.3.</span> <span class="nav-text">我的解法 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-4"><span class="nav-number">3.4.</span> <span class="nav-text">我的解法 4</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-94-binary-tree-inorder-traversal"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 94: Binary Tree Inorder Traversal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1-2"><span class="nav-number">4.1.</span> <span class="nav-text">我的解法 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-2-1"><span class="nav-number">4.2.</span> <span class="nav-text">我的解法 2</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -329,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.5k</span>
+      <span>6.4k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>3 分鐘</span>
+      <span>12 分鐘</span>
     </span>
 </div>
 
@@ -376,7 +376,7 @@ Output: 3</code></pre> <strong>Constraints:</strong></p>
 <li><code>1 &lt;= m, n &lt;= 300</code></li>
 <li><code>grid[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
 </ul>
-<h2 id="我的答案">我的答案</h2>
+<h2 id="我的解法">我的解法</h2>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
     def numIslands(self, grid: List[List[str]]) -&gt; int:            
         queue &#x3D; []
@@ -399,6 +399,206 @@ Output: 3</code></pre> <strong>Constraints:</strong></p>
         self.dfs(grid, i-1, j)
         self.dfs(grid, i, j+1)
         self.dfs(grid, i, j-1)</code></pre>
+<h1 id="leetcode-133-clone-graph">LeetCode 133: Clone Graph</h1>
+<p>Given a reference of a node in a <strong>connected</strong> undirected graph.</p>
+<p>Return a <strong>deep copy</strong> (clone) of the graph.</p>
+<p>Each node in the graph contains a val (<code>int</code>) and a list (<code>List[Node]</code>) of its neighbors. <pre class="line-numbers language-none"><code class="language-none">class Node &#123;
+    public int val;
+    public List&lt;Node&gt; neighbors;
+&#125;</code></pre> <strong>Test case format:</strong></p>
+<p>For simplicity sake, each node's value is the same as the node's index (1-indexed). For example, the first node with <code>val = 1</code>, the second node with <code>val = 2</code>, and so on. The graph is represented in the test case using an adjacency list.</p>
+<p><strong>Adjacency list</strong> is a collection of unordered <strong>lists</strong> used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.</p>
+<p>The given node will always be the first node with <code>val = 1</code>. You must return the <strong>copy of the given node</strong> as a reference to the cloned graph.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= Node.val &lt;= 100</code></li>
+<li><code>Node.val</code> is unique for each node.</li>
+<li>Number of Nodes will not exceed 100.</li>
+<li>There is no repeated edges and no self-loops in the graph.</li>
+<li>The Graph is connected and all nodes can be visited starting from the given node.</li>
+</ul>
+<h2 id="我的解法-1">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for a Node.
+class Node:
+    def __init__(self, val &#x3D; 0, neighbors &#x3D; None):
+        self.val &#x3D; val
+        self.neighbors &#x3D; neighbors if neighbors is not None else []
+&quot;&quot;&quot;
+
+class Solution:
+    def cloneGraph(self, node: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        if node is None:
+            return
+        
+        self.nodes &#x3D; [None] * 100
+        self.dfs(node)
+        for i, _ in enumerate(self.nodes):
+            if _ is not None:
+                return _
+        
+    def dfs(self, node: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+        if self.nodes[node.val-1] is None:
+            n &#x3D; Node(val &#x3D; node.val)
+            self.nodes[node.val-1] &#x3D; n
+             
+            for i in node.neighbors:
+                self.dfs(i)
+                n.neighbors.append(self.nodes[i.val-1])
+            
+        else:
+            return</code></pre>
+<h1 id="leetcode-494-target-sum">LeetCode 494: Target Sum</h1>
+<p>You are given an integer array <code>nums</code> and an integer <code>target</code>.</p>
+<p>You want to build an <strong>expression</strong> out of nums by adding one of the symbols <code>'+'</code> and <code>'-'</code> before each integer in nums and then concatenate all the integers.</p>
+<p>For example, if <code>nums = [2, 1]</code>, you can add a <code>'+'</code> before <code>2</code> and a <code>'-'</code> before <code>1</code> and concatenate them to build the expression <code>"+2-1"</code>. Return the number of different <strong>expressions</strong> that you can build, which evaluates to <code>target</code>.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1,1,1,1,1], target &#x3D; 3
+Output: 5
+Explanation: There are 5 ways to assign symbols to make the sum of nums be target 3.
+-1 + 1 + 1 + 1 + 1 &#x3D; 3
++1 - 1 + 1 + 1 + 1 &#x3D; 3
++1 + 1 - 1 + 1 + 1 &#x3D; 3
++1 + 1 + 1 - 1 + 1 &#x3D; 3
++1 + 1 + 1 + 1 - 1 &#x3D; 3</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: nums &#x3D; [1], target &#x3D; 1
+Output: 1</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 20</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 1000</code></li>
+<li><code>0 &lt;= sum(nums[i]) &lt;= 1000</code></li>
+<li><code>-1000 &lt;= target &lt;= 1000</code></li>
+</ul>
+<h2 id="我的解法-1-1">我的解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        if nums is None:
+            return
+        if len(nums) &#x3D;&#x3D; 1:
+            if nums[0] &#x3D;&#x3D; 0 and S &#x3D;&#x3D; 0:
+                return 2
+            elif nums[0] &#x3D;&#x3D; abs(S):
+                return 1
+            else:
+                return 0
+        else:
+            n1 &#x3D; self.findTargetSumWays(nums[:-1], S + nums[-1])
+            n2 &#x3D; self.findTargetSumWays(nums[:-1], S - nums[-1])
+            return n1 + n2</code></pre>
+<h2 id="我的解法-2">我的解法 2</h2>
+<p>利用 dict 字典紀錄搭配 list 兩層紀錄已計算過的資訊，但效率不好 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        self.arrived &#x3D; [dict()]*len(nums)
+        print(self.arrived)
+        return self.dfs(nums, S)
+    def dfs(self, nums: List[int], S: int) -&gt; int:
+        if len(nums) &#x3D;&#x3D; 1:
+            if nums[0] &#x3D;&#x3D; abs(S):
+                if S &#x3D;&#x3D; 0:
+                    self.arrived[0][S] &#x3D; 2
+                    return 2
+                else:
+                    self.arrived[0][S] &#x3D; 1
+                    return 1
+            else:
+                self.arrived[0][S] &#x3D; 0
+                return 0
+        else:
+            n1 &#x3D; self.arrived[len(nums)-2].get(S-nums[-1], self.dfs(nums[:-1], S-nums[-1]))
+            n2 &#x3D; self.arrived[len(nums)-2].get(S+nums[-1], self.dfs(nums[:-1], S+nums[-1]))
+            self.arrived[len(nums)-1][S] &#x3D; n1 + n2
+            return n1 + n2</code></pre></p>
+<h2 id="我的解法-3">我的解法 3</h2>
+<p><code>利用 @functools.cache 快取</code></p>
+<p>可參考 <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.python.org/zh-tw/3/library/functools.html">docs</a></strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        @functools.cache
+        def _findWays(idx, remaining):
+            if idx &#x3D;&#x3D; len(nums):
+                return remaining &#x3D;&#x3D; 0
+            return _findWays(idx+1, remaining-nums[idx]) + _findWays(idx+1, remaining+nums[idx])
+        return _findWays(0, S)</code></pre>
+<h2 id="我的解法-4">我的解法 4</h2>
+<p>利用 dict 字典和 set 集合紀錄已計算過的資訊效率不錯 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution: 
+    def findTargetSumWays(self, nums: List[int], S: int) -&gt; int:
+        dp &#x3D; &#123;&#125;
+        
+        def dfs(i&#x3D;0, total&#x3D;0):
+            
+            if i &gt;&#x3D; len(nums):
+                return 1 if total &#x3D;&#x3D; S else 0
+            
+            key &#x3D; (i, total)
+            if key not in dp:
+                dp[key] &#x3D; dfs(i+1, total+nums[i]) + dfs(i+1, total-nums[i])
+            
+            return dp[key]
+        
+        return dfs()</code></pre></p>
+<h1 id="leetcode-94-binary-tree-inorder-traversal">LeetCode 94: Binary Tree Inorder Traversal</h1>
+<p>Given the <code>root</code> of a binary tree, return the inorder traversal of its nodes' values.</p>
+<p><strong>Example:</strong></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>The number of nodes in the tree is in the range <code>[0, 100]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<p>Recursive solution is trivial, could you do it iteratively?</p>
+<h2 id="我的解法-1-2">我的解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):
+#         self.val &#x3D; val
+#         self.left &#x3D; left
+#         self.right &#x3D; right
+
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -&gt; List[int]:
+        result &#x3D; []
+        self.dfs(root, result)
+        return result
+    
+    def dfs(self, root, r):
+        if root is None:
+            return
+        
+        self.dfs(root.left, r)
+        r.append(root.val)
+        self.dfs(root.right, r)</code></pre>
+<h2 id="我的解法-2-1">我的解法 2</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):
+#         self.val &#x3D; val
+#         self.left &#x3D; left
+#         self.right &#x3D; right
+
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -&gt; List[int]:
+        
+        if root is None:
+            return
+        
+        result &#x3D; []
+        stack &#x3D; []
+        visited &#x3D; set()
+        
+        stack.append(root)
+        
+        while stack:
+            curr &#x3D; stack.pop()
+            
+            if curr in visited:
+                result.append(curr.val)
+            else:
+                if curr.right:
+                    stack.append(curr.right)
+                stack.append(curr)
+                visited.add(curr)
+                if curr.left:
+                    stack.append(curr.left)
+        return result</code></pre>
 
     </div>
 
@@ -512,13 +712,13 @@ Output: 3</code></pre> <strong>Constraints:</strong></p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">147k</span>
+    <span title="總字數">151k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">4:27</span>
+    <span title="所需總閱讀時間">4:35</span>
   </span>
 </div>
 
