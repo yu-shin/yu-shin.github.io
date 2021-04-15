@@ -325,14 +325,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>0</span>
+      <span>8.5k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>1 分鐘</span>
+      <span>15 分鐘</span>
     </span>
 </div>
 
@@ -343,7 +343,327 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/implement-stack-using-queues/">LeetCode 225</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/implement-queue-using-stacks/">LeetCode 232</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/decode-string/">LeetCode 394</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/flood-fill/">LeetCode 733</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/01-matrix/">LeetCode 542</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/keys-and-rooms/">LeetCode 841</a></strong></li>
+</ul>
+<h1 id="leetcode-225-implement-queue-using-stacks">LeetCode 225: Implement Queue using Stacks</h1>
+<p>Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (<code>push</code>, <code>peek</code>, <code>pop</code>, and <code>empty</code>).</p>
+<p>Implement the <code>MyQueue</code> class:</p>
+<ul>
+<li><code>void push(int x)</code> Pushes element x to the back of the queue.</li>
+<li><code>int pop()</code> Removes the element from the front of the queue and returns it.</li>
+<li><code>int peek()</code> Returns the element at the front of the queue.</li>
+<li><code>boolean empty()</code> Returns <code>true</code> if the queue is empty, <code>false</code> otherwise.</li>
+</ul>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>You must use only standard operations of a stack, which means <strong>only</strong> <code>push to top</code>, <code>peek/pop from top</code>, <code>size</code>, and <code>is empty</code> operations are valid.</li>
+<li>Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.</li>
+</ul>
+<p><strong>Follow-up:</strong> Can you implement the queue such that each operation is <strong>amortized</strong> <code>O(1)</code> time complexity? In other words, performing <code>n</code> operations will take overall <code>O(n)</code> time even if one of those operations may take longer.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input
+[&quot;MyQueue&quot;, &quot;push&quot;, &quot;push&quot;, &quot;peek&quot;, &quot;pop&quot;, &quot;empty&quot;]
+[[], [1], [2], [], [], []]
+Output
+[null, null, null, 1, 1, false]
+
+Explanation
+MyQueue myQueue &#x3D; new MyQueue();
+myQueue.push(1); &#x2F;&#x2F; queue is: [1]
+myQueue.push(2); &#x2F;&#x2F; queue is: [1, 2] (leftmost is front of the queue)
+myQueue.peek(); &#x2F;&#x2F; return 1
+myQueue.pop(); &#x2F;&#x2F; return 1, queue is [2]
+myQueue.empty(); &#x2F;&#x2F; return false</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= x &lt;= 9</code></li>
+<li>At most <code>100</code> calls will be made to <code>push</code>, <code>pop</code>, <code>peek</code>, and <code>empty</code>.</li>
+<li>All the calls to <code>pop</code> and <code>peek</code> are valid.</li>
+</ul>
+<h2 id="我的解法">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MyQueue:
+
+    def __init__(self):
+        &quot;&quot;&quot;
+        Initialize your data structure here.
+        &quot;&quot;&quot;
+        self.stack1 &#x3D; []
+        self.stack2 &#x3D; []
+
+    def push(self, x: int) -&gt; None:
+        &quot;&quot;&quot;
+        Push element x to the back of queue.
+        &quot;&quot;&quot;
+        self.stack1.append(x)
+        
+
+    def pop(self) -&gt; int:
+        &quot;&quot;&quot;
+        Removes the element from in front of queue and returns that element.
+        &quot;&quot;&quot;
+        if self.stack2:
+            return self.stack2.pop()
+        
+        while self.stack1:
+            self.stack2.append(self.stack1.pop())
+        
+        if self.stack2:
+            return self.stack2.pop()
+        
+        return 0
+        
+    def peek(self) -&gt; int:
+        &quot;&quot;&quot;
+        Get the front element.
+        &quot;&quot;&quot;
+        if self.stack2:
+            return self.stack2[-1]
+        while self.stack1:
+            self.stack2.append(self.stack1.pop())
+        if self.stack2:
+            return self.stack2[-1]
+        return 0
+    def empty(self) -&gt; bool:
+        &quot;&quot;&quot;
+        Returns whether the queue is empty.
+        &quot;&quot;&quot;
+        if self.stack1 or self.stack2:
+            return False
+        return True
+        
+
+
+# Your MyQueue object will be instantiated and called as such:
+# obj &#x3D; MyQueue()
+# obj.push(x)
+# param_2 &#x3D; obj.pop()
+# param_3 &#x3D; obj.peek()
+# param_4 &#x3D; obj.empty()</code></pre>
+<h1 id="leetcode-232-implement-stack-using-queues">LeetCode 232: Implement Stack using Queues</h1>
+<p>Implement a last in first out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal queue (<code>push</code>, <code>top</code>, <code>pop</code>, and <code>empty</code>).</p>
+<p>Implement the <code>MyStack</code> class:</p>
+<ul>
+<li><code>void push(int x)</code> Pushes element x to the top of the stack.</li>
+<li><code>int pop()</code> Removes the element on the top of the stack and returns it.</li>
+<li><code>int top()</code> Returns the element on the top of the stack.</li>
+<li><code>boolean empty()</code> Returns <code>true</code> if the stack is empty, <code>false</code> otherwise.</li>
+</ul>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>You must use <strong>only</strong> standard operations of a queue, which means only <code>push to back</code>, <code>peek/pop from front</code>, <code>size</code>, and <code>is empty</code> operations are valid.</li>
+<li>Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue), as long as you use only a queue's standard operations.</li>
+</ul>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input
+[&quot;MyStack&quot;, &quot;push&quot;, &quot;push&quot;, &quot;top&quot;, &quot;pop&quot;, &quot;empty&quot;]
+[[], [1], [2], [], [], []]
+Output
+[null, null, null, 2, 2, false]
+
+Explanation
+MyStack myStack &#x3D; new MyStack();
+myStack.push(1);
+myStack.push(2);
+myStack.top(); &#x2F;&#x2F; return 2
+myStack.pop(); &#x2F;&#x2F; return 2
+myStack.empty(); &#x2F;&#x2F; return False</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= x &lt;= 9</code></li>
+<li>At most <code>100</code> calls will be made to <code>push</code>, <code>pop</code>, <code>top</code>, and <code>empty</code>.</li>
+<li>All the calls to <code>pop</code> and <code>top</code> are valid.</li>
+</ul>
+<p><strong>Follow-up:</strong> Can you implement the stack such that each operation is <strong>amortized</strong> <code>O(1)</code> time complexity? In other words, performing <code>n</code> operations will take overall <code>O(n)</code> time even if one of those operations may take longer. You can use more than two queues.</p>
+<h2 id="我的解法-1">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MyStack:
+
+    def __init__(self):
+        &quot;&quot;&quot;
+        Initialize your data structure here.
+        &quot;&quot;&quot;
+        self.queue1 &#x3D; []
+        self.queue2 &#x3D; []
+
+    def push(self, x: int) -&gt; None:
+        &quot;&quot;&quot;
+        Push element x onto stack.
+        &quot;&quot;&quot;
+        if self.empty():
+            self.queue1.append(x)
+        elif self.queue1:
+            self.queue2.append(x)
+            while self.queue1:
+                self.queue2.append(self.queue1.pop(0))
+        else:
+            self.queue1.append(x)
+            while self.queue2:
+                self.queue1.append(self.queue2.pop(0))
+        
+    def pop(self) -&gt; int:
+        &quot;&quot;&quot;
+        Removes the element on top of the stack and returns that element.
+        &quot;&quot;&quot;
+        if self.empty():
+            return 0
+        elif self.queue1:
+            return self.queue1.pop(0)
+        else:
+            return self.queue2.pop(0)
+        
+    def top(self) -&gt; int:
+        &quot;&quot;&quot;
+        Get the top element.
+        &quot;&quot;&quot;
+        if self.empty():
+            return 0
+        elif self.queue1:
+            return self.queue1[0]
+        else:
+            return self.queue2[0]
+        
+    
+    def empty(self) -&gt; bool:
+        &quot;&quot;&quot;
+        Returns whether the stack is empty.
+        &quot;&quot;&quot;
+        if self.queue1 or self.queue2:
+            return False
+        
+        return True
+
+
+# Your MyStack object will be instantiated and called as such:
+# obj &#x3D; MyStack()
+# obj.push(x)
+# param_2 &#x3D; obj.pop()
+# param_3 &#x3D; obj.top()
+# param_4 &#x3D; obj.empty()</code></pre>
+<h1 id="leetcode-394-decode-string">LeetCode 394: Decode String</h1>
+<p>Given an encoded string, return its decoded string.</p>
+<p>The encoding rule is: <code>k[encoded_string]</code>, where the <code>encoded_string</code> inside the square brackets is being repeated exactly <code>k</code> times. Note that <code>k</code> is guaranteed to be a positive integer.</p>
+<p>You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.</p>
+<p>Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, <code>k</code>. For example, there won't be input like <code>3a</code> or <code>2[4]</code>.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;3[a]2[bc]&quot;
+Output: &quot;aaabcbc&quot;</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;3[a2[c]]&quot;
+Output: &quot;accaccacc&quot;</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;2[abc]3[cd]ef&quot;
+Output: &quot;abcabccdcdcdef&quot;</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;abc3[cd]xyz&quot;
+Output: &quot;abccdcdcdxyz&quot;</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 30</code></li>
+<li><code>s</code> consists of lowercase English letters, digits, and square brackets <code>'[]'</code>.</li>
+<li><code>s</code> is guaranteed to be <strong>a valid</strong> input.</li>
+<li>All the integers in <code>s</code> are in the range <code>[1, 300]</code>.</li>
+</ul>
+<h2 id="我的解法-2">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def decodeString(self, s: str) -&gt; str:
+        stack &#x3D; []
+        temp &#x3D; []
+        result &#x3D; &#39;&#39;
+        number &#x3D; &#39;&#39;
+        
+        for i in s:
+            if i &#x3D;&#x3D; &#39;]&#39;:
+                c &#x3D; stack.pop()
+                while c !&#x3D; &#39;[&#39;:
+                    temp.append(c)
+                    c &#x3D; stack.pop()
+                
+                number &#x3D; stack.pop()
+                try:
+                    while True:
+                        number &#x3D; str(int(stack[-1])) + number
+                        stack.pop()
+                except:
+                    temp *&#x3D; int(number)
+                
+                while temp:
+                    stack.append(temp.pop())
+            
+            else:
+                stack.append(i)
+        
+        for _ in stack:
+            result &#x3D; result + _
+        
+        return result</code></pre>
+<h1 id="leetcode-733-flood-fill">LeetCode 733: Flood Fill</h1>
+<p>An <code>image</code> is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).</p>
+<p>Given a coordinate <code>(sr, sc)</code> representing the starting pixel (row and column) of the flood fill, and a pixel value <code>newColor</code>, "flood fill" the image.</p>
+<p>To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.</p>
+<p>At the end, return the modified image.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: 
+image &#x3D; [[1,1,1],[1,1,0],[1,0,1]]
+sr &#x3D; 1, sc &#x3D; 1, newColor &#x3D; 2
+Output: [[2,2,2],[2,2,0],[2,0,1]]
+Explanation: 
+From the center of the image (with position (sr, sc) &#x3D; (1, 1)), all pixels connected 
+by a path of the same color as the starting pixel are colored with the new color.
+Note the bottom corner is not colored 2, because it is not 4-directionally connected
+to the starting pixel.</code></pre> <strong>Note:</strong></p>
+<ul>
+<li>The length of <code>image</code> and <code>image[0]</code> will be in the range <code>[1, 50]</code>.</li>
+<li>The given starting pixel will satisfy <code>0 &lt;= sr &lt; image.length</code> and <code>0 &lt;= sc &lt; image[0].length</code>.</li>
+<li>The value of each color in <code>image[i][j]</code> and <code>newColor</code> will be an integer in <code>[0, 65535]</code>.</li>
+</ul>
+<h2 id="我的解法-3">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -&gt; List[List[int]]:
+        self.visited &#x3D; set()
+        self.newColor &#x3D; newColor
+        self.oldColor &#x3D; image[sr][sc]
+        
+        self.dfs(image, sr, sc)
+        return image
+        
+    def dfs(self, image: List[List[int]], sr: int, sc: int):
+        if sr &lt; 0 or sc &lt; 0 or sr &gt;&#x3D; len(image) or sc &gt;&#x3D; len(image[0]) or image[sr][sc] !&#x3D; self.oldColor or (sr,sc) in self.visited:
+            return
+        
+        image[sr][sc] &#x3D; self.newColor
+        self.visited.add((sr, sc))
+        
+        self.dfs(image, sr-1, sc)
+        self.dfs(image, sr+1, sc)
+        self.dfs(image, sr, sc-1)
+        self.dfs(image, sr, sc+1)</code></pre>
+<h1 id="leetcode-542-01-matrix">LeetCode 542: 01 Matrix</h1>
+<p>Given a matrix consists of 0 and 1, find the distance of the nearest 0 for each cell.</p>
+<p>The distance between two adjacent cells is 1.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input:
+[[0,0,0],
+ [0,1,0],
+ [0,0,0]]
+
+Output:
+[[0,0,0],
+ [0,1,0],
+ [0,0,0]]</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input:
+[[0,0,0],
+ [0,1,0],
+ [1,1,1]]
+
+Output:
+[[0,0,0],
+ [0,1,0],
+ [1,2,1]]</code></pre></p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The number of elements of the given matrix will not exceed 10,000.</li>
+<li>There are at least one 0 in the given matrix.</li>
+<li>The cells are adjacent in only four directions: up, down, left and right.</li>
+</ul>
+<h2 id="我的解法-4">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"></code></pre>
+<h1 id="leetcode-841-keys-and-rooms">LeetCode 841: Keys and Rooms</h1>
+<h2 id="我的解法-5">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"></code></pre>
 
       
     </div>
@@ -1356,13 +1676,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">151k</span>
+    <span title="總字數">160k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">4:35</span>
+    <span title="所需總閱讀時間">4:50</span>
   </span>
 </div>
 
