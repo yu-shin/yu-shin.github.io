@@ -32,7 +32,7 @@
 <meta property="og:description" content="本文蒐集  LeetCode 225 LeetCode 232 LeetCode 394 LeetCode 733 LeetCode 542 LeetCode 841">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-01T09:31:40.000Z">
-<meta property="article:modified_time" content="2021-04-15T18:20:44.701Z">
+<meta property="article:modified_time" content="2021-04-16T12:08:11.059Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-225-implement-queue-using-stacks"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 225: Implement Queue using Stacks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-232-implement-stack-using-queues"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 232: Implement Stack using Queues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-394-decode-string"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 394: Decode String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-2"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-733-flood-fill"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 733: Flood Fill</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-3"><span class="nav-number">4.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-542-01-matrix"><span class="nav-number">5.</span> <span class="nav-text">LeetCode 542: 01 Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-4"><span class="nav-number">5.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-841-keys-and-rooms"><span class="nav-number">6.</span> <span class="nav-text">LeetCode 841: Keys and Rooms</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-5"><span class="nav-number">6.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-225-implement-queue-using-stacks"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 225: Implement Queue using Stacks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-232-implement-stack-using-queues"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 232: Implement Stack using Queues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-394-decode-string"><span class="nav-number">3.</span> <span class="nav-text">LeetCode 394: Decode String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-2"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-733-flood-fill"><span class="nav-number">4.</span> <span class="nav-text">LeetCode 733: Flood Fill</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-3"><span class="nav-number">4.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-542-01-matrix"><span class="nav-number">5.</span> <span class="nav-text">LeetCode 542: 01 Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1-1"><span class="nav-number">5.1.</span> <span class="nav-text">我的解法 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-4"><span class="nav-number">5.2.</span> <span class="nav-text">我的解法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -329,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>8.5k</span>
+      <span>11k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>15 分鐘</span>
+      <span>21 分鐘</span>
     </span>
 </div>
 
@@ -663,11 +663,114 @@ Output:
 <li>There are at least one 0 in the given matrix.</li>
 <li>The cells are adjacent in only four directions: up, down, left and right.</li>
 </ul>
+<h2 id="我的解法-1-1">我的解法 1</h2>
+<p>利用 <strong>DFS</strong> ，但是會 <code>Time Limit Exceeded</code> <pre class="line-numbers language-python" data-language="python"><code class="language-python"># Time Limit Exceeded
+class Solution:
+    def updateMatrix(self, matrix: List[List[int]]) -&gt; List[List[int]]:
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] &#x3D;&#x3D; 1:
+                    matrix[i][j] &#x3D; float(&#39;inf&#39;)
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] &#x3D;&#x3D; 0:
+                    self.dfs(matrix, i, j, 0)
+        return matrix
+    def dfs(self, m, i, j, count):
+        
+        if i &lt; 0 or i &gt;&#x3D; len(m) or j &lt; 0 or j &gt;&#x3D; len(m[0]) or count &gt; m[i][j]:
+            return
+        
+        m[i][j] &#x3D; count
+        count +&#x3D; 1
+        self.dfs(m, i+1, j, count)
+        self.dfs(m, i-1, j, count)
+        self.dfs(m, i, j+1, count)
+        self.dfs(m, i, j-1, count)</code></pre> ## 我的解法 2 參考網友的 <strong>BFS1</strong>，大部分過程有想到但是<strong>一開始就把<code>所有 0 加入 queue</code></strong> 卻沒想到～ <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def updateMatrix(self, matrix: List[List[int]]) -&gt; List[List[int]]:
+        dirs &#x3D; [[-1, 0], [1, 0], [0, -1], [0, 1]]
+        
+        m, n &#x3D; len(matrix), len(matrix[0])
+        
+        queue &#x3D; collections.deque()
+        
+        res &#x3D; [[-1 for _ in range(n)] for _ in range(m)]
+        
+        for i in range(m):
+            for j in range(n):
+                
+                if matrix[i][j] &#x3D;&#x3D; 0:
+                    res[i][j] &#x3D; 0
+                    queue.append((i, j))
+        
+        while queue:
+            
+            curI, curJ &#x3D; queue.popleft()
+            for i, j in dirs:
+                neighBorI, neighBorJ &#x3D; curI + i, curJ + j
+                
+                if 0 &lt;&#x3D; neighBorI &lt; m and 0 &lt;&#x3D; neighBorJ &lt; n and res[neighBorI][neighBorJ] &#x3D;&#x3D; -1:
+                    res[neighBorI][neighBorJ] &#x3D; res[curI][curJ] + 1
+                    queue.append((neighBorI, neighBorJ))
+        
+        return res</code></pre> ## 我的解法 3 <strong>很美的解法</strong> 自己是有寫出上半段（左上到右下），但是也沒想到<code>再一次右下到左上</code>可以彌補沒找到的方向 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def updateMatrix(self, matrix):
+        m, n &#x3D; len(matrix), len(matrix and matrix[0])
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] !&#x3D; 0:
+                    matrix[i][j] &#x3D; float(&quot;inf&quot;)
+                    if i &gt; 0 and matrix[i - 1][j] + 1 &lt; matrix[i][j]:
+                        matrix[i][j] &#x3D; matrix[i - 1][j] + 1
+                    if j &gt; 0 and matrix[i][j - 1] + 1 &lt; matrix[i][j]:
+                        matrix[i][j] &#x3D; matrix[i][j - 1] + 1
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if matrix[i][j] !&#x3D; 0:
+                    if i + 1 &lt; m and matrix[i + 1][j] + 1 &lt; matrix[i][j]:
+                        matrix[i][j] &#x3D; matrix[i + 1][j] + 1
+                    if j + 1 &lt; n and matrix[i][j + 1] + 1 &lt; matrix[i][j]:
+                        matrix[i][j] &#x3D; matrix[i][j + 1] + 1
+        return matrix</code></pre> # LeetCode 841: Keys and Rooms There are <code>N</code> rooms and you start in room <code>0</code>. Each room has a distinct number in <code>0, 1, 2, ..., N-1</code>, and each room may have some keys to access the next room.</p>
+<p>Formally, each room <code>i</code> has a list of keys <code>rooms[i]</code>, and each key <code>rooms[i][j]</code> is an integer in <code>[0, 1, ..., N-1]</code> where <code>N = rooms.length</code>. A key <code>rooms[i][j] = v</code> opens the room with number <code>v</code>.</p>
+<p>Initially, all the rooms start locked (except for room <code>0</code>).</p>
+<p>You can walk back and forth between rooms freely.</p>
+<p>Return <code>true</code> if and only if you can enter every room.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: [[1],[2],[3],[]]
+Output: true
+Explanation: 
+We start in room 0, and pick up key 1.
+We then go to room 1, and pick up key 2.
+We then go to room 2, and pick up key 3.
+We then go to room 3.  Since we were able to go to every room, we return true.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: [[1,3],[3,0,1],[2],[0]]
+Output: false
+Explanation: We can&#39;t enter the room with number 2.</code></pre> <strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= rooms.length &lt;= 1000</code></li>
+<li><code>0 &lt;= rooms[i].length &lt;= 1000</code></li>
+<li>The number of keys in all rooms combined is at most <code>3000</code>.</li>
+</ul>
 <h2 id="我的解法-4">我的解法</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"></code></pre>
-<h1 id="leetcode-841-keys-and-rooms">LeetCode 841: Keys and Rooms</h1>
-<h2 id="我的解法-5">我的解法</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -&gt; bool:
+        queue &#x3D; []
+        visited &#x3D; set()
+        queue.append(0)
+        visited.add(0)
+        
+        while queue:
+            length &#x3D; len(queue)
+            
+            for _ in range(length):
+                i &#x3D; queue.pop(0)
+                for j in rooms[i]:
+                    if j not in visited:
+                        queue.append(j)
+                        visited.add(j)
+        if len(visited) &#x3D;&#x3D; len(rooms):
+            return True
+        else:
+            return False</code></pre>
 
     </div>
 
@@ -778,13 +881,13 @@ Output:
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">160k</span>
+    <span title="總字數">163k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">4:50</span>
+    <span title="所需總閱讀時間">4:56</span>
   </span>
 </div>
 
