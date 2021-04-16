@@ -991,45 +991,6 @@ print(data_sorted) </code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Comparison &amp; Swap</title>
-    <url>/posts/34e3d240/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="排序方法能達到多快">排序方法能達到多快 ?</h1>
-<p>假設排序方法的設計是採用 <code>Comparison &amp; Swap</code> 技巧</p>
-<ul>
-<li>利用<code>決策樹 (Decision Tree)</code> 來判斷:
-<ul>
-<li><strong>Decision Tree</strong>: 描述 <strong>Sort</strong> 過程中，各種狀況的比較過程
-<ul>
-<li><strong><mark class="label info">Non-leaf Node</mark></strong>: 表示 “<strong>Comparison</strong>”</li>
-<li><strong><mark class="label info">左、右分枝</mark></strong>: 表示 “<strong>Yes</strong>” or “<strong>No</strong>”</li>
-<li><strong><mark class="label info">Leaf</mark></strong>: <strong>排序結果</strong></li>
-</ul></li>
-</ul></li>
-</ul>
-<a id="more"></a>
-<ul>
-<li>例:試說明 <strong>3</strong> 個資料 <strong>a，b，c</strong> 排序之 <strong>Decision Tree</strong> </li>
-</ul>
-<h1 id="說明">說明</h1>
-<ul>
-<li><strong>n</strong> 個資料做 <strong>Sort</strong>，有 <strong>n!</strong> 個可能的排序結果。因此，<strong>Sort</strong> 的 <strong>Decision Tree</strong> 有 <strong><mark class="label info">n! 個 Leaf nodes</mark></strong></li>
-<li>根據<strong>二元樹</strong>之定理: 二元樹中，第 <strong>i</strong> 個 <strong>level</strong> 的 <strong>node</strong> 個數最多有 <span class="math inline">\(2^{i-1}\)</span> 個
-<ul>
-<li>∴ <span class="math inline">\(2^{i-1} = n!\)</span> ⇒ <span class="math inline">\(i-1 = \lceil \log_2n!\rceil\)</span> ⇒ <span class="math inline">\(i = \lceil \log_2n!\rceil + 1\)</span>，表示此 <strong>Tree</strong> 的<strong>高度</strong>至少為<span class="math inline">\(\lceil \log_2n!\rceil + 1\)</span></li>
-</ul></li>
-<li>比較次數為 <span class="math inline">\(\geq \lceil \log_2n!\rceil\)</span></li>
-<li>又 <span class="math inline">\(n! \geq {\frac{n}{2}}^{\frac{n}{2}}\)</span> ⇒ <span class="math inline">\(\lceil \log_2n!\rceil \geq \log{\frac{n}{2}}^{\frac{n}{2}} = \frac{n}{2}\log\frac{n}{2} \leq O(n\log n)\)</span></li>
-</ul>
-<h1 id="參考資料">參考資料</h1>
-<ul>
-<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>演算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Classic Problems</title>
     <url>/posts/2874825c/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
@@ -1198,6 +1159,45 @@ class Solution:
 ]]></content>
       <tags>
         <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Comparison &amp; Swap</title>
+    <url>/posts/34e3d240/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="排序方法能達到多快">排序方法能達到多快 ?</h1>
+<p>假設排序方法的設計是採用 <code>Comparison &amp; Swap</code> 技巧</p>
+<ul>
+<li>利用<code>決策樹 (Decision Tree)</code> 來判斷:
+<ul>
+<li><strong>Decision Tree</strong>: 描述 <strong>Sort</strong> 過程中，各種狀況的比較過程
+<ul>
+<li><strong><mark class="label info">Non-leaf Node</mark></strong>: 表示 “<strong>Comparison</strong>”</li>
+<li><strong><mark class="label info">左、右分枝</mark></strong>: 表示 “<strong>Yes</strong>” or “<strong>No</strong>”</li>
+<li><strong><mark class="label info">Leaf</mark></strong>: <strong>排序結果</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>例:試說明 <strong>3</strong> 個資料 <strong>a，b，c</strong> 排序之 <strong>Decision Tree</strong> </li>
+</ul>
+<h1 id="說明">說明</h1>
+<ul>
+<li><strong>n</strong> 個資料做 <strong>Sort</strong>，有 <strong>n!</strong> 個可能的排序結果。因此，<strong>Sort</strong> 的 <strong>Decision Tree</strong> 有 <strong><mark class="label info">n! 個 Leaf nodes</mark></strong></li>
+<li>根據<strong>二元樹</strong>之定理: 二元樹中，第 <strong>i</strong> 個 <strong>level</strong> 的 <strong>node</strong> 個數最多有 <span class="math inline">\(2^{i-1}\)</span> 個
+<ul>
+<li>∴ <span class="math inline">\(2^{i-1} = n!\)</span> ⇒ <span class="math inline">\(i-1 = \lceil \log_2n!\rceil\)</span> ⇒ <span class="math inline">\(i = \lceil \log_2n!\rceil + 1\)</span>，表示此 <strong>Tree</strong> 的<strong>高度</strong>至少為<span class="math inline">\(\lceil \log_2n!\rceil + 1\)</span></li>
+</ul></li>
+<li>比較次數為 <span class="math inline">\(\geq \lceil \log_2n!\rceil\)</span></li>
+<li>又 <span class="math inline">\(n! \geq {\frac{n}{2}}^{\frac{n}{2}}\)</span> ⇒ <span class="math inline">\(\lceil \log_2n!\rceil \geq \log{\frac{n}{2}}^{\frac{n}{2}} = \frac{n}{2}\log\frac{n}{2} \leq O(n\log n)\)</span></li>
+</ul>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="http://debussy.im.nuu.edu.tw/sjchen/Algorithm/97Spring/Course03.pdf">國立聯合大學陳士杰資料結構</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>演算法</tag>
       </tags>
   </entry>
   <entry>
@@ -3940,177 +3940,6 @@ Output:
       </tags>
   </entry>
   <entry>
-    <title>Queue and BFS</title>
-    <url>/posts/4d006a22/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
-<ul>
-<li><strong><a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/open-the-lock/">LeetCode 752</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/perfect-squares/">LeetCode 279</a></strong> <a id="more"></a></li>
-</ul>
-<h1 id="leetcode-200-number-of-islands">LeetCode 200: Number of Islands</h1>
-<p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>'1'</code>s (land) and <code>'0'</code>s (water), return the number of islands.</p>
-<p>An <strong>island</strong> is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: grid &#x3D; [
-  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;0&quot;],
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;],
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]
-]
-Output: 1</code></pre> <pre class="line-numbers language-none"><code class="language-none">Example 2:
-
-Input: grid &#x3D; [
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],
-  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;]
-]
-Output: 3</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li><code>m == grid.length</code></li>
-<li><code>n == grid[i].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 300</code></li>
-<li><code>grid[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
-</ul>
-<h2 id="我的答案">我的答案</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
-    def is_valid(self, grid, r, c):
-        m, n &#x3D; len(grid), len(grid[0])
-        if r &lt; 0 or c &lt; 0 or r &gt;&#x3D; m or c &gt;&#x3D; n:
-            return False
-        return True
-    def numIslandsBFS(self, grid):
-        &quot;&quot;&quot;
-        :type grid: List[List[str]]
-        :rtype: int
-        &quot;&quot;&quot;
-        if not grid or not grid[0]:
-            return 0
-
-        m, n &#x3D; len(grid), len(grid[0])
-        count &#x3D; 0
-        for i in xrange(m):
-            for j in xrange(n):
-                if grid[i][j] &#x3D;&#x3D; &#39;1&#39;:
-                    self.bfs(grid, i, j)
-                    count +&#x3D; 1
-        return count
-
-    def bfs(self, grid, r, c):
-        queue &#x3D; collections.deque()
-        queue.append((r, c))
-        grid[r][c] &#x3D; &#39;0&#39;
-        while queue:
-            directions &#x3D; [(0,1), (0,-1), (-1,0), (1,0)]
-            r, c &#x3D; queue.popleft()
-            for d in directions:
-                nr, nc &#x3D; r + d[0], c + d[1]    
-                if self.is_valid(grid, nr, nc) and grid[nr][nc] &#x3D;&#x3D; &#39;1&#39;:
-                    queue.append((nr, nc))
-                    grid[nr][nc] &#x3D; &#39;0&#39;</code></pre>
-<h1 id="leetcode-752-open-the-lock">LeetCode 752: Open the Lock</h1>
-<p>You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: <code>'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'</code>. The wheels can rotate freely and wrap around: for example we can turn <code>'9'</code> to be <code>'0'</code>, or <code>'0'</code> to be <code>'9'</code>. Each move consists of turning one wheel one slot.</p>
-<p>The lock initially starts at <code>'0000'</code>, a string representing the state of the 4 wheels.</p>
-<p>You are given a list of <code>deadends</code> dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.</p>
-<p>Given a <code>target</code> representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0201&quot;,&quot;0101&quot;,&quot;0102&quot;,&quot;1212&quot;,&quot;2002&quot;], target &#x3D; &quot;0202&quot;
-Output: 6
-Explanation:
-A sequence of valid moves would be &quot;0000&quot; -&gt; &quot;1000&quot; -&gt; &quot;1100&quot; -&gt; &quot;1200&quot; -&gt; &quot;1201&quot; -&gt; &quot;1202&quot; -&gt; &quot;0202&quot;.
-Note that a sequence like &quot;0000&quot; -&gt; &quot;0001&quot; -&gt; &quot;0002&quot; -&gt; &quot;0102&quot; -&gt; &quot;0202&quot; would be invalid,
-because the wheels of the lock become stuck after the display becomes the dead end &quot;0102&quot;.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8888&quot;], target &#x3D; &quot;0009&quot;
-Output: 1
-Explanation:
-We can turn the last wheel in reverse to move from &quot;0000&quot; -&gt; &quot;0009&quot;.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8887&quot;,&quot;8889&quot;,&quot;8878&quot;,&quot;8898&quot;,&quot;8788&quot;,&quot;8988&quot;,&quot;7888&quot;,&quot;9888&quot;], target &#x3D; &quot;8888&quot;
-Output: -1
-Explanation:
-We can&#39;t reach the target without getting stuck.</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0000&quot;], target &#x3D; &quot;8888&quot;
-Output: -1</code></pre></p>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code>1 &lt;= deadends.length &lt;= 500</code></li>
-<li><code>deadends[i].length == 4</code></li>
-<li><code>target.length == 4</code></li>
-<li>target will not be in the list <code>deadends</code>.</li>
-<li><code>target</code> and <code>deadends[i]</code> consist of digits only.</li>
-</ul>
-<h2 id="我的解答">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from collections import deque
-
-class Solution:
-    def openLock(self, deadends: List[str], target: str) -&gt; int:
-        
-        if &#39;0000&#39; in deadends:
-            return -1
-        
-        queue, visited &#x3D; deque([&#39;0000&#39;]), set(deadends)
-        count &#x3D; -1
-        
-        while len(queue) !&#x3D; 0:
-            count +&#x3D; 1
-            size &#x3D; len(queue)
-            
-            for _ in range(size):
-                
-                curr &#x3D; queue.popleft()
-
-                if curr &#x3D;&#x3D; target:
-                    return count
-
-                if curr in visited:
-                    continue
-
-                visited.add(curr)
-                
-                res &#x3D; []
-                for i, char in enumerate(curr):
-                    num &#x3D; int(char)
-                    res.append(curr[:i] + str((num - 1) % 10) + curr[i+1:])
-                    res.append(curr[:i] + str((num + 1) % 10) + curr[i+1:])
-                
-                queue.extend(res)
-                
-        return -1</code></pre>
-<h1 id="leetcode-279-perfect-squares">LeetCode 279: Perfect Squares</h1>
-<p>Given an integer <code>n</code>, return the least number of perfect square numbers that sum to <code>n</code>.</p>
-<p>A <strong>perfect square</strong> is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, <code>1</code>, <code>4</code>, <code>9</code>, and <code>16</code> are perfect squares while <code>3</code> and <code>11</code> are not.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 12
-Output: 3
-Explanation: 12 &#x3D; 4 + 4 + 4.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 13
-Output: 2
-Explanation: 13 &#x3D; 4 + 9.</code></pre> <strong>Constraints:</strong></p>
-<ul>
-<li>1 &lt;= n &lt;= <span class="math inline">\(10^4\)</span></li>
-</ul>
-<h2 id="我的解答-1">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
-    def numSquares(self, n: int) -&gt; int:
-        if n &lt; 2:
-            return n
-        lst &#x3D; []
-        i &#x3D; 1
-        while i * i &lt;&#x3D; n:
-            lst.append( i * i )
-            i +&#x3D; 1
-        cnt &#x3D; 0
-        toCheck &#x3D; &#123;n&#125;
-        while toCheck:
-            cnt +&#x3D; 1
-            temp &#x3D; set()
-            for x in toCheck:
-                for y in lst:
-                    if x &#x3D;&#x3D; y:
-                        return cnt
-                    if x &lt; y:
-                        break
-                    temp.add(x-y)
-            toCheck &#x3D; temp</code></pre>
-]]></content>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Queue</title>
     <url>/posts/be3c5067/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
@@ -4434,6 +4263,177 @@ end</code></pre>
 ]]></content>
       <tags>
         <tag>演算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Queue and BFS</title>
+    <url>/posts/4d006a22/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/open-the-lock/">LeetCode 752</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/perfect-squares/">LeetCode 279</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-200-number-of-islands">LeetCode 200: Number of Islands</h1>
+<p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>'1'</code>s (land) and <code>'0'</code>s (water), return the number of islands.</p>
+<p>An <strong>island</strong> is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: grid &#x3D; [
+  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;0&quot;],
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;],
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]
+]
+Output: 1</code></pre> <pre class="line-numbers language-none"><code class="language-none">Example 2:
+
+Input: grid &#x3D; [
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],
+  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;]
+]
+Output: 3</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li><code>m == grid.length</code></li>
+<li><code>n == grid[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 300</code></li>
+<li><code>grid[i][j]</code> is <code>'0'</code> or <code>'1'</code>.</li>
+</ul>
+<h2 id="我的答案">我的答案</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
+    def is_valid(self, grid, r, c):
+        m, n &#x3D; len(grid), len(grid[0])
+        if r &lt; 0 or c &lt; 0 or r &gt;&#x3D; m or c &gt;&#x3D; n:
+            return False
+        return True
+    def numIslandsBFS(self, grid):
+        &quot;&quot;&quot;
+        :type grid: List[List[str]]
+        :rtype: int
+        &quot;&quot;&quot;
+        if not grid or not grid[0]:
+            return 0
+
+        m, n &#x3D; len(grid), len(grid[0])
+        count &#x3D; 0
+        for i in xrange(m):
+            for j in xrange(n):
+                if grid[i][j] &#x3D;&#x3D; &#39;1&#39;:
+                    self.bfs(grid, i, j)
+                    count +&#x3D; 1
+        return count
+
+    def bfs(self, grid, r, c):
+        queue &#x3D; collections.deque()
+        queue.append((r, c))
+        grid[r][c] &#x3D; &#39;0&#39;
+        while queue:
+            directions &#x3D; [(0,1), (0,-1), (-1,0), (1,0)]
+            r, c &#x3D; queue.popleft()
+            for d in directions:
+                nr, nc &#x3D; r + d[0], c + d[1]    
+                if self.is_valid(grid, nr, nc) and grid[nr][nc] &#x3D;&#x3D; &#39;1&#39;:
+                    queue.append((nr, nc))
+                    grid[nr][nc] &#x3D; &#39;0&#39;</code></pre>
+<h1 id="leetcode-752-open-the-lock">LeetCode 752: Open the Lock</h1>
+<p>You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: <code>'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'</code>. The wheels can rotate freely and wrap around: for example we can turn <code>'9'</code> to be <code>'0'</code>, or <code>'0'</code> to be <code>'9'</code>. Each move consists of turning one wheel one slot.</p>
+<p>The lock initially starts at <code>'0000'</code>, a string representing the state of the 4 wheels.</p>
+<p>You are given a list of <code>deadends</code> dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.</p>
+<p>Given a <code>target</code> representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or -1 if it is impossible.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0201&quot;,&quot;0101&quot;,&quot;0102&quot;,&quot;1212&quot;,&quot;2002&quot;], target &#x3D; &quot;0202&quot;
+Output: 6
+Explanation:
+A sequence of valid moves would be &quot;0000&quot; -&gt; &quot;1000&quot; -&gt; &quot;1100&quot; -&gt; &quot;1200&quot; -&gt; &quot;1201&quot; -&gt; &quot;1202&quot; -&gt; &quot;0202&quot;.
+Note that a sequence like &quot;0000&quot; -&gt; &quot;0001&quot; -&gt; &quot;0002&quot; -&gt; &quot;0102&quot; -&gt; &quot;0202&quot; would be invalid,
+because the wheels of the lock become stuck after the display becomes the dead end &quot;0102&quot;.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8888&quot;], target &#x3D; &quot;0009&quot;
+Output: 1
+Explanation:
+We can turn the last wheel in reverse to move from &quot;0000&quot; -&gt; &quot;0009&quot;.</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;8887&quot;,&quot;8889&quot;,&quot;8878&quot;,&quot;8898&quot;,&quot;8788&quot;,&quot;8988&quot;,&quot;7888&quot;,&quot;9888&quot;], target &#x3D; &quot;8888&quot;
+Output: -1
+Explanation:
+We can&#39;t reach the target without getting stuck.</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: deadends &#x3D; [&quot;0000&quot;], target &#x3D; &quot;8888&quot;
+Output: -1</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= deadends.length &lt;= 500</code></li>
+<li><code>deadends[i].length == 4</code></li>
+<li><code>target.length == 4</code></li>
+<li>target will not be in the list <code>deadends</code>.</li>
+<li><code>target</code> and <code>deadends[i]</code> consist of digits only.</li>
+</ul>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from collections import deque
+
+class Solution:
+    def openLock(self, deadends: List[str], target: str) -&gt; int:
+        
+        if &#39;0000&#39; in deadends:
+            return -1
+        
+        queue, visited &#x3D; deque([&#39;0000&#39;]), set(deadends)
+        count &#x3D; -1
+        
+        while len(queue) !&#x3D; 0:
+            count +&#x3D; 1
+            size &#x3D; len(queue)
+            
+            for _ in range(size):
+                
+                curr &#x3D; queue.popleft()
+
+                if curr &#x3D;&#x3D; target:
+                    return count
+
+                if curr in visited:
+                    continue
+
+                visited.add(curr)
+                
+                res &#x3D; []
+                for i, char in enumerate(curr):
+                    num &#x3D; int(char)
+                    res.append(curr[:i] + str((num - 1) % 10) + curr[i+1:])
+                    res.append(curr[:i] + str((num + 1) % 10) + curr[i+1:])
+                
+                queue.extend(res)
+                
+        return -1</code></pre>
+<h1 id="leetcode-279-perfect-squares">LeetCode 279: Perfect Squares</h1>
+<p>Given an integer <code>n</code>, return the least number of perfect square numbers that sum to <code>n</code>.</p>
+<p>A <strong>perfect square</strong> is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, <code>1</code>, <code>4</code>, <code>9</code>, and <code>16</code> are perfect squares while <code>3</code> and <code>11</code> are not.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 12
+Output: 3
+Explanation: 12 &#x3D; 4 + 4 + 4.</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: n &#x3D; 13
+Output: 2
+Explanation: 13 &#x3D; 4 + 9.</code></pre> <strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= n &lt;= <span class="math inline">\(10^4\)</span></li>
+</ul>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def numSquares(self, n: int) -&gt; int:
+        if n &lt; 2:
+            return n
+        lst &#x3D; []
+        i &#x3D; 1
+        while i * i &lt;&#x3D; n:
+            lst.append( i * i )
+            i +&#x3D; 1
+        cnt &#x3D; 0
+        toCheck &#x3D; &#123;n&#125;
+        while toCheck:
+            cnt +&#x3D; 1
+            temp &#x3D; set()
+            for x in toCheck:
+                for y in lst:
+                    if x &#x3D;&#x3D; y:
+                        return cnt
+                    if x &lt; y:
+                        break
+                    temp.add(x-y)
+            toCheck &#x3D; temp</code></pre>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -5180,190 +5180,6 @@ class MyLinkedList(object):
       </tags>
   </entry>
   <entry>
-    <title>Stack: Last in first out Data Structure</title>
-    <url>/posts/21e8b0fd/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
-<ul>
-<li><strong><a href="https://leetcode.com/problems/min-stack/">LeetCode 155</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/valid-parentheses/">LeetCode 20</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/daily-temperatures/">LeetCode 739</a></strong></li>
-<li><strong><a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/">LeetCode 150</a></strong> <a id="more"></a></li>
-</ul>
-<h1 id="leetcode-155-min-stack">LeetCode 155: Min Stack</h1>
-<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
-<p>Implement the <code>MinStack</code> class:</p>
-<ul>
-<li><code>MinStack()</code> initializes the stack object.</li>
-<li><code>void push(val)</code> pushes the element <code>val</code> onto the stack.</li>
-<li><code>void pop()</code> removes the element on the top of the stack.</li>
-<li><code>int top()</code> gets the top element of the stack.</li>
-<li><code>int getMin()</code> retrieves the minimum element in the stack.</li>
-</ul>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input
-[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;top&quot;,&quot;getMin&quot;]
-[[],[-2],[0],[-3],[],[],[],[]]
-
-Output
-[null,null,null,null,-3,null,0,-2]
-
-Explanation
-MinStack minStack &#x3D; new MinStack();
-minStack.push(-2);
-minStack.push(0);
-minStack.push(-3);
-minStack.getMin(); &#x2F;&#x2F; return -3
-minStack.pop();
-minStack.top();    &#x2F;&#x2F; return 0
-minStack.getMin(); &#x2F;&#x2F; return -2</code></pre></p>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><span class="math inline">\(-2^{31}\)</span> &lt;= val &lt;= <span class="math inline">\(2^{31}\)</span> - 1</li>
-<li>Methods <code>pop</code>, <code>top</code> and <code>getMin</code> operations will always be called on non-empty stacks.</li>
-<li>At most 3 * <span class="math inline">\(10^4\)</span> calls will be made to <code>push</code>, <code>pop</code>, <code>top</code>, and <code>getMin</code>.</li>
-</ul>
-<h2 id="我的解答">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MinStack:
-
-    def __init__(self):
-        self.q &#x3D; []
-
-    def push(self, x):
-        curMin &#x3D; self.getMin()
-        if curMin &#x3D;&#x3D; None or x &lt; curMin:
-            curMin &#x3D; x
-        self.q.append((x, curMin));
-
-    def pop(self):
-        self.q.pop()
-
-
-    def top(self):
-        if len(self.q) &#x3D;&#x3D; 0:
-            return None
-        else:
-            return self.q[len(self.q) - 1][0]
-
-    def getMin(self):
-        if len(self.q) &#x3D;&#x3D; 0:
-            return None
-        else:
-            return self.q[len(self.q) - 1][1]</code></pre>
-<h1 id="leetcode-20-valid-parentheses">LeetCode 20: Valid Parentheses</h1>
-<p>Given a string <code>s</code> containing just the characters <code>'('</code>, <code>')'</code>, <code>'&#123;'</code>, <code>'&#125;'</code>, <code>'['</code> and <code>']'</code>, determine if the input string is valid.</p>
-<p>An input string is valid if:</p>
-<ol type="1">
-<li>Open brackets must be closed by the same type of brackets.</li>
-<li>Open brackets must be closed in the correct order.</li>
-</ol>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;()&quot;
-Output: true</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;()[]&#123;&#125;&quot;
-Output: true</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;(]&quot;
-Output: false</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;([)]&quot;
-Output: false</code></pre> <strong>Example 5:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;&#123;[]&#125;&quot;
-Output: true</code></pre></p>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li>1 &lt;= s.length &lt;= <span class="math inline">\(10^4\)</span></li>
-<li><code>s</code> consists of parentheses only <code>'()[]&#123;&#125;'</code>.</li>
-</ul>
-<h2 id="我的解答-1">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
-    def isValid(self, s: str) -&gt; bool:
-        if len(s) &#x3D;&#x3D; 1:
-            return False
-        
-        stack &#x3D; []
-        
-        for i in s:
-            if i in (&#39;(&#39;, &#39;[&#39;, &#39;&#123;&#39;):
-                stack.append(i)
-            else:
-                j &#x3D; None
-                if stack:
-                    j &#x3D; stack.pop()
-                if i &#x3D;&#x3D; &#39;)&#39; and j &#x3D;&#x3D; &#39;(&#39;: continue
-                elif i &#x3D;&#x3D; &#39;]&#39; and j &#x3D;&#x3D; &#39;[&#39;: continue
-                elif i &#x3D;&#x3D; &#39;&#125;&#39; and j &#x3D;&#x3D; &#39;&#123;&#39;: continue
-                else: break
-        
-        else:
-            if len(stack) &#x3D;&#x3D; 0:
-                return True
-        
-        return False</code></pre>
-<h1 id="leetcode-739-daily-temperatures">LeetCode 739: Daily Temperatures</h1>
-<p>Given a list of daily temperatures <code>T</code>, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put <code>0</code> instead.</p>
-<p>For example, given the list of temperatures <code>T = [73, 74, 75, 71, 69, 72, 76, 73]</code>, your output should be <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>.</p>
-<p><strong>Note:</strong> The length of <code>temperatures</code> will be in the range <code>[1, 30000]</code>. Each temperature will be an integer in the range <code>[30, 100]</code>.</p>
-<h2 id="我的解答-2">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
-    def dailyTemperatures(self, T):
-        ans &#x3D; [0] * len(T)
-        stack &#x3D; []
-        for i, t in enumerate(T):
-            while stack and T[stack[-1]] &lt; t:
-                cur &#x3D; stack.pop()
-                ans[cur] &#x3D; i - cur
-            stack.append(i)
-
-        return ans</code></pre>
-<h1 id="leetcode-150-evaluate-reverse-polish-notation">LeetCode 150: Evaluate Reverse Polish Notation</h1>
-<p>Evaluate the value of an arithmetic expression in <code>Reverse Polish Notation</code>.</p>
-<p>Valid operators are <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>. Each operand may be an integer or another expression.</p>
-<p><strong>Note</strong> that division between two integers should truncate toward zero.</p>
-<p>It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.</p>
-<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: tokens &#x3D; [&quot;2&quot;,&quot;1&quot;,&quot;+&quot;,&quot;3&quot;,&quot;*&quot;]
-Output: 9
-Explanation: ((2 + 1) * 3) &#x3D; 9</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: tokens &#x3D; [&quot;4&quot;,&quot;13&quot;,&quot;5&quot;,&quot;&#x2F;&quot;,&quot;+&quot;]
-Output: 6
-Explanation: (4 + (13 &#x2F; 5)) &#x3D; 6</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: tokens &#x3D; [&quot;10&quot;,&quot;6&quot;,&quot;9&quot;,&quot;3&quot;,&quot;+&quot;,&quot;-11&quot;,&quot;*&quot;,&quot;&#x2F;&quot;,&quot;*&quot;,&quot;17&quot;,&quot;+&quot;,&quot;5&quot;,&quot;+&quot;]
-Output: 22
-Explanation: ((10 * (6 &#x2F; ((9 + 3) * -11))) + 17) + 5
-&#x3D; ((10 * (6 &#x2F; (12 * -11))) + 17) + 5
-&#x3D; ((10 * (6 &#x2F; -132)) + 17) + 5
-&#x3D; ((10 * 0) + 17) + 5
-&#x3D; (0 + 17) + 5
-&#x3D; 17 + 5
-&#x3D; 22</code></pre></p>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li>1 &lt;= tokens.length &lt;= <span class="math inline">\(10^4\)</span></li>
-<li><code>tokens[i]</code> is either an operator: <code>"+"</code>, <code>"-"</code>, <code>"*"</code>, or <code>"/"</code>, or an integer in the range <code>[-200, 200]</code>.</li>
-</ul>
-<h2 id="我的解答-3">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import math
-class Solution:
-    def evalRPN(self, tokens: List[str]) -&gt; int:
-        stack &#x3D; []
-        
-        for _ in tokens:
-            if _ in (&quot;*&quot;, &quot;&#x2F;&quot;, &quot;+&quot;, &quot;-&quot;):
-                x &#x3D; stack.pop()
-                y &#x3D; stack.pop()
-                if _ &#x3D;&#x3D; &#39;*&#39;:
-                    stack.append(y * x)
-                elif _ &#x3D;&#x3D; &#39;&#x2F;&#39;:
-                    result &#x3D; y &#x2F; x
-                    if y &#x2F; x &lt; 0:
-                        result &#x3D; math.ceil(result)
-                    else:
-                        result &#x3D; math.floor(result)
-                    stack.append(result)
-                elif _ &#x3D;&#x3D; &#39;+&#39;:
-                    stack.append(y + x)
-                else:
-                    stack.append(y - x)
-            else:
-                i &#x3D; int(_)
-                stack.append(i)
-        
-        return stack[-1]</code></pre>
-]]></content>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Stack and DFS</title>
     <url>/posts/e0dfb60b/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
@@ -5618,6 +5434,190 @@ class Solution:
                 if curr.left:
                     stack.append(curr.left)
         return result</code></pre>
+]]></content>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Stack: Last in first out Data Structure</title>
+    <url>/posts/21e8b0fd/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>本文蒐集</strong></p>
+<ul>
+<li><strong><a href="https://leetcode.com/problems/min-stack/">LeetCode 155</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/valid-parentheses/">LeetCode 20</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/daily-temperatures/">LeetCode 739</a></strong></li>
+<li><strong><a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/">LeetCode 150</a></strong> <a id="more"></a></li>
+</ul>
+<h1 id="leetcode-155-min-stack">LeetCode 155: Min Stack</h1>
+<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+<p>Implement the <code>MinStack</code> class:</p>
+<ul>
+<li><code>MinStack()</code> initializes the stack object.</li>
+<li><code>void push(val)</code> pushes the element <code>val</code> onto the stack.</li>
+<li><code>void pop()</code> removes the element on the top of the stack.</li>
+<li><code>int top()</code> gets the top element of the stack.</li>
+<li><code>int getMin()</code> retrieves the minimum element in the stack.</li>
+</ul>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input
+[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;top&quot;,&quot;getMin&quot;]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explanation
+MinStack minStack &#x3D; new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); &#x2F;&#x2F; return -3
+minStack.pop();
+minStack.top();    &#x2F;&#x2F; return 0
+minStack.getMin(); &#x2F;&#x2F; return -2</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><span class="math inline">\(-2^{31}\)</span> &lt;= val &lt;= <span class="math inline">\(2^{31}\)</span> - 1</li>
+<li>Methods <code>pop</code>, <code>top</code> and <code>getMin</code> operations will always be called on non-empty stacks.</li>
+<li>At most 3 * <span class="math inline">\(10^4\)</span> calls will be made to <code>push</code>, <code>pop</code>, <code>top</code>, and <code>getMin</code>.</li>
+</ul>
+<h2 id="我的解答">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class MinStack:
+
+    def __init__(self):
+        self.q &#x3D; []
+
+    def push(self, x):
+        curMin &#x3D; self.getMin()
+        if curMin &#x3D;&#x3D; None or x &lt; curMin:
+            curMin &#x3D; x
+        self.q.append((x, curMin));
+
+    def pop(self):
+        self.q.pop()
+
+
+    def top(self):
+        if len(self.q) &#x3D;&#x3D; 0:
+            return None
+        else:
+            return self.q[len(self.q) - 1][0]
+
+    def getMin(self):
+        if len(self.q) &#x3D;&#x3D; 0:
+            return None
+        else:
+            return self.q[len(self.q) - 1][1]</code></pre>
+<h1 id="leetcode-20-valid-parentheses">LeetCode 20: Valid Parentheses</h1>
+<p>Given a string <code>s</code> containing just the characters <code>'('</code>, <code>')'</code>, <code>'&#123;'</code>, <code>'&#125;'</code>, <code>'['</code> and <code>']'</code>, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<ol type="1">
+<li>Open brackets must be closed by the same type of brackets.</li>
+<li>Open brackets must be closed in the correct order.</li>
+</ol>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;()&quot;
+Output: true</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;()[]&#123;&#125;&quot;
+Output: true</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;(]&quot;
+Output: false</code></pre> <strong>Example 4:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;([)]&quot;
+Output: false</code></pre> <strong>Example 5:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: s &#x3D; &quot;&#123;[]&#125;&quot;
+Output: true</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= s.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li><code>s</code> consists of parentheses only <code>'()[]&#123;&#125;'</code>.</li>
+</ul>
+<h2 id="我的解答-1">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def isValid(self, s: str) -&gt; bool:
+        if len(s) &#x3D;&#x3D; 1:
+            return False
+        
+        stack &#x3D; []
+        
+        for i in s:
+            if i in (&#39;(&#39;, &#39;[&#39;, &#39;&#123;&#39;):
+                stack.append(i)
+            else:
+                j &#x3D; None
+                if stack:
+                    j &#x3D; stack.pop()
+                if i &#x3D;&#x3D; &#39;)&#39; and j &#x3D;&#x3D; &#39;(&#39;: continue
+                elif i &#x3D;&#x3D; &#39;]&#39; and j &#x3D;&#x3D; &#39;[&#39;: continue
+                elif i &#x3D;&#x3D; &#39;&#125;&#39; and j &#x3D;&#x3D; &#39;&#123;&#39;: continue
+                else: break
+        
+        else:
+            if len(stack) &#x3D;&#x3D; 0:
+                return True
+        
+        return False</code></pre>
+<h1 id="leetcode-739-daily-temperatures">LeetCode 739: Daily Temperatures</h1>
+<p>Given a list of daily temperatures <code>T</code>, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put <code>0</code> instead.</p>
+<p>For example, given the list of temperatures <code>T = [73, 74, 75, 71, 69, 72, 76, 73]</code>, your output should be <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>.</p>
+<p><strong>Note:</strong> The length of <code>temperatures</code> will be in the range <code>[1, 30000]</code>. Each temperature will be an integer in the range <code>[30, 100]</code>.</p>
+<h2 id="我的解答-2">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def dailyTemperatures(self, T):
+        ans &#x3D; [0] * len(T)
+        stack &#x3D; []
+        for i, t in enumerate(T):
+            while stack and T[stack[-1]] &lt; t:
+                cur &#x3D; stack.pop()
+                ans[cur] &#x3D; i - cur
+            stack.append(i)
+
+        return ans</code></pre>
+<h1 id="leetcode-150-evaluate-reverse-polish-notation">LeetCode 150: Evaluate Reverse Polish Notation</h1>
+<p>Evaluate the value of an arithmetic expression in <code>Reverse Polish Notation</code>.</p>
+<p>Valid operators are <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>. Each operand may be an integer or another expression.</p>
+<p><strong>Note</strong> that division between two integers should truncate toward zero.</p>
+<p>It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: tokens &#x3D; [&quot;2&quot;,&quot;1&quot;,&quot;+&quot;,&quot;3&quot;,&quot;*&quot;]
+Output: 9
+Explanation: ((2 + 1) * 3) &#x3D; 9</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: tokens &#x3D; [&quot;4&quot;,&quot;13&quot;,&quot;5&quot;,&quot;&#x2F;&quot;,&quot;+&quot;]
+Output: 6
+Explanation: (4 + (13 &#x2F; 5)) &#x3D; 6</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: tokens &#x3D; [&quot;10&quot;,&quot;6&quot;,&quot;9&quot;,&quot;3&quot;,&quot;+&quot;,&quot;-11&quot;,&quot;*&quot;,&quot;&#x2F;&quot;,&quot;*&quot;,&quot;17&quot;,&quot;+&quot;,&quot;5&quot;,&quot;+&quot;]
+Output: 22
+Explanation: ((10 * (6 &#x2F; ((9 + 3) * -11))) + 17) + 5
+&#x3D; ((10 * (6 &#x2F; (12 * -11))) + 17) + 5
+&#x3D; ((10 * (6 &#x2F; -132)) + 17) + 5
+&#x3D; ((10 * 0) + 17) + 5
+&#x3D; (0 + 17) + 5
+&#x3D; 17 + 5
+&#x3D; 22</code></pre></p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= tokens.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li><code>tokens[i]</code> is either an operator: <code>"+"</code>, <code>"-"</code>, <code>"*"</code>, or <code>"/"</code>, or an integer in the range <code>[-200, 200]</code>.</li>
+</ul>
+<h2 id="我的解答-3">我的解答</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import math
+class Solution:
+    def evalRPN(self, tokens: List[str]) -&gt; int:
+        stack &#x3D; []
+        
+        for _ in tokens:
+            if _ in (&quot;*&quot;, &quot;&#x2F;&quot;, &quot;+&quot;, &quot;-&quot;):
+                x &#x3D; stack.pop()
+                y &#x3D; stack.pop()
+                if _ &#x3D;&#x3D; &#39;*&#39;:
+                    stack.append(y * x)
+                elif _ &#x3D;&#x3D; &#39;&#x2F;&#39;:
+                    result &#x3D; y &#x2F; x
+                    if y &#x2F; x &lt; 0:
+                        result &#x3D; math.ceil(result)
+                    else:
+                        result &#x3D; math.floor(result)
+                    stack.append(result)
+                elif _ &#x3D;&#x3D; &#39;+&#39;:
+                    stack.append(y + x)
+                else:
+                    stack.append(y - x)
+            else:
+                i &#x3D; int(_)
+                stack.append(i)
+        
+        return stack[-1]</code></pre>
 ]]></content>
       <tags>
         <tag>LeetCode</tag>

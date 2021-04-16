@@ -186,7 +186,7 @@ const ap = new APlayer({
         url: 'https://drive.google.com/uc?export=download&id=1334sJlGR5FDYUBPxNoYJlVDUxnxS7Rxk',
         cover: '',
         lrc: '',
-      },,
+      },
       {
         name: "Break Me Down",
         artist: 'Marz23 ft. JESSE',
