@@ -31,13 +31,16 @@
 <meta property="og:site_name" content="Nicholas Blogger">
 <meta property="og:description" content="本文蒐集  LeetCode 498 LeetCode 54 LeetCode 118">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://yu-shin.github.io/posts/undefined/DT.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/a80ae1c4/DT.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/a80ae1c4/SM1.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/a80ae1c4/SM2.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/a80ae1c4/PascalTriangleAnimated2.gif">
 <meta property="article:published_time" content="2021-04-17T06:43:13.000Z">
-<meta property="article:modified_time" content="2021-04-18T07:14:24.697Z">
+<meta property="article:modified_time" content="2021-04-18T15:01:58.202Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yu-shin.github.io/posts/undefined/DT.jpg">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/a80ae1c4/DT.jpg">
 
 
 <link rel="canonical" href="https://yu-shin.github.io/posts/a80ae1c4/">
@@ -221,7 +224,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -331,14 +334,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.5k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>3 分鐘</span>
+      <span>5 分鐘</span>
     </span>
 </div>
 
@@ -357,9 +360,16 @@
 </ul>
 <a id="more"></a>
 <h1 id="leetcode-498-diagonal-traverse">LeetCode 498: Diagonal Traverse</h1>
-<p>Given an <code>m x n</code> matrix <code>mat</code>, return an array of all the elements of the array in a diagonal order. <strong>Example 1:</strong> <img src="/posts/undefined/DT.jpg" class=""> <pre class="line-numbers language-none"><code class="language-none">Input: mat &#x3D; [[1,2,3],[4,5,6],[7,8,9]]
+<p>Given an <code>m x n</code> matrix <code>mat</code>, return an array of all the elements of the array in a diagonal order. <strong>Example 1:</strong> <img src="/posts/a80ae1c4/DT.jpg" class=""> <pre class="line-numbers language-none"><code class="language-none">Input: mat &#x3D; [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,4,7,5,3,6,8,9]</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: mat &#x3D; [[1,2],[3,4]]
-Output: [1,2,3,4]</code></pre> <strong>Constraints :</strong> - <code>m == mat.length</code> - <code>n == mat[i].length</code> - 1 &lt;= m, n &lt;= <span class="math inline">\(10^4\)</span> - 1 &lt;= m * n &lt;= <span class="math inline">\(10^4\)</span> - <span class="math inline">\(-10^5\)</span> &lt;= <code>mat[i][j]</code> &lt;= <span class="math inline">\(10^5\)</span></p>
+Output: [1,2,3,4]</code></pre> <strong>Constraints :</strong></p>
+<ul>
+<li><code>m == mat.length</code></li>
+<li><code>n == mat[i].length</code></li>
+<li>1 &lt;= m, n &lt;= <span class="math inline">\(10^4\)</span></li>
+<li>1 &lt;= m * n &lt;= <span class="math inline">\(10^4\)</span></li>
+<li><span class="math inline">\(-10^5\)</span> &lt;= <code>mat[i][j]</code> &lt;= <span class="math inline">\(10^5\)</span></li>
+</ul>
 <h2 id="我的解法-1">我的解法 1</h2>
 <p>利用原始 <strong>dict 字典</strong> <code>mapping</code> 和原始 <strong>list 串列</strong> 當作 <code>queue</code></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
@@ -378,8 +388,12 @@ Output: [1,2,3,4]</code></pre> <strong>Constraints :</strong> - <code>m == mat.l
             ans.extend(entry[1])
         return ans</code></pre>
 <h2 id="我的解法-2">我的解法 2</h2>
-<p>利用 python 內建實用 Lib <code>collections</code> 1. <strong>增加便利性</strong> 2. <strong>減低時間複雜度</strong></p>
-<p><code>collections.defaultdict()</code> mapping 和 <code>collections.deque()</code></p>
+<p>利用 python 內建實用 Lib <code>collections</code></p>
+<ol type="1">
+<li><strong>增加便利性</strong></li>
+<li><strong>減低時間複雜度</strong></li>
+</ol>
+<p><code>collections.defaultdict()</code> <strong>mapping</strong> 和 <code>collections.deque()</code> <strong>queue</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -&gt; List[int]:
         ans &#x3D; deque()
@@ -393,13 +407,82 @@ Output: [1,2,3,4]</code></pre> <strong>Constraints :</strong> - <code>m == mat.l
             ans.extend(v)
         return ans</code></pre>
 <h1 id="leetcode-54-spiral-matrix">LeetCode 54: Spiral Matrix</h1>
-<p>Given an <code>m x n</code> <code>matrix</code>, return all elements of the <code>matrix</code> in spiral order. <strong>Example 1:</strong>  <pre class="line-numbers language-none"><code class="language-none">Input: matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]</code></pre> <strong>Example 1:</strong>  <pre class="line-numbers language-none"><code class="language-none">Input: matrix &#x3D; [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]</code></pre> <strong>Constraints :</strong> - <code>m == matrix.length</code> - <code>n == matrix[i].length</code> - <code>1 &lt;= m, n &lt;= 10</code> - <code>-100 &lt;= matrix[i][j] &lt;= 100</code></p>
+<p>Given an <code>m x n</code> <code>matrix</code>, return all elements of the <code>matrix</code> in spiral order. <strong>Example 1:</strong> <img src="/posts/a80ae1c4/SM1.jpg" class=""> <pre class="line-numbers language-none"><code class="language-none">Input: matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]</code></pre> <strong>Example 1:</strong> <img src="/posts/a80ae1c4/SM2.jpg" class=""> <pre class="line-numbers language-none"><code class="language-none">Input: matrix &#x3D; [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]</code></pre> <strong>Constraints :</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 10</code></li>
+<li><code>-100 &lt;= matrix[i][j] &lt;= 100</code></li>
+</ul>
 <h2 id="我的解法">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -&gt; List[int]:
+        visited &#x3D; set()
+        ans &#x3D; deque()
+        m &#x3D; len(matrix)
+        n &#x3D; len(matrix[0])
+        i &#x3D; -1
+        j &#x3D; -1
+        flag &#x3D; 0
+        
+        while len(visited) !&#x3D; m * n:
+            if flag % 4 &#x3D;&#x3D; 0:
+                i +&#x3D; 1
+                j +&#x3D; 1
+                while 0 &lt;&#x3D; j &lt; n and (i, j) not in visited:
+                    ans.append(matrix[i][j])
+                    visited.add((i, j))
+                    j +&#x3D; 1
+                flag +&#x3D; 1
+            elif flag % 4 &#x3D;&#x3D; 1:
+                j -&#x3D; 1
+                i +&#x3D; 1
+                while 0 &lt;&#x3D; i &lt; m and (i, j) not in visited:
+                    ans.append(matrix[i][j])
+                    visited.add((i, j))
+                    i +&#x3D; 1
+                flag +&#x3D; 1
+            elif flag % 4 &#x3D;&#x3D; 2:
+                i -&#x3D; 1
+                j -&#x3D; 1
+                while 0 &lt;&#x3D; j &lt; n and (i, j) not in visited:
+                    ans.append(matrix[i][j])
+                    visited.add((i, j))
+                    j -&#x3D; 1
+                flag +&#x3D; 1
+            else:
+                j +&#x3D; 1
+                i -&#x3D; 1
+                while 0 &lt;&#x3D; i &lt; m and (i, j) not in visited:
+                    ans.append(matrix[i][j])
+                    visited.add((i, j))
+                    i -&#x3D; 1
+                flag +&#x3D; 1
+        return ans</code></pre>
 <h1 id="leetcode-118-pascals-triangle">LeetCode 118: Pascal's Triangle</h1>
-<p><strong>Example :</strong> <strong>Constraints :</strong> <strong>Follow-up :</strong></p>
+<p>Given an integer <code>numRows</code>, return the first numRows of <strong>Pascal's triangle</strong>.</p>
+<p>In <strong>Pascal's triangle</strong>, each number is the sum of the two numbers directly above it as shown: <img src="/posts/a80ae1c4/PascalTriangleAnimated2.gif" class=""></p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: numRows &#x3D; 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: numRows &#x3D; 1
+Output: [[1]]</code></pre> <strong>Constraints :</strong></p>
+<ul>
+<li><code>1 &lt;= numRows &lt;= 30</code></li>
+</ul>
 <h2 id="我的解法-3">我的解法</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def generate(self, numRows: int) -&gt; List[List[int]]:
+        ans &#x3D; deque()
+        for i in range(numRows):
+            temp &#x3D; deque()
+            for j in range(i+1):
+                if j &#x3D;&#x3D; 0 or j &#x3D;&#x3D; i:
+                    temp.append(1)
+                else:
+                    temp.append(ans[i-1][j-1] + ans[i-1][j])
+            ans.append(temp)
+        return ans</code></pre>
 
     </div>
 
@@ -513,13 +596,13 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]</code></pre> <strong>Constraints :</strong>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">168k</span>
+    <span title="總字數">169k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:05</span>
+    <span title="所需總閱讀時間">5:07</span>
   </span>
 </div>
 
