@@ -24,15 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="本文蒐集  LeetCode LeetCode LeetCode">
+<meta name="description" content="本文蒐集  LeetCode 67 LeetCode 28 LeetCode 14">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introduction to String">
 <meta property="og:url" content="https://yu-shin.github.io/posts/38ef50a5/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="本文蒐集  LeetCode LeetCode LeetCode">
+<meta property="og:description" content="本文蒐集  LeetCode 67 LeetCode 28 LeetCode 14">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-17T06:52:24.000Z">
-<meta property="article:modified_time" content="2021-04-18T07:14:37.289Z">
+<meta property="article:modified_time" content="2021-04-19T17:49:02.452Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode"><span class="nav-number">1.</span> <span class="nav-text">LeetCode :</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-1"><span class="nav-number">2.</span> <span class="nav-text">LeetCode :</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-2"><span class="nav-number">3.</span> <span class="nav-text">LeetCode :</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-2"><span class="nav-number">3.1.</span> <span class="nav-text">我的解法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-67-add-binary"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 67: Add Binary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1"><span class="nav-number">1.1.</span> <span class="nav-text">我的解法 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-2"><span class="nav-number">1.2.</span> <span class="nav-text">我的解法 2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-28-implement-strstr"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 28: Implement strStr()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1-1"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">我的解法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -329,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>157</span>
+      <span>3.3k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>1 分鐘</span>
+      <span>6 分鐘</span>
     </span>
 </div>
 
@@ -349,20 +349,132 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>本文蒐集</strong></p>
 <ul>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/">LeetCode</a></strong></li>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/">LeetCode</a></strong></li>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/">LeetCode</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/add-binary/">LeetCode 67</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/implement-strstr/">LeetCode 28</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/longest-common-prefix/">LeetCode 14</a></strong></li>
 </ul>
 <a id="more"></a>
-<h1 id="leetcode">LeetCode :</h1>
+<h1 id="leetcode-67-add-binary">LeetCode 67: Add Binary</h1>
+<p>Given two binary strings <code>a</code> and <code>b</code>, return their sum as a binary string.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: a &#x3D; &quot;11&quot;, b &#x3D; &quot;1&quot;
+Output: &quot;100&quot;</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: a &#x3D; &quot;1010&quot;, b &#x3D; &quot;1011&quot;
+Output: &quot;10101&quot;</code></pre> <strong>Constraints :</strong></p>
+<ul>
+<li>1 &lt;= a.length, b.length &lt;= <span class="math inline">\(10^4\)</span></li>
+<li><code>a</code> and <code>b</code> consist only of <code>'0'</code> or <code>'1'</code> characters.</li>
+<li>Each string does not contain leading zeros except for the zero itself.</li>
+</ul>
+<h2 id="我的解法-1">我的解法 1</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def addBinary(self, a: str, b: str) -&gt; str:
+        if a &#x3D;&#x3D; &#39;0&#39;:
+            return b
+        elif b &#x3D;&#x3D; &#39;0&#39;:
+            return a
+        else:
+            ans &#x3D; deque()
+            s &#x3D; int(a) + int(b)
+            temp &#x3D; 0
+            
+            while s !&#x3D; 0:
+                ans.append((s+temp) % 2)
+                if (s+temp) % 10 &gt;&#x3D; 2:
+                    temp &#x3D; 1
+                else:
+                    temp &#x3D; 0
+                s &#x2F;&#x2F;&#x3D; 10
+            if temp &#x3D;&#x3D; 1:
+                ans.append(1)
+        s &#x3D; &#39;&#39;    
+        for i in range(len(ans)):
+            s +&#x3D; str(ans.pop())
+        return s</code></pre>
+<h2 id="我的解法-2">我的解法 2</h2>
+<p><code>遞迴式</code>寫法</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def addBinary(self, a: str, b: str) -&gt; str:
+        if len(a)&#x3D;&#x3D;0: return b
+            if len(b)&#x3D;&#x3D;0: return a
+            if a[-1] &#x3D;&#x3D; &#39;1&#39; and b[-1] &#x3D;&#x3D; &#39;1&#39;:
+                return self.addBinary(self.addBinary(a[0:-1],b[0:-1]),&#39;1&#39;)+&#39;0&#39;
+            if a[-1] &#x3D;&#x3D; &#39;0&#39; and b[-1] &#x3D;&#x3D; &#39;0&#39;:
+                return self.addBinary(a[0:-1],b[0:-1])+&#39;0&#39;
+            else:
+                return self.addBinary(a[0:-1],b[0:-1])+&#39;1&#39;</code></pre>
+<h1 id="leetcode-28-implement-strstr">LeetCode 28: Implement strStr()</h1>
+<p>Implement <code>strStr()</code>.</p>
+<p>Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.</p>
+<p><strong>Clarification:</strong></p>
+<p>What should we return when <code>needle</code> is an empty string? This is a great question to ask during an interview.</p>
+<p>For the purpose of this problem, we will return 0 when <code>needle</code> is an empty string. This is consistent to C's <code>strstr()</code> and Java's <code>indexOf()</code>.</p>
+<p><strong>Example 1:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: haystack &#x3D; &quot;hello&quot;, needle &#x3D; &quot;ll&quot;
+Output: 2</code></pre> <strong>Example 2:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: haystack &#x3D; &quot;aaaaa&quot;, needle &#x3D; &quot;bba&quot;
+Output: -1</code></pre> <strong>Example 3:</strong> <pre class="line-numbers language-none"><code class="language-none">Input: haystack &#x3D; &quot;&quot;, needle &#x3D; &quot;&quot;
+Output: 0</code></pre> <strong>Constraints :</strong> - 0 &lt;= haystack.length, needle.length &lt;= 5 * <span class="math inline">\(10^4\)</span> - <code>haystack</code> and <code>needle</code> consist of only lower-case English characters.</p>
+<h2 id="我的解法-1-1">我的解法 1</h2>
+<p><code>while</code> 方法 1 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def strStr(self, haystack: str, needle: str) -&gt; int:
+        if needle &#x3D;&#x3D; &#39;&#39;:
+            return 0
+        
+        i &#x3D; 0
+        while i &lt; len(haystack)-len(needle)+1:
+            j, k, flag &#x3D; 0, i, 0
+            
+            while j &lt; len(needle) and k &lt; len(haystack):
+                if haystack[k] !&#x3D; needle[j]:
+                    break
+                k +&#x3D; 1
+                j +&#x3D; 1
+                if j &#x3D;&#x3D; len(needle):
+                    return i
+            i +&#x3D; 1
+        return -1</code></pre> ## 我的解法 2 <code>while</code> 方法 2 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def strStr(self, haystack: str, needle: str) -&gt; int:
+        if len(haystack) &lt; len(needle): # early termination
+            return -1
+        if not needle:
+            return 0
+    
+        i &#x3D; j &#x3D; 0
+        while j &lt; len(needle) and i &lt; len(haystack): 
+            if haystack[i] !&#x3D; needle[j]:
+                i &#x3D; i - j + 1
+                j &#x3D; 0
+                continue 
+            i +&#x3D; 1
+            j +&#x3D; 1
+        return i - j if j &#x3D;&#x3D; len(needle) else -1</code></pre> ## 我的解法 3 <code>for</code> <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def strStr(self, haystack: str, needle: str) -&gt; int:
+        if needle &#x3D;&#x3D; &#39;&#39;:
+            return 0
+        for i in range(len(haystack)-len(needle)+1):
+    	    if haystack[i:i+len(needle)] &#x3D;&#x3D; needle:
+                return i
+        return -1</code></pre> ## 我的解法 4 <strong><code>KMP 演算法</code></strong> <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def strStr(self, haystack: str, needle: str) -&gt; int:
+        def kmp(str_):
+            b, prefix &#x3D; 0, [0]
+            for i in range(1, len(str_)):
+                while b &gt; 0 and str_[i] !&#x3D; str_[b]:
+                    b &#x3D; prefix[b - 1]
+                if str_[b] &#x3D;&#x3D; str_[i]:
+                    b +&#x3D; 1
+                else:
+                    b &#x3D; 0
+                prefix.append(b)
+            return prefix
+
+        str_ &#x3D; kmp(needle + &#39;#&#39; + haystack)
+        n &#x3D; len(needle)
+        if n &#x3D;&#x3D; 0:
+            return n
+        for i in range(n + 1, len(str_)):
+            if str_[i] &#x3D;&#x3D; n:
+                return i - 2 * n
+        return -1</code></pre> # LeetCode : Longest Common Prefix</p>
 <p><strong>Example :</strong> <strong>Constraints :</strong> <strong>Follow-up :</strong></p>
 <h2 id="我的解法">我的解法</h2>
-<h1 id="leetcode-1">LeetCode :</h1>
-<p><strong>Example :</strong> <strong>Constraints :</strong> <strong>Follow-up :</strong></p>
-<h2 id="我的解法-1">我的解法</h2>
-<h1 id="leetcode-2">LeetCode :</h1>
-<p><strong>Example :</strong> <strong>Constraints :</strong> <strong>Follow-up :</strong></p>
-<h2 id="我的解法-2">我的解法</h2>
 
     </div>
 
@@ -476,13 +588,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">169k</span>
+    <span title="總字數">172k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:07</span>
+    <span title="所需總閱讀時間">5:13</span>
   </span>
 </div>
 
