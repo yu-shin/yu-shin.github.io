@@ -26,7 +26,7 @@
   </script>
 <meta name="description" content="系統中存在一組 Processes 陷入 “互相等待對方所擁有之資源” 的情況 (即: Circular Waiting) ，造成所有 Processes 皆無法往下執行，使得 CPU 利用度及産能大幅降低。 Example:  假設一個系統中有兩個資源 \(R_1\) 與 \(R_2\) ，而且該系統產生出兩個行程 \(P_1\) 與 \(P_2\)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dead Lock">
+<meta property="og:title" content="Dead Lock 定義">
 <meta property="og:url" content="https://yu-shin.github.io/posts/84e0264f/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
 <meta property="og:description" content="系統中存在一組 Processes 陷入 “互相等待對方所擁有之資源” 的情況 (即: Circular Waiting) ，造成所有 Processes 皆無法往下執行，使得 CPU 利用度及産能大幅降低。 Example:  假設一個系統中有兩個資源 \(R_1\) 與 \(R_2\) ，而且該系統產生出兩個行程 \(P_1\) 與 \(P_2\)">
@@ -34,14 +34,8 @@
 <meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/def.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/def2.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/comparewithstar.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/cw.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/bcw.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/bcww.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/av.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/EX1.jpg">
-<meta property="og:image" content="https://yu-shin.github.io/posts/84e0264f/EX12.jpg">
 <meta property="article:published_time" content="2021-06-15T13:54:35.000Z">
-<meta property="article:modified_time" content="2021-06-16T12:33:09.767Z">
+<meta property="article:modified_time" content="2021-06-16T13:20:07.631Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -60,7 +54,7 @@
     lang   : 'zh-TW'
   };
 </script>
-<title>Dead Lock | Nicholas Blogger</title>
+<title>Dead Lock 定義 | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -213,7 +207,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock-vs.-starvation"><span class="nav-number">1.</span> <span class="nav-text">Dead Lock vs. Starvation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E6%88%90-dead-lock-%E7%9A%84%E5%9B%9B%E5%80%8B%E5%BF%85%E8%A6%81%E6%A2%9D%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">形成 Dead Lock 的四個必要條件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E7%B5%90%E7%9A%84%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">死結的處理方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dead-lock-prevention"><span class="nav-number">3.1.</span> <span class="nav-text">Dead Lock Prevention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dead-lock-avoidance"><span class="nav-number">3.2.</span> <span class="nav-text">Dead Lock Avoidance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bankers-algorithm-%E9%8A%80%E8%A1%8C%E5%AE%B6%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">Banker’s Algorithm (銀行家演算法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">3.2.2.</span> <span class="nav-text">範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dead-lock-detection-recovery"><span class="nav-number">3.3.</span> <span class="nav-text">Dead Lock Detection &amp; Recovery</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock-vs.-starvation"><span class="nav-number">1.</span> <span class="nav-text">Dead Lock vs. Starvation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E6%88%90-dead-lock-%E7%9A%84%E5%9B%9B%E5%80%8B%E5%BF%85%E8%A6%81%E6%A2%9D%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">形成 Dead Lock 的四個必要條件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E7%B5%90%E7%9A%84%E8%99%95%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">死結的處理方法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,7 +223,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -303,7 +297,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Dead Lock
+          Dead Lock 定義
         </h1>
 
         <div class="post-meta-container">
@@ -339,14 +333,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>5.1k</span>
+      <span>990</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>9 分鐘</span>
+      <span>2 分鐘</span>
     </span>
 </div>
 
@@ -395,7 +389,7 @@
 </ul></li>
 <li>Circular waiting (循環式等候)
 <ul>
-<li>系統中存在一組 <strong>Processes {<span class="math inline">\(P_0, P_1, …, P_n\)</span>}</strong> ，其 <strong><span class="math inline">\(P_0\)</span></strong> 正在等待 <strong><span class="math inline">\(P_1\)</span></strong> 所持有的<strong>資源</strong>， <strong><span class="math inline">\(P_1\)</span></strong> 正在等待 <strong><span class="math inline">\(P_2\)</span></strong> 所持有的<strong>資源</strong>，…, <strong><span class="math inline">\(P_n\)</span></strong> 正在等待 <strong><span class="math inline">\(P_0\)</span></strong> 所持有的<strong>資源</strong>， <strong><span class="math inline">\(P_0\)</span>~<span class="math inline">\(P_n\)</span></strong> 形成 <strong>Circular Waiting</strong>。 <img src="/posts/84e0264f/cw.jpg" class=""></li>
+<li>系統中存在一組 <strong>Processes {<span class="math inline">\(P_0, P_1, …, P_n\)</span>}</strong> ，其 <strong><span class="math inline">\(P_0\)</span></strong> 正在等待 <strong><span class="math inline">\(P_1\)</span></strong> 所持有的<strong>資源</strong>， <strong><span class="math inline">\(P_1\)</span></strong> 正在等待 <strong><span class="math inline">\(P_2\)</span></strong> 所持有的<strong>資源</strong>，…, <strong><span class="math inline">\(P_n\)</span></strong> 正在等待 <strong><span class="math inline">\(P_0\)</span></strong> 所持有的<strong>資源</strong>， <strong><span class="math inline">\(P_0\)</span>~<span class="math inline">\(P_n\)</span></strong> 形成 <strong>Circular Waiting</strong>。 </li>
 <li>因此，死結不會發生在 <strong>Single process</strong> 環境中</li>
 </ul></li>
 </ul>
@@ -422,268 +416,6 @@
 </ul></li>
 </ul></li>
 </ul>
-<h2 id="dead-lock-prevention">Dead Lock Prevention</h2>
-<p><strong>概念:</strong> 打破四個必要條件其中之一，就可以保証死結永不發生。</p>
-<ol type="1">
-<li><strong>打破 “Mutual Exclusion”</strong>
-<ul>
-<li>∵ 互斥是某些資源與生倶來的性質 ∴ <strong>無法打破</strong></li>
-</ul></li>
-<li><strong>打破 “No Preemptive”</strong>
-<ul>
-<li>允許 <strong>Process</strong> 可以搶奪其它 <strong>Waiting Process</strong> 手中的<strong>資源</strong>。(即：改為 <strong><code>Preemptive</code></strong>) <div class="note warning"><ul>
-<li>頂多只會有 <strong><code>Starvation</code></strong>，但 <strong>No Dead Lock</strong> (可以採用 <strong><code>Aging</code></strong> 技術解決)</li>
-</ul>
-</div></li>
-</ul></li>
-<li><strong>打破 “Hold and Wait”</strong></li>
-</ol>
-<p>可採取下列作法之一：</p>
-<ol type="1">
-<li>規定： 除非 <strong>Process</strong> 可以一次取得完成工作所需的<strong><code>全部資源</code></strong>，才允許 <strong>Process</strong> 持有<strong>資源</strong>，否則 <strong>Process</strong> 不准持有任何<strong>資源</strong>
-<ul>
-<li>若一次取得<strong>全部資源</strong> ⇒ <code>“Wait”不成立</code></li>
-<li>若無法取得<strong>全部資源</strong>，則全都不拿 ⇒ <code>“Hold” 不成立</code></li>
-<li>全有全無</li>
-<li><strong>系統産能</strong><code>低</code></li>
-</ul></li>
-<li><strong>Process</strong> 在執行之初可持有<strong>部份資源</strong>，但若要再申請<strong>資源</strong>之前，必須先釋放手中<strong>所有資源</strong>，才可以提出申請
-<ul>
-<li>一開始可取<strong>部份資源</strong>執行 ⇒ <code>“Wait”不成立</code></li>
-<li>再申請時，需放掉手中<strong>所有資源</strong> ⇒ <code>“Hold” 不成立</code></li>
-<li><strong>系統産能</strong><code>低</code></li>
-</ul></li>
-<li><strong>打破 “Circular Waiting”</strong></li>
-</ol>
-<p>O.S.需採取下列措施：</p>
-<ul>
-<li>為毎個<code>不同類型</code>的<strong>資源</strong>賦予一個獨一無二的<strong><code>資源編碼</code></strong> (Unique ID)</li>
-<li>規定 <strong>Process</strong> 必須按照<strong>資源編號</strong><code>遞增</code> (遞減) 的方式提出資源申請</li>
-</ul>
-<img src="/posts/84e0264f/bcw.jpg" class="">
-<div class="note warning"><p><strong>證明( 反證法 ) :</strong></p>
-<p>假設在 O.S. 採取前述兩個措施後，系統仍存在一組 <strong>Processes</strong> 造成 <strong>Circular Waiting</strong> 如下：</p>
-<p><strong><span class="math inline">\(r_i: 資源本身 , R_i: 資源編碼\)</span></strong> <img src="/posts/84e0264f/bcww.jpg" class=""></p>
-<ul>
-<li>令一組行程 <strong><span class="math inline">\(P_0\)</span>~<span class="math inline">\(P_n\)</span></strong> 分別持有資源 <strong><span class="math inline">\(r_0, r_1, …, r_n\)</span></strong>，且<strong>資源類型</strong>皆<code>不相同</code> (即：編號不同)</li>
-<li>根據遞增申請規則，上述 <strong>Circular Waiting</strong> 會推出 <strong><span class="math inline">\(r_0 &lt; r_1 &lt; … &lt; r_n &lt; r_0\)</span></strong> 。其中竟導出 <strong><span class="math inline">\(r_0 &lt; r_0\)</span></strong> 此一<code>矛盾</code>的式子(即：<strong><code>相同的資源，其編號不同</code></strong>)</li>
-<li>∴ 假設<strong>不成立</strong>，不會有 <strong>Circular Waiting</strong> 狀況產生</li>
-</ul>
-</div>
-<h2 id="dead-lock-avoidance">Dead Lock Avoidance</h2>
-<p>當 <strong>Process</strong> 提出對<strong>資源</strong>的申請時，O.S. 會根據以下資訊執行<strong><code>銀行家演算法</code></strong> (<strong><code>Banker’s Algo.</code></strong>, 內含 <strong><code>Safety Algo.</code></strong>)，來判斷系統在<code>假設</code> 核准申請後是否處於 <strong><code>Safe State</code></strong>。若<strong>是</strong>，則真的核准其請求；<strong>否</strong>則否決此次申請，<strong>Process</strong> 須再等待一段時間，下一次再提出申請。</p>
-<ul>
-<li>申請<strong>資源數量</strong></li>
-<li>各 <strong>Process</strong> 目前所持有的<strong>資源數量</strong></li>
-<li>各 <strong>Process</strong> 尚需要之<strong>資源需求量</strong></li>
-<li>系統目前可用的<strong>資源數量</strong></li>
-</ul>
-<img src="/posts/84e0264f/av.jpg" class="">
-<h3 id="bankers-algorithm-銀行家演算法">Banker’s Algorithm (銀行家演算法)</h3>
-<p>針對提出<strong>資源申請</strong>的 <strong>Process</strong>，來檢視系統 “是否會因接受此一 <strong>Process</strong> 的申請而進入<strong>死結</strong>。(內含 <strong><code>Safety Algorithm</code></strong> )</p>
-<p><strong><code>Banker’s Algorithm</code></strong> 所使用的<strong><code>資料結構</code></strong>：(假設系統目前有 <strong><code>n</code></strong> 個 <strong>Process</strong>，與 <strong><code>m</code></strong> 種類型的<strong>資源</strong>)</p>
-<ul>
-<li><strong><span class="math inline">\(Request_i[1…m]\)</span></strong>
-<ul>
-<li>表示 <strong>Process i</strong> 所提出的<strong>資源申請量</strong></li>
-<li>若 <strong><span class="math inline">\(Request_i[j] = k\)</span></strong>，則表示 <strong>Process i</strong> 欲申請 <strong><code>k</code></strong> 個類型為 <strong><code>j</code></strong> 的<strong>資源</strong></li>
-</ul></li>
-<li><strong><span class="math inline">\(Allocation[1…n, 1…m]\)</span></strong>
-<ul>
-<li>表示各 <strong>Process</strong> 目前<strong>持有的各類資源數量</strong></li>
-<li>若 <strong><span class="math inline">\(Allocation[i, j] = k\)</span></strong>，表示 <strong>Process i</strong> 目前持有類型為 <strong><code>j</code></strong> 的資源 共 <strong><code>k</code></strong> 個</li>
-</ul></li>
-<li><strong><span class="math inline">\(Max[1…n, 1…m]\)</span></strong>
-<ul>
-<li>表示各 <strong>Process</strong> 需要哪些<strong>資源</strong>、且需要多少數量才得以完成工作 (即： 記錄<strong>對各類資源的最大需求量</strong>)</li>
-<li>若 <strong><span class="math inline">\(Max[i, j] = k\)</span></strong>，表示 <strong>Process i</strong> 需要有類型為 <strong><code>j</code></strong> 的<strong>資源</strong>，且最多要 <strong><code>k</code></strong> 個方可完成工作</li>
-</ul></li>
-<li><strong><span class="math inline">\(Need[1…n, 1…m]\)</span></strong>
-<ul>
-<li>表示 <strong>Process</strong> 目前尚<strong>需要多少數量的資源</strong>方得以完成工作</li>
-<li>若 <strong><span class="math inline">\(Need[i, j] = k\)</span></strong>，則表示 <strong>Process i</strong> 尚需類型為 <strong><code>j</code></strong>的資源 <strong><code>k</code></strong> 個方能完成工作</li>
-<li><strong><span class="math inline">\(Need_i = Max_i - Allocation_i\)</span></strong></li>
-</ul></li>
-<li><strong><span class="math inline">\(Available[1…m]\)</span></strong>
-<ul>
-<li>系統目前<strong>各類資源的可用數量</strong></li>
-<li><strong>Available = 系統資源總量 - Allocation</strong></li>
-</ul></li>
-</ul>
-<p><strong><code>Banker’s Algorithm:</code></strong></p>
-<ol type="1">
-<li>檢査 <strong><span class="math inline">\(Request_i ≤ Need\)</span></strong></li>
-</ol>
-<ul>
-<li>即：檢査所提出的需求合不合理</li>
-<li><code>不成立</code>: 則 O.S.會視為 <strong>illegal</strong>，中止此 <strong>process</strong></li>
-<li><code>若成立</code>: 則 <strong>Go to 2</strong></li>
-</ul>
-<ol start="2" type="1">
-<li>檢査 <strong><span class="math inline">\(Request_i ≤ Available\)</span></strong></li>
-</ol>
-<ul>
-<li>檢査系統<strong>是否有足夠資源</strong>可提供給 <strong>Process</strong></li>
-<li><code>不成立</code>: <strong>process</strong> 必須等待直到資源足夠</li>
-<li><code>若成立</code>: 則 <strong>Go to 3</strong></li>
-</ul>
-<ol start="3" type="1">
-<li>(<code>假設性試算</code>)假設系統分配資源給該提出申請之 <strong>Process</strong>，透過計算下列數値以做接下來之<strong>安全演算法</strong> (<strong><code>Safety Algorithm</code></strong>)之分析</li>
-</ol>
-<ul>
-<li><strong><span class="math inline">\(Available = Available - Request_i\)</span></strong> (<strong>分配後的系統可用資源</strong>還有多少)</li>
-<li><strong><span class="math inline">\(Need_i = Need_i - Request_i\)</span></strong> (分配後的 <strong>Process i</strong> 還<strong>需要多少資源</strong>才能完成工作)</li>
-<li><strong><span class="math inline">\(Allocation_i = Allocation_i + Request_i\)</span></strong> (分配後的 <strong>Process i</strong> 所<strong>掌握的資源</strong>有多少)</li>
-</ul>
-<ol start="4" type="1">
-<li>執行 <strong><code>Safety Algorithm</code></strong>。</li>
-</ol>
-<ul>
-<li>if 系統判斷會處於 <strong><code>Safe State</code></strong>，then 允許申請；</li>
-<li>else 否決此次申請，稍後再重新申請</li>
-</ul>
-<div class="note warning"><p><strong><code>Safety Algorithm</code></strong> 所使用的<strong><code>資料結構</code></strong>：(假設系統目前有 <strong><code>n</code></strong> 個 <strong>Process</strong>，與 <strong><code>m</code></strong> 種類型的<strong>資源</strong>)</p>
-<ul>
-<li><strong><span class="math inline">\(Work[1…m]\)</span></strong>
-<ul>
-<li>當假定配置資源後，目前系統可工作 (Work) 資源的數量累計</li>
-<li><strong><code>初値 = Available</code></strong></li>
-</ul></li>
-<li><strong><span class="math inline">\(Finish[1…n]\)</span> of Boolean</strong>
-<ul>
-<li><strong><span class="math inline">\(Finish[i]\)</span></strong> 表示 <strong>Process i</strong> 完成與否
-<ul>
-<li><code>True</code>: 完成工作</li>
-<li><code>False</code>: 尚未完成</li>
-</ul></li>
-<li>初値: <strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>False</code>, <strong>i = 1 ~ n</strong>
-<ul>
-<li>∵ <strong>Process</strong> 不可能一開始不取用任何資源就 Finish!</li>
-</ul></li>
-</ul></li>
-</ul>
-<p><strong><code>Safety Algorithm:</code></strong></p>
-<ol type="1">
-<li>設定初値</li>
-</ol>
-<ul>
-<li><strong><code>Work = Available</code></strong> (分配後的系統可用資源還有多少。即：繼承前一個演算法的 <strong>Available</strong> 結果)</li>
-<li><strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>False</code>, <strong>i = 1 to n</strong></li>
-</ul>
-<ol start="2" type="1">
-<li>找出一個 <strong>Process i</strong>，滿足：</li>
-</ol>
-<ul>
-<li><strong><span class="math inline">\(Need_i\)</span></strong> ≤ Work</li>
-<li><p><strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>False</code></p></li>
-<li>若找到，則 <strong>go to Step 3</strong></li>
-<li>否則 <strong>go to Step 4</strong></li>
-</ul>
-<ol start="3" type="1">
-<li>設定:</li>
-</ol>
-<ul>
-<li><strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>True</code></li>
-<li><strong><span class="math inline">\(Work = Work + Allocation_i\)</span></strong>，<strong>go to Step 2</strong></li>
-</ul>
-<ol start="4" type="1">
-<li>檢査 <strong>Finish</strong> 陣列:</li>
-</ol>
-<ul>
-<li>若全部為 <code>True</code>，則系統處於 <code>Safe State</code></li>
-<li>否則處於 <code>Unsafe State</code></li>
-</ul>
-<p>若可以找出至少一組 <strong>Process</strong> 執行順序，讓所有 <strong>Process</strong> 完成，此順序稱 <strong>Safe Sequence</strong>。(表示資源的分配、釋放 OK)</p>
-</div>
-<h3 id="範例">範例</h3>
-<p>假設系統內有 5 個 <strong>Processes</strong> ( <strong><span class="math inline">\(P_0\)</span> ~ <span class="math inline">\(P_4\)</span></strong>)及 3 種<strong>資源</strong> A, B, C，其中 <strong>A</strong> 有 10 個，<strong>B</strong> 有 5 個，<strong>C</strong> 有 7 個。若系統目前状態如下表所示。則：</p>
-<ol type="1">
-<li><strong>Need</strong> 及 <strong>Available</strong> 的內容為何?</li>
-<li>若<strong><span class="math inline">\(P_1\)</span></strong>提出<strong><span class="math inline">\(Request_1[1, 0, 2]\)</span></strong>，則系統是否核准?</li>
-<li>若 <strong><span class="math inline">\(P_4\)</span></strong> 再提出 <strong><span class="math inline">\([3, 3, 0]\)</span></strong> 之請求，則是否核准?</li>
-<li>若 <strong><span class="math inline">\(P_0\)</span></strong> 提出 <strong><span class="math inline">\([0, 2, 0]\)</span></strong> 之請求，則是否核准? <img src="/posts/84e0264f/EX1.jpg" class=""></li>
-</ol>
-<p><strong>ANS:</strong></p>
-<ol type="1">
-<li></li>
-</ol>
-<ul>
-<li>找各 <strong>Process</strong> 尚需多少資源以完成工作。(即：<strong><span class="math inline">\(Need[]\)</span></strong>)
-<ul>
-<li><strong>Need = Max – Allocation</strong></li>
-<li><img src="/posts/84e0264f/EX12.jpg" class=""></li>
-</ul></li>
-<li>求系統目前各類資源的可用數量。(即：<strong><span class="math inline">\(Available[]\)</span></strong>)
-<ul>
-<li>題目指出系統提供各類資源的總量分別為：
-<ul>
-<li><strong>A = 10</strong></li>
-<li><strong>B = 5</strong></li>
-<li><strong>C = 7</strong></li>
-</ul></li>
-<li>由上表可知，目前各資源被 <strong>Process</strong> 所持有之總量分別為：
-<ul>
-<li><strong>A = 0+2+3+2+0 =7</strong></li>
-<li><strong>B = 1+0+0+1+0 = 2</strong></li>
-<li><strong>C = 0+0+2+1+2 = 5</strong></li>
-</ul></li>
-<li>因此，系統目前尚可提供的各類資源總量分別為：
-<ul>
-<li><strong>A = 10-7 = 3</strong></li>
-<li><strong>B = 5-2 = 3</strong></li>
-<li><strong>C = 7-5 = 2</strong></li>
-</ul></li>
-</ul></li>
-</ul>
-<ol start="2" type="1">
-<li><strong><span class="math inline">\(P_1\)</span></strong> 提出 <strong><span class="math inline">\(Request_1[1,0,2]\)</span></strong>，利用 <strong><code>Banker’s Algo.</code></strong> 四個歩驟來分析：
-<ol type="1">
-<li>檢査 <strong><span class="math inline">\(Request_i\)</span></strong> 是否小於等於 <strong><span class="math inline">\(Need_i\)</span></strong>，若成立則 <strong>go to 2</strong>
-<ul>
-<li><strong><span class="math inline">\(P_1\)</span></strong> 的 <strong><span class="math inline">\(Request = [1, 0, 2]\)</span></strong>，<strong><span class="math inline">\(Need = [1, 2, 2]\)</span></strong>，∴ 成立</li>
-</ul></li>
-<li>檢査 <strong><span class="math inline">\(Request_i\)</span></strong> 是否小於等於 <strong>Available</strong> ，若成立則 <strong>go to 3</strong>
-<ul>
-<li>系統目前的 <strong><span class="math inline">\(Available = [3, 3, 2]\)</span></strong>，∴ 成立</li>
-</ul></li>
-<li>(<code>假設性試算</code>) 。
-<ul>
-<li><strong><span class="math inline">\(Available = Available – Request_1 = [3, 3, 2] – [1, 0, 2] = [2, 3, 0]\)</span></strong></li>
-<li><strong><span class="math inline">\(Need_1\)</span></strong> = <strong><span class="math inline">\(Need_1\)</span></strong> – <strong><span class="math inline">\(Request_1 = [1, 2, 2] – [1, 0, 2] = [0, 2, 0]\)</span></strong></li>
-<li><strong><span class="math inline">\(Allocation_1\)</span></strong> = <strong><span class="math inline">\(Allocation_1 + Request_1 = [2, 0, 0] + [1, 0, 2] = [3, 0, 2]\)</span></strong></li>
-</ul></li>
-<li>執行 <strong><code>Safety Algo.</code></strong>，以判斷系統是否處於 <strong><code>Safe State</code></strong>。若是 <strong><code>Safe</code></strong> 則核准；否則不核准，稍後再來申請。</li>
-</ol></li>
-</ol>
-<div class="note warning"><ul>
-<li>利用 <strong><code>Safety Algorithm</code></strong> 是否處於 <strong><code>Safe State</code></strong>
-<ol type="1">
-<li>設定<strong>初值</strong>
-<ul>
-<li><strong><span class="math inline">\(Work = Available = [2, 3, 0]\)</span></strong></li>
-<li>一維布林矩陣 <strong><span class="math inline">\(Finish[]\)</span></strong> :</li>
-</ul></li>
-<li>找到 <strong><span class="math inline">\(P_1\)</span></strong>，滿足 <strong><span class="math inline">\(Finish[1] = False\)</span></strong> 且 <strong><span class="math inline">\(Need_1 ≤ Work\)</span></strong>，then <strong>go to 3</strong></li>
-<li>設定 <strong><span class="math inline">\(Finish[1] = True\)</span></strong>，且 <strong><span class="math inline">\(Work = Work + Allocation_1 = [5, 3, 2]\)</span></strong>，then <strong>go to 2</strong>
-<ul>
-<li>步驟 2 與 3 執行數次後，可依序找到 <strong><span class="math inline">\(P_3, P_4, P_0, P_2\)</span></strong> 皆滿足 (此序列不唯一) 。且當執行完 <strong><span class="math inline">\(P_2\)</span></strong> 後再重執行步驟 2 時，會因不滿足要件而 <strong>go to 4</strong></li>
-</ul></li>
-<li>檢査 <strong>Finish Array</strong>，皆為 <strong><code>True</code></strong>! ∴ 系統處於 <strong><code>Safe State</code></strong> ⇒ 核准 <strong><span class="math inline">\(P_1\)</span></strong> 之申請</li>
-</ol></li>
-<li>上述推論找出一組 <strong><code>Safe Sequence</code></strong>: <strong><span class="math inline">\(P_1, P_3, P_4, P_0, P_2\)</span></strong> (不只一組)</li>
-</ul>
-</div>
-<ol start="3" type="1">
-<li><ul>
-<li><strong>不核准</strong></li>
-<li>當執行 <strong><code>Banker’s Algo.</code></strong> 的<strong>步驟 2</strong> 時，會發現 “檢査 <strong><span class="math inline">\(Request_4 ≤ Available\)</span></strong>” 不成立，需令 <strong><span class="math inline">\(P_4\)</span></strong> 等待其它 <strong>Process</strong> 之資源釋放</li>
-</ul></li>
-<li><ul>
-<li><strong>不核准</strong></li>
-<li>當執行到 <strong><code>Safety Algo.</code></strong> 時，會發現<strong>步驟 4 </strong>“檢査 <strong>Finish 陣列</strong>”並不皆為 <strong><code>True</code></strong>，∴ 系統處於 <strong><code>Unsafe</code></strong> ⇒ 否決 <strong><span class="math inline">\(P_0\)</span></strong> 的申請</li>
-</ul></li>
-</ol>
-<h2 id="dead-lock-detection-recovery">Dead Lock Detection &amp; Recovery</h2>
 
     </div>
 
@@ -736,6 +468,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/posts/e252270d/" rel="next" title="Dead Lock Prevention">
+                  Dead Lock Prevention <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -911,7 +646,7 @@ document.addEventListener('pjax:success', () => {
   var disqus_config = function() {
     this.page.url = "https://yu-shin.github.io/posts/84e0264f/";
     this.page.identifier = "posts/84e0264f/";
-    this.page.title = "Dead Lock";
+    this.page.title = "Dead Lock 定義";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

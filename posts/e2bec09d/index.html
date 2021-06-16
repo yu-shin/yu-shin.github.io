@@ -24,21 +24,25 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="本文蒐集  LeetCode 1089 LeetCode 88">
+<meta name="description" content="當 Process 提出對資源的申請時，O.S. 會根據以下資訊執行銀行家演算法 (Banker’s Algo., 內含 Safety Algo.)，來判斷系統在假設 核准申請後是否處於 Safe State。若是，則真的核准其請求；否則否決此次申請，Process 須再等待一段時間，下一次再提出申請。  申請資源數量 各 Process 目前所持有的資源數量 各 Process 尚需要之資源需求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Inserting Items Into an Array">
-<meta property="og:url" content="https://yu-shin.github.io/posts/d3f87549/index.html">
+<meta property="og:title" content="Dead Lock Avoidance">
+<meta property="og:url" content="https://yu-shin.github.io/posts/e2bec09d/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="本文蒐集  LeetCode 1089 LeetCode 88">
+<meta property="og:description" content="當 Process 提出對資源的申請時，O.S. 會根據以下資訊執行銀行家演算法 (Banker’s Algo., 內含 Safety Algo.)，來判斷系統在假設 核准申請後是否處於 Safe State。若是，則真的核准其請求；否則否決此次申請，Process 須再等待一段時間，下一次再提出申請。  申請資源數量 各 Process 目前所持有的資源數量 各 Process 尚需要之資源需求">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2021-03-13T05:58:15.000Z">
-<meta property="article:modified_time" content="2021-04-02T10:54:20.997Z">
+<meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/av.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/EX1.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/EX12.jpg">
+<meta property="article:published_time" content="2021-06-16T13:11:57.000Z">
+<meta property="article:modified_time" content="2021-06-16T13:21:54.894Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/e2bec09d/av.jpg">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/posts/d3f87549/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/e2bec09d/">
 
 
 <script data-pjax class="page-configurations">
@@ -50,7 +54,7 @@
     lang   : 'zh-TW'
   };
 </script>
-<title>Inserting Items Into an Array | Nicholas Blogger</title>
+<title>Dead Lock Avoidance | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -203,7 +207,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-1089-duplicate-zeros"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 1089: Duplicate Zeros</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E7%AD%94"><span class="nav-number">1.1.</span> <span class="nav-text">我的解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E6%BD%94-code"><span class="nav-number">1.2.</span> <span class="nav-text">簡潔 code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%96%93%E6%8F%9B%E6%99%82%E9%96%93"><span class="nav-number">1.3.</span> <span class="nav-text">空間換時間</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-88-merge-sorted-array"><span class="nav-number">2.</span> <span class="nav-text">LeetCode 88: Merge Sorted Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">我的解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E4%BA%BA%E8%A7%A3%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">神人解法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bankers-algorithm-%E9%8A%80%E8%A1%8C%E5%AE%B6%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Banker’s Algorithm (銀行家演算法)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">資料結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-number">1.0.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#safety-algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Safety Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">資料結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">範例</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,7 +284,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/d3f87549/">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/e2bec09d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bighead2.jpg">
@@ -293,7 +297,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Inserting Items Into an Array
+          Dead Lock Avoidance
         </h1>
 
         <div class="post-meta-container">
@@ -304,7 +308,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-03-13 13:58:15" itemprop="dateCreated datePublished" datetime="2021-03-13T13:58:15+08:00">2021-03-13</time>
+      <time title="創建時間：2021-06-16 21:11:57" itemprop="dateCreated datePublished" datetime="2021-06-16T21:11:57+08:00">2021-06-16</time>
     </span>
 
   
@@ -316,8 +320,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/posts/d3f87549/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/d3f87549/" itemprop="commentCount"></span>
+    <a title="disqus" href="/posts/e2bec09d/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/e2bec09d/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -329,7 +333,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>3.1k</span>
+      <span>3.3k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -347,146 +351,223 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>本文蒐集</strong></p>
+        <p>當 <strong>Process</strong> 提出對<strong>資源</strong>的申請時，O.S. 會根據以下資訊執行<strong><code>銀行家演算法</code></strong> (<strong><code>Banker’s Algo.</code></strong>, 內含 <strong><code>Safety Algo.</code></strong>)，來判斷系統在<code>假設</code> 核准申請後是否處於 <strong><code>Safe State</code></strong>。若<strong>是</strong>，則真的核准其請求；<strong>否</strong>則否決此次申請，<strong>Process</strong> 須再等待一段時間，下一次再提出申請。</p>
 <ul>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/duplicate-zeros/">LeetCode 1089</a></strong></li>
-<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode.com/problems/merge-sorted-array/">LeetCode 88</a></strong> <a id="more"></a></li>
+<li>申請<strong>資源數量</strong></li>
+<li>各 <strong>Process</strong> 目前所持有的<strong>資源數量</strong></li>
+<li>各 <strong>Process</strong> 尚需要之<strong>資源需求量</strong></li>
+<li>系統目前可用的<strong>資源數量</strong></li>
 </ul>
-<h1 id="leetcode-1089-duplicate-zeros">LeetCode 1089: Duplicate Zeros</h1>
-<p>Given a fixed length array <code>arr</code> of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.</p>
-<p>Note that elements beyond the length of the original array are not written.</p>
-<p>Do the above modifications to the input array <strong>in place</strong>, do not return anything from your function.</p>
-<p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: [1,0,2,3,0,4,5,0]
-Output: null
-Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]</code></pre> Example 2: <pre class="line-numbers language-none"><code class="language-none">Input: [1,2,3]
-Output: null
-Explanation: After calling your function, the input array is modified to: [1,2,3]</code></pre> Note:</p>
+<a id="more"></a>
+<img src="/posts/e2bec09d/av.jpg" class="">
+<h1 id="bankers-algorithm-銀行家演算法">Banker’s Algorithm (銀行家演算法)</h1>
+<p>針對提出<strong>資源申請</strong>的 <strong>Process</strong>，來檢視系統 “是否會因接受此一 <strong>Process</strong> 的申請而進入<strong>死結</strong>。(內含 <strong><code>Safety Algorithm</code></strong> )</p>
+<h3 id="資料結構">資料結構</h3>
+<p><strong><code>Banker’s Algorithm</code></strong> 所使用的<strong><code>資料結構</code></strong>：(假設系統目前有 <strong><code>n</code></strong> 個 <strong>Process</strong>，與 <strong><code>m</code></strong> 種類型的<strong>資源</strong>)</p>
 <ul>
-<li><code>1 &lt;= arr.length &lt;= 10000</code></li>
-<li><code>0 &lt;= arr[i] &lt;= 9</code></li>
-</ul>
-<h2 id="我的解答">我的解答</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089.py">view raw</a></div><code class="language-python">class Solution:
-    def duplicateZeros(self, arr: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify arr in-place instead.
-        &quot;&quot;&quot;
-        i &#x3D; 0
-        while i &lt; (len(arr)-1):
-            if arr[i] &#x3D;&#x3D; 0:
-                j &#x3D; len(arr)-1
-                while i &lt; j:
-                    arr[j] &#x3D; arr[j-1]
-                    j -&#x3D; 1
-                i +&#x3D; 2
-            else:
-                i +&#x3D; 1</code></pre>
+<li><strong><span class="math inline">\(Request_i[1…m]\)</span></strong>
 <ul>
-<li><strong>Time complexity:</strong> O(<span class="math inline">\(n^2\)</span>)</li>
-<li><strong>space complexity:</strong> O(1)</li>
-</ul>
-<h2 id="簡潔-code">簡潔 code</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089_簡潔.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089_簡潔.py">view raw</a></div><code class="language-python">class Solution:
-    def duplicateZeros(self, arr: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify arr in-place instead.
-        &quot;&quot;&quot;
-        i&#x3D;0
-        while i&lt;len(arr):
-            if arr[i]&#x3D;&#x3D;0:
-                arr.pop() # O(1)
-                arr.insert(i+1,0) # O(N)
-                i+&#x3D;2
-            else:i+&#x3D;1</code></pre>
-<p><code>不建議</code></p>
-<h2 id="空間換時間">空間換時間</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q1089_空間換時間.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q1089_空間換時間.py">view raw</a></div><code class="language-python">class Solution:
-    def duplicateZeros(self, arr: List[int]) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify arr in-place instead.
-        &quot;&quot;&quot;
-        len_arr&#x3D;len(arr)
-        rst&#x3D;[]
-        for num in arr:
-            if num&#x3D;&#x3D;0:
-                rst.append(0)
-                rst.append(0)
-            else:rst.append(num)
-            if len(rst)&gt;&#x3D;len_arr:
-                arr[:]&#x3D;rst[:len_arr]
-                # arr&#x3D;rst[:len_arr] this do not work
-                break</code></pre>
-<p>盡量把<code>append()</code>和<code>[:]</code>換掉</p>
+<li>表示 <strong>Process i</strong> 所提出的<strong>資源申請量</strong></li>
+<li>若 <strong><span class="math inline">\(Request_i[j] = k\)</span></strong>，則表示 <strong>Process i</strong> 欲申請 <strong><code>k</code></strong> 個類型為 <strong><code>j</code></strong> 的<strong>資源</strong></li>
+</ul></li>
+<li><strong><span class="math inline">\(Allocation[1…n, 1…m]\)</span></strong>
 <ul>
-<li><strong>Time complexity:</strong> O(n)</li>
-<li><strong>space complexity:</strong> O(n)</li>
-</ul>
-<h1 id="leetcode-88-merge-sorted-array">LeetCode 88: Merge Sorted Array</h1>
-<p>Given two sorted integer arrays <code>nums1</code> and <code>nums2</code>, merge <code>nums2</code> into <code>nums1</code> as one sorted array.</p>
-<p>The number of elements initialized in <code>nums1</code> and <code>nums2</code> are <code>m</code> and <code>n</code> respectively. You may assume that <code>nums1</code> has a size equal to <code>m + n</code> such that it has enough space to hold additional elements from <code>nums2</code>.</p>
-<p>Example 1: <pre class="line-numbers language-none"><code class="language-none">Input: nums1 &#x3D; [1,2,3,0,0,0], m &#x3D; 3, nums2 &#x3D; [2,5,6], n &#x3D; 3
-Output: [1,2,2,3,5,6]</code></pre> Example 2: <pre class="line-numbers language-none"><code class="language-none">Input: nums1 &#x3D; [1], m &#x3D; 1, nums2 &#x3D; [], n &#x3D; 0
-Output: [1]</code></pre> Constraints:</p>
+<li>表示各 <strong>Process</strong> 目前<strong>持有的各類資源數量</strong></li>
+<li>若 <strong><span class="math inline">\(Allocation[i, j] = k\)</span></strong>，表示 <strong>Process i</strong> 目前持有類型為 <strong><code>j</code></strong> 的資源 共 <strong><code>k</code></strong> 個</li>
+</ul></li>
+<li><strong><span class="math inline">\(Max[1…n, 1…m]\)</span></strong>
 <ul>
-<li><code>nums1.length == m + n</code></li>
-<li><code>nums2.length == n</code></li>
-<li><code>0 &lt;= m, n &lt;= 200</code></li>
-<li><code>1 &lt;= m + n &lt;= 200</code></li>
-<li><code>-109 &lt;= nums1[i], nums2[i] &lt;= 109</code></li>
-</ul>
-<h2 id="我的解法">我的解法</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q88.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q88.py">view raw</a></div><code class="language-python">class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify nums1 in-place instead.
-        &quot;&quot;&quot;
-        if n &#x3D;&#x3D; 0:
-            return
-        elif m &#x3D;&#x3D; 0:
-            nums1[:n] &#x3D; nums2[:]
-            return
-        else:
-            temp &#x3D; [0] * m
-            temp[:] &#x3D; nums1[:m]
-            i, j, k &#x3D; 0, 0, 0
-            while k &lt; m+n:
-                if temp[i] &lt; nums2[j]:
-                    nums1[k] &#x3D; temp[i]
-                    k +&#x3D; 1
-                    i +&#x3D; 1
-                    if i &#x3D;&#x3D; m:
-                        break
-                else:
-                    nums1[k] &#x3D; nums2[j]
-                    k +&#x3D; 1
-                    j +&#x3D; 1
-                    if j &#x3D;&#x3D; n:
-                        break
-            if i &#x3D;&#x3D; m:
-                nums1[k:] &#x3D; nums2[j:]
-            else:
-                nums1[k:] &#x3D; temp[i:]</code></pre>
+<li>表示各 <strong>Process</strong> 需要哪些<strong>資源</strong>、且需要多少數量才得以完成工作 (即： 記錄<strong>對各類資源的最大需求量</strong>)</li>
+<li>若 <strong><span class="math inline">\(Max[i, j] = k\)</span></strong>，表示 <strong>Process i</strong> 需要有類型為 <strong><code>j</code></strong> 的<strong>資源</strong>，且最多要 <strong><code>k</code></strong> 個方可完成工作</li>
+</ul></li>
+<li><strong><span class="math inline">\(Need[1…n, 1…m]\)</span></strong>
 <ul>
-<li><strong>Time complexity:</strong> O(n)</li>
-<li><strong>space complexity:</strong> O(1)</li>
-</ul>
-<h2 id="神人解法">神人解法</h2>
-<pre class="line-numbers language-python" data-language="python"><div class="caption"><span>q88_改進.py</span><a href="/downloads/code/LeetCode/Inserting-Items-Into-an-Array/q88_改進.py">view raw</a></div><code class="language-python">class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -&gt; None:
-        &quot;&quot;&quot;
-        Do not return anything, modify nums1 in-place instead.
-        &quot;&quot;&quot;
-        while n &gt; 0:
-            if m &lt;&#x3D; 0 or nums2[n-1] &gt;&#x3D; nums1[m-1]:  
-                nums1[m+n-1] &#x3D; nums2[n-1]
-                n -&#x3D; 1
-            else:
-                nums1[m+n-1] &#x3D; nums1[m-1]
-                m -&#x3D; 1</code></pre>
+<li>表示 <strong>Process</strong> 目前尚<strong>需要多少數量的資源</strong>方得以完成工作</li>
+<li>若 <strong><span class="math inline">\(Need[i, j] = k\)</span></strong>，則表示 <strong>Process i</strong> 尚需類型為 <strong><code>j</code></strong>的資源 <strong><code>k</code></strong> 個方能完成工作</li>
+<li><strong><span class="math inline">\(Need_i = Max_i - Allocation_i\)</span></strong></li>
+</ul></li>
+<li><strong><span class="math inline">\(Available[1…m]\)</span></strong>
 <ul>
-<li><strong>Time complexity:</strong> O(n)</li>
-<li><strong>space complexity:</strong> O(1)</li>
+<li>系統目前<strong>各類資源的可用數量</strong></li>
+<li><strong>Available = 系統資源總量 - Allocation</strong></li>
+</ul></li>
 </ul>
+<h3 id="algorithm">Algorithm</h3>
+<p><strong><code>Banker’s Algorithm:</code></strong></p>
+<ol type="1">
+<li>檢査 <strong><span class="math inline">\(Request_i ≤ Need\)</span></strong></li>
+</ol>
+<ul>
+<li>即：檢査所提出的需求合不合理</li>
+<li><code>不成立</code>: 則 O.S.會視為 <strong>illegal</strong>，中止此 <strong>process</strong></li>
+<li><code>若成立</code>: 則 <strong>Go to 2</strong></li>
+</ul>
+<ol start="2" type="1">
+<li>檢査 <strong><span class="math inline">\(Request_i ≤ Available\)</span></strong></li>
+</ol>
+<ul>
+<li>檢査系統<strong>是否有足夠資源</strong>可提供給 <strong>Process</strong></li>
+<li><code>不成立</code>: <strong>process</strong> 必須等待直到資源足夠</li>
+<li><code>若成立</code>: 則 <strong>Go to 3</strong></li>
+</ul>
+<ol start="3" type="1">
+<li>(<code>假設性試算</code>)假設系統分配資源給該提出申請之 <strong>Process</strong>，透過計算下列數値以做接下來之<strong>安全演算法</strong> (<strong><code>Safety Algorithm</code></strong>)之分析</li>
+</ol>
+<ul>
+<li><strong><span class="math inline">\(Available = Available - Request_i\)</span></strong> (<strong>分配後的系統可用資源</strong>還有多少)</li>
+<li><strong><span class="math inline">\(Need_i = Need_i - Request_i\)</span></strong> (分配後的 <strong>Process i</strong> 還<strong>需要多少資源</strong>才能完成工作)</li>
+<li><strong><span class="math inline">\(Allocation_i = Allocation_i + Request_i\)</span></strong> (分配後的 <strong>Process i</strong> 所<strong>掌握的資源</strong>有多少)</li>
+</ul>
+<ol start="4" type="1">
+<li>執行 <strong><code>Safety Algorithm</code></strong>。</li>
+</ol>
+<ul>
+<li>if 系統判斷會處於 <strong><code>Safe State</code></strong>，then 允許申請；</li>
+<li>else 否決此次申請，稍後再重新申請</li>
+</ul>
+<h2 id="safety-algorithm">Safety Algorithm</h2>
+<h3 id="資料結構-1">資料結構</h3>
+<p><strong><code>Safety Algorithm</code></strong> 所使用的<strong><code>資料結構</code></strong>：(假設系統目前有 <strong><code>n</code></strong> 個 <strong>Process</strong>，與 <strong><code>m</code></strong> 種類型的<strong>資源</strong>)</p>
+<ul>
+<li><strong><span class="math inline">\(Work[1…m]\)</span></strong>
+<ul>
+<li>當假定配置資源後，目前系統可工作 (Work) 資源的數量累計</li>
+<li><strong><code>初値 = Available</code></strong></li>
+</ul></li>
+<li><strong><span class="math inline">\(Finish[1…n]\)</span> of Boolean</strong>
+<ul>
+<li><strong><span class="math inline">\(Finish[i]\)</span></strong> 表示 <strong>Process i</strong> 完成與否
+<ul>
+<li><code>True</code>: 完成工作</li>
+<li><code>False</code>: 尚未完成</li>
+</ul></li>
+<li>初値: <strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>False</code>, <strong>i = 1 ~ n</strong>
+<ul>
+<li>∵ <strong>Process</strong> 不可能一開始不取用任何資源就 Finish!</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="algorithm-1">Algorithm</h3>
+<p><strong><code>Safety Algorithm:</code></strong></p>
+<ol type="1">
+<li>設定初値</li>
+</ol>
+<ul>
+<li><strong><code>Work = Available</code></strong> (分配後的系統可用資源還有多少。即：繼承前一個演算法的 <strong>Available</strong> 結果)</li>
+<li><strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>False</code>, <strong>i = 1 to n</strong></li>
+</ul>
+<ol start="2" type="1">
+<li>找出一個 <strong>Process i</strong>，滿足：</li>
+</ol>
+<ul>
+<li><strong><span class="math inline">\(Need_i\)</span></strong> ≤ Work</li>
+<li><p><strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>False</code></p></li>
+<li>若找到，則 <strong>go to Step 3</strong></li>
+<li>否則 <strong>go to Step 4</strong></li>
+</ul>
+<ol start="3" type="1">
+<li>設定:</li>
+</ol>
+<ul>
+<li><strong><span class="math inline">\(Finish[i]\)</span></strong> = <code>True</code></li>
+<li><strong><span class="math inline">\(Work = Work + Allocation_i\)</span></strong>，<strong>go to Step 2</strong></li>
+</ul>
+<ol start="4" type="1">
+<li>檢査 <strong>Finish</strong> 陣列:</li>
+</ol>
+<ul>
+<li>若全部為 <code>True</code>，則系統處於 <code>Safe State</code></li>
+<li>否則處於 <code>Unsafe State</code></li>
+</ul>
+<p>若可以找出至少一組 <strong>Process</strong> 執行順序，讓所有 <strong>Process</strong> 完成，此順序稱 <strong>Safe Sequence</strong>。(表示資源的分配、釋放 OK)</p>
+<h1 id="範例">範例</h1>
+<p>假設系統內有 5 個 <strong>Processes</strong> ( <strong><span class="math inline">\(P_0\)</span> ~ <span class="math inline">\(P_4\)</span></strong>)及 3 種<strong>資源</strong> A, B, C，其中 <strong>A</strong> 有 10 個，<strong>B</strong> 有 5 個，<strong>C</strong> 有 7 個。若系統目前状態如下表所示。則：</p>
+<ol type="1">
+<li><strong>Need</strong> 及 <strong>Available</strong> 的內容為何?</li>
+<li>若<strong><span class="math inline">\(P_1\)</span></strong>提出<strong><span class="math inline">\(Request_1[1, 0, 2]\)</span></strong>，則系統是否核准?</li>
+<li>若 <strong><span class="math inline">\(P_4\)</span></strong> 再提出 <strong><span class="math inline">\([3, 3, 0]\)</span></strong> 之請求，則是否核准?</li>
+<li>若 <strong><span class="math inline">\(P_0\)</span></strong> 提出 <strong><span class="math inline">\([0, 2, 0]\)</span></strong> 之請求，則是否核准? <img src="/posts/e2bec09d/EX1.jpg" class=""></li>
+</ol>
+<p><strong>ANS:</strong></p>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li>找各 <strong>Process</strong> 尚需多少資源以完成工作。(即：<strong><span class="math inline">\(Need[]\)</span></strong>)
+<ul>
+<li><strong>Need = Max – Allocation</strong></li>
+<li><img src="/posts/e2bec09d/EX12.jpg" class=""></li>
+</ul></li>
+<li>求系統目前各類資源的可用數量。(即：<strong><span class="math inline">\(Available[]\)</span></strong>)
+<ul>
+<li>題目指出系統提供各類資源的總量分別為：
+<ul>
+<li><strong>A = 10</strong></li>
+<li><strong>B = 5</strong></li>
+<li><strong>C = 7</strong></li>
+</ul></li>
+<li>由上表可知，目前各資源被 <strong>Process</strong> 所持有之總量分別為：
+<ul>
+<li><strong>A = 0+2+3+2+0 =7</strong></li>
+<li><strong>B = 1+0+0+1+0 = 2</strong></li>
+<li><strong>C = 0+0+2+1+2 = 5</strong></li>
+</ul></li>
+<li>因此，系統目前尚可提供的各類資源總量分別為：
+<ul>
+<li><strong>A = 10-7 = 3</strong></li>
+<li><strong>B = 5-2 = 3</strong></li>
+<li><strong>C = 7-5 = 2</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li><strong><span class="math inline">\(P_1\)</span></strong> 提出 <strong><span class="math inline">\(Request_1[1,0,2]\)</span></strong>，利用 <strong><code>Banker’s Algo.</code></strong> 四個歩驟來分析：
+<ol type="1">
+<li>檢査 <strong><span class="math inline">\(Request_i\)</span></strong> 是否小於等於 <strong><span class="math inline">\(Need_i\)</span></strong>，若成立則 <strong>go to 2</strong>
+<ul>
+<li><strong><span class="math inline">\(P_1\)</span></strong> 的 <strong><span class="math inline">\(Request = [1, 0, 2]\)</span></strong>，<strong><span class="math inline">\(Need = [1, 2, 2]\)</span></strong>，∴ 成立</li>
+</ul></li>
+<li>檢査 <strong><span class="math inline">\(Request_i\)</span></strong> 是否小於等於 <strong>Available</strong> ，若成立則 <strong>go to 3</strong>
+<ul>
+<li>系統目前的 <strong><span class="math inline">\(Available = [3, 3, 2]\)</span></strong>，∴ 成立</li>
+</ul></li>
+<li>(<code>假設性試算</code>) 。
+<ul>
+<li><strong><span class="math inline">\(Available = Available – Request_1 = [3, 3, 2] – [1, 0, 2] = [2, 3, 0]\)</span></strong></li>
+<li><strong><span class="math inline">\(Need_1\)</span></strong> = <strong><span class="math inline">\(Need_1\)</span></strong> – <strong><span class="math inline">\(Request_1 = [1, 2, 2] – [1, 0, 2] = [0, 2, 0]\)</span></strong></li>
+<li><strong><span class="math inline">\(Allocation_1\)</span></strong> = <strong><span class="math inline">\(Allocation_1 + Request_1 = [2, 0, 0] + [1, 0, 2] = [3, 0, 2]\)</span></strong></li>
+</ul></li>
+<li>執行 <strong><code>Safety Algo.</code></strong>，以判斷系統是否處於 <strong><code>Safe State</code></strong>。若是 <strong><code>Safe</code></strong> 則核准；否則不核准，稍後再來申請。</li>
+</ol></li>
+</ol>
+<div class="note warning"><ul>
+<li>利用 <strong><code>Safety Algorithm</code></strong> 是否處於 <strong><code>Safe State</code></strong>
+<ol type="1">
+<li>設定<strong>初值</strong>
+<ul>
+<li><strong><span class="math inline">\(Work = Available = [2, 3, 0]\)</span></strong></li>
+<li>一維布林矩陣 <strong><span class="math inline">\(Finish[]\)</span></strong> :</li>
+</ul></li>
+<li>找到 <strong><span class="math inline">\(P_1\)</span></strong>，滿足 <strong><span class="math inline">\(Finish[1] = False\)</span></strong> 且 <strong><span class="math inline">\(Need_1 ≤ Work\)</span></strong>，then <strong>go to 3</strong></li>
+<li>設定 <strong><span class="math inline">\(Finish[1] = True\)</span></strong>，且 <strong><span class="math inline">\(Work = Work + Allocation_1 = [5, 3, 2]\)</span></strong>，then <strong>go to 2</strong>
+<ul>
+<li>步驟 2 與 3 執行數次後，可依序找到 <strong><span class="math inline">\(P_3, P_4, P_0, P_2\)</span></strong> 皆滿足 (此序列不唯一) 。且當執行完 <strong><span class="math inline">\(P_2\)</span></strong> 後再重執行步驟 2 時，會因不滿足要件而 <strong>go to 4</strong></li>
+</ul></li>
+<li>檢査 <strong>Finish Array</strong>，皆為 <strong><code>True</code></strong>! ∴ 系統處於 <strong><code>Safe State</code></strong> ⇒ 核准 <strong><span class="math inline">\(P_1\)</span></strong> 之申請</li>
+</ol></li>
+<li>上述推論找出一組 <strong><code>Safe Sequence</code></strong>: <strong><span class="math inline">\(P_1, P_3, P_4, P_0, P_2\)</span></strong> (不只一組)</li>
+</ul>
+</div>
+<ol start="3" type="1">
+<li><ul>
+<li><strong>不核准</strong></li>
+<li>當執行 <strong><code>Banker’s Algo.</code></strong> 的<strong>步驟 2</strong> 時，會發現 “檢査 <strong><span class="math inline">\(Request_4 ≤ Available\)</span></strong>” 不成立，需令 <strong><span class="math inline">\(P_4\)</span></strong> 等待其它 <strong>Process</strong> 之資源釋放</li>
+</ul></li>
+<li><ul>
+<li><strong>不核准</strong></li>
+<li>當執行到 <strong><code>Safety Algo.</code></strong> 時，會發現<strong>步驟 4 </strong>“檢査 <strong>Finish 陣列</strong>”並不皆為 <strong><code>True</code></strong>，∴ 系統處於 <strong><code>Unsafe</code></strong> ⇒ 否決 <strong><span class="math inline">\(P_0\)</span></strong> 的申請</li>
+</ul></li>
+</ol>
 
     </div>
 
@@ -527,20 +608,20 @@ Output: [1]</code></pre> Constraints:</p>
 </div>
 
           <div class="post-tags">
-              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/40ec114a/" rel="prev" title="Array Introduction">
-                  <i class="fa fa-chevron-left"></i> Array Introduction
+                <a href="/posts/e252270d/" rel="prev" title="Dead Lock Prevention">
+                  <i class="fa fa-chevron-left"></i> Dead Lock Prevention
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/bad31420/" rel="next" title="Deleting Items From an Array">
-                  Deleting Items From an Array <i class="fa fa-chevron-right"></i>
+                <a href="/posts/b0da2e07/" rel="next" title="Dead Lock Detection & Recovery">
+                  Dead Lock Detection & Recovery <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -715,9 +796,9 @@ document.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yu-shin.github.io/posts/d3f87549/";
-    this.page.identifier = "posts/d3f87549/";
-    this.page.title = "Inserting Items Into an Array";
+    this.page.url = "https://yu-shin.github.io/posts/e2bec09d/";
+    this.page.identifier = "posts/e2bec09d/";
+    this.page.title = "Dead Lock Avoidance";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

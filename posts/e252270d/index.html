@@ -24,31 +24,36 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="YOLO">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nicholas Blogger">
-<meta property="og:url" content="https://yu-shin.github.io/page/6/index.html">
+<meta name="description" content="概念: 打破四個必要條件其中之一，就可以保証死結永不發生。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dead Lock Prevention">
+<meta property="og:url" content="https://yu-shin.github.io/posts/e252270d/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="YOLO">
+<meta property="og:description" content="概念: 打破四個必要條件其中之一，就可以保証死結永不發生。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/posts/e252270d/bcw.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/e252270d/bcww.jpg">
+<meta property="article:published_time" content="2021-06-16T13:11:44.000Z">
+<meta property="article:modified_time" content="2021-06-16T13:21:54.894Z">
 <meta property="article:author" content="Nicholas Tsai">
-<meta property="article:tag" content="部落格, 筆記">
+<meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/e252270d/bcw.jpg">
 
 
-<link rel="canonical" href="https://yu-shin.github.io/page/6/">
+<link rel="canonical" href="https://yu-shin.github.io/posts/e252270d/">
 
 
 <script data-pjax class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
-<title>Nicholas Blogger</title>
+<title>Dead Lock Prevention | Nicholas Blogger</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5LBLBPSS8"></script>
     <script data-pjax>
@@ -266,17 +271,18 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/10244486/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/e252270d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bighead2.jpg">
@@ -288,9 +294,9 @@
       <meta itemprop="name" content="Nicholas Blogger">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/10244486/" class="post-title-link" itemprop="url">Bubble Sort</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Dead Lock Prevention
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -300,7 +306,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2020-12-25 13:32:20" itemprop="dateCreated datePublished" datetime="2020-12-25T13:32:20+08:00">2020-12-25</time>
+      <time title="創建時間：2021-06-16 21:11:44" itemprop="dateCreated datePublished" datetime="2021-06-16T21:11:44+08:00">2021-06-16</time>
     </span>
 
   
@@ -312,8 +318,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/posts/10244486/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/10244486/" itemprop="commentCount"></span>
+    <a title="disqus" href="/posts/e252270d/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/e252270d/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -325,412 +331,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>1.6k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>3 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>Bucket Sort</strong> 雖然直覺、簡單好懂，但也遺留了一些問題。舉例來說如果資料很大，就會很浪費空間，或者當資料有小數的時候，沒辦法產生相對應的桶子。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/10244486/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/4502df03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead2.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/4502df03/" class="post-title-link" itemprop="url">Bucket Sort</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2020-12-24 20:01:00" itemprop="dateCreated datePublished" datetime="2020-12-24T20:01:00+08:00">2020-12-24</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/4502df03/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/4502df03/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>3 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>桶子排序法 (Bucket Sort) 想法很簡單，其實就是準備幾個桶子，將要排序的資料分類丟至指定的桶子中，再依序將桶子裡的東西取出。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/4502df03/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/17b8c54b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead2.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/17b8c54b/" class="post-title-link" itemprop="url">Complexity</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2020-12-24 01:35:48" itemprop="dateCreated datePublished" datetime="2020-12-24T01:35:48+08:00">2020-12-24</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/17b8c54b/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/17b8c54b/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>3k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>6 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/posts/17b8c54b/complexity.png" class="">
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/17b8c54b/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/4df1633d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead2.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/4df1633d/" class="post-title-link" itemprop="url">npm 和 npx</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2020-12-23 12:15:00" itemprop="dateCreated datePublished" datetime="2020-12-23T12:15:00+08:00">2020-12-23</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/4df1633d/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/4df1633d/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="所需閱讀時間">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>3 分鐘</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="npm">npm</h1>
-<p><strong>Node Package Manger</strong>，是 <code>nodejs</code> 的 dependency/package manager，提供開發者 install packages both globally and locally。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/4df1633d/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yu-shin.github.io/posts/54c45e77/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bighead2.jpg">
-      <meta itemprop="name" content="Nicholas Tsai">
-      <meta itemprop="description" content="YOLO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nicholas Blogger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/54c45e77/" class="post-title-link" itemprop="url">區塊鏈之始</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2020-12-16 20:27:27" itemprop="dateCreated datePublished" datetime="2020-12-16T20:27:27+08:00">2020-12-16</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/posts/54c45e77/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="posts/54c45e77/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="文章字數">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">文章字數：</span>
-      <span>288</span>
+      <span>788</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -748,17 +349,54 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="前言">前言</h1>
-<p>一開始接觸加密貨幣大概是2019年初(比大家晚很多)，那時去網路上收了10幾張RX570和RX470回來組了兩台礦機。 我還記得當時硬體配備：
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/54c45e77/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p><strong>概念:</strong> 打破四個必要條件其中之一，就可以保証死結永不發生。 <a id="more"></a></p>
+<ol type="1">
+<li><strong>打破 “Mutual Exclusion”</strong>
+<ul>
+<li>∵ 互斥是某些資源與生倶來的性質 ∴ <strong>無法打破</strong></li>
+</ul></li>
+<li><strong>打破 “No Preemptive”</strong>
+<ul>
+<li>允許 <strong>Process</strong> 可以搶奪其它 <strong>Waiting Process</strong> 手中的<strong>資源</strong>。(即：改為 <strong><code>Preemptive</code></strong>) <div class="note warning"><ul>
+<li>頂多只會有 <strong><code>Starvation</code></strong>，但 <strong>No Dead Lock</strong> (可以採用 <strong><code>Aging</code></strong> 技術解決)</li>
+</ul>
+</div></li>
+</ul></li>
+<li><strong>打破 “Hold and Wait”</strong></li>
+</ol>
+<p>可採取下列作法之一：</p>
+<ol type="1">
+<li>規定： 除非 <strong>Process</strong> 可以一次取得完成工作所需的<strong><code>全部資源</code></strong>，才允許 <strong>Process</strong> 持有<strong>資源</strong>，否則 <strong>Process</strong> 不准持有任何<strong>資源</strong>
+<ul>
+<li>若一次取得<strong>全部資源</strong> ⇒ <code>“Wait”不成立</code></li>
+<li>若無法取得<strong>全部資源</strong>，則全都不拿 ⇒ <code>“Hold” 不成立</code></li>
+<li>全有全無</li>
+<li><strong>系統産能</strong><code>低</code></li>
+</ul></li>
+<li><strong>Process</strong> 在執行之初可持有<strong>部份資源</strong>，但若要再申請<strong>資源</strong>之前，必須先釋放手中<strong>所有資源</strong>，才可以提出申請
+<ul>
+<li>一開始可取<strong>部份資源</strong>執行 ⇒ <code>“Wait”不成立</code></li>
+<li>再申請時，需放掉手中<strong>所有資源</strong> ⇒ <code>“Hold” 不成立</code></li>
+<li><strong>系統産能</strong><code>低</code></li>
+</ul></li>
+<li><strong>打破 “Circular Waiting”</strong></li>
+</ol>
+<p>O.S.需採取下列措施：</p>
+<ul>
+<li>為毎個<code>不同類型</code>的<strong>資源</strong>賦予一個獨一無二的<strong><code>資源編碼</code></strong> (Unique ID)</li>
+<li>規定 <strong>Process</strong> 必須按照<strong>資源編號</strong><code>遞增</code> (遞減) 的方式提出資源申請</li>
+</ul>
+<img src="/posts/e252270d/bcw.jpg" class="">
+<div class="note warning"><p><strong>證明( 反證法 ) :</strong></p>
+<p>假設在 O.S. 採取前述兩個措施後，系統仍存在一組 <strong>Processes</strong> 造成 <strong>Circular Waiting</strong> 如下：</p>
+<p><strong><span class="math inline">\(r_i: 資源本身 , R_i: 資源編碼\)</span></strong> <img src="/posts/e252270d/bcww.jpg" class=""></p>
+<ul>
+<li>令一組行程 <strong><span class="math inline">\(P_0\)</span>~<span class="math inline">\(P_n\)</span></strong> 分別持有資源 <strong><span class="math inline">\(r_0, r_1, …, r_n\)</span></strong>，且<strong>資源類型</strong>皆<code>不相同</code> (即：編號不同)</li>
+<li>根據遞增申請規則，上述 <strong>Circular Waiting</strong> 會推出 <strong><span class="math inline">\(r_0 &lt; r_1 &lt; … &lt; r_n &lt; r_0\)</span></strong> 。其中竟導出 <strong><span class="math inline">\(r_0 &lt; r_0\)</span></strong> 此一<code>矛盾</code>的式子(即：<strong><code>相同的資源，其編號不同</code></strong>)</li>
+<li>∴ 假設<strong>不成立</strong>，不會有 <strong>Circular Waiting</strong> 狀況產生</li>
+</ul>
+</div>
+
     </div>
 
     
@@ -766,8 +404,55 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    捐贈
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/ETH.jpg" alt="Nicholas Tsai ETH">
+        <span>ETH</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>歡迎關注我的其它發布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/nichola69108664" rel="external nofollow noreferrer">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/84e0264f/" rel="prev" title="Dead Lock 定義">
+                  <i class="fa fa-chevron-left"></i> Dead Lock 定義
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/e2bec09d/" rel="next" title="Dead Lock Avoidance">
+                  Dead Lock Avoidance <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -775,10 +460,13 @@
 
 
 
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-  </nav>
 
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -933,6 +621,26 @@ document.addEventListener('pjax:success', () => {
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://yu-shin.github.io/posts/e252270d/";
+    this.page.identifier = "posts/e252270d/";
+    this.page.title = "Dead Lock Prevention";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://nicholas-tsai.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
     </div>
