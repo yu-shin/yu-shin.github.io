@@ -32,7 +32,7 @@
 <meta property="og:description" content="Divide and conquer 是一種由上而下 ( top-down ) 的解題方式  Def:  可將母問題切割成較小的問題(切割)，使用相同的解決程序加以處理 (征服)。所有小問題的解可以成為母問題的最後解; 若有必要，則再將每個小問題的處理結果加以合併，就可以得到最後的答案。  由於使用相同的解決程序處理每個小問題，這一個程序就會被遞迴呼叫，因此一個遞迴演算法則通常以一個副程式的型式出">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-05-09T10:56:16.000Z">
-<meta property="article:modified_time" content="2021-06-08T10:02:04.292Z">
+<meta property="article:modified_time" content="2021-06-16T13:30:05.534Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
@@ -329,7 +329,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>700</span>
+      <span>760</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -360,6 +360,7 @@
 <li>效率差 ( ∵ 採用遞迴設計 )</li>
 </ul></li>
 </ul>
+<a id="more"></a>
 <h1 id="divide-and-conquer-使用時機">Divide and Conquer 使用時機</h1>
 <p>下列兩種情況是適合使用 <strong>Divide and Conquer</strong> 設計策略(也是遞迴演算法的適用時機):</p>
 <ul>
@@ -391,7 +392,11 @@
 <li>遞迴呼叫的終止條件為何？終止時傳回何值？</li>
 </ul></li>
 </ul>
-<div class="note success"><p>Procedure Recursion_subroutine(Parameter); { if (<mark class="label danger">終止條件</mark>) then Return( ); else <mark class="label info">Recursion_subroutine(New_parameter)</mark>; }</p>
+<div class="note success"><pre class="line-numbers language-none"><code class="language-none">Procedure Recursion_subroutine(Parameter);
+&#123;
+    if (&#123;% label danger@終止條件 %&#125;) then Return( );
+    else &#123;% label info@Recursion_subroutine(New_parameter) %&#125;;
+&#125;</code></pre>
 </div>
 <h1 id="案例探討">案例探討</h1>
 <h2 id="binary-search-二分搜尋">Binary Search (二分搜尋)</h2>
