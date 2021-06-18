@@ -34,8 +34,9 @@
 <meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/av.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/EX1.jpg">
 <meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/EX12.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/e2bec09d/b.jpg">
 <meta property="article:published_time" content="2021-06-16T13:11:57.000Z">
-<meta property="article:modified_time" content="2021-06-16T13:21:54.894Z">
+<meta property="article:modified_time" content="2021-06-18T13:25:55.817Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
@@ -207,7 +208,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bankers-algorithm-%E9%8A%80%E8%A1%8C%E5%AE%B6%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Banker’s Algorithm (銀行家演算法)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">資料結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-number">1.0.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#safety-algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Safety Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">資料結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">範例</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bankers-algorithm-%E9%8A%80%E8%A1%8C%E5%AE%B6%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Banker’s Algorithm (銀行家演算法)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">資料結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm"><span class="nav-number">1.0.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#safety-algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Safety Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-structures"><span class="nav-number">1.1.1.</span> <span class="nav-text">Data Structures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#algorithm-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bankers-algo.-%E7%9A%84%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="nav-number">3.</span> <span class="nav-text">Banker’s Algo. 的優缺點</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock-avoidance-%E7%9A%84%E9%87%8D%E8%A6%81%E5%AE%9A%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">Dead Lock Avoidance 的重要定理</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -223,7 +224,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -333,14 +334,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>3.3k</span>
+      <span>3.7k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>6 分鐘</span>
+      <span>7 分鐘</span>
     </span>
 </div>
 
@@ -426,7 +427,7 @@
 <li>else 否決此次申請，稍後再重新申請</li>
 </ul>
 <h2 id="safety-algorithm">Safety Algorithm</h2>
-<h3 id="資料結構-1">資料結構</h3>
+<h3 id="data-structures">Data Structures</h3>
 <p><strong><code>Safety Algorithm</code></strong> 所使用的<strong><code>資料結構</code></strong>：(假設系統目前有 <strong><code>n</code></strong> 個 <strong>Process</strong>，與 <strong><code>m</code></strong> 種類型的<strong>資源</strong>)</p>
 <ul>
 <li><strong><span class="math inline">\(Work[1…m]\)</span></strong>
@@ -546,7 +547,7 @@
 <li>設定<strong>初值</strong>
 <ul>
 <li><strong><span class="math inline">\(Work = Available = [2, 3, 0]\)</span></strong></li>
-<li>一維布林矩陣 <strong><span class="math inline">\(Finish[]\)</span></strong> :</li>
+<li>一維布林矩陣 <strong><span class="math inline">\(Finish[]\)</span></strong> : <img src="/posts/e2bec09d/b.jpg" class=""></li>
 </ul></li>
 <li>找到 <strong><span class="math inline">\(P_1\)</span></strong>，滿足 <strong><span class="math inline">\(Finish[1] = False\)</span></strong> 且 <strong><span class="math inline">\(Need_1 ≤ Work\)</span></strong>，then <strong>go to 3</strong></li>
 <li>設定 <strong><span class="math inline">\(Finish[1] = True\)</span></strong>，且 <strong><span class="math inline">\(Work = Work + Allocation_1 = [5, 3, 2]\)</span></strong>，then <strong>go to 2</strong>
@@ -568,6 +569,29 @@
 <li>當執行到 <strong><code>Safety Algo.</code></strong> 時，會發現<strong>步驟 4 </strong>“檢査 <strong>Finish 陣列</strong>”並不皆為 <strong><code>True</code></strong>，∴ 系統處於 <strong><code>Unsafe</code></strong> ⇒ 否決 <strong><span class="math inline">\(P_0\)</span></strong> 的申請</li>
 </ul></li>
 </ol>
+<h1 id="bankers-algo.-的優缺點">Banker’s Algo. 的優缺點</h1>
+<ul>
+<li><strong>優點</strong>： 避免系統發生<strong>死結</strong>的狀況</li>
+<li><strong>缺點</strong>： 此 Algo. 需要 <span class="math inline">\(O(m×n^2)\)</span> 的<strong>時間複雜度</strong> (<strong><code>m</code></strong>: 資源種類數; <strong><code>n</code></strong>: Process 個數)，比較耗時。</li>
+</ul>
+<h1 id="dead-lock-avoidance-的重要定理">Dead Lock Avoidance 的重要定理</h1>
+<p>假設系統包含 <code>m</code> 個單一種類的 <strong>Resources</strong>，且被 <code>n</code> 個 <strong>Process</strong> 共用。如果下列兩個條件滿足，則系統無<strong>死結</strong>存在 (Dead Lock Free)。</p>
+<ol type="1">
+<li><strong><span class="math inline">\(1≤Max_i≤m\)</span></strong></li>
+<li><strong><span class="math inline">\(\sum_{i=1}^nMax_i &lt; m + n\)</span></strong></li>
+</ol>
+<ul>
+<li>問題:
+<ul>
+<li>有 6 部印表機提供給 <strong>n</strong> 個 <strong>process</strong> 使用，每個 <strong>process</strong> 之<strong>最大需求量</strong>為 2。在系統不發生 <strong>Dead Lock</strong> 的情況下，最多允許多少個 <strong>process</strong> 在系統內執行? (求 <strong>n</strong> 的最大値)</li>
+</ul></li>
+<li>Ans:
+<ul>
+<li>已知 m = 6，<span class="math inline">\(Max_i\)</span> = 2</li>
+<li><code>條件 1</code> 滿足 (∵ <strong><span class="math inline">\(1 ≤ Max_i = 2 ≤ 6\)</span></strong>)</li>
+<li>欲滿足<code>條件 2</code> (即： <span class="math inline">\(\sum_{i=1}^nMax_i &lt; m + n\)</span>)，則可得 2n &lt; 6 + n → n &lt; 6，∴ n 的最大值為 5。</li>
+</ul></li>
+</ul>
 
     </div>
 
@@ -681,13 +705,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">177k</span>
+    <span title="總字數">180k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:23</span>
+    <span title="所需總閱讀時間">5:27</span>
   </span>
 </div>
 

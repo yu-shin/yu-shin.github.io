@@ -24,16 +24,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
+<meta name="description" content="若 Dead Lock Prevention 與 Avoidance 都不用，則系統中可能存在 DeadLock。 ∴ 有必要提供下列機制：  偵測死結是否存在 若死結存在，則必須打破死結，恢復正常 優點：  Resource Utilization 較高 Throughput 提升  缺點：  Cost 太高  Dead Lock Detection 與 Dead Lock Recovery 是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dead Lock Detection &amp; Recovery">
 <meta property="og:url" content="https://yu-shin.github.io/posts/b0da2e07/index.html">
 <meta property="og:site_name" content="Nicholas Blogger">
+<meta property="og:description" content="若 Dead Lock Prevention 與 Avoidance 都不用，則系統中可能存在 DeadLock。 ∴ 有必要提供下列機制：  偵測死結是否存在 若死結存在，則必須打破死結，恢復正常 優點：  Resource Utilization 較高 Throughput 提升  缺點：  Cost 太高  Dead Lock Detection 與 Dead Lock Recovery 是">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://yu-shin.github.io/posts/b0da2e07/d.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/b0da2e07/d2.jpg">
+<meta property="og:image" content="https://yu-shin.github.io/posts/b0da2e07/d3.jpg">
 <meta property="article:published_time" content="2021-06-16T13:12:15.000Z">
-<meta property="article:modified_time" content="2021-06-16T13:21:54.894Z">
+<meta property="article:modified_time" content="2021-06-18T14:02:38.464Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="Operating System">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu-shin.github.io/posts/b0da2e07/d.jpg">
 
 
 <link rel="canonical" href="https://yu-shin.github.io/posts/b0da2e07/">
@@ -188,7 +194,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -201,6 +207,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock-detection"><span class="nav-number">1.</span> <span class="nav-text">Dead Lock Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-structures"><span class="nav-number">1.1.</span> <span class="nav-text">Data Structures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="nav-number">1.4.</span> <span class="nav-text">優缺點</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock-recovery"><span class="nav-number">2.</span> <span class="nav-text">Dead Lock Recovery</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,7 +223,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -326,14 +333,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>0</span>
+      <span>2.1k</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-      <span>1 分鐘</span>
+      <span>4 分鐘</span>
     </span>
 </div>
 
@@ -344,7 +351,140 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>若 <strong><code>Dead Lock Prevention</code></strong> 與 <strong><code>Avoidance</code></strong> 都不用，則系統中可能存在 <strong>DeadLock</strong>。 ∴ 有必要提供下列機制：</p>
+<ul>
+<li><strong><code>偵測</code>死結</strong>是否存在</li>
+<li><p>若死結存在，則必須打破死結，<strong><code>恢復</code></strong>正常</p></li>
+<li><strong><code>優點</code>：</strong>
+<ul>
+<li><strong><code>Resource Utilization</code> 較高</strong></li>
+<li><strong><code>Throughput</code> 提升</strong></li>
+</ul></li>
+<li><strong><code>缺點</code>：</strong>
+<ul>
+<li><strong><code>Cost</code> 太高</strong></li>
+</ul></li>
+<li><p><strong>Dead Lock Detection</strong> 與 <strong>Dead Lock Recovery</strong> 是<code>一體</code>的</p></li>
+</ul>
+<a id="more"></a>
+<h1 id="dead-lock-detection">Dead Lock Detection</h1>
+<ul>
+<li><code>偵測</code>所有的 <strong>Process</strong>，看是否會進入<strong>死結</strong> (勿和銀行家演算法搞混)</li>
+<li><strong>系統環境:</strong>
+<ul>
+<li>有 <code>m</code> 類可用<strong>資源</strong>，每類<strong>資源</strong>的數量不一</li>
+<li>有 <code>n</code> 個 <strong>Process</strong></li>
+</ul></li>
+</ul>
+<h2 id="data-structures">Data Structures</h2>
+<ul>
+<li><strong><span class="math inline">\(Available[1…m]\)</span></strong>: 表示系統目前<strong>可用的資源數量</strong></li>
+<li><strong><span class="math inline">\(Allocation[1…n, 1…m]\)</span></strong>: 表示各 <strong>Process</strong> 目前<strong>所持有的資源數量</strong></li>
+<li><strong><span class="math inline">\(Request[1…n, 1…m]\)</span></strong>: 表示各個 <strong>Process</strong> 目前所提出的<strong>資源申請量</strong></li>
+<li><strong><span class="math inline">\(Work[1…m]\)</span></strong>: 表示系統目前<strong>可用之資源數量之累計</strong> (<code>初值 = Available</code>)</li>
+<li><strong><span class="math inline">\(Finish[1…n] of Boolean\)</span></strong>: 初始值設定規則為 ( 紀錄每個 <strong>Process</strong> 是否完成工作 )
+<ul>
+<li>If <strong><span class="math inline">\(Allocation_i = 0\)</span></strong>, then <strong><span class="math inline">\(Finish[i] = True\)</span></strong> (<strong>Process </strong>沒有持有任何<strong>資源</strong>，即可假定它已完成) <div class="note warning"><p><strong>Process i</strong> 不見得真的完成了它的工作，只是因為目前 <strong>Process i</strong> 沒有持有任何資源 ∴ <strong>O.S.</strong> 認為此時的 <strong>Process</strong> 不會產生 <code>Hold and Wait</code> 的情況 ∴ 假設 <strong>Process i</strong> 可順利完成工作</p>
+</div></li>
+<li>If <strong><span class="math inline">\(Allocation_i ≠ 0\)</span></strong>, then <strong><span class="math inline">\(Finish[i] = False\)</span></strong> (尚未完成，且 <strong>Process</strong> 持有<strong>資源</strong>)</li>
+</ul></li>
+</ul>
+<h2 id="algorithm">Algorithm</h2>
+<ol type="1">
+<li>設定 <strong>Work</strong> 與 <strong>Finish</strong> 初始值
+<ul>
+<li><strong>Work = Available</strong></li>
+<li><span class="math inline">\(Finish[i]\)</span> 的初値視 <strong>Process i</strong> 是否持有<strong>資源</strong>而定
+<ul>
+<li><strong>True, if <span class="math inline">\(Allocation_i = 0\)</span></strong></li>
+<li><strong>False, if <span class="math inline">\(Allocation_i ≠ 0\)</span></strong></li>
+</ul></li>
+</ul></li>
+<li>找到一個滿足下列兩條件的 <strong>Process i</strong>。若找到，則 <code>go to 3</code>，否則 <code>go to 4</code>:
+<ul>
+<li><span class="math inline">\(Finish[i] = False\)</span> (此 <strong>Process</strong> 尚未做完)</li>
+<li><span class="math inline">\(Request_i ≤ Work\)</span> (此 <strong>Process</strong> 當下所提出的申請，系統可以應付)</li>
+</ul></li>
+<li>設定 <strong><span class="math inline">\(Finish[i] = True\)</span>，Work = Work + Allocationi</strong>, <code>go to 2</code></li>
+<li>檢査 <strong>Finish</strong> 陣列
+<ul>
+<li>若<code>皆為 True</code>，則表示系統目前無<strong>死結</strong>。</li>
+<li>若<code>不是皆為 True</code>，則表示有 <strong>Dead Lock</strong>，且 <span class="math inline">\(Finish[i] = False\)</span> 者，皆陷入此 <strong>Dead Lock</strong> 中</li>
+</ul></li>
+</ol>
+<h2 id="範例">範例</h2>
+<p>一個系統目前有五個處理程序 <span class="math inline">\(P_0\)</span> ~ <span class="math inline">\(P_4\)</span> 及三種資源 A, B, C。其中資源 A 有 7 個裝置，B 有 2 個裝置，C 有 6 個裝置，假設在時間 <span class="math inline">\(T_0\)</span> 時，系統的資源分配狀態如下所示： <img src="/posts/b0da2e07/d.jpg" class=""></p>
+<ul>
+<li>問題 1 : 求系統目前有無死結？</li>
+</ul>
+<p>Ans:</p>
+<ol type="1">
+<li>設定<code>初値</code>
+<ul>
+<li><strong>Work = Available = (0, 0, 0)</strong></li>
+<li><strong>Finish = <img src="/posts/b0da2e07/d2.jpg" class=""></strong></li>
+</ul></li>
+<li>找到 <span class="math inline">\(P_i\)</span>，滿足 <span class="math inline">\(Finish[i] = False\)</span>，且 <span class="math inline">\(Request_i ≤ Work\)</span>
+<ul>
+<li>找到 <span class="math inline">\(P_0\)</span>，滿足 <span class="math inline">\(Finish[0] = False\)</span>，且 <span class="math inline">\(Request_0 ≤ Work\)</span>。∴先找 <span class="math inline">\(P_0\)</span>，then <code>go to 3</code></li>
+</ul></li>
+<li>設定 <span class="math inline">\(Finish[i] = True\)</span>，且 <span class="math inline">\(Work = Work + Allocation_i\)</span>
+<ul>
+<li>設定 <span class="math inline">\(Finish[0] = True\)</span>，且 <span class="math inline">\(Work = Work + Allocation_0\)</span> = (0, 0, 0) + (0, 1, 0) = (0, 1, 0)。<code>Go to 2</code></li>
+</ul></li>
+</ol>
+<div class="note warning"><p><code>步驟 2 與 3 交互執行，可依序得到 $P_2, P_1, P_3, P_4$ 滿足條件且完成工作</code></p>
+</div>
+<ol start="4" type="1">
+<li>檢査 <strong>Finish</strong> 陣列，發現都為 <strong>True</strong>，∴系統無 <strong>Dead Lock</strong></li>
+</ol>
+<ul>
+<li><p>問題 2 : 假設在時間 <span class="math inline">\(T_0\)</span> 時，系統的<strong>資源</strong>分配狀態如下所示： <img src="/posts/b0da2e07/d3.jpg" class=""> 求系統目前有無<strong>死結</strong>？若有，哪些 <strong>Process</strong> 陷入<strong>死結</strong>？</p></li>
+<li><p>Ans: <span class="math inline">\(P_0\)</span> 可完成工作，但 <span class="math inline">\(P_1, P_2, P_3, P_4\)</span> 陷入<strong>死結</strong></p></li>
+</ul>
+<h2 id="優缺點">優缺點</h2>
+<ul>
+<li><code>優點</code>：
+<ul>
+<li>可以偵測出系統是否有<strong>死結</strong>存在。且若有死結，可知哪些 <strong>Processes</strong> 陷入<strong>死結</strong></li>
+</ul></li>
+<li><code>缺點</code>：
+<ul>
+<li>此<strong>演算法</strong>須花費 <span class="math inline">\(O(n^2m)\)</span> 的<strong>時間複雜度</strong> (<code>n</code>: <strong>Process</strong> 個數; <code>m</code>: <strong>Resource</strong> 種類)</li>
+</ul></li>
+</ul>
+<h1 id="dead-lock-recovery">Dead Lock Recovery</h1>
+<ul>
+<li><code>終止 Process</code>
+<ul>
+<li><code>Delete All</code>
+<ul>
+<li>∵ 這些 <strong>Process</strong> 之前完成的工作全部白費! ∴ 成本太高</li>
+</ul></li>
+<li><code>每次只終止一個 Process，直到 Dead Lock 打破為止</code>
+<ul>
+<li>毎刪一個 <strong>Process</strong> 後皆需再執行 <strong>Dead Lock Detection Algo.</strong>，判斷有無<strong>死結</strong></li>
+<li>若刪一個 <strong>Process</strong>，<strong>Dead Lock</strong> 仍在，則表示該 <strong>Process</strong> 亦白殺</li>
+<li><strong>成本</strong>亦高 (偵測、刪除都要成本)</li>
+</ul></li>
+</ul></li>
+<li><code>資源搶奪</code>
+<ul>
+<li>程序：
+<ol type="1">
+<li>選擇犧牲者 <strong>Process</strong> ( Victim Process )</li>
+<li>剝奪其<strong>資源</strong></li>
+<li>恢復到此 <strong>Victim process</strong> 原先無該<strong>資源</strong>的狀態 ( 困難 )
+<ul>
+<li><strong>Cost 高</strong>!!∵ <strong>O.S.</strong> 需要記錄毎一個 <strong>Process</strong> 的毎一次<strong>資源</strong>使用狀況</li>
+</ul></li>
+</ol></li>
+<li>需考量 <code>Starvation</code> 問題之產生 ( ∵ 可搶奪 )
+<ul>
+<li><span class="math inline">\([解法]\)</span> 把被剝奪的次數列入選擇犧牲者 <strong>Process</strong> 之考量因素</li>
+</ul></li>
+</ul></li>
+</ul>
 
     </div>
 
@@ -397,6 +537,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/posts/13291da1/" rel="next" title="Resource Allocation Graph">
+                  Resource Allocation Graph <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -455,13 +598,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">177k</span>
+    <span title="總字數">180k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:23</span>
+    <span title="所需總閱讀時間">5:27</span>
   </span>
 </div>
 
