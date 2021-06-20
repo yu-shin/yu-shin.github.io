@@ -24,15 +24,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yu-shin.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"width":240},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Dead Lock  Dead Lock 定義 Dead Lock Prevention Dead Lock Avoidance Dead Lock Detection &amp; Recovery Resource Allocation Graph">
+<meta name="description" content="Process Thread Dead Lock  Dead Lock 定義 Dead Lock Prevention Dead Lock Avoidance Dead Lock Detection &amp; Recovery Resource Allocation Graph  Process Communication Memory Management  Binding及其時期 Dynam">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Operating System">
 <meta property="og:url" content="https://yu-shin.github.io/categories/Operating-System.html">
 <meta property="og:site_name" content="Nicholas Blogger">
-<meta property="og:description" content="Dead Lock  Dead Lock 定義 Dead Lock Prevention Dead Lock Avoidance Dead Lock Detection &amp; Recovery Resource Allocation Graph">
+<meta property="og:description" content="Process Thread Dead Lock  Dead Lock 定義 Dead Lock Prevention Dead Lock Avoidance Dead Lock Detection &amp; Recovery Resource Allocation Graph  Process Communication Memory Management  Binding及其時期 Dynam">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-06-16T12:40:22.000Z">
-<meta property="article:modified_time" content="2021-06-18T14:05:55.710Z">
+<meta property="article:modified_time" content="2021-06-20T15:52:09.259Z">
 <meta property="article:author" content="Nicholas Tsai">
 <meta property="article:tag" content="部落格, 筆記">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock"><span class="nav-number">1.</span> <span class="nav-text">Dead Lock</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#process"><span class="nav-number">1.</span> <span class="nav-text">Process</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thread"><span class="nav-number">2.</span> <span class="nav-text">Thread</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dead-lock"><span class="nav-number">3.</span> <span class="nav-text">Dead Lock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#process-communication"><span class="nav-number">4.</span> <span class="nav-text">Process Communication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memory-management"><span class="nav-number">5.</span> <span class="nav-text">Memory Management</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual-memory"><span class="nav-number">6.</span> <span class="nav-text">Virtual Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#disk-management"><span class="nav-number">7.</span> <span class="nav-text">Disk Management</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -335,7 +335,9 @@
       
       
       <div class="post-body">
-          <h1 id="dead-lock">Dead Lock</h1>
+          <h1 id="process">Process</h1>
+<h1 id="thread">Thread</h1>
+<h1 id="dead-lock">Dead Lock</h1>
 <ul>
 <li><a href="/posts/84e0264f/" title="Dead Lock 定義">Dead Lock 定義</a></li>
 <li><a href="/posts/e252270d/" title="Dead Lock Prevention">Dead Lock Prevention</a></li>
@@ -343,6 +345,14 @@
 <li><a href="/posts/b0da2e07/" title="Dead Lock Detection &amp; Recovery">Dead Lock Detection &amp; Recovery</a></li>
 <li><a href="/posts/13291da1/" title="Resource Allocation Graph">Resource Allocation Graph</a></li>
 </ul>
+<h1 id="process-communication">Process Communication</h1>
+<h1 id="memory-management">Memory Management</h1>
+<ul>
+<li><a href="/posts/85e0f4c6/" title="Binding及其時期">Binding及其時期</a></li>
+<li><a href="/posts/774c4d7c/" title="Dynamic memory allocation">Dynamic memory allocation</a></li>
+</ul>
+<h1 id="virtual-memory">Virtual Memory</h1>
+<h1 id="disk-management">Disk Management</h1>
 
       </div>
       
@@ -401,13 +411,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="總字數">180k</span>
+    <span title="總字數">181k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:27</span>
+    <span title="所需總閱讀時間">5:30</span>
   </span>
 </div>
 
